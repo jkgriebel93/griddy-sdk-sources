@@ -13378,7 +13378,7 @@ paths:
         future games.
 
         '
-      operationId: getBoxscore
+      operationId: getStatsBoxscore
       parameters:
       - description: Game identifier (10-digit format YYYYMMDDNN)
         in: query
@@ -13403,7 +13403,7 @@ paths:
           description: Game not found
         '500':
           description: Internal server error
-      summary: Get Game Boxscore
+      summary: Get Game Boxscore (Stats API)
       tags:
       - Stats
   /api/stats/game/team-rankings:
@@ -14056,7 +14056,7 @@ paths:
         team statistics, individual player statistics, and scoring summary.
 
         '
-      operationId: getBoxScore
+      operationId: getFootballBoxScore
       parameters:
       - description: Game identifier (UUID)
         in: path
@@ -14080,7 +14080,7 @@ paths:
           description: Game not found
         '500':
           description: Internal server error
-      summary: Get Game Box Score
+      summary: Get Game Box Score (Football API)
       tags:
       - Football
   /football/v2/games/{gameId}/playbyplay:

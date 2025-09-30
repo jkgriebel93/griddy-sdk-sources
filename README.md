@@ -22,14 +22,21 @@ Run the provided script to generate all SDKs:
 ./generate-sdks.sh
 ```
 
-This will generate SDKs for:
-- TypeScript (Axios)
+This will generate SDKs using Speakeasy for:
+- TypeScript
 - Python
 - Java
 - Go
 - C#
 
 All generated SDKs will be placed in the `sdks/` directory.
+
+Speakeasy generates high-quality, idiomatic SDKs with:
+- Modern language features and best practices
+- Built-in retry logic and error handling
+- Comprehensive documentation
+- Type safety and IDE autocomplete support
+- Async/await support (where applicable)
 
 ### 3. Testing Generated SDKs
 
@@ -100,7 +107,7 @@ Each SDK repository contains its own publishing workflow:
 
 ## Prerequisites
 
-- [OpenAPI Generator CLI](https://openapi-generator.tech/docs/installation) installed
+- [Speakeasy CLI](https://www.speakeasy.com/docs/speakeasy-reference/cli/getting-started#install) installed
 - Git configured with appropriate access to all SDK repositories
 - Language-specific toolchains installed (Node.js, Python, Go, Java/Maven, .NET)
 
