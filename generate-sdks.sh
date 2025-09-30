@@ -14,6 +14,19 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+# Parse command line arguments
+TARGET_SDK=$1
+SUPPORTED_SDKS=("typescript" "python" "go" "java" "csharp")
+
+# Validate target SDK if provided
+if [ -n "$TARGET_SDK" ]; then
+    if [[ ! " ${SUPPORTED_SDKS[@]} " =~ " ${TARGET_SDK} " ]]; then
+        echo -e "${RED}❌ Unsupported SDK: $TARGET_SDK${NC}"
+        echo -e "${YELLOW}Supported SDKs: ${SUPPORTED_SDKS[*]}${NC}"
+        exit 1
+    fi
+fi
+
 echo -e "${YELLOW}🚀 Starting SDK generation with Speakeasy...${NC}"
 
 # Check if spec file exists
@@ -52,17 +65,25 @@ generate_sdk() {
     fi
 }
 
-# Generate SDKs for each language
-generate_sdk "typescript" "$OUTPUT_BASE/typescript"
-generate_sdk "python" "$OUTPUT_BASE/python"
-generate_sdk "go" "$OUTPUT_BASE/go"
-generate_sdk "java" "$OUTPUT_BASE/java"
-generate_sdk "csharp" "$OUTPUT_BASE/csharp"
+# Generate specific SDK or all SDKs
+if [ -n "$TARGET_SDK" ]; then
+    # Generate only the specified SDK
+    generate_sdk "$TARGET_SDK" "$OUTPUT_BASE/$TARGET_SDK"
+    echo -e "${GREEN}🎉 $TARGET_SDK SDK generated successfully!${NC}"
+    echo -e "${YELLOW}📁 SDK available at: $OUTPUT_BASE/$TARGET_SDK${NC}"
+else
+    # Generate all SDKs
+    generate_sdk "typescript" "$OUTPUT_BASE/typescript"
+    generate_sdk "python" "$OUTPUT_BASE/python"
+    generate_sdk "go" "$OUTPUT_BASE/go"
+    generate_sdk "java" "$OUTPUT_BASE/java"
+    generate_sdk "csharp" "$OUTPUT_BASE/csharp"
 
-echo -e "${GREEN}🎉 All SDKs generated successfully!${NC}"
-echo -e "${YELLOW}📁 SDKs are available in the following directories:${NC}"
-echo "  - TypeScript: $OUTPUT_BASE/typescript"
-echo "  - Python: $OUTPUT_BASE/python"
-echo "  - Go: $OUTPUT_BASE/go"
-echo "  - Java: $OUTPUT_BASE/java"
-echo "  - C#: $OUTPUT_BASE/csharp"
+    echo -e "${GREEN}🎉 All SDKs generated successfully!${NC}"
+    echo -e "${YELLOW}📁 SDKs are available in the following directories:${NC}"
+    echo "  - TypeScript: $OUTPUT_BASE/typescript"
+    echo "  - Python: $OUTPUT_BASE/python"
+    echo "  - Go: $OUTPUT_BASE/go"
+    echo "  - Java: $OUTPUT_BASE/java"
+    echo "  - C#: $OUTPUT_BASE/csharp"
+fi
