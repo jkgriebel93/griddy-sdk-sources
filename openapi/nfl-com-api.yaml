@@ -16,7 +16,7 @@ info:
 
 servers:
   - description: Production Regular NFL API
-    url: htps://api.nfl.com
+    url: https://api.nfl.com
   - description: Production NFL Pro API
     url: https://pro.nfl.com
 
