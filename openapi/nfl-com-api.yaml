@@ -21,7 +21,7 @@ servers:
     url: https://pro.nfl.com
 
 security:
-  - BearerAuth: []
+  - NFLAuth: []
 
 tags:
   - description: Token generation and refresh operations for NFL API access
@@ -9540,13 +9540,10 @@ components:
       - LONG
       type: string
   securitySchemes:
-    BearerAuth:
-      bearerFormat: JWT
-      description: 'JWT token obtained from the /identity/v3/token endpoint in the
-        NFL Regular API. Include the token in the Authorization header as: Authorization:
-        Bearer {accessToken}'
-      scheme: bearer
+    NFLAuth:
       type: http
+      scheme: bearer
+      x-speakeasy-token: 'sometokenvalue'
 
 paths:
   /api/content/game/preview:
