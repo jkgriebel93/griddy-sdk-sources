@@ -88,3 +88,10 @@ To manually regenerate SDKs without pushing changes:
 2. Select "Generate and Publish SDKs" workflow
 3. Click "Run workflow"
 4. Select the branch and click "Run workflow"
+
+## Generator Config
+
+| Setting        | Value         |
+| packageName    | griddy_nfl    |
+| packageUrl     | <URL here>    |
+| projectName    | Griddy NFL    |

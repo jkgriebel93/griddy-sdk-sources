@@ -9,8 +9,27 @@ on:
   workflow_dispatch:
 
 jobs:
+  validate-openapi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install OpenAPI Generator CLI
+        run: npm install -g @openapitools/openapi-generator-cli
+
+      - name: Validate OpenAPI specification
+        run: |
+          openapi-generator-cli validate -i openapi/nfl-com-api.yaml --recommend
+
   generate-python-sdk:
     runs-on: ubuntu-latest
+    needs: validate-openapi
     steps:
       - name: Checkout source repository
         uses: actions/checkout@v4
@@ -29,7 +48,7 @@ jobs:
             -i openapi/nfl-com-api.yaml \
             -g python \
             -o ./python-sdk \
-            --additional-properties=packageName=nfl_api,projectName=nfl-api-python
+            --additional-properties=packageName=griddy_nfl,projectName=griddy-nfl
 
       - name: Checkout Python SDK repository
         uses: actions/checkout@v4
@@ -53,6 +72,7 @@ jobs:
 
   generate-typescript-sdk:
     runs-on: ubuntu-latest
+    needs: validate-openapi
     steps:
       - name: Checkout source repository
         uses: actions/checkout@v4
