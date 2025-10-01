@@ -1,0 +1,94 @@
+name: Generate and Publish SDKs
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'openapi/nfl-com-api.yaml'
+  workflow_dispatch:
+
+jobs:
+  generate-python-sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install OpenAPI Generator CLI
+        run: npm install -g @openapitools/openapi-generator-cli
+
+      - name: Generate Python SDK
+        run: |
+          openapi-generator-cli generate \
+            -i openapi/nfl-com-api.yaml \
+            -g python \
+            -o ./python-sdk \
+            --additional-properties=packageName=nfl_api,projectName=nfl-api-python
+
+      - name: Checkout Python SDK repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.PYTHON_SDK_REPO }}  # e.g., 'username/nfl-api-python'
+          token: ${{ secrets.SDK_DEPLOY_TOKEN }}
+          path: python-sdk-repo
+
+      - name: Copy generated SDK to repository
+        run: |
+          rm -rf python-sdk-repo/*
+          cp -r python-sdk/* python-sdk-repo/
+
+      - name: Commit and push Python SDK
+        working-directory: python-sdk-repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update SDK from OpenAPI spec [skip ci]" && git push)
+
+  generate-typescript-sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install OpenAPI Generator CLI
+        run: npm install -g @openapitools/openapi-generator-cli
+
+      - name: Generate TypeScript-Axios SDK
+        run: |
+          openapi-generator-cli generate \
+            -i openapi/nfl-com-api.yaml \
+            -g typescript-axios \
+            -o ./typescript-sdk \
+            --additional-properties=npmName=@nfl/api-client,supportsES6=true
+
+      - name: Checkout TypeScript SDK repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.TYPESCRIPT_SDK_REPO }}  # e.g., 'username/nfl-api-typescript'
+          token: ${{ secrets.SDK_DEPLOY_TOKEN }}
+          path: typescript-sdk-repo
+
+      - name: Copy generated SDK to repository
+        run: |
+          rm -rf typescript-sdk-repo/*
+          cp -r typescript-sdk/* typescript-sdk-repo/
+
+      - name: Commit and push TypeScript SDK
+        working-directory: typescript-sdk-repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update SDK from OpenAPI spec [skip ci]" && git push)

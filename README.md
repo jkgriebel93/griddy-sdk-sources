@@ -1,79 +1,52 @@
-# Griddy SDK Sources
+# Griddy NFL API SDK Sources
 
-This repository contains the source OpenAPI specification and tooling for generating Griddy SDKs across multiple languages.
+This repository contains the OpenAPI specification for the NFL API and automated tooling for generating SDKs in multiple languages.
 
 ## Repository Structure
 
-- `openapi.yaml` - The source OpenAPI specification for the Griddy API
-- `sdk-configs/` - Configuration files for each SDK language
-- Generated SDKs are pushed to separate language-specific repositories
+- `openapi/nfl-com-api.yaml` - The source OpenAPI specification for the NFL API
+- `.github/workflows/generate-sdks.yml` - GitHub Actions workflow that automatically generates and publishes SDKs
 
-## Development Workflow
+## How It Works
 
-### 1. Making Changes to the API Specification
+When changes are made to the OpenAPI specification, a GitHub Actions workflow automatically:
 
-Edit the `openapi/nfl-com-api.yaml` file to add, modify, or remove API endpoints, schemas, or documentation.
+1. Generates Python and TypeScript-Axios SDKs using `openapi-generator-cli`
+2. Commits and pushes the generated SDKs to their respective repositories
 
-### 2. Generating SDKs
+The workflow runs:
+- Automatically when `openapi/nfl-com-api.yaml` is pushed to the `master` branch
+- Manually via the Actions tab (workflow_dispatch)
 
-Run the provided script to generate all SDKs:
+## Setup
 
-```bash
-./generate-sdks.sh
-```
+### 1. Create SDK Repositories
 
-This will generate SDKs using Speakeasy for:
-- TypeScript
-- Python
-- Java
-- Go
-- C#
+Create two separate repositories for your SDKs:
+- Python SDK repository (e.g., `your-org/nfl-api-python`)
+- TypeScript SDK repository (e.g., `your-org/nfl-api-typescript`)
 
-All generated SDKs will be placed in the `sdks/` directory.
+### 2. Create GitHub Personal Access Token
 
-Speakeasy generates high-quality, idiomatic SDKs with:
-- Modern language features and best practices
-- Built-in retry logic and error handling
-- Comprehensive documentation
-- Type safety and IDE autocomplete support
-- Async/await support (where applicable)
+1. Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+2. Generate new token with `repo` scope (full control of private repositories)
+3. Save the token securely
 
-### 3. Testing Generated SDKs
+### 3. Configure Repository Secrets
 
-After generation, test each SDK in its respective directory:
+Add the following secrets to this repository (Settings → Secrets and variables → Actions):
 
-```bash
-# TypeScript
-cd sdks/typescript
-npm install
-npm test
-npm run build
+- `SDK_DEPLOY_TOKEN` - Your personal access token from step 2
+- `PYTHON_SDK_REPO` - Full repository name (e.g., `username/nfl-api-python`)
+- `TYPESCRIPT_SDK_REPO` - Full repository name (e.g., `username/nfl-api-typescript`)
 
-# Python
-cd sdks/python
-pip install -e .
-pytest
+## Making Changes
 
-# Go
-cd sdks/go
-go mod tidy
-go test ./...
-go build
+### 1. Update the OpenAPI Specification
 
-# Java
-cd sdks/java
-mvn clean install
-mvn test
+Edit `openapi/nfl-com-api.yaml` to add, modify, or remove API endpoints, schemas, or documentation.
 
-# C#
-cd sdks/csharp
-dotnet build
-dotnet test
-```
-
-### 4. Committing and Pushing Changes
-
-#### In this repository (griddy-sdk-sources):
+### 2. Commit and Push
 
 ```bash
 git add openapi/nfl-com-api.yaml
@@ -81,48 +54,37 @@ git commit -m "Update API specification: <describe changes>"
 git push origin master
 ```
 
-#### In each SDK repository:
+### 3. Workflow Runs Automatically
 
-Copy the generated SDK to its repository and commit:
+The GitHub Actions workflow will automatically:
+- Generate fresh Python and TypeScript SDKs
+- Push the generated code to their respective repositories
 
-```bash
-# Example for TypeScript
-cp -r sdks/typescript/* ../griddy-sdk-typescript/
-cd ../griddy-sdk-typescript
-git add .
-git commit -m "Regenerate SDK from updated OpenAPI spec"
-git push origin main
-```
+You can monitor the workflow progress in the Actions tab.
 
-Repeat for each SDK language.
+## Generated SDKs
 
-### 5. Publishing SDKs (when ready)
+### Python SDK
+- Generated using `openapi-generator-cli` with the `python` generator
+- Package name: `nfl_api`
+- Project name: `nfl-api-python`
 
-Each SDK repository contains its own publishing workflow:
+### TypeScript-Axios SDK
+- Generated using `openapi-generator-cli` with the `typescript-axios` generator
+- Package name: `@nfl/api-client`
+- Supports ES6+
 
-- **TypeScript**: `npm publish`
-- **Python**: `python -m build && twine upload dist/*`
-- **Go**: Tag releases with `git tag v<version>` and push tags
-- **Java**: `mvn deploy`
+## Customizing SDK Generation
 
-## Prerequisites
+To modify SDK generation options, edit `.github/workflows/generate-sdks.yml` and adjust the `--additional-properties` flags in the respective generation steps.
 
-- [Speakeasy CLI](https://www.speakeasy.com/docs/speakeasy-reference/cli/getting-started#install) installed
-- Git configured with appropriate access to all SDK repositories
-- Language-specific toolchains installed (Node.js, Python, Go, Java/Maven, .NET)
+Available options can be found in the [OpenAPI Generator documentation](https://openapi-generator.tech/docs/generators/).
 
-## SDK Repositories
+## Manual Workflow Trigger
 
-After generation, SDKs should be copied to their respective repositories:
-- TypeScript: `../griddy-sdk-typescript`
-- Python: `../griddy-sdk-python`
-- Go: `../griddy-sdk-go`
-- Java: `../griddy-sdk-java`
-- C#: `../griddy-sdk-csharp`
+To manually regenerate SDKs without pushing changes:
 
-## Notes
-
-- Always regenerate and test all SDKs after making changes to `openapi/nfl-com-api.yaml`
-- Keep SDK versions synchronized across all languages
-- Document breaking changes in each SDK's CHANGELOG
-- Use semantic versioning for SDK releases
+1. Go to the Actions tab in this repository
+2. Select "Generate and Publish SDKs" workflow
+3. Click "Run workflow"
+4. Select the branch and click "Run workflow"
