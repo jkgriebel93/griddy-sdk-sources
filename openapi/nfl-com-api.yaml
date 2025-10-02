@@ -167,6 +167,56 @@ components:
       - SNF
       - TNF
       type: string
+    PracticeStatusEnum:
+      description: Player practice participation status
+      enum:
+      - DNP
+      - LIMITED
+      - FULL
+      - NOT_LISTED
+      type: string
+    GameResultEnum:
+      description: Game result (Win/Loss/Tie)
+      enum:
+      - W
+      - L
+      - T
+      type: string
+    PassingStatsCategoryEnum:
+      description: Statistics categories for passing stats sorting
+      enum:
+      - cmp
+      - att
+      - yds
+      - td
+      - int
+      - rating
+      - ypa
+      - cmpPct
+      - sack
+      - xCmp
+      - cpoe
+      - db
+      - epa
+      - epaDb
+      - avgTTT
+      - avgTTP
+      - avgTTS
+      - qbp
+      - qbpR
+      - blitzR
+      - drop
+      - dropR
+      - ay
+      - yac
+      - xYac
+      - yacPct
+      - ayAtt
+      - avgSep
+      - deepAttPct
+      - paDbPct
+      - twAttPct
+      type: string
     TeamTypeEnum:
       description: Team type classification
       enum:
@@ -2944,26 +2994,11 @@ components:
         practiceStatus:
           properties:
             friday:
-              enum:
-              - DNP
-              - LIMITED
-              - FULL
-              - NOT_LISTED
-              type: string
+              $ref: '#/components/schemas/PracticeStatusEnum'
             thursday:
-              enum:
-              - DNP
-              - LIMITED
-              - FULL
-              - NOT_LISTED
-              type: string
+              $ref: '#/components/schemas/PracticeStatusEnum'
             wednesday:
-              enum:
-              - DNP
-              - LIMITED
-              - FULL
-              - NOT_LISTED
-              type: string
+              $ref: '#/components/schemas/PracticeStatusEnum'
           type: object
       type: object
     InjuryReportResponse:
@@ -3075,6 +3110,7 @@ components:
           enum:
           - offense
           - defense
+          - null
           example: defense
           nullable: true
           type: string
@@ -4693,13 +4729,7 @@ components:
           example: 2025092104
           type: integer
         gameResult:
-          description: Game result for player's team
-          enum:
-          - W
-          - L
-          - T
-          example: L
-          type: string
+          $ref: '#/components/schemas/GameResultEnum'
         gp:
           description: Games played
           example: 3
@@ -5878,6 +5908,39 @@ components:
       - total
       - receivers
       type: object
+    ReceivingStatsCategoryEnum:
+      description: Statistics categories for receiving stats sorting
+      enum:
+      - rt
+      - tgt
+      - rec
+      - yds
+      - td
+      - int
+      - rating
+      - catch
+      - xCatch
+      - croe
+      - ydsRec
+      - ydsRt
+      - epa
+      - epaTgt
+      - epaRt
+      - drop
+      - yac
+      - xYac
+      - yacoe
+      - yacRec
+      - avgSep
+      - ay
+      - ayTgt
+      - tgtRt
+      - avgRtDep
+      - ezTgt
+      - ezRec
+      - deepTgtPct
+      - twPct
+      type: string
     Record:
       properties:
         losses:
@@ -8531,13 +8594,7 @@ components:
           example: 2025092104
           type: integer
         gameResult:
-          description: Game result for player's team
-          enum:
-          - W
-          - L
-          - T
-          example: L
-          type: string
+          $ref: '#/components/schemas/GameResultEnum'
         gp:
           description: Games played
           example: 1
@@ -8773,13 +8830,7 @@ components:
           example: 2025092104
           type: integer
         gameResult:
-          description: Game result for player's team
-          enum:
-          - W
-          - L
-          - T
-          example: L
-          type: string
+          $ref: '#/components/schemas/GameResultEnum'
         gp:
           description: Games played
           example: 1
@@ -10201,7 +10252,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Maximum number of players to return
         in: query
         name: limit
@@ -10260,12 +10310,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified defenders (minimum snap threshold)
         in: query
         name: qualifiedDefender
@@ -10389,12 +10434,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified defenders (minimum snap threshold)
         in: query
         name: qualifiedDefender
@@ -10521,12 +10561,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified defenders (minimum snap threshold)
         in: query
         name: qualifiedDefender
@@ -10644,12 +10679,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter by position groups (supports multiple positions)
         explode: true
         in: query
@@ -10785,43 +10815,13 @@ paths:
         name: sortKey
         required: false
         schema:
-          default: yds
-          enum:
-          - yds
-          - att
-          - cmp
-          - td
-          - int
-          - rating
-          - ypa
-          - cmpPct
-          - sack
-          - epa
-          - epaDb
-          - avgTTT
-          - avgTTP
-          - qbpR
-          - blitzR
-          - dropR
-          - ay
-          - yac
-          - avgSep
-          - deepAttPct
-          - paDbPct
-          - twAttPct
-          example: yds
-          type: string
+          $ref: '#/components/schemas/PassingStatsCategoryEnum'
       - description: Sort direction
         in: query
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified passers (minimum attempts threshold)
         in: query
         name: qualifiedPasser
@@ -10894,33 +10894,12 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Week identifier
         in: query
         name: week
         required: true
         schema:
-          enum:
-          - WEEK_1
-          - WEEK_2
-          - WEEK_3
-          - WEEK_4
-          - WEEK_5
-          - WEEK_6
-          - WEEK_7
-          - WEEK_8
-          - WEEK_9
-          - WEEK_10
-          - WEEK_11
-          - WEEK_12
-          - WEEK_13
-          - WEEK_14
-          - WEEK_15
-          - WEEK_16
-          - WEEK_17
-          - WEEK_18
-          example: WEEK_3
-          type: string
+          $ref: '#/components/schemas/WeekSlugEnum'
       - description: Maximum number of players to return
         in: query
         name: limit
@@ -10954,52 +10933,13 @@ paths:
         name: sortKey
         required: false
         schema:
-          default: yds
-          enum:
-          - cmp
-          - att
-          - yds
-          - td
-          - int
-          - rating
-          - ypa
-          - cmpPct
-          - sack
-          - xCmp
-          - cpoe
-          - db
-          - epa
-          - epaDb
-          - avgTTT
-          - avgTTP
-          - avgTTS
-          - qbp
-          - qbpR
-          - blitzR
-          - drop
-          - dropR
-          - ay
-          - yac
-          - xYac
-          - yacPct
-          - ayAtt
-          - avgSep
-          - deepAttPct
-          - paDbPct
-          - twAttPct
-          example: yds
-          type: string
+          $ref: '#/components/schemas/PassingStatsCategoryEnum'
       - description: Sort direction
         in: query
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified passers (minimum attempts threshold)
         in: query
         name: qualifiedPasser
@@ -11106,50 +11046,13 @@ paths:
         name: sortKey
         required: false
         schema:
-          default: yds
-          enum:
-          - rt
-          - tgt
-          - rec
-          - yds
-          - td
-          - int
-          - rating
-          - catch
-          - xCatch
-          - croe
-          - ydsRec
-          - ydsRt
-          - epa
-          - epaTgt
-          - epaRt
-          - drop
-          - yac
-          - xYac
-          - yacoe
-          - yacRec
-          - avgSep
-          - ay
-          - ayTgt
-          - tgtRt
-          - avgRtDep
-          - ezTgt
-          - ezRec
-          - deepTgtPct
-          - twPct
-          example: yds
-          type: string
+          $ref: '#/components/schemas/ReceivingStatsCategoryEnum'
       - description: Sort direction
         in: query
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified receivers (minimum target threshold)
         in: query
         name: qualifiedReceiver
@@ -11228,27 +11131,7 @@ paths:
         name: week
         required: true
         schema:
-          enum:
-          - WEEK_1
-          - WEEK_2
-          - WEEK_3
-          - WEEK_4
-          - WEEK_5
-          - WEEK_6
-          - WEEK_7
-          - WEEK_8
-          - WEEK_9
-          - WEEK_10
-          - WEEK_11
-          - WEEK_12
-          - WEEK_13
-          - WEEK_14
-          - WEEK_15
-          - WEEK_16
-          - WEEK_17
-          - WEEK_18
-          example: WEEK_3
-          type: string
+          $ref: '#/components/schemas/WeekSlugEnum'
       - description: Maximum number of players to return
         in: query
         name: limit
@@ -11282,50 +11165,13 @@ paths:
         name: sortKey
         required: false
         schema:
-          default: yds
-          enum:
-          - rt
-          - tgt
-          - rec
-          - yds
-          - td
-          - int
-          - rating
-          - catch
-          - xCatch
-          - croe
-          - ydsRec
-          - ydsRt
-          - epa
-          - epaTgt
-          - epaRt
-          - drop
-          - yac
-          - xYac
-          - yacoe
-          - yacRec
-          - avgSep
-          - ay
-          - ayTgt
-          - tgtRt
-          - avgRtDep
-          - ezTgt
-          - ezRec
-          - deepTgtPct
-          - twPct
-          example: yds
-          type: string
+          $ref: '#/components/schemas/ReceivingStatsCategoryEnum'
       - description: Sort direction
         in: query
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified receivers (minimum target threshold)
         in: query
         name: qualifiedReceiver
@@ -11463,12 +11309,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified rushers (minimum attempts threshold)
         in: query
         name: qualifiedRusher
@@ -11546,27 +11387,7 @@ paths:
         name: week
         required: true
         schema:
-          enum:
-          - WEEK_1
-          - WEEK_2
-          - WEEK_3
-          - WEEK_4
-          - WEEK_5
-          - WEEK_6
-          - WEEK_7
-          - WEEK_8
-          - WEEK_9
-          - WEEK_10
-          - WEEK_11
-          - WEEK_12
-          - WEEK_13
-          - WEEK_14
-          - WEEK_15
-          - WEEK_16
-          - WEEK_17
-          - WEEK_18
-          example: WEEK_3
-          type: string
+          $ref: '#/components/schemas/WeekSlugEnum'
       - description: Maximum number of players to return
         in: query
         name: limit
@@ -11632,12 +11453,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified rushers (minimum attempts threshold)
         in: query
         name: qualifiedRusher
@@ -11778,12 +11594,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: ASC
-          enum:
-          - ASC
-          - DESC
-          example: ASC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Defensive situation splits to filter by (supports multiple values)
         explode: true
         in: query
@@ -11925,12 +11736,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: ASC
-          enum:
-          - ASC
-          - DESC
-          example: ASC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       responses:
         '200':
           content:
@@ -12043,12 +11849,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: ASC
-          enum:
-          - ASC
-          - DESC
-          example: ASC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       responses:
         '200':
           content:
@@ -12161,12 +11962,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter by specific team identifier
         in: query
         name: teamDefense
@@ -12311,12 +12107,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter by specific team ID
         in: query
         name: teamDefense
@@ -12442,29 +12233,8 @@ paths:
         name: weekSlug
         required: false
         schema:
-          example:
-          - WEEK_3
           items:
-            enum:
-            - WEEK_1
-            - WEEK_2
-            - WEEK_3
-            - WEEK_4
-            - WEEK_5
-            - WEEK_6
-            - WEEK_7
-            - WEEK_8
-            - WEEK_9
-            - WEEK_10
-            - WEEK_11
-            - WEEK_12
-            - WEEK_13
-            - WEEK_14
-            - WEEK_15
-            - WEEK_16
-            - WEEK_17
-            - WEEK_18
-            type: string
+            $ref: '#/components/schemas/WeekSlugEnum'
           type: array
       - description: Filter by season year (supports multiple values)
         in: query
