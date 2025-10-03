@@ -16,4 +16,4 @@ jobs:
         run: |
           curl -fsSL https://raw.githubusercontent.com/speakeasy-api/speakeasy/main/install.sh | bash -s -- -b /usr/local/bin
       - name: Lint OpenAPI spec
-        run: speakeasy openapi lint --non-interactive --schema openapi/nfl-com-api.yaml --ruleset barRuleset --logLevel warn
+        run: speakeasy openapi lint --non-interactive --schema openapi/nfl-com-api.yaml --ruleset speakeasyBarRuleset --logLevel warn
