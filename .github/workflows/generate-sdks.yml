@@ -17,16 +17,9 @@ jobs:
       - name: Checkout source repository
         uses: actions/checkout@v4
 
-      - name: Setup Speakeasy
-        uses: speakeasy-api/sdk-generation-action@v15
-        with:
-          speakeasy_version: latest
-          mode: pr
-          languages: python
-          openapi_doc_location: ./openapi/nfl-com-api.yaml
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-          speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
-
+      - name: Install Speakeasy CLI
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/speakeasy-api/speakeasy/main/install.sh | bash -s -- -b /usr/local/bin
       - name: Generate Python SDK
         run: |
           speakeasy generate sdk \
