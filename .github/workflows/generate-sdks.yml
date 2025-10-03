@@ -27,6 +27,8 @@ jobs:
             --lang python \
             --out ./python-sdk \
             -y
+        env:
+          SPEAKEASY_API_KEY: ${{ secrets.SPEAKEASY_API_KEY }}
 
       - name: Setup Python and uv
         uses: actions/setup-python@v5
