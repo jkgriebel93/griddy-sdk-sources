@@ -1,0 +1,19 @@
+name: Validate NFL OpenAPI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'openapi/nfl-com-api/**'
+      - 'openapi/nfl-com-api.yaml'
+
+jobs:
+  lint-openapi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Speakeasy CLI
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/speakeasy-api/speakeasy/main/install.sh | bash -s -- -b /usr/local/bin
+      - name: Lint OpenAPI spec
+        run: speakeasy openapi lint --doc openapi/nfl-com-api.yaml
