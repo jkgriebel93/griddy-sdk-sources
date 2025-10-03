@@ -1,0 +1,10 @@
+lintVersion: 1.0.0
+defaultRuleset: speakeasyBarRuleset
+rulesets:
+  barRuleset:
+    rulesets:
+      - speakeasy-recommended
+    rules:
+      oas3-unused-component: {
+          severity: info
+        }

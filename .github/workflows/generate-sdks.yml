@@ -1,66 +1,94 @@
-name: Generate and Publish SDKs
+name: Generate and Publish SDKs with Speakeasy
 
 on:
   push:
     branches:
+      - main
       - master
     paths:
       - 'openapi/nfl-com-api.yaml'
+      - '.speakeasy/**'
   workflow_dispatch:
 
 jobs:
-  validate-openapi:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout source repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install OpenAPI Generator CLI
-        run: npm install -g @openapitools/openapi-generator-cli
-
-      - name: Validate OpenAPI specification
-        run: |
-          openapi-generator-cli validate -i openapi/nfl-com-api.yaml --recommend
-
   generate-python-sdk:
     runs-on: ubuntu-latest
-    needs: validate-openapi
     steps:
       - name: Checkout source repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Speakeasy
+        uses: speakeasy-api/sdk-generation-action@v15
         with:
-          node-version: '20'
-
-      - name: Install OpenAPI Generator CLI
-        run: npm install -g @openapitools/openapi-generator-cli
+          speakeasy_version: latest
+          mode: pr
+          languages: python
+          openapi_doc_location: ./openapi/nfl-com-api.yaml
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
 
       - name: Generate Python SDK
         run: |
-          openapi-generator-cli generate \
-            -i openapi/nfl-com-api.yaml \
-            -g python \
-            -o ./python-sdk \
-            --additional-properties=packageName=griddy_nfl,projectName=griddy-nfl
+          speakeasy generate sdk \
+            --schema ./openapi/nfl-com-api.yaml \
+            --lang python \
+            --out ./python-sdk \
+            -y
+
+      - name: Setup Python and uv
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+      - name: Configure Python SDK for uv
+        working-directory: python-sdk
+        run: |
+          # Add pyproject.toml build system configuration for uv
+          if [ ! -f pyproject.toml ]; then
+            cat > pyproject.toml << 'EOF'
+          [build-system]
+          requires = ["hatchling"]
+          build-backend = "hatchling.build"
+
+          [project]
+          name = "griddy-nfl"
+          dynamic = ["version"]
+          description = "Python SDK for NFL API"
+          readme = "README.md"
+          requires-python = ">=3.13"
+          dependencies = []
+
+          [tool.hatch.version]
+          path = "src/griddy_nfl/__init__.py"
+          EOF
+          fi
 
       - name: Checkout Python SDK repository
         uses: actions/checkout@v4
         with:
-          repository: ${{ secrets.PYTHON_SDK_REPO }}  # e.g., 'username/nfl-api-python'
+          repository: ${{ github.repository_owner }}/griddy-nfl-python
           token: ${{ secrets.SDK_DEPLOY_TOKEN }}
           path: python-sdk-repo
 
       - name: Copy generated SDK to repository
         run: |
+          # Preserve custom authorization wrapper if it exists
+          if [ -f python-sdk-repo/griddy_nfl/auth.py ]; then
+            cp python-sdk-repo/griddy_nfl/auth.py /tmp/auth.py
+          fi
+
           rm -rf python-sdk-repo/*
           cp -r python-sdk/* python-sdk-repo/
+
+          # Restore custom authorization wrapper
+          if [ -f /tmp/auth.py ]; then
+            cp /tmp/auth.py python-sdk-repo/griddy_nfl/auth.py
+          fi
 
       - name: Commit and push Python SDK
         working-directory: python-sdk-repo
@@ -70,45 +98,57 @@ jobs:
           git add .
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update SDK from OpenAPI spec [skip ci]" && git push)
 
-  generate-typescript-sdk:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Get CodeArtifact authorization token
+        id: codeartifact-token
+        run: |
+          TOKEN=$(aws codeartifact get-authorization-token \
+            --domain ${{ secrets.CODEARTIFACT_DOMAIN }} \
+            --domain-owner ${{ secrets.AWS_ACCOUNT_ID }} \
+            --query authorizationToken \
+            --output text)
+          echo "token=$TOKEN" >> $GITHUB_OUTPUT
+
+          REPO_URL=$(aws codeartifact get-repository-endpoint \
+            --domain ${{ secrets.CODEARTIFACT_DOMAIN }} \
+            --domain-owner ${{ secrets.AWS_ACCOUNT_ID }} \
+            --repository ${{ secrets.CODEARTIFACT_REPO }} \
+            --format pypi \
+            --query repositoryEndpoint \
+            --output text)
+          echo "repo_url=$REPO_URL" >> $GITHUB_OUTPUT
+
+      - name: Build Python package
+        working-directory: python-sdk-repo
+        run: |
+          uv build
+
+      - name: Publish to CodeArtifact
+        working-directory: python-sdk-repo
+        env:
+          CODEARTIFACT_TOKEN: ${{ steps.codeartifact-token.outputs.token }}
+          REPO_URL: ${{ steps.codeartifact-token.outputs.repo_url }}
+        run: |
+          # Configure uv to use CodeArtifact
+          uv publish \
+            --publish-url "${REPO_URL}simple/" \
+            --token "aws:${CODEARTIFACT_TOKEN}" \
+            --username aws
+
+  notify-sdk-repos:
     runs-on: ubuntu-latest
-    needs: validate-openapi
+    needs: [generate-python-sdk, generate-typescript-sdk]
     steps:
-      - name: Checkout source repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install OpenAPI Generator CLI
-        run: npm install -g @openapitools/openapi-generator-cli
-
-      - name: Generate TypeScript-Axios SDK
+      - name: Trigger Python SDK Regeneration
         run: |
-          openapi-generator-cli generate \
-            -i openapi/nfl-com-api.yaml \
-            -g typescript-axios \
-            -o ./typescript-sdk \
-            --additional-properties=npmName=@nfl/api-client,supportsES6=true
-
-      - name: Checkout TypeScript SDK repository
-        uses: actions/checkout@v4
-        with:
-          repository: ${{ secrets.TYPESCRIPT_SDK_REPO }}  # e.g., 'username/nfl-api-typescript'
-          token: ${{ secrets.SDK_DEPLOY_TOKEN }}
-          path: typescript-sdk-repo
-
-      - name: Copy generated SDK to repository
-        run: |
-          rm -rf typescript-sdk-repo/*
-          cp -r typescript-sdk/* typescript-sdk-repo/
-
-      - name: Commit and push TypeScript SDK
-        working-directory: typescript-sdk-repo
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update SDK from OpenAPI spec [skip ci]" && git push)
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.SDK_DEPLOY_TOKEN }}" \
+            https://api.github.com/repos/jkgriebel93/griddy-nfl-python/dispatches \
+            -d '{"event_type":"spec-updated"}'

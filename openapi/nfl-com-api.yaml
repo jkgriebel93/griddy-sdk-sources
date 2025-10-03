@@ -94,6 +94,157 @@ components:
       - INTERMEDIATE
       - DEEP
       type: string
+    BinaryFlagEnum:
+      description: Binary flag for boolean filters (0=false, 1=true)
+      enum:
+      - 0
+      - 1
+      type: integer
+    SeasonTypeEnum:
+      description: Type of NFL season
+      enum:
+      - PRE
+      - REG
+      - POST
+      example: REG
+      type: string
+    SortOrderEnum:
+      description: Sort direction for ordered results
+      enum:
+      - ASC
+      - DESC
+      example: DESC
+      type: string
+    ConferenceEnum:
+      description: NFL conference
+      enum:
+      - AFC
+      - NFC
+      type: string
+    DefensivePositionGroupEnum:
+      description: Defensive position group
+      enum:
+      - DB
+      - DL
+      - LB
+      type: string
+    GameStatusEnum:
+      description: Game status
+      enum:
+      - CANCELLED
+      - FINAL
+      - IN_PROGRESS
+      - POSTPONED
+      - SCHEDULED
+      type: string
+    MeridiemEnum:
+      description: Time of day indicator
+      enum:
+      - AM
+      - PM
+      type: string
+    OffensivePlayerPositionEnum:
+      description: Offensive player position
+      enum:
+      - FB
+      - QB
+      - RB
+      - TE
+      - WR
+      type: string
+    OffensiveSkillPositionEnum:
+      description: Offensive skill position (excluding QB)
+      enum:
+      - FB
+      - RB
+      - TE
+      - WR
+      type: string
+    PrimetimeGameCategoryEnum:
+      description: Prime time game designation
+      enum:
+      - MNF
+      - SNF
+      - TNF
+      type: string
+    PracticeStatusEnum:
+      description: Player practice participation status
+      enum:
+      - DNP
+      - LIMITED
+      - FULL
+      - NOT_LISTED
+      type: string
+    GameResultEnum:
+      description: Game result (Win/Loss/Tie)
+      enum:
+      - W
+      - L
+      - T
+      type: string
+    PassingStatsCategoryEnum:
+      description: Statistics categories for passing stats sorting
+      enum:
+      - cmp
+      - att
+      - yds
+      - td
+      - int
+      - rating
+      - ypa
+      - cmpPct
+      - sack
+      - xCmp
+      - cpoe
+      - db
+      - epa
+      - epaDb
+      - avgTTT
+      - avgTTP
+      - avgTTS
+      - qbp
+      - qbpR
+      - blitzR
+      - drop
+      - dropR
+      - ay
+      - yac
+      - xYac
+      - yacPct
+      - ayAtt
+      - avgSep
+      - deepAttPct
+      - paDbPct
+      - twAttPct
+      type: string
+    TeamTypeEnum:
+      description: Team type classification
+      enum:
+      - PRO
+      - TEAM
+      type: string
+    WeekSlugEnum:
+      description: Week identifier slug
+      enum:
+      - WEEK_1
+      - WEEK_10
+      - WEEK_11
+      - WEEK_12
+      - WEEK_13
+      - WEEK_14
+      - WEEK_15
+      - WEEK_16
+      - WEEK_17
+      - WEEK_18
+      - WEEK_2
+      - WEEK_3
+      - WEEK_4
+      - WEEK_5
+      - WEEK_6
+      - WEEK_7
+      - WEEK_8
+      - WEEK_9
+      type: string
     Award:
       properties:
         awardType:
@@ -224,11 +375,7 @@ components:
           example: 09:30:00
           type: string
         gameType:
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         homeDisplayName:
           example: Pittsburgh Steelers
           type: string
@@ -259,11 +406,7 @@ components:
           example: 2025
           type: integer
         seasonType:
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         site:
           $ref: '#/components/schemas/BoxscoreSite'
         smartId:
@@ -339,10 +482,7 @@ components:
           example: Pittsburgh
           type: string
         conferenceAbbr:
-          enum:
-          - AFC
-          - NFC
-          type: string
+          $ref: '#/components/schemas/ConferenceEnum'
         divisionAbbr:
           example: ACN
           type: string
@@ -364,10 +504,7 @@ components:
           example: '3900'
           type: string
         teamType:
-          enum:
-          - TEAM
-          - PRO
-          type: string
+          $ref: '#/components/schemas/TeamTypeEnum'
       type: object
     BroadcastInfo:
       properties:
@@ -724,11 +861,7 @@ components:
     Conference:
       properties:
         abbr:
-          description: Conference abbreviation
-          enum:
-          - AFC
-          - NFC
-          type: string
+          $ref: '#/components/schemas/ConferenceEnum'
         fullName:
           description: Full conference name
           example: National Football Conference
@@ -809,22 +942,15 @@ components:
         broadcastInfo:
           $ref: '#/components/schemas/BroadcastInfo'
         category:
-          description: Prime time game designation
-          enum:
-          - TNF
-          - SNF
-          - MNF
+          allOf:
+          - $ref: '#/components/schemas/PrimetimeGameCategoryEnum'
           nullable: true
-          type: string
         date:
           description: Game date (YYYY-MM-DD)
           format: date
           type: string
         dateAmPm:
-          enum:
-          - AM
-          - PM
-          type: string
+          $ref: '#/components/schemas/MeridiemEnum'
         dateDay:
           description: Day of week (full)
           type: string
@@ -870,19 +996,9 @@ components:
         season:
           type: integer
         seasonType:
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         status:
-          enum:
-          - SCHEDULED
-          - IN_PROGRESS
-          - FINAL
-          - POSTPONED
-          - CANCELLED
-          type: string
+          $ref: '#/components/schemas/GameStatusEnum'
         ticketUrl:
           format: uri
           nullable: true
@@ -927,12 +1043,7 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Current season type
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         week:
           description: Current week number
           type: integer
@@ -1024,24 +1135,14 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         sortKey:
           description: Field used for sorting
           example: yds
           type: string
         sortValue:
-          description: Sort direction
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
         teamDefense:
           description: Team filter applied (if any)
           example: '3900'
@@ -1131,11 +1232,7 @@ components:
           type: string
         ngsPositionGroup:
           description: Next Gen Stats position group
-          enum:
-          - DL
-          - LB
-          example: DL
-          type: string
+          $ref: '#/components/schemas/DefensivePositionGroupEnum'
         position:
           description: Player position
           enum:
@@ -1149,11 +1246,7 @@ components:
           type: string
         positionGroup:
           description: Position group
-          enum:
-          - DL
-          - LB
-          example: DL
-          type: string
+          $ref: '#/components/schemas/DefensivePositionGroupEnum'
         pr:
           description: Pass rush grade/rating
           example: 105
@@ -1295,12 +1388,7 @@ components:
           type: string
         ngsPositionGroup:
           description: Next Gen Stats position group
-          enum:
-          - DL
-          - LB
-          - DB
-          example: DL
-          type: string
+          $ref: '#/components/schemas/DefensivePositionGroupEnum'
         passRatingNd:
           description: Passer rating allowed when targeted (no data excluded)
           example: 0
@@ -1323,12 +1411,7 @@ components:
           type: string
         positionGroup:
           description: Position group
-          enum:
-          - DL
-          - LB
-          - DB
-          example: DL
-          type: string
+          $ref: '#/components/schemas/DefensivePositionGroupEnum'
         pr:
           description: Pass rush snaps
           example: 79
@@ -1487,12 +1570,7 @@ components:
           type: string
         ngsPositionGroup:
           description: Next Gen Stats position group
-          enum:
-          - DB
-          - LB
-          - DL
-          example: DB
-          type: string
+          $ref: '#/components/schemas/DefensivePositionGroupEnum'
         passRatingNd:
           description: Passer rating allowed when targeted
           example: 74.47917
@@ -1515,12 +1593,7 @@ components:
           type: string
         positionGroup:
           description: Position group
-          enum:
-          - DB
-          - LB
-          - DL
-          example: DB
-          type: string
+          $ref: '#/components/schemas/DefensivePositionGroupEnum'
         qd:
           description: Qualified defender status
           example: true
@@ -1715,24 +1788,14 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         sortKey:
           description: Field used for sorting
           example: cov
           type: string
         sortValue:
-          description: Sort direction
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
         total:
           description: Total number of players matching the criteria
           example: 730
@@ -2092,24 +2155,14 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         sortKey:
           description: Field used for sorting
           example: fpStd
           type: string
         sortValue:
-          description: Sort direction
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
         teamOffense:
           description: Offensive team filter applied (if any)
           example: '3900'
@@ -2245,19 +2298,7 @@ components:
           example: 1033
           type: integer
         playType:
-          description: Type of play
-          enum:
-          - play_type_kickoff
-          - play_type_field_goal
-          - play_type_rush
-          - play_type_sack
-          - play_type_two_point_conversion
-          - play_type_xp
-          - play_type_pass
-          - play_type_punt
-          - play_type_unknown
-          example: play_type_rush
-          type: string
+          $ref: '#/components/schemas/PlayTypeEnum'
         possessionTeamId:
           description: Team with possession of the ball
           example: '3900'
@@ -2273,12 +2314,7 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         selectedParamValues:
           additionalProperties: true
@@ -2422,22 +2458,15 @@ components:
         broadcastInfo:
           $ref: '#/components/schemas/BroadcastInfo'
         category:
-          description: Prime time game designation
-          enum:
-          - TNF
-          - SNF
-          - MNF
+          allOf:
+          - $ref: '#/components/schemas/PrimetimeGameCategoryEnum'
           nullable: true
-          type: string
         date:
           description: Game date (YYYY-MM-DD)
           format: date
           type: string
         dateAmPm:
-          enum:
-          - AM
-          - PM
-          type: string
+          $ref: '#/components/schemas/MeridiemEnum'
         dateDay:
           description: Day of week (full)
           type: string
@@ -2486,12 +2515,7 @@ components:
           description: Season year
           type: integer
         seasonType:
-          description: Season type
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         status:
           description: Game status
           enum:
@@ -2541,11 +2565,7 @@ components:
         gameTimeEastern:
           type: string
         gameType:
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         homeDisplayName:
           type: string
         homeNickname:
@@ -2570,11 +2590,7 @@ components:
         season:
           type: integer
         seasonType:
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         site:
           $ref: '#/components/schemas/Site'
         smartId:
@@ -2675,11 +2691,7 @@ components:
           description: Eastern time
           type: string
         gameType:
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         homeDisplayName:
           type: string
         homeNickname:
@@ -2706,11 +2718,7 @@ components:
         season:
           type: integer
         seasonType:
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         site:
           $ref: '#/components/schemas/VenueInfo'
         smartId:
@@ -2946,12 +2954,7 @@ components:
           example: '2025'
           type: string
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         week:
           description: Week number
@@ -2991,26 +2994,11 @@ components:
         practiceStatus:
           properties:
             friday:
-              enum:
-              - DNP
-              - LIMITED
-              - FULL
-              - NOT_LISTED
-              type: string
+              $ref: '#/components/schemas/PracticeStatusEnum'
             thursday:
-              enum:
-              - DNP
-              - LIMITED
-              - FULL
-              - NOT_LISTED
-              type: string
+              $ref: '#/components/schemas/PracticeStatusEnum'
             wednesday:
-              enum:
-              - DNP
-              - LIMITED
-              - FULL
-              - NOT_LISTED
-              type: string
+              $ref: '#/components/schemas/PracticeStatusEnum'
           type: object
       type: object
     InjuryReportResponse:
@@ -3105,12 +3093,7 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         secondTeamAbbr:
           description: Opponent or related team abbreviation
@@ -3127,6 +3110,7 @@ components:
           enum:
           - offense
           - defense
+          - null
           example: defense
           nullable: true
           type: string
@@ -3313,12 +3297,7 @@ components:
           example: '2025'
           type: string
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         week:
           description: Week number
@@ -3342,11 +3321,7 @@ components:
         season:
           type: integer
         seasonType:
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         visitorTeamMatchupRankings:
           $ref: '#/components/schemas/TeamMatchupRankings'
         week:
@@ -3547,24 +3522,14 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         sortKey:
           description: Field used for sorting
           example: pr
           type: string
         sortValue:
-          description: Sort direction
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
         total:
           description: Total number of players matching the criteria
           example: 730
@@ -3647,24 +3612,14 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         sortKey:
           description: Field used for sorting
           example: yds
           type: string
         sortValue:
-          description: Sort direction
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
         total:
           description: Total number of players matching the criteria
           example: 31
@@ -4774,13 +4729,7 @@ components:
           example: 2025092104
           type: integer
         gameResult:
-          description: Game result for player's team
-          enum:
-          - W
-          - L
-          - T
-          example: L
-          type: string
+          $ref: '#/components/schemas/GameResultEnum'
         gp:
           description: Games played
           example: 3
@@ -4817,44 +4766,20 @@ components:
           type: string
         ngsPosition:
           description: Next Gen Stats position
-          enum:
-          - RB
-          - FB
-          - WR
-          - TE
-          example: TE
-          type: string
+          $ref: '#/components/schemas/OffensiveSkillPositionEnum'
         ngsPositionGroup:
           description: Next Gen Stats position group
-          enum:
-          - RB
-          - FB
-          - WR
-          - TE
-          example: FB
-          type: string
+          $ref: '#/components/schemas/OffensiveSkillPositionEnum'
         opponentTeamId:
           description: Opponent team identifier
           example: '3900'
           type: string
         position:
           description: Player position
-          enum:
-          - RB
-          - FB
-          - WR
-          - TE
-          example: WR
-          type: string
+          $ref: '#/components/schemas/OffensiveSkillPositionEnum'
         positionGroup:
           description: Position group
-          enum:
-          - RB
-          - FB
-          - WR
-          - TE
-          example: RB
-          type: string
+          $ref: '#/components/schemas/OffensiveSkillPositionEnum'
         qr:
           description: Qualified receiver status
           example: true
@@ -5083,44 +5008,16 @@ components:
           type: string
         ngsPosition:
           description: Next Gen Stats position
-          enum:
-          - RB
-          - QB
-          - WR
-          - TE
-          - FB
-          example: RB
-          type: string
+          $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         ngsPositionGroup:
           description: Next Gen Stats position group
-          enum:
-          - RB
-          - QB
-          - WR
-          - TE
-          - FB
-          example: RB
-          type: string
+          $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         position:
           description: Player position
-          enum:
-          - RB
-          - QB
-          - WR
-          - TE
-          - FB
-          example: RB
-          type: string
+          $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         positionGroup:
           description: Position group
-          enum:
-          - RB
-          - QB
-          - WR
-          - TE
-          - FB
-          example: RB
-          type: string
+          $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         qr:
           description: Qualified rusher status
           example: true
@@ -5558,22 +5455,15 @@ components:
         broadcastInfo:
           $ref: '#/components/schemas/BroadcastInfo'
         category:
-          description: Prime time game designation
-          enum:
-          - TNF
-          - SNF
-          - MNF
+          allOf:
+          - $ref: '#/components/schemas/PrimetimeGameCategoryEnum'
           nullable: true
-          type: string
         date:
           description: Game date (YYYY-MM-DD)
           format: date
           type: string
         dateAmPm:
-          enum:
-          - AM
-          - PM
-          type: string
+          $ref: '#/components/schemas/MeridiemEnum'
         dateDay:
           description: Day of week (full)
           type: string
@@ -5622,12 +5512,7 @@ components:
           description: Season year
           type: integer
         seasonType:
-          description: Season type
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         status:
           description: Game status
           enum:
@@ -5820,12 +5705,7 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         seasonTypeWeek:
           description: Combined season type and week identifier
           example: REG-4
@@ -5908,11 +5788,7 @@ components:
           description: Minimum defensive snaps required
           type: integer
         seasonType:
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
       type: object
     QualifiedPasserCriteria:
       description: Criteria for qualified passer designation
@@ -5928,11 +5804,7 @@ components:
           format: float
           type: number
         seasonType:
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
       type: object
     ReceiverStats:
       additionalProperties: true
@@ -6006,24 +5878,14 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         sortKey:
           description: Field used for sorting
           example: yds
           type: string
         sortValue:
-          description: Sort direction
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
         teamOffense:
           description: Team filter applied (if any)
           example: '3900'
@@ -6046,6 +5908,39 @@ components:
       - total
       - receivers
       type: object
+    ReceivingStatsCategoryEnum:
+      description: Statistics categories for receiving stats sorting
+      enum:
+      - rt
+      - tgt
+      - rec
+      - yds
+      - td
+      - int
+      - rating
+      - catch
+      - xCatch
+      - croe
+      - ydsRec
+      - ydsRt
+      - epa
+      - epaTgt
+      - epaRt
+      - drop
+      - yac
+      - xYac
+      - yacoe
+      - yacRec
+      - avgSep
+      - ay
+      - ayTgt
+      - tgtRt
+      - avgRtDep
+      - ezTgt
+      - ezRec
+      - deepTgtPct
+      - twPct
+      type: string
     Record:
       properties:
         losses:
@@ -6164,24 +6059,14 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         sortKey:
           description: Field used for sorting
           example: yds
           type: string
         sortValue:
-          description: Sort direction
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
         teamOffense:
           description: Team filter applied (if any)
           example: '3000'
@@ -6207,10 +6092,7 @@ components:
         cityState:
           type: string
         conferenceAbbr:
-          enum:
-          - AFC
-          - NFC
-          type: string
+          $ref: '#/components/schemas/ConferenceEnum'
         divisionAbbr:
           type: string
         fullName:
@@ -6226,10 +6108,7 @@ components:
         teamId:
           type: string
         teamType:
-          enum:
-          - TEAM
-          - PRO
-          type: string
+          $ref: '#/components/schemas/TeamTypeEnum'
       type: object
     ScheduledGame:
       properties:
@@ -6255,12 +6134,7 @@ components:
           nullable: true
           type: string
         gameType:
-          description: Type of game
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         homeDisplayName:
           description: Home team display name
           type: string
@@ -6296,11 +6170,7 @@ components:
           description: Season year
           type: integer
         seasonType:
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         site:
           $ref: '#/components/schemas/GameSite'
         smartId:
@@ -6372,11 +6242,7 @@ components:
         season:
           type: integer
         seasonType:
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         starts:
           type: integer
       type: object
@@ -6486,11 +6352,7 @@ components:
         season:
           type: integer
         seasonType:
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         week:
           description: Current week for standings
           type: integer
@@ -6828,24 +6690,14 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         sortKey:
           description: Field used for sorting
           example: passYpg
           type: string
         sortValue:
-          description: Sort direction
-          enum:
-          - ASC
-          - DESC
-          example: ASC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
         total:
           description: Total number of teams matching the criteria
           example: 32
@@ -6989,24 +6841,14 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         sortKey:
           description: Field used for sorting
           example: rushYpg
           type: string
         sortValue:
-          description: Sort direction
-          enum:
-          - ASC
-          - DESC
-          example: ASC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
         total:
           description: Total number of teams matching the criteria
           example: 32
@@ -7212,24 +7054,14 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         sortKey:
           description: Field used for sorting
           example: ypg
           type: string
         sortValue:
-          description: Sort direction
-          enum:
-          - ASC
-          - DESC
-          example: ASC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
         split:
           description: Applied defensive situation splits
           example:
@@ -7293,10 +7125,7 @@ components:
         conference:
           $ref: '#/components/schemas/Conference'
         conferenceAbbr:
-          enum:
-          - AFC
-          - NFC
-          type: string
+          $ref: '#/components/schemas/ConferenceEnum'
         division:
           $ref: '#/components/schemas/Division'
         fullName:
@@ -7326,10 +7155,7 @@ components:
           nullable: true
           type: string
         teamType:
-          enum:
-          - TEAM
-          - PRO
-          type: string
+          $ref: '#/components/schemas/TeamTypeEnum'
         ticketPhoneNumber:
           nullable: true
           type: string
@@ -7862,24 +7688,14 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         sortKey:
           description: Field used for sorting
           example: ypg
           type: string
         sortValue:
-          description: Sort direction
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
         split:
           description: Applied offensive situation splits
           example:
@@ -8048,24 +7864,14 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         sortKey:
           description: Field used for sorting
           example: passYpg
           type: string
         sortValue:
-          description: Sort direction
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
         teamDefense:
           description: Applied team filter (if any)
           example: '2250'
@@ -8105,11 +7911,7 @@ components:
           example: 2025
           type: integer
         seasonType:
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         statistics:
           items:
             $ref: '#/components/schemas/StatisticRanking'
@@ -8479,12 +8281,7 @@ components:
           example: '2025'
           type: string
         seasonType:
-          description: Season type (for game tags)
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         slug:
           description: URL-friendly tag identifier
@@ -8535,12 +8332,7 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         seasonTypeWeek:
           description: Combined season type and week identifier
           example: REG-4
@@ -8603,12 +8395,7 @@ components:
           example: '2025'
           type: string
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         week:
           description: Week number
@@ -8638,24 +8425,14 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         sortKey:
           description: Field used for sorting
           example: yds
           type: string
         sortValue:
-          description: Sort direction
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
         teamOffense:
           description: Team filter applied (if any)
           example: '3200'
@@ -8684,12 +8461,7 @@ components:
       - $ref: '#/components/schemas/Player'
       - properties:
           seasonType:
-            description: Type of season for this week
-            enum:
-            - PRE
-            - REG
-            - POST
-            type: string
+            $ref: '#/components/schemas/SeasonTypeEnum'
           week:
             description: Week number
             type: integer
@@ -8822,13 +8594,7 @@ components:
           example: 2025092104
           type: integer
         gameResult:
-          description: Game result for player's team
-          enum:
-          - W
-          - L
-          - T
-          example: L
-          type: string
+          $ref: '#/components/schemas/GameResultEnum'
         gp:
           description: Games played
           example: 1
@@ -9064,13 +8830,7 @@ components:
           example: 2025092104
           type: integer
         gameResult:
-          description: Game result for player's team
-          enum:
-          - W
-          - L
-          - T
-          example: L
-          type: string
+          $ref: '#/components/schemas/GameResultEnum'
         gp:
           description: Games played
           example: 1
@@ -9112,48 +8872,20 @@ components:
           type: string
         ngsPosition:
           description: Next Gen Stats position
-          enum:
-          - QB
-          - RB
-          - WR
-          - TE
-          - FB
-          example: QB
-          type: string
+          $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         ngsPositionGroup:
           description: Next Gen Stats position group
-          enum:
-          - QB
-          - RB
-          - WR
-          - TE
-          - FB
-          example: QB
-          type: string
+          $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         opponentTeamId:
           description: Opponent team identifier
           example: '3900'
           type: string
         position:
           description: Player position
-          enum:
-          - QB
-          - RB
-          - WR
-          - TE
-          - FB
-          example: QB
-          type: string
+          $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         positionGroup:
           description: Position group
-          enum:
-          - QB
-          - RB
-          - WR
-          - TE
-          - FB
-          example: QB
-          type: string
+          $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         qr:
           description: Qualified rusher status
           example: true
@@ -9317,12 +9049,7 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         team:
           $ref: '#/components/schemas/TeamInfo'
         teamPlayers:
@@ -9357,24 +9084,14 @@ components:
           example: 2025
           type: integer
         seasonType:
-          description: Type of season
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
         sortKey:
           description: Field used for sorting
           example: yds
           type: string
         sortValue:
-          description: Sort direction
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
         teamOffense:
           description: Team filter applied (if any)
           example: '3200'
@@ -9564,11 +9281,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Week number
         in: query
@@ -10092,11 +9805,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Team identifier (UUID format)
         in: query
@@ -10156,11 +9865,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Week number within the season
         in: query
@@ -10241,11 +9946,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Week number within the season
         in: query
@@ -10296,11 +9997,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Week number within the season
         in: query
@@ -10384,11 +10081,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Week number
         in: query
@@ -10558,12 +10251,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
       - description: Maximum number of players to return
         in: query
         name: limit
@@ -10622,12 +10310,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified defenders (minimum snap threshold)
         in: query
         name: qualifiedDefender
@@ -10690,11 +10373,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Maximum number of players to return
         in: query
@@ -10755,12 +10434,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified defenders (minimum snap threshold)
         in: query
         name: qualifiedDefender
@@ -10831,11 +10505,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Maximum number of players to return
         in: query
@@ -10891,12 +10561,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified defenders (minimum snap threshold)
         in: query
         name: qualifiedDefender
@@ -10955,11 +10620,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Maximum number of players to return
         in: query
@@ -11018,12 +10679,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter by position groups (supports multiple positions)
         explode: true
         in: query
@@ -11124,11 +10780,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Maximum number of players to return
         in: query
@@ -11163,43 +10815,13 @@ paths:
         name: sortKey
         required: false
         schema:
-          default: yds
-          enum:
-          - yds
-          - att
-          - cmp
-          - td
-          - int
-          - rating
-          - ypa
-          - cmpPct
-          - sack
-          - epa
-          - epaDb
-          - avgTTT
-          - avgTTP
-          - qbpR
-          - blitzR
-          - dropR
-          - ay
-          - yac
-          - avgSep
-          - deepAttPct
-          - paDbPct
-          - twAttPct
-          example: yds
-          type: string
+          $ref: '#/components/schemas/PassingStatsCategoryEnum'
       - description: Sort direction
         in: query
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified passers (minimum attempts threshold)
         in: query
         name: qualifiedPasser
@@ -11271,38 +10893,13 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
       - description: Week identifier
         in: query
         name: week
         required: true
         schema:
-          enum:
-          - WEEK_1
-          - WEEK_2
-          - WEEK_3
-          - WEEK_4
-          - WEEK_5
-          - WEEK_6
-          - WEEK_7
-          - WEEK_8
-          - WEEK_9
-          - WEEK_10
-          - WEEK_11
-          - WEEK_12
-          - WEEK_13
-          - WEEK_14
-          - WEEK_15
-          - WEEK_16
-          - WEEK_17
-          - WEEK_18
-          example: WEEK_3
-          type: string
+          $ref: '#/components/schemas/WeekSlugEnum'
       - description: Maximum number of players to return
         in: query
         name: limit
@@ -11336,52 +10933,13 @@ paths:
         name: sortKey
         required: false
         schema:
-          default: yds
-          enum:
-          - cmp
-          - att
-          - yds
-          - td
-          - int
-          - rating
-          - ypa
-          - cmpPct
-          - sack
-          - xCmp
-          - cpoe
-          - db
-          - epa
-          - epaDb
-          - avgTTT
-          - avgTTP
-          - avgTTS
-          - qbp
-          - qbpR
-          - blitzR
-          - drop
-          - dropR
-          - ay
-          - yac
-          - xYac
-          - yacPct
-          - ayAtt
-          - avgSep
-          - deepAttPct
-          - paDbPct
-          - twAttPct
-          example: yds
-          type: string
+          $ref: '#/components/schemas/PassingStatsCategoryEnum'
       - description: Sort direction
         in: query
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified passers (minimum attempts threshold)
         in: query
         name: qualifiedPasser
@@ -11453,11 +11011,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Maximum number of players to return
         in: query
@@ -11492,50 +11046,13 @@ paths:
         name: sortKey
         required: false
         schema:
-          default: yds
-          enum:
-          - rt
-          - tgt
-          - rec
-          - yds
-          - td
-          - int
-          - rating
-          - catch
-          - xCatch
-          - croe
-          - ydsRec
-          - ydsRt
-          - epa
-          - epaTgt
-          - epaRt
-          - drop
-          - yac
-          - xYac
-          - yacoe
-          - yacRec
-          - avgSep
-          - ay
-          - ayTgt
-          - tgtRt
-          - avgRtDep
-          - ezTgt
-          - ezRec
-          - deepTgtPct
-          - twPct
-          example: yds
-          type: string
+          $ref: '#/components/schemas/ReceivingStatsCategoryEnum'
       - description: Sort direction
         in: query
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified receivers (minimum target threshold)
         in: query
         name: qualifiedReceiver
@@ -11607,38 +11124,14 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Week identifier
         in: query
         name: week
         required: true
         schema:
-          enum:
-          - WEEK_1
-          - WEEK_2
-          - WEEK_3
-          - WEEK_4
-          - WEEK_5
-          - WEEK_6
-          - WEEK_7
-          - WEEK_8
-          - WEEK_9
-          - WEEK_10
-          - WEEK_11
-          - WEEK_12
-          - WEEK_13
-          - WEEK_14
-          - WEEK_15
-          - WEEK_16
-          - WEEK_17
-          - WEEK_18
-          example: WEEK_3
-          type: string
+          $ref: '#/components/schemas/WeekSlugEnum'
       - description: Maximum number of players to return
         in: query
         name: limit
@@ -11672,50 +11165,13 @@ paths:
         name: sortKey
         required: false
         schema:
-          default: yds
-          enum:
-          - rt
-          - tgt
-          - rec
-          - yds
-          - td
-          - int
-          - rating
-          - catch
-          - xCatch
-          - croe
-          - ydsRec
-          - ydsRt
-          - epa
-          - epaTgt
-          - epaRt
-          - drop
-          - yac
-          - xYac
-          - yacoe
-          - yacRec
-          - avgSep
-          - ay
-          - ayTgt
-          - tgtRt
-          - avgRtDep
-          - ezTgt
-          - ezRec
-          - deepTgtPct
-          - twPct
-          example: yds
-          type: string
+          $ref: '#/components/schemas/ReceivingStatsCategoryEnum'
       - description: Sort direction
         in: query
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified receivers (minimum target threshold)
         in: query
         name: qualifiedReceiver
@@ -11786,11 +11242,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Maximum number of players to return
         in: query
@@ -11857,12 +11309,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified rushers (minimum attempts threshold)
         in: query
         name: qualifiedRusher
@@ -11933,38 +11380,14 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Week identifier
         in: query
         name: week
         required: true
         schema:
-          enum:
-          - WEEK_1
-          - WEEK_2
-          - WEEK_3
-          - WEEK_4
-          - WEEK_5
-          - WEEK_6
-          - WEEK_7
-          - WEEK_8
-          - WEEK_9
-          - WEEK_10
-          - WEEK_11
-          - WEEK_12
-          - WEEK_13
-          - WEEK_14
-          - WEEK_15
-          - WEEK_16
-          - WEEK_17
-          - WEEK_18
-          example: WEEK_3
-          type: string
+          $ref: '#/components/schemas/WeekSlugEnum'
       - description: Maximum number of players to return
         in: query
         name: limit
@@ -12030,12 +11453,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter to only qualified rushers (minimum attempts threshold)
         in: query
         name: qualifiedRusher
@@ -12098,11 +11516,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Maximum number of teams to return
         in: query
@@ -12180,12 +11594,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: ASC
-          enum:
-          - ASC
-          - DESC
-          example: ASC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Defensive situation splits to filter by (supports multiple values)
         explode: true
         in: query
@@ -12261,11 +11670,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Maximum number of teams to return
         in: query
@@ -12331,12 +11736,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: ASC
-          enum:
-          - ASC
-          - DESC
-          example: ASC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       responses:
         '200':
           content:
@@ -12386,11 +11786,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Maximum number of teams to return
         in: query
@@ -12453,12 +11849,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: ASC
-          enum:
-          - ASC
-          - DESC
-          example: ASC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       responses:
         '200':
           content:
@@ -12501,11 +11892,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Maximum number of teams to return
         in: query
@@ -12575,12 +11962,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter by specific team identifier
         in: query
         name: teamDefense
@@ -12658,11 +12040,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Maximum number of teams to return
         in: query
@@ -12729,12 +12107,7 @@ paths:
         name: sortValue
         required: false
         schema:
-          default: DESC
-          enum:
-          - ASC
-          - DESC
-          example: DESC
-          type: string
+          $ref: '#/components/schemas/SortOrderEnum'
       - description: Filter by specific team ID
         in: query
         name: teamDefense
@@ -12860,29 +12233,8 @@ paths:
         name: weekSlug
         required: false
         schema:
-          example:
-          - WEEK_3
           items:
-            enum:
-            - WEEK_1
-            - WEEK_2
-            - WEEK_3
-            - WEEK_4
-            - WEEK_5
-            - WEEK_6
-            - WEEK_7
-            - WEEK_8
-            - WEEK_9
-            - WEEK_10
-            - WEEK_11
-            - WEEK_12
-            - WEEK_13
-            - WEEK_14
-            - WEEK_15
-            - WEEK_16
-            - WEEK_17
-            - WEEK_18
-            type: string
+            $ref: '#/components/schemas/WeekSlugEnum'
           type: array
       - description: Filter by season year (supports multiple values)
         in: query
@@ -12902,11 +12254,7 @@ paths:
           example:
           - REG
           items:
-            enum:
-            - PRE
-            - REG
-            - POST
-            type: string
+            $ref: '#/components/schemas/SeasonTypeEnum'
           type: array
       - description: Filter by player NFL ID
         in: query
@@ -12964,10 +12312,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter for rushing plays of 10+ yards
         in: query
@@ -12977,10 +12322,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter for plays with fumbles lost
         in: query
@@ -12990,10 +12332,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter for plays with fumbles
         in: query
@@ -13003,10 +12342,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter by quarterback alignment
         in: query
@@ -13030,10 +12366,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter for goal-to-go situations
         in: query
@@ -13043,10 +12376,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter for passing plays
         in: query
@@ -13056,10 +12386,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter for running plays
         in: query
@@ -13069,10 +12396,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter by specific play types
         in: query
@@ -13082,17 +12406,7 @@ paths:
           example:
           - play_type_rush
           items:
-            enum:
-            - play_type_kickoff
-            - play_type_field_goal
-            - play_type_rush
-            - play_type_sack
-            - play_type_two_point_conversion
-            - play_type_xp
-            - play_type_pass
-            - play_type_punt
-            - play_type_unknown
-            type: string
+            $ref: '#/components/schemas/PlayTypeEnum'
           type: array
       - description: Filter for passing attempts
         in: query
@@ -13102,10 +12416,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter for completed passes
         in: query
@@ -13115,10 +12426,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter for interceptions
         in: query
@@ -13128,10 +12436,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter for receptions
         in: query
@@ -13141,10 +12446,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter for sacks
         in: query
@@ -13154,10 +12456,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter by receiver motion
         in: query
@@ -13167,10 +12466,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter by target location on field
         in: query
@@ -13221,10 +12517,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter by defensive blitz
         in: query
@@ -13234,10 +12527,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter by play action usage
         in: query
@@ -13247,10 +12537,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter by rush direction
         in: query
@@ -13273,10 +12560,7 @@ paths:
           example:
           - 1
           items:
-            enum:
-            - 0
-            - 1
-            type: integer
+            $ref: '#/components/schemas/BinaryFlagEnum'
           type: array
       - description: Filter by receiver alignment
         in: query
@@ -13426,11 +12710,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Away team UUID
         in: query
@@ -13530,11 +12810,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: First statistical category
         in: query
@@ -13686,11 +12962,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Week number within the season
         in: query
@@ -13786,11 +13058,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Week number within the season
         in: query
@@ -13929,11 +13197,7 @@ paths:
         name: type
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Week number
         in: query
@@ -14010,11 +13274,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Week number
         in: path
@@ -14284,11 +13544,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Week number
         in: query
@@ -14344,11 +13600,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Week number
         in: query
@@ -14395,11 +13647,7 @@ paths:
         name: seasonType
         required: true
         schema:
-          enum:
-          - PRE
-          - REG
-          - POST
-          example: REG
+          $ref: '#/components/schemas/SeasonTypeEnum'
           type: string
       - description: Filter by position group
         in: query
