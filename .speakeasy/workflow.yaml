@@ -1,0 +1,19 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    nfl_com_api:
+        inputs:
+            - location: https://raw.githubusercontent.com/jkgriebel93/griddy-sdk-sources/refs/heads/master/openapi/nfl-com-api.yaml
+        output: .speakeasy/out.openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/thistle-grow/griddy/nfl-rest-ap-is
+targets:
+    griddy-nfl:
+        target: python
+        source: nfl_com_api
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/thistle-grow/griddy/nfl-rest-ap-is-python-code-samples
+            labelOverride:
+                fixedValue: Python (SDK)
+            blocking: false
