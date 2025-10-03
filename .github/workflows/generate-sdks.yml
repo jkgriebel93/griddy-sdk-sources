@@ -143,7 +143,7 @@ jobs:
 
   notify-sdk-repos:
     runs-on: ubuntu-latest
-    needs: [generate-python-sdk, generate-typescript-sdk]
+    needs: generate-python-sdk
     steps:
       - name: Trigger Python SDK Regeneration
         run: |
