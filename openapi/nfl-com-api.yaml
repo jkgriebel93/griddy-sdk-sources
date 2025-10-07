@@ -111,152 +111,152 @@ components:
     SortOrderEnum:
       description: Sort direction for ordered results
       enum:
-      - ASC
-      - DESC
+        - ASC
+        - DESC
       example: DESC
       type: string
     ConferenceEnum:
       description: NFL conference
       enum:
-      - AFC
-      - NFC
+        - AFC
+        - NFC
       type: string
     DefensivePositionGroupEnum:
       description: Defensive position group
       enum:
-      - DB
-      - DL
-      - LB
+        - DB
+        - DL
+        - LB
       type: string
     GameStatusEnum:
       description: Game status
       enum:
-      - CANCELLED
-      - FINAL
-      - IN_PROGRESS
-      - POSTPONED
-      - SCHEDULED
+        - CANCELLED
+        - FINAL
+        - IN_PROGRESS
+        - POSTPONED
+        - SCHEDULED
       type: string
     MeridiemEnum:
       description: Time of day indicator
       enum:
-      - AM
-      - PM
+        - AM
+        - PM
       type: string
     OffensivePlayerPositionEnum:
       description: Offensive player position
       enum:
-      - FB
-      - QB
-      - RB
-      - TE
-      - WR
+        - FB
+        - QB
+        - RB
+        - TE
+        - WR
       type: string
     OffensiveSkillPositionEnum:
       description: Offensive skill position (excluding QB)
       enum:
-      - FB
-      - RB
-      - TE
-      - WR
+        - FB
+        - RB
+        - TE
+        - WR
       type: string
     PrimetimeGameCategoryEnum:
       description: Prime time game designation
       enum:
-      - MNF
-      - SNF
-      - TNF
+        - MNF
+        - SNF
+        - TNF
       type: string
     PracticeStatusEnum:
       description: Player practice participation status
       enum:
-      - DNP
-      - LIMITED
-      - FULL
-      - NOT_LISTED
+        - DNP
+        - LIMITED
+        - FULL
+        - NOT_LISTED
       type: string
     GameResultEnum:
       description: Game result (Win/Loss/Tie)
       enum:
-      - W
-      - L
-      - T
+        - W
+        - L
+        - T
       type: string
     PassingStatsCategoryEnum:
       description: Statistics categories for passing stats sorting
       enum:
-      - cmp
-      - att
-      - yds
-      - td
-      - int
-      - rating
-      - ypa
-      - cmpPct
-      - sack
-      - xCmp
-      - cpoe
-      - db
-      - epa
-      - epaDb
-      - avgTTT
-      - avgTTP
-      - avgTTS
-      - qbp
-      - qbpR
-      - blitzR
-      - drop
-      - dropR
-      - ay
-      - yac
-      - xYac
-      - yacPct
-      - ayAtt
-      - avgSep
-      - deepAttPct
-      - paDbPct
-      - twAttPct
+        - cmp
+        - att
+        - yds
+        - td
+        - int
+        - rating
+        - ypa
+        - cmpPct
+        - sack
+        - xCmp
+        - cpoe
+        - db
+        - epa
+        - epaDb
+        - avgTTT
+        - avgTTP
+        - avgTTS
+        - qbp
+        - qbpR
+        - blitzR
+        - drop
+        - dropR
+        - ay
+        - yac
+        - xYac
+        - yacPct
+        - ayAtt
+        - avgSep
+        - deepAttPct
+        - paDbPct
+        - twAttPct
       type: string
     TeamTypeEnum:
       description: Team type classification
       enum:
-      - PRO
-      - TEAM
+        - PRO
+        - TEAM
       type: string
     WeekSlugEnum:
       description: Week identifier slug
       enum:
-      - WEEK_1
-      - WEEK_10
-      - WEEK_11
-      - WEEK_12
-      - WEEK_13
-      - WEEK_14
-      - WEEK_15
-      - WEEK_16
-      - WEEK_17
-      - WEEK_18
-      - WEEK_2
-      - WEEK_3
-      - WEEK_4
-      - WEEK_5
-      - WEEK_6
-      - WEEK_7
-      - WEEK_8
-      - WEEK_9
+        - WEEK_1
+        - WEEK_10
+        - WEEK_11
+        - WEEK_12
+        - WEEK_13
+        - WEEK_14
+        - WEEK_15
+        - WEEK_16
+        - WEEK_17
+        - WEEK_18
+        - WEEK_2
+        - WEEK_3
+        - WEEK_4
+        - WEEK_5
+        - WEEK_6
+        - WEEK_7
+        - WEEK_8
+        - WEEK_9
       type: string
     Award:
       properties:
         awardType:
           enum:
-          - MVP
-          - OPOY
-          - DPOY
-          - OROY
-          - DROY
-          - PRO_BOWL
-          - ALL_PRO
-          - SUPER_BOWL_MVP
+            - MVP
+            - OPOY
+            - DPOY
+            - OROY
+            - DROY
+            - PRO_BOWL
+            - ALL_PRO
+            - SUPER_BOWL_MVP
           type: string
         description:
           type: string
@@ -452,9 +452,9 @@ components:
           type: string
         roofType:
           enum:
-          - OUTDOOR
-          - DOME
-          - RETRACTABLE
+            - OUTDOOR
+            - DOME
+            - RETRACTABLE
           type: string
         siteCity:
           example: Dublin
@@ -546,8 +546,8 @@ components:
         territory:
           description: Broadcast territory scope
           enum:
-          - NATIONAL
-          - REGIONAL
+            - NATIONAL
+            - REGIONAL
           type: string
       type: object
     ByeTeam:
@@ -632,9 +632,9 @@ components:
         cameraSource:
           description: Camera angle/source for the video
           enum:
-          - Endzone
-          - Sideline
-          - Broadcast
+            - Endzone
+            - Sideline
+            - Broadcast
           example: Endzone
           type: string
         clipType:
@@ -815,8 +815,8 @@ components:
         subType:
           description: Video subtype classification
           enum:
-          - Coaches Film
-          - Coaches Film Pro
+            - Coaches Film
+            - Coaches Film Pro
           example: Coaches Film Pro
           type: string
         summary:
@@ -837,7 +837,7 @@ components:
         type:
           description: Content type (always "video")
           enum:
-          - video
+            - video
           type: string
         videos:
           description: Additional video information
@@ -874,15 +874,15 @@ components:
     ContentTagEnum:
       description: Available content classification tags
       enum:
-      - nfl-pro
-      - editorial
-      - next-gen-stats
-      - pregame
-      - postgame
-      - fantasy
-      - pro-preview
-      - pro-matchup
-      - evergreen
+        - nfl-pro
+        - editorial
+        - next-gen-stats
+        - pregame
+        - postgame
+        - fantasy
+        - pro-preview
+        - pro-matchup
+        - evergreen
       type: string
     ContractInfo:
       properties:
@@ -1051,15 +1051,15 @@ components:
     DefenseFieldPositionEnum:
       description: Field position contexts
       enum:
-      - TEAM_DEFENSE_RED_ZONE
-      - TEAM_DEFENSE_GOAL_TO_GO
+        - TEAM_DEFENSE_RED_ZONE
+        - TEAM_DEFENSE_GOAL_TO_GO
       type: string
     DefenseGameSituationEnum:
       description: Game situation contexts for the defense
       enum:
-      - TEAM_DEFENSE_WHEN_LEADING
-      - TEAM_DEFENSE_WHEN_TRAILING
-      - TEAM_DEFENSE_WHEN_TIED
+        - TEAM_DEFENSE_WHEN_LEADING
+        - TEAM_DEFENSE_WHEN_TRAILING
+        - TEAM_DEFENSE_WHEN_TIED
       type: string
     DefensiveMetricsExplanation:
       description: Explanation of defensive metrics and calculations
@@ -1365,12 +1365,12 @@ components:
         ngsPosition:
           description: Next Gen Stats position
           enum:
-          - DT
-          - DE
-          - LB
-          - S
-          - CB
-          - SCB
+            - DT
+            - DE
+            - LB
+            - S
+            - CB
+            - SCB
           example: DT
           type: string
         ngsPositionGroup:
@@ -1384,16 +1384,16 @@ components:
         position:
           description: Player position
           enum:
-          - DE
-          - DT
-          - NT
-          - OLB
-          - ILB
-          - MLB
-          - FS
-          - SS
-          - CB
-          - SCB
+            - DE
+            - DT
+            - NT
+            - OLB
+            - ILB
+            - MLB
+            - FS
+            - SS
+            - CB
+            - SCB
           example: DT
           type: string
         positionGroup:
@@ -1547,12 +1547,12 @@ components:
         ngsPosition:
           description: Next Gen Stats position
           enum:
-          - S
-          - CB
-          - SCB
-          - LB
-          - DE
-          - DT
+            - S
+            - CB
+            - SCB
+            - LB
+            - DE
+            - DT
           example: S
           type: string
         ngsPositionGroup:
@@ -1566,16 +1566,16 @@ components:
         position:
           description: Player position
           enum:
-          - FS
-          - SS
-          - CB
-          - SCB
-          - ILB
-          - OLB
-          - MLB
-          - DE
-          - DT
-          - NT
+            - FS
+            - SS
+            - CB
+            - SCB
+            - ILB
+            - OLB
+            - MLB
+            - DE
+            - DT
+            - NT
           example: FS
           type: string
         positionGroup:
@@ -1700,10 +1700,10 @@ components:
           type: string
         situationType:
           enum:
-          - PERSONNEL
-          - GAME_SITUATION
-          - FIELD_POSITION
-          - OFFENSIVE_FORMATION
+            - PERSONNEL
+            - GAME_SITUATION
+            - FIELD_POSITION
+            - OFFENSIVE_FORMATION
           type: string
       type: object
     DefensiveStatCategory:
@@ -1714,10 +1714,10 @@ components:
           type: string
         dataType:
           enum:
-          - integer
-          - float
-          - percentage
-          - boolean
+            - integer
+            - float
+            - percentage
+            - boolean
           type: string
         description:
           description: Category description
@@ -1902,15 +1902,15 @@ components:
           type: integer
         result:
           enum:
-          - TOUCHDOWN
-          - FIELD_GOAL
-          - PUNT
-          - DOWNS
-          - FUMBLE
-          - INTERCEPTION
-          - SAFETY
-          - END_OF_HALF
-          - END_OF_GAME
+            - TOUCHDOWN
+            - FIELD_GOAL
+            - PUNT
+            - DOWNS
+            - FUMBLE
+            - INTERCEPTION
+            - SAFETY
+            - END_OF_HALF
+            - END_OF_GAME
           type: string
         startTime:
           description: Game clock at drive start
@@ -2026,22 +2026,22 @@ components:
         position:
           description: Player position
           enum:
-          - QB
-          - RB
-          - WR
-          - TE
-          - K
-          - DST
+            - QB
+            - RB
+            - WR
+            - TE
+            - K
+            - DST
           example: QB
           type: string
         positionGroup:
           description: Position group
           enum:
-          - QB
-          - RB
-          - WR
-          - TE
-          - SPEC
+            - QB
+            - RB
+            - WR
+            - TE
+            - SPEC
           example: QB
           type: string
         rec:
@@ -2385,9 +2385,9 @@ components:
     FormationEnum:
       description: Offensive formations
       enum:
-      - TEAM_SHOTGUN
-      - TEAM_UNDER_CENTER
-      - TEAM_PISTOL
+        - TEAM_SHOTGUN
+        - TEAM_UNDER_CENTER
+        - TEAM_PISTOL
       type: string
     FuturesMarket:
       properties:
@@ -2506,11 +2506,11 @@ components:
         status:
           description: Game status
           enum:
-          - SCHEDULED
-          - IN_PROGRESS
-          - FINAL
-          - POSTPONED
-          - CANCELLED
+            - SCHEDULED
+            - IN_PROGRESS
+            - FINAL
+            - POSTPONED
+            - CANCELLED
           type: string
         ticketUrl:
           description: Primary ticket purchase URL
@@ -2744,11 +2744,11 @@ components:
         phase:
           description: Game phase (P=Pregame, 1-4=Quarter, FINAL=Final)
           enum:
-          - PREGAME
-          - INGAME
-          - HALFTIME
-          - FINAL
-          - SUSPENDED
+            - PREGAME
+            - INGAME
+            - HALFTIME
+            - FINAL
+            - SUSPENDED
           type: string
         time:
           description: Game clock time or status
@@ -2764,9 +2764,9 @@ components:
           type: string
         roofType:
           enum:
-          - INDOOR
-          - OUTDOOR
-          - RETRACTABLE
+            - INDOOR
+            - OUTDOOR
+            - RETRACTABLE
           type: string
         siteCity:
           type: string
@@ -2967,10 +2967,10 @@ components:
         gameStatus:
           description: Game status designation
           enum:
-          - QUESTIONABLE
-          - DOUBTFUL
-          - OUT
-          - IR
+            - QUESTIONABLE
+            - DOUBTFUL
+            - OUT
+            - IR
           type: string
         injury:
           description: Injury description
@@ -3063,16 +3063,16 @@ components:
         position:
           description: Player position
           enum:
-          - QB
-          - RB
-          - WR
-          - TE
-          - OL
-          - DL
-          - LB
-          - DB
-          - K
-          - P
+            - QB
+            - RB
+            - WR
+            - TE
+            - OL
+            - DL
+            - LB
+            - DB
+            - K
+            - P
           example: QB
           type: string
         season:
@@ -3095,9 +3095,9 @@ components:
         secondTeamType:
           description: Context of the second team (typically "defense" for opponent)
           enum:
-          - offense
-          - defense
-          - null
+            - offense
+            - defense
+            - null
           example: defense
           nullable: true
           type: string
@@ -3261,12 +3261,12 @@ components:
           type: boolean
         status:
           enum:
-          - SCHEDULED
-          - IN_PROGRESS
-          - HALFTIME
-          - FINAL
-          - POSTPONED
-          - CANCELLED
+            - SCHEDULED
+            - IN_PROGRESS
+            - HALFTIME
+            - FINAL
+            - POSTPONED
+            - CANCELLED
           type: string
         timeRemaining:
           description: Time remaining in current period
@@ -3365,23 +3365,23 @@ components:
     OffenseFieldPositionEnum:
       description: Field position contexts
       enum:
-      - TEAM_RED_ZONE
-      - TEAM_GOAL_TO_GO
+        - TEAM_RED_ZONE
+        - TEAM_GOAL_TO_GO
       type: string
     OffenseGameSituationEnum:
       description: Game situation contexts for the offense
       enum:
-      - TEAM_WHEN_LEADING
-      - TEAM_WHEN_TRAILING
-      - TEAM_WHEN_TIED
+        - TEAM_WHEN_LEADING
+        - TEAM_WHEN_TRAILING
+        - TEAM_WHEN_TIED
       type: string
     OffensiveFormationEnum:
       description: Offensive formations faced
       enum:
-      - TEAM_DEFENSE_SHOTGUN
-      - TEAM_DEFENSE_UNDER_CENTER
-      - TEAM_DEFENSE_PISTOL
-      - TEAM_DEFENSE_MOTION
+        - TEAM_DEFENSE_SHOTGUN
+        - TEAM_DEFENSE_UNDER_CENTER
+        - TEAM_DEFENSE_PISTOL
+        - TEAM_DEFENSE_MOTION
       type: string
     OffensiveMetricsExplanation:
       description: Explanation of offensive metrics and calculations
@@ -3419,9 +3419,9 @@ components:
           type: string
         situationType:
           enum:
-          - FORMATION
-          - GAME_SITUATION
-          - FIELD_POSITION
+            - FORMATION
+            - GAME_SITUATION
+            - FIELD_POSITION
           type: string
       type: object
     OverallRecord:
@@ -3439,11 +3439,11 @@ components:
               type:
                 description: Type of current streak
                 enum:
-                - W
-                - L
-                - T
-                - STREAK_TYPE_WINNING
-                - STREAK_TYPE_LOSING
+                  - W
+                  - L
+                  - T
+                  - STREAK_TYPE_WINNING
+                  - STREAK_TYPE_LOSING
                 type: string
             type: object
         type: object
@@ -3639,16 +3639,16 @@ components:
     PersonnelEnum:
       description: Defensive personnel packages
       enum:
-      - BASE
-      - NICKEL
-      - DIME
+        - BASE
+        - NICKEL
+        - DIME
       type: string
     PersonnelPackageEnum:
       description: Defensive personnel packages
       enum:
-      - TEAM_DEFENSE_BASE
-      - TEAM_DEFENSE_NICKEL
-      - TEAM_DEFENSE_DIME
+        - TEAM_DEFENSE_BASE
+        - TEAM_DEFENSE_NICKEL
+        - TEAM_DEFENSE_DIME
       type: string
     Play:
       properties:
@@ -3670,15 +3670,15 @@ components:
           type: integer
         playType:
           enum:
-          - PASS
-          - RUSH
-          - PUNT
-          - KICKOFF
-          - FIELD_GOAL
-          - EXTRA_POINT
-          - PENALTY
-          - TIMEOUT
-          - TWO_MINUTE_WARNING
+            - PASS
+            - RUSH
+            - PUNT
+            - KICKOFF
+            - FIELD_GOAL
+            - EXTRA_POINT
+            - PENALTY
+            - TIMEOUT
+            - TWO_MINUTE_WARNING
           type: string
         players:
           items:
@@ -3772,18 +3772,18 @@ components:
         playDirection:
           description: Direction of play
           enum:
-          - left
-          - right
-          - middle
+            - left
+            - right
+            - middle
           type: string
         playId:
           type: integer
         playState:
           description: Review state of play
           enum:
-          - APPROVED
-          - PENDING
-          - REVIEWED
+            - APPROVED
+            - PENDING
+            - REVIEWED
           type: string
         playStats:
           description: Individual player statistics for this play
@@ -3858,13 +3858,13 @@ components:
           $ref: '#/components/schemas/Player'
         role:
           enum:
-          - PASSER
-          - RUSHER
-          - RECEIVER
-          - TACKLER
-          - KICKER
-          - RETURNER
-          - BLOCKER
+            - PASSER
+            - RUSHER
+            - RECEIVER
+            - TACKLER
+            - KICKER
+            - RETURNER
+            - BLOCKER
           type: string
         stats:
           description: Play-specific statistics
@@ -3976,15 +3976,15 @@ components:
     PlayTypeEnum:
       description: Enumeration of all possible play types
       enum:
-      - play_type_kickoff
-      - play_type_field_goal
-      - play_type_rush
-      - play_type_sack
-      - play_type_two_point_conversion
-      - play_type_xp
-      - play_type_pass
-      - play_type_punt
-      - play_type_unknown
+        - play_type_kickoff
+        - play_type_field_goal
+        - play_type_rush
+        - play_type_sack
+        - play_type_two_point_conversion
+        - play_type_xp
+        - play_type_pass
+        - play_type_punt
+        - play_type_unknown
       type: string
     PlayWinProbability:
       properties:
@@ -4577,7 +4577,7 @@ components:
                     type: string
                   type:
                     enum:
-                    - player-week-projected-points
+                      - player-week-projected-points
                     type: string
                 type: object
               type: array
@@ -4589,7 +4589,7 @@ components:
                     type: string
                   type:
                     enum:
-                    - player-week-projected-stats
+                      - player-week-projected-stats
                     type: string
                 type: object
               type: array
@@ -4597,7 +4597,7 @@ components:
         type:
           description: Resource type
           enum:
-          - player
+            - player
           type: string
       required:
       - type
@@ -5245,7 +5245,7 @@ components:
           type: string
         type:
           enum:
-          - player-week-projected-points
+            - player-week-projected-points
           type: string
       required:
       - type
@@ -5393,7 +5393,7 @@ components:
           type: string
         type:
           enum:
-          - player-week-projected-stats
+            - player-week-projected-stats
           type: string
       required:
       - type
@@ -5503,11 +5503,11 @@ components:
         status:
           description: Game status
           enum:
-          - SCHEDULED
-          - IN_PROGRESS
-          - FINAL
-          - POSTPONED
-          - CANCELLED
+            - SCHEDULED
+            - IN_PROGRESS
+            - FINAL
+            - POSTPONED
+            - CANCELLED
           type: string
         ticketUrl:
           description: Primary ticket purchase URL
@@ -5574,8 +5574,8 @@ components:
         conferenceAbbr:
           description: Conference abbreviation
           enum:
-          - AFC
-          - NFC
+            - AFC
+            - NFC
           type: string
         darkColor:
           description: Dark team color in hex format
@@ -5654,8 +5654,8 @@ components:
         teamType:
           description: Type of team (regular or Pro Bowl)
           enum:
-          - TEAM
-          - PRO
+            - TEAM
+            - PRO
           type: string
         tertiaryColor:
           description: Tertiary team color in hex format
@@ -5712,9 +5712,9 @@ components:
         weekType:
           description: Type of week
           enum:
-          - HOF
-          - PRE
-          - REG
+            - HOF
+            - PRE
+            - REG
           example: REG
           type: string
       type: object
@@ -5758,9 +5758,9 @@ components:
     QBAlignmentEnum:
       description: Quarterback alignment types
       enum:
-      - PISTOL
-      - UNDER_CENTER
-      - SHOTGUN
+        - PISTOL
+        - UNDER_CENTER
+        - SHOTGUN
       type: string
     QualifiedDefenderCriteria:
       description: Criteria for qualified defender designation
@@ -5898,35 +5898,35 @@ components:
     ReceivingStatsCategoryEnum:
       description: Statistics categories for receiving stats sorting
       enum:
-      - rt
-      - tgt
-      - rec
-      - yds
-      - td
-      - int
-      - rating
-      - catch
-      - xCatch
-      - croe
-      - ydsRec
-      - ydsRt
-      - epa
-      - epaTgt
-      - epaRt
-      - drop
-      - yac
-      - xYac
-      - yacoe
-      - yacRec
-      - avgSep
-      - ay
-      - ayTgt
-      - tgtRt
-      - avgRtDep
-      - ezTgt
-      - ezRec
-      - deepTgtPct
-      - twPct
+        - rt
+        - tgt
+        - rec
+        - yds
+        - td
+        - int
+        - rating
+        - catch
+        - xCatch
+        - croe
+        - ydsRec
+        - ydsRt
+        - epa
+        - epaTgt
+        - epaRt
+        - drop
+        - yac
+        - xYac
+        - yacoe
+        - yacRec
+        - avgSep
+        - ay
+        - ayTgt
+        - tgtRt
+        - avgRtDep
+        - ezTgt
+        - ezRec
+        - deepTgtPct
+        - twPct
       type: string
     Record:
       properties:
@@ -6203,11 +6203,11 @@ components:
           type: integer
         scoreType:
           enum:
-          - TOUCHDOWN
-          - FIELD_GOAL
-          - SAFETY
-          - EXTRA_POINT
-          - TWO_POINT_CONVERSION
+            - TOUCHDOWN
+            - FIELD_GOAL
+            - SAFETY
+            - EXTRA_POINT
+            - TWO_POINT_CONVERSION
           type: string
         team:
           $ref: '#/components/schemas/Team'
@@ -6253,9 +6253,9 @@ components:
           type: string
         roofType:
           enum:
-          - OUTDOOR
-          - INDOOR
-          - RETRACTABLE
+            - OUTDOOR
+            - INDOOR
+            - RETRACTABLE
           type: string
         siteCity:
           type: string
@@ -6381,10 +6381,10 @@ components:
           type: string
         dataType:
           enum:
-          - integer
-          - float
-          - percentage
-          - boolean
+            - integer
+            - float
+            - percentage
+            - boolean
           type: string
         description:
           description: Category description
@@ -6396,9 +6396,9 @@ components:
     TargetLocationEnum:
       description: Target location on the field for passes
       enum:
-      - DOWN_SEAMS
-      - BETWEEN_HASHES
-      - OUTSIDE_NUMBERS
+        - DOWN_SEAMS
+        - BETWEEN_HASHES
+        - OUTSIDE_NUMBERS
       type: string
     Team:
       properties:
@@ -6409,8 +6409,8 @@ components:
         conferenceAbbr:
           description: Conference abbreviation
           enum:
-          - AFC
-          - NFC
+            - AFC
+            - NFC
           type: string
         conferenceFullName:
           description: Full conference name
@@ -6479,8 +6479,8 @@ components:
         teamType:
           description: Type of team (regular or Pro Bowl)
           enum:
-          - TEAM
-          - PRO
+            - TEAM
+            - PRO
           type: string
         venues:
           items:
@@ -8005,10 +8005,10 @@ components:
         networkType:
           description: Type of network connection
           enum:
-          - other
-          - wifi
-          - cellular
-          - ethernet
+            - other
+            - wifi
+            - cellular
+            - ethernet
           example: other
           type: string
       required:
@@ -8086,14 +8086,14 @@ components:
           $ref: '#/components/schemas/Team'
         type:
           enum:
-          - TRADE
-          - SIGNED
-          - RELEASED
-          - WAIVED
-          - PRACTICE_SQUAD
-          - IR
-          - SUSPENDED
-          - ACTIVATED
+            - TRADE
+            - SIGNED
+            - RELEASED
+            - WAIVED
+            - PRACTICE_SQUAD
+            - IR
+            - SUSPENDED
+            - ACTIVATED
           type: string
       type: object
     TransactionsResponse:
@@ -8143,9 +8143,9 @@ components:
           type: string
         roofType:
           enum:
-          - OUTDOOR
-          - DOME
-          - RETRACTABLE
+            - OUTDOOR
+            - DOME
+            - RETRACTABLE
           type: string
         siteCity:
           type: string
@@ -8339,9 +8339,9 @@ components:
         weekType:
           description: Type of week
           enum:
-          - HOF
-          - PRE
-          - REG
+            - HOF
+            - PRE
+            - REG
           example: REG
           type: string
       type: object
@@ -9117,9 +9117,9 @@ components:
         calculationMethod:
           description: Method used to calculate win probabilities
           enum:
-          - REAL_TIME
-          - HISTORICAL
-          - SIMULATED
+            - REAL_TIME
+            - HISTORICAL
+            - SIMULATED
           type: string
         confidenceInterval:
           description: Statistical confidence interval for the predictions
@@ -9239,9 +9239,9 @@ components:
     YardsToGoTypeEnum:
       description: Category of yards needed for first down
       enum:
-      - SHORT
-      - MID
-      - LONG
+        - SHORT
+        - MID
+        - LONG
       type: string
   securitySchemes:
     NFLAuth:
@@ -9453,15 +9453,15 @@ paths:
           - nfl-pro
           items:
             enum:
-            - nfl-pro
-            - editorial
-            - next-gen-stats
-            - pregame
-            - postgame
-            - fantasy
-            - pro-preview
-            - pro-matchup
-            - evergreen
+              - nfl-pro
+              - editorial
+              - next-gen-stats
+              - pregame
+              - postgame
+              - fantasy
+              - pro-preview
+              - pro-matchup
+              - evergreen
             type: string
           type: array
         style: form
@@ -10274,22 +10274,22 @@ paths:
         schema:
           default: cov
           enum:
-          - cov
-          - covNd
-          - tgtNd
-          - recNd
-          - recYdsNd
-          - recTdNd
-          - int
-          - passRatingNd
-          - tgtEpaNd
-          - catchNd
-          - croeNd
-          - bhPct
-          - sep
-          - twfPct
-          - yacprNd
-          - tgtRNd
+            - cov
+            - covNd
+            - tgtNd
+            - recNd
+            - recYdsNd
+            - recTdNd
+            - int
+            - passRatingNd
+            - tgtEpaNd
+            - catchNd
+            - croeNd
+            - bhPct
+            - sep
+            - twfPct
+            - yacprNd
+            - tgtRNd
           example: cov
           type: string
       - description: Sort direction
@@ -10397,23 +10397,23 @@ paths:
         schema:
           default: snap
           enum:
-          - snap
-          - rd
-          - pr
-          - tck
-          - tStop
-          - hStop
-          - qbp
-          - qbpR
-          - sack
-          - tgtNd
-          - recNd
-          - recYdsNd
-          - recTdNd
-          - int
-          - passRatingNd
-          - gameSnap
-          - snapPct
+            - snap
+            - rd
+            - pr
+            - tck
+            - tStop
+            - hStop
+            - qbp
+            - qbpR
+            - sack
+            - tgtNd
+            - recNd
+            - recYdsNd
+            - recTdNd
+            - int
+            - passRatingNd
+            - gameSnap
+            - snapPct
           example: sack
           type: string
       - description: Sort direction
@@ -10529,18 +10529,18 @@ paths:
         schema:
           default: pr
           enum:
-          - pr
-          - prR
-          - qbp
-          - qbpR
-          - ttp
-          - qp
-          - sack
-          - sackR
-          - tts
-          - prGo
-          - turnQbp
-          - gameSnap
+            - pr
+            - prR
+            - qbp
+            - qbpR
+            - ttp
+            - qp
+            - sack
+            - sackR
+            - tts
+            - prGo
+            - turnQbp
+            - gameSnap
           example: pr
           type: string
       - description: Sort direction
@@ -10644,21 +10644,21 @@ paths:
         schema:
           default: fpStd
           enum:
-          - fpStd
-          - fpPpr
-          - fpHalfPpr
-          - passYds
-          - passTd
-          - passInt
-          - rushYds
-          - rushTd
-          - recYds
-          - recTd
-          - rec
-          - tgt
-          - snapPct
-          - targetShare
-          - redZoneTargets
+            - fpStd
+            - fpPpr
+            - fpHalfPpr
+            - passYds
+            - passTd
+            - passInt
+            - rushYds
+            - rushTd
+            - recYds
+            - recTd
+            - rec
+            - tgt
+            - snapPct
+            - targetShare
+            - redZoneTargets
           example: fpStd
           type: string
       - description: Sort direction
@@ -10677,11 +10677,11 @@ paths:
           - QB
           items:
             enum:
-            - QB
-            - RB
-            - WR
-            - TE
-            - SPEC
+              - QB
+              - RB
+              - WR
+              - TE
+              - SPEC
             type: string
           type: array
         style: form
@@ -11266,29 +11266,29 @@ paths:
         schema:
           default: yds
           enum:
-          - att
-          - yds
-          - td
-          - ypc
-          - epa
-          - epaAtt
-          - xRy
-          - xYpc
-          - ryoe
-          - ryoeAtt
-          - yaco
-          - yacoAtt
-          - ybco
-          - success
-          - fum
-          - lost
-          - rush10PYds
-          - rush15PMph
-          - rush20PMph
-          - eff
-          - inTPct
-          - stBoxPct
-          - underPct
+            - att
+            - yds
+            - td
+            - ypc
+            - epa
+            - epaAtt
+            - xRy
+            - xYpc
+            - ryoe
+            - ryoeAtt
+            - yaco
+            - yacoAtt
+            - ybco
+            - success
+            - fum
+            - lost
+            - rush10PYds
+            - rush15PMph
+            - rush20PMph
+            - eff
+            - inTPct
+            - stBoxPct
+            - underPct
           example: yds
           type: string
       - description: Sort direction
@@ -11410,29 +11410,29 @@ paths:
         schema:
           default: yds
           enum:
-          - att
-          - yds
-          - td
-          - ypc
-          - epa
-          - epaAtt
-          - xRy
-          - xYpc
-          - ryoe
-          - ryoeAtt
-          - yaco
-          - yacoAtt
-          - ybco
-          - success
-          - fum
-          - lost
-          - rush10PYds
-          - rush15PMph
-          - rush20PMph
-          - eff
-          - inTPct
-          - stBoxPct
-          - underPct
+            - att
+            - yds
+            - td
+            - ypc
+            - epa
+            - epaAtt
+            - xRy
+            - xYpc
+            - ryoe
+            - ryoeAtt
+            - yaco
+            - yacoAtt
+            - ybco
+            - success
+            - fum
+            - lost
+            - rush10PYds
+            - rush15PMph
+            - rush20PMph
+            - eff
+            - inTPct
+            - stBoxPct
+            - underPct
           example: yds
           type: string
       - description: Sort direction
@@ -11540,40 +11540,40 @@ paths:
         schema:
           default: ypg
           enum:
-          - total
-          - pass
-          - run
-          - yds
-          - passPct
-          - ypp
-          - td
-          - passTd
-          - rushTd
-          - epa
-          - epaPP
-          - passYds
-          - passYpp
-          - epaPass
-          - epaPassPP
-          - rushYds
-          - rushYpp
-          - epaRush
-          - epaRushPP
-          - ttt
-          - qbp
-          - qbpPct
-          - sackedYds
-          - ryoe
-          - interception
-          - forcedFumble
-          - fumbleRecovered
-          - defensiveTouchdown
-          - totalTakeaways
-          - ppg
-          - ypg
-          - passYpg
-          - rushYpg
-          - sackedYpg
+            - total
+            - pass
+            - run
+            - yds
+            - passPct
+            - ypp
+            - td
+            - passTd
+            - rushTd
+            - epa
+            - epaPP
+            - passYds
+            - passYpp
+            - epaPass
+            - epaPassPP
+            - rushYds
+            - rushYpp
+            - epaRush
+            - epaRushPP
+            - ttt
+            - qbp
+            - qbpPct
+            - sackedYds
+            - ryoe
+            - interception
+            - forcedFumble
+            - fumbleRecovered
+            - defensiveTouchdown
+            - totalTakeaways
+            - ppg
+            - ypg
+            - passYpg
+            - rushYpg
+            - sackedYpg
           example: ypg
           type: string
       - description: Sort direction
@@ -11593,18 +11593,18 @@ paths:
           - TEAM_DEFENSE_RED_ZONE
           items:
             enum:
-            - TEAM_DEFENSE_BASE
-            - TEAM_DEFENSE_NICKEL
-            - TEAM_DEFENSE_DIME
-            - TEAM_DEFENSE_WHEN_LEADING
-            - TEAM_DEFENSE_WHEN_TRAILING
-            - TEAM_DEFENSE_WHEN_TIED
-            - TEAM_DEFENSE_RED_ZONE
-            - TEAM_DEFENSE_GOAL_TO_GO
-            - TEAM_DEFENSE_SHOTGUN
-            - TEAM_DEFENSE_UNDER_CENTER
-            - TEAM_DEFENSE_PISTOL
-            - TEAM_DEFENSE_MOTION
+              - TEAM_DEFENSE_BASE
+              - TEAM_DEFENSE_NICKEL
+              - TEAM_DEFENSE_DIME
+              - TEAM_DEFENSE_WHEN_LEADING
+              - TEAM_DEFENSE_WHEN_TRAILING
+              - TEAM_DEFENSE_WHEN_TIED
+              - TEAM_DEFENSE_RED_ZONE
+              - TEAM_DEFENSE_GOAL_TO_GO
+              - TEAM_DEFENSE_SHOTGUN
+              - TEAM_DEFENSE_UNDER_CENTER
+              - TEAM_DEFENSE_PISTOL
+              - TEAM_DEFENSE_MOTION
             type: string
           type: array
         style: form
@@ -11694,28 +11694,28 @@ paths:
         schema:
           default: passYpg
           enum:
-          - total
-          - pass
-          - passPct
-          - passTd
-          - passYds
-          - passYpp
-          - epaPass
-          - epaPassPP
-          - ttt
-          - qbp
-          - qbpPct
-          - sackedYds
-          - sack
-          - sackPct
-          - ttp
-          - blitzPct
-          - yac
-          - yacoe
-          - sep
-          - go
-          - passYpg
-          - sackedYpg
+            - total
+            - pass
+            - passPct
+            - passTd
+            - passYds
+            - passYpp
+            - epaPass
+            - epaPassPP
+            - ttt
+            - qbp
+            - qbpPct
+            - sackedYds
+            - sack
+            - sackPct
+            - ttp
+            - blitzPct
+            - yac
+            - yacoe
+            - sep
+            - go
+            - passYpg
+            - sackedYpg
           example: passYpg
           type: string
       - description: Sort direction
@@ -11810,25 +11810,25 @@ paths:
         schema:
           default: rushYpg
           enum:
-          - total
-          - run
-          - runPct
-          - rushTd
-          - rushYds
-          - rushYpp
-          - epaRush
-          - epaRushPP
-          - rush10PYds
-          - stuffPct
-          - ryoe
-          - ryoeAtt
-          - ybcoAtt
-          - yacoAtt
-          - inPct
-          - outPct
-          - lightPct
-          - stackedPct
-          - rushYpg
+            - total
+            - run
+            - runPct
+            - rushTd
+            - rushYds
+            - rushYpp
+            - epaRush
+            - epaRushPP
+            - rush10PYds
+            - stuffPct
+            - ryoe
+            - ryoeAtt
+            - ybcoAtt
+            - yacoAtt
+            - inPct
+            - outPct
+            - lightPct
+            - stackedPct
+            - rushYpg
           example: rushYpg
           type: string
       - description: Sort direction
@@ -11916,32 +11916,32 @@ paths:
         schema:
           default: ypg
           enum:
-          - total
-          - pass
-          - run
-          - yds
-          - passPct
-          - ypp
-          - td
-          - passTd
-          - rushTd
-          - epa
-          - epaPP
-          - passYds
-          - passYpp
-          - epaPass
-          - epaPassPP
-          - rushYds
-          - rushYpp
-          - epaRush
-          - epaRushPP
-          - to
-          - ppg
-          - ypg
-          - passYpg
-          - rushYpg
-          - redZonePct
-          - thirdDownPct
+            - total
+            - pass
+            - run
+            - yds
+            - passPct
+            - ypp
+            - td
+            - passTd
+            - rushTd
+            - epa
+            - epaPP
+            - passYds
+            - passYpp
+            - epaPass
+            - epaPassPP
+            - rushYds
+            - rushYpp
+            - epaRush
+            - epaRushPP
+            - to
+            - ppg
+            - ypg
+            - passYpg
+            - rushYpg
+            - redZonePct
+            - thirdDownPct
           example: ypg
           type: string
       - description: Sort direction
@@ -11967,14 +11967,14 @@ paths:
           - TEAM_WHEN_LEADING
           items:
             enum:
-            - TEAM_SHOTGUN
-            - TEAM_UNDER_CENTER
-            - TEAM_PISTOL
-            - TEAM_WHEN_LEADING
-            - TEAM_WHEN_TRAILING
-            - TEAM_WHEN_TIED
-            - TEAM_RED_ZONE
-            - TEAM_GOAL_TO_GO
+              - TEAM_SHOTGUN
+              - TEAM_UNDER_CENTER
+              - TEAM_PISTOL
+              - TEAM_WHEN_LEADING
+              - TEAM_WHEN_TRAILING
+              - TEAM_WHEN_TIED
+              - TEAM_RED_ZONE
+              - TEAM_GOAL_TO_GO
             type: string
           type: array
         style: form
@@ -12064,29 +12064,29 @@ paths:
         schema:
           default: passYpg
           enum:
-          - total
-          - pass
-          - passPct
-          - passTd
-          - passYds
-          - passYpp
-          - epaPass
-          - epaPassPP
-          - ttt
-          - qbp
-          - qbpPct
-          - att
-          - sackedYds
-          - sack
-          - sackPct
-          - ttp
-          - blitzPct
-          - paPct
-          - yac
-          - yacoe
-          - sep
-          - passYpg
-          - sackedYpg
+            - total
+            - pass
+            - passPct
+            - passTd
+            - passYds
+            - passYpp
+            - epaPass
+            - epaPassPP
+            - ttt
+            - qbp
+            - qbpPct
+            - att
+            - sackedYds
+            - sack
+            - sackPct
+            - ttp
+            - blitzPct
+            - paPct
+            - yac
+            - yacoe
+            - sep
+            - passYpg
+            - sackedYpg
           example: passYpg
           type: string
       - description: Sort direction
@@ -12286,9 +12286,9 @@ paths:
           - SHORT
           items:
             enum:
-            - SHORT
-            - MID
-            - LONG
+              - SHORT
+              - MID
+              - LONG
             type: string
           type: array
       - description: Filter for touchdown plays (1 = yes, 0 = no)
@@ -12340,9 +12340,9 @@ paths:
           - SHOTGUN
           items:
             enum:
-            - PISTOL
-            - UNDER_CENTER
-            - SHOTGUN
+              - PISTOL
+              - UNDER_CENTER
+              - SHOTGUN
             type: string
           type: array
       - description: Filter for red zone plays
@@ -12464,9 +12464,9 @@ paths:
           - BETWEEN_HASHES
           items:
             enum:
-            - DOWN_SEAMS
-            - BETWEEN_HASHES
-            - OUTSIDE_NUMBERS
+              - DOWN_SEAMS
+              - BETWEEN_HASHES
+              - OUTSIDE_NUMBERS
             type: string
           type: array
       - description: Filter by air yards category
@@ -12478,9 +12478,9 @@ paths:
           - SHORT
           items:
             enum:
-            - INTERMEDIATE
-            - SHORT
-            - DEEP
+              - INTERMEDIATE
+              - SHORT
+              - DEEP
             type: string
           type: array
       - description: Filter by dropback time
@@ -12492,8 +12492,8 @@ paths:
           - QUICK
           items:
             enum:
-            - QUICK
-            - LONG
+              - QUICK
+              - LONG
             type: string
           type: array
       - description: Filter by quarterback pressure
@@ -12535,8 +12535,8 @@ paths:
           - INSIDE
           items:
             enum:
-            - INSIDE
-            - OUTSIDE
+              - INSIDE
+              - OUTSIDE
             type: string
           type: array
       - description: Filter for stuffed runs
@@ -12558,10 +12558,10 @@ paths:
           - SLOT
           items:
             enum:
-            - SLOT
-            - BACKFIELD
-            - TIGHT
-            - WIDE
+              - SLOT
+              - BACKFIELD
+              - TIGHT
+              - WIDE
             type: string
           type: array
       - description: Filter by receiver separation
@@ -12573,8 +12573,8 @@ paths:
           - OPEN
           items:
             enum:
-            - OPEN
-            - TIGHT
+              - OPEN
+              - TIGHT
             type: string
           type: array
       - description: Filter by defensive personnel package
@@ -12586,9 +12586,9 @@ paths:
           - NICKEL
           items:
             enum:
-            - NICKEL
-            - BASE
-            - DIME
+              - NICKEL
+              - BASE
+              - DIME
             type: string
           type: array
       - description: Filter by defenders in the box
@@ -12600,9 +12600,9 @@ paths:
           - STACKED
           items:
             enum:
-            - LIGHT
-            - STACKED
-            - NEUTRAL
+              - LIGHT
+              - STACKED
+              - NEUTRAL
             type: string
           type: array
       - description: Filter by defensive coverage type
@@ -12614,9 +12614,9 @@ paths:
           - PRESS
           items:
             enum:
-            - PRESS
-            - MAN
-            - ZONE
+              - PRESS
+              - MAN
+              - ZONE
             type: string
           type: array
       responses:
@@ -13642,17 +13642,17 @@ paths:
         required: false
         schema:
           enum:
-          - QB
-          - RB
-          - WR
-          - TE
-          - OL
-          - DL
-          - LB
-          - DB
-          - K
-          - P
-          - LS
+            - QB
+            - RB
+            - WR
+            - TE
+            - OL
+            - DL
+            - LB
+            - DB
+            - K
+            - P
+            - LS
           type: string
       - description: Filter by team
         in: query
@@ -13667,13 +13667,13 @@ paths:
         required: false
         schema:
           enum:
-          - passing
-          - rushing
-          - receiving
-          - defense
-          - kicking
-          - punting
-          - returning
+            - passing
+            - rushing
+            - receiving
+            - defense
+            - kicking
+            - punting
+            - returning
           example: passing
           type: string
       - description: Sort field and order
@@ -13754,13 +13754,13 @@ paths:
         required: false
         schema:
           enum:
-          - TRADE
-          - SIGNED
-          - RELEASED
-          - WAIVED
-          - PRACTICE_SQUAD
-          - IR
-          - SUSPENDED
+            - TRADE
+            - SIGNED
+            - RELEASED
+            - WAIVED
+            - PRACTICE_SQUAD
+            - IR
+            - SUSPENDED
           type: string
       - description: Maximum number of results
         in: query
