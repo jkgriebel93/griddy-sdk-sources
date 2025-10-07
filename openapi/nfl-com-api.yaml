@@ -1228,44 +1228,22 @@ components:
           type: object
       type: object
     DefensiveOverviewStatsResponse:
-      properties:
-        defenders:
-          items:
-            $ref: '#/components/schemas/DefensivePlayerOverviewStats'
-          type: array
-        limit:
-          description: Maximum number of results returned
-          example: 3
-          type: integer
-        offset:
-          description: Number of records skipped
-          example: 0
-          type: integer
-        qualifiedDefender:
-          description: Whether results are filtered to qualified defenders only
-          example: false
-          type: boolean
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        sortKey:
-          description: Field used for sorting
-          example: yds
-          type: string
-        sortValue:
-          $ref: '#/components/schemas/SortOrderEnum'
-        teamDefense:
-          description: Team filter applied (if any)
-          example: '3900'
-          type: string
-        total:
-          description: Total number of players matching the criteria
-          example: 26
-          type: integer
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/StatsQueryMetadata'
+        - properties:
+            defenders:
+              items:
+                $ref: '#/components/schemas/DefensivePlayerOverviewStats'
+              type: array
+            qualifiedDefender:
+              description: Whether results are filtered to qualified defenders only
+              example: false
+              type: boolean
+            teamDefense:
+              description: Team filter applied (if any)
+              example: '3900'
+              type: string
+          type: object
     DefensivePassMetricsExplanation:
       description: Explanation of defensive pass metrics and calculations
       # TODO: Metric explanations. Consider refactor
@@ -1782,40 +1760,18 @@ components:
           type: integer
       type: object
     DefensiveStatsResponse:
-      properties:
-        defenders:
-          items:
-            $ref: '#/components/schemas/DefensivePlayerStats'
-          type: array
-        limit:
-          description: Maximum number of results returned
-          example: 35
-          type: integer
-        offset:
-          description: Number of records skipped
-          example: 0
-          type: integer
-        qualifiedDefender:
-          description: Whether results are filtered to qualified defenders only
-          example: false
-          type: boolean
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        sortKey:
-          description: Field used for sorting
-          example: cov
-          type: string
-        sortValue:
-          $ref: '#/components/schemas/SortOrderEnum'
-        total:
-          description: Total number of players matching the criteria
-          example: 730
-          type: integer
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/StatsQueryMetadata'
+        - properties:
+            defenders:
+              items:
+                $ref: '#/components/schemas/DefensivePlayerStats'
+              type: array
+            qualifiedDefender:
+              description: Whether results are filtered to qualified defenders only
+              example: false
+              type: boolean
+          type: object
     DeviceInfo:
       description: Device information object (normally base64 encoded in requests)
       properties:
@@ -2124,65 +2080,43 @@ components:
           type: integer
       type: object
     FantasyStatsResponse:
-      properties:
-        lastNWeeks:
-          description: Number of recent weeks analyzed (if applied)
-          example: 3
-          type: integer
-        limit:
-          description: Maximum number of results returned
-          example: 35
-          type: integer
-        minOffensiveSnaps:
-          description: Minimum offensive snaps filter applied
-          example: 75
-          type: integer
-        offset:
-          description: Number of records skipped
-          example: 0
-          type: integer
-        players:
-          items:
-            $ref: '#/components/schemas/FantasyPlayerStats'
-          type: array
-        positionGroup:
-          # TODO: Use the FantasyPositionEnum mentioned earlier here
-          description: Position groups included in results
-          example:
-          - QB
-          items:
-            type: string
-          type: array
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        sortKey:
-          description: Field used for sorting
-          example: fpStd
-          type: string
-        sortValue:
-          $ref: '#/components/schemas/SortOrderEnum'
-        teamOffense:
-          description: Offensive team filter applied (if any)
-          example: '3900'
-          type: string
-        total:
-          description: Total number of players matching the criteria
-          example: 0
-          type: integer
-        week:
-          description: Specific weeks included in analysis
-          example:
-          - WEEK_16
-          - WEEK_17
-          - WEEK_18
-          items:
-            $ref: '#/components/schemas/WeekSlugEnum'
-          type: array
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/StatsQueryMetadata'
+        - properties:
+            players:
+              items:
+                $ref: '#/components/schemas/FantasyPlayerStats'
+              type: array
+            lastNWeeks:
+              description: Number of recent weeks analyzed (if applied)
+              example: 3
+              type: integer
+            minOffensiveSnaps:
+              description: Minimum offensive snaps filter applied
+              example: 75
+              type: integer
+            positionGroup:
+              # TODO: Use the FantasyPositionEnum mentioned earlier here
+              description: Position groups included in results
+              example:
+              - QB
+              items:
+                type: string
+              type: array
+            teamOffense:
+              description: Offensive team filter applied (if any)
+              example: '3900'
+              type: string
+            week:
+              description: Specific weeks included in analysis
+              example:
+              - WEEK_16
+              - WEEK_17
+              - WEEK_18
+              items:
+                $ref: '#/components/schemas/WeekSlugEnum'
+              type: array
+          type: object
     FantayScoringExplanation:
       # TODO: More explanation fields, slightly different than the metrics though
       description: Explanation of fantasy scoring systems
@@ -3375,6 +3309,29 @@ components:
           nullable: true
           type: string
       type: object
+    StatsQueryMetadata:
+      description: Common pagination and query metadata for stats responses
+      properties:
+        limit:
+          description: Maximum number of results returned
+          type: integer
+        offset:
+          description: Number of records skipped
+          type: integer
+        season:
+          description: Season year
+          type: integer
+        seasonType:
+          $ref: '#/components/schemas/SeasonTypeEnum'
+        sortKey:
+          description: Field used for sorting
+          type: string
+        sortValue:
+          $ref: '#/components/schemas/SortOrderEnum'
+        total:
+          description: Total number of items matching the criteria
+          type: integer
+      type: object
     PassRushMetricsExplanation:
       # TODO: Metrics explanation properties
       description: Explanation of pass rush metrics and calculations
@@ -3405,41 +3362,18 @@ components:
           type: object
       type: object
     PassRushStatsResponse:
-      properties:
-        # TODO: Are some of these *Response properties standardized enough that a component can be created?
-        defenders:
-          items:
-            $ref: '#/components/schemas/DefensivePassRushStats'
-          type: array
-        limit:
-          description: Maximum number of results returned
-          example: 35
-          type: integer
-        offset:
-          description: Number of records skipped
-          example: 0
-          type: integer
-        qualifiedDefender:
-          description: Whether results are filtered to qualified defenders only
-          example: false
-          type: boolean
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        sortKey:
-          description: Field used for sorting
-          example: pr
-          type: string
-        sortValue:
-          $ref: '#/components/schemas/SortOrderEnum'
-        total:
-          description: Total number of players matching the criteria
-          example: 730
-          type: integer
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/StatsQueryMetadata'
+        - properties:
+            defenders:
+              items:
+                $ref: '#/components/schemas/DefensivePassRushStats'
+              type: array
+            qualifiedDefender:
+              description: Whether results are filtered to qualified defenders only
+              example: false
+              type: boolean
+          type: object
     PassRusherStats:
       additionalProperties: true
       # TODO: Investigate the PassRusherStats object
@@ -3488,40 +3422,18 @@ components:
           type: integer
       type: object
     PassingStatsResponse:
-      properties:
-        limit:
-          description: Maximum number of results returned
-          example: 35
-          type: integer
-        offset:
-          description: Number of records skipped
-          example: 0
-          type: integer
-        passers:
-          items:
-            $ref: '#/components/schemas/PlayerPassingStats'
-          type: array
-        qualifiedPasser:
-          description: Whether results are filtered to qualified passers only
-          example: true
-          type: boolean
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        sortKey:
-          description: Field used for sorting
-          example: yds
-          type: string
-        sortValue:
-          $ref: '#/components/schemas/SortOrderEnum'
-        total:
-          description: Total number of players matching the criteria
-          example: 31
-          type: integer
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/StatsQueryMetadata'
+        - properties:
+            passers:
+              items:
+                $ref: '#/components/schemas/PlayerPassingStats'
+              type: array
+            qualifiedPasser:
+              description: Whether results are filtered to qualified passers only
+              example: true
+              type: boolean
+          type: object
     Penalty:
       properties:
         accepted:
@@ -5625,46 +5537,24 @@ components:
           type: number
       type: object
     ReceivingStatsResponse:
-      properties:
-        limit:
-          description: Maximum number of results returned
-          example: 50
-          type: integer
-        offset:
-          description: Number of records skipped
-          example: 0
-          type: integer
-        qualifiedReceiver:
-          description: Whether results are filtered to qualified receivers only
-          example: false
-          type: boolean
-        receivers:
-          items:
-            $ref: '#/components/schemas/PlayerReceivingStats'
-          type: array
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        sortKey:
-          description: Field used for sorting
-          example: yds
-          type: string
-        sortValue:
-          $ref: '#/components/schemas/SortOrderEnum'
-        teamOffense:
-          description: Team filter applied (if any)
-          example: '3900'
-          type: string
-        total:
-          description: Total number of players matching the criteria
-          example: 12
-          type: integer
-        week:
-          $ref: '#/components/schemas/WeekSlugEnum'
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/StatsQueryMetadata'
+        - properties:
+            receivers:
+              items:
+                $ref: '#/components/schemas/PlayerReceivingStats'
+              type: array
+            qualifiedReceiver:
+              description: Whether results are filtered to qualified receivers only
+              example: false
+              type: boolean
+            teamOffense:
+              description: Team filter applied (if any)
+              example: '3900'
+              type: string
+            week:
+              $ref: '#/components/schemas/WeekSlugEnum'
+          type: object
     RoofTypeEnum:
       description: Stadium roof type
       enum:
@@ -5796,44 +5686,22 @@ components:
           type: number
       type: object
     RushingStatsResponse:
-      properties:
-        limit:
-          description: Maximum number of results returned
-          example: 3
-          type: integer
-        offset:
-          description: Number of records skipped
-          example: 0
-          type: integer
-        qualifiedRusher:
-          description: Whether results are filtered to qualified rushers only
-          example: false
-          type: boolean
-        rushers:
-          items:
-            $ref: '#/components/schemas/PlayerRushingStats'
-          type: array
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        sortKey:
-          description: Field used for sorting
-          example: yds
-          type: string
-        sortValue:
-          $ref: '#/components/schemas/SortOrderEnum'
-        teamOffense:
-          description: Team filter applied (if any)
-          example: '3000'
-          type: string
-        total:
-          description: Total number of players matching the criteria
-          example: 7
-          type: integer
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/StatsQueryMetadata'
+        - properties:
+            rushers:
+              items:
+                $ref: '#/components/schemas/PlayerRushingStats'
+              type: array
+            qualifiedRusher:
+              description: Whether results are filtered to qualified rushers only
+              example: false
+              type: boolean
+            teamOffense:
+              description: Team filter applied (if any)
+              example: '3000'
+              type: string
+          type: object
     ScheduleTeam:
       # TODO: How is this different from Team? Can it be consolidated?
       properties:
@@ -6400,36 +6268,14 @@ components:
           type: integer
       type: object
     TeamDefensePassStatsResponse:
-      properties:
-        defense:
-          items:
-            $ref: '#/components/schemas/TeamDefensePassStats'
-          type: array
-        limit:
-          description: Maximum number of results returned
-          example: 35
-          type: integer
-        offset:
-          description: Number of records skipped
-          example: 0
-          type: integer
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        sortKey:
-          description: Field used for sorting
-          example: passYpg
-          type: string
-        sortValue:
-          $ref: '#/components/schemas/SortOrderEnum'
-        total:
-          description: Total number of teams matching the criteria
-          example: 32
-          type: integer
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/StatsQueryMetadata'
+        - properties:
+            defense:
+              items:
+                $ref: '#/components/schemas/TeamDefensePassStats'
+              type: array
+          type: object
     TeamDefenseRushStats:
       properties:
         epaRush:
@@ -6533,36 +6379,14 @@ components:
           type: number
       type: object
     TeamDefenseRushStatsResponse:
-      properties:
-        defense:
-          items:
-            $ref: '#/components/schemas/TeamDefenseRushStats'
-          type: array
-        limit:
-          description: Maximum number of results returned
-          example: 35
-          type: integer
-        offset:
-          description: Number of records skipped
-          example: 0
-          type: integer
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        sortKey:
-          description: Field used for sorting
-          example: rushYpg
-          type: string
-        sortValue:
-          $ref: '#/components/schemas/SortOrderEnum'
-        total:
-          description: Total number of teams matching the criteria
-          example: 32
-          type: integer
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/StatsQueryMetadata'
+        - properties:
+            defense:
+              items:
+                $ref: '#/components/schemas/TeamDefenseRushStats'
+              type: array
+          type: object
     TeamDefenseStats:
       properties:
         defensiveTouchdown:
@@ -6729,43 +6553,21 @@ components:
           type: number
       type: object
     TeamDefenseStatsResponse:
-      properties:
-        defense:
-          items:
-            $ref: '#/components/schemas/TeamDefenseStats'
-          type: array
-        limit:
-          description: Maximum number of results returned
-          example: 35
-          type: integer
-        offset:
-          description: Number of records skipped
-          example: 0
-          type: integer
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        sortKey:
-          description: Field used for sorting
-          example: ypg
-          type: string
-        sortValue:
-          $ref: '#/components/schemas/SortOrderEnum'
-        split:
-          description: Applied defensive situation splits
-          example:
-            - TEAM_DEFENSE_MOTION
-          items:
-            type: string
-          type: array
-        total:
-          description: Total number of teams matching the criteria
-          example: 32
-          type: integer
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/StatsQueryMetadata'
+        - properties:
+            defense:
+              items:
+                $ref: '#/components/schemas/TeamDefenseStats'
+              type: array
+            split:
+              description: Applied defensive situation splits
+              example:
+                - TEAM_DEFENSE_MOTION
+              items:
+                type: string
+              type: array
+          type: object
     TeamGameStats:
       properties:
         firstDowns:
@@ -7346,47 +7148,25 @@ components:
           type: number
       type: object
     TeamOffenseOverviewStatsResponse:
-      properties:
-        limit:
-          description: Maximum number of results returned
-          example: 35
-          type: integer
-        offense:
-          items:
-            $ref: '#/components/schemas/TeamOffenseOverviewStats'
-          type: array
-        offset:
-          description: Number of records skipped
-          example: 0
-          type: integer
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        sortKey:
-          description: Field used for sorting
-          example: ypg
-          type: string
-        sortValue:
-          $ref: '#/components/schemas/SortOrderEnum'
-        split:
-          description: Applied offensive situation splits
-          example:
-            - TEAM_WHEN_LEADING
-          items:
-            type: string
-          type: array
-        teamDefense:
-          description: Team filter applied (if any)
-          example: '2250'
-          type: string
-        total:
-          description: Total number of teams matching the criteria
-          example: 0
-          type: integer
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/StatsQueryMetadata'
+        - properties:
+            offense:
+              items:
+                $ref: '#/components/schemas/TeamOffenseOverviewStats'
+              type: array
+            split:
+              description: Applied offensive situation splits
+              example:
+                - TEAM_WHEN_LEADING
+              items:
+                type: string
+              type: array
+            teamDefense:
+              description: Team filter applied (if any)
+              example: '2250'
+              type: string
+          type: object
     TeamOffensePassStats:
       properties:
         att:
@@ -7504,40 +7284,18 @@ components:
           type: integer
       type: object
     TeamOffensePassStatsResponse:
-      properties:
-        limit:
-          description: Maximum number of results returned
-          example: 35
-          type: integer
-        offense:
-          items:
-            $ref: '#/components/schemas/TeamOffensePassStats'
-          type: array
-        offset:
-          description: Number of records skipped
-          example: 0
-          type: integer
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        sortKey:
-          description: Field used for sorting
-          example: passYpg
-          type: string
-        sortValue:
-          $ref: '#/components/schemas/SortOrderEnum'
-        teamDefense:
-          description: Applied team filter (if any)
-          example: '2250'
-          type: string
-        total:
-          description: Total number of teams matching the criteria
-          example: 3
-          type: integer
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/StatsQueryMetadata'
+        - properties:
+            offense:
+              items:
+                $ref: '#/components/schemas/TeamOffensePassStats'
+              type: array
+            teamDefense:
+              description: Applied team filter (if any)
+              example: '2250'
+              type: string
+          type: object
     TeamRankingEntry:
       properties:
         rank:
@@ -8014,48 +7772,26 @@ components:
           type: string
       type: object
     WeeklyPassingStatsResponse:
-      properties:
-        limit:
-          description: Maximum number of results returned
-          example: 50
-          type: integer
-        offset:
-          description: Number of records skipped
-          example: 0
-          type: integer
-        passers:
-          items:
-            $ref: '#/components/schemas/WeeklyPlayerPassingStats'
-          type: array
-        qualifiedPasser:
-          description: Whether results are filtered to qualified passers only
-          example: false
-          type: boolean
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        sortKey:
-          description: Field used for sorting
-          example: yds
-          type: string
-        sortValue:
-          $ref: '#/components/schemas/SortOrderEnum'
-        teamOffense:
-          description: Team filter applied (if any)
-          example: '3200'
-          type: string
-        total:
-          description: Total number of players matching the criteria
-          example: 1
-          type: integer
-        week:
-          description: Week identifier
-          example: WEEK_3
-          type: string
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/StatsQueryMetadata'
+        - properties:
+            passers:
+              items:
+                $ref: '#/components/schemas/WeeklyPlayerPassingStats'
+              type: array
+            qualifiedPasser:
+              description: Whether results are filtered to qualified passers only
+              example: false
+              type: boolean
+            teamOffense:
+              description: Team filter applied (if any)
+              example: '3200'
+              type: string
+            week:
+              description: Week identifier
+              example: WEEK_3
+              type: string
+          type: object
     WeeklyPlayer:
       allOf:
       - $ref: '#/components/schemas/Player'
@@ -8627,46 +8363,24 @@ components:
           type: integer
       type: object
     WeeklyRushingStatsResponse:
-      properties:
-        limit:
-          description: Maximum number of results returned
-          example: 50
-          type: integer
-        offset:
-          description: Number of records skipped
-          example: 0
-          type: integer
-        qualifiedRusher:
-          description: Whether results are filtered to qualified rushers only
-          example: false
-          type: boolean
-        rushers:
-          items:
-            $ref: '#/components/schemas/WeeklyPlayerRushingStats'
-          type: array
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        sortKey:
-          description: Field used for sorting
-          example: yds
-          type: string
-        sortValue:
-          $ref: '#/components/schemas/SortOrderEnum'
-        teamOffense:
-          description: Team filter applied (if any)
-          example: '3200'
-          type: string
-        total:
-          description: Total number of players matching the criteria
-          example: 4
-          type: integer
-        week:
-          $ref: '#/components/schemas/WeekSlugEnum'
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/StatsQueryMetadata'
+        - properties:
+            rushers:
+              items:
+                $ref: '#/components/schemas/WeeklyPlayerRushingStats'
+              type: array
+            qualifiedRusher:
+              description: Whether results are filtered to qualified rushers only
+              example: false
+              type: boolean
+            teamOffense:
+              description: Team filter applied (if any)
+              example: '3200'
+              type: string
+            week:
+              $ref: '#/components/schemas/WeekSlugEnum'
+          type: object
     WeeksResponse:
       properties:
         pagination:
