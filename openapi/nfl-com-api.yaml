@@ -5191,47 +5191,6 @@ components:
           example: 1961
           type: integer
       type: object
-    ProWeek:
-      # TODO: How does this compare to a regular Week, and how can it be consolidated?
-      properties:
-        byeTeams:
-          description: Teams on bye this week (empty array if no bye teams)
-          items:
-            $ref: '#/components/schemas/Team'
-          type: array
-        dateBegin:
-          description: First day of the week
-          example: '2025-09-24'
-          format: date
-          type: string
-        dateEnd:
-          description: Last day of the week
-          example: '2025-10-01'
-          format: date
-          type: string
-        season:
-          description: Season year
-          example: 2025
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        seasonTypeWeek:
-          description: Combined season type and week identifier
-          example: REG-4
-          type: string
-        text:
-          description: Human-readable week description
-          example: Week 4
-          type: string
-        week:
-          description: Week number (0 for Hall of Fame game)
-          example: 4
-          type: integer
-        weekSlug:
-          $ref: '#/components/schemas/WeekSlugEnum'
-        weekType:
-          $ref: '#/components/schemas/WeekTypeEnum'
-      type: object
     ProjectedStatsResponse:
       description: JSON:API formatted response for projected statistics
       properties:
@@ -7492,11 +7451,12 @@ components:
           type: string
       type: object
     Week:
+      description: NFL week information including schedule dates and bye teams
       properties:
         byeTeams:
           description: Teams on bye this week (empty array if no bye teams)
           items:
-            $ref: '#/components/schemas/ProTeam'
+            $ref: '#/components/schemas/Team'
           type: array
         dateBegin:
           description: First day of the week
@@ -7942,7 +7902,7 @@ components:
           $ref: '#/components/schemas/Pagination'
         weeks:
           items:
-            $ref: '#/components/schemas/ProWeek'
+            $ref: '#/components/schemas/Week'
           type: array
       type: object
     CalculationMethodEnum:
