@@ -90,22 +90,22 @@ components:
     AirYardTypeEnum:
       description: Air yards category for passes
       enum:
-      - SHORT
-      - INTERMEDIATE
-      - DEEP
+        - SHORT
+        - INTERMEDIATE
+        - DEEP
       type: string
     BinaryFlagEnum:
       description: Binary flag for boolean filters (0=false, 1=true)
       enum:
-      - 0
-      - 1
+        - 0
+        - 1
       type: integer
     SeasonTypeEnum:
       description: Type of NFL season
       enum:
-      - PRE
-      - REG
-      - POST
+        - PRE
+        - REG
+        - POST
       example: REG
       type: string
     SortOrderEnum:
@@ -1136,7 +1136,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         sortKey:
           description: Field used for sorting
           example: yds
@@ -1194,7 +1193,7 @@ components:
     DefensivePassRushStats:
       properties:
         displayName:
-          description: Player's full name
+          description: Players full name
           example: Maxx Crosby
           type: string
         gameSnap:
@@ -1215,7 +1214,7 @@ components:
           format: uri
           type: string
         jerseyNumber:
-          description: Player's jersey number
+          description: Player jersey number
           example: 98
           type: integer
         nflId:
@@ -1224,24 +1223,25 @@ components:
           type: string
         ngsPosition:
           description: Next Gen Stats position
+          # TODO: Create a schema for this enum
           enum:
-          - ED
-          - DT
-          - LB
+            - ED
+            - DT
+            - LB
           example: ED
           type: string
         ngsPositionGroup:
-          description: Next Gen Stats position group
           $ref: '#/components/schemas/DefensivePositionGroupEnum'
         position:
           description: Player position
+          # TODO: Create a schema for this enum
           enum:
-          - DE
-          - DT
-          - NT
-          - OLB
-          - ILB
-          - MLB
+            - DE
+            - DT
+            - NT
+            - OLB
+            - ILB
+            - MLB
           example: DE
           type: string
         positionGroup:
@@ -1322,19 +1322,6 @@ components:
           description: Quarterback pressures that resulted in turnovers
           example: 1
           type: integer
-      required:
-      - nflId
-      - displayName
-      - teamId
-      - position
-      - gp
-      - gs
-      - pr
-      - prR
-      - qbp
-      - qbpR
-      - sack
-      - sackR
       type: object
     DefensivePlayerOverviewStats:
       properties:
