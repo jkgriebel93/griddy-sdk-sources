@@ -1,8 +1,8 @@
 # TODO Comments in nfl-com-api.yaml
 
 Original remaining TODOs: 77
-Recently resolved: 24
-**Current remaining: 53 TODOs**
+Total resolved: 51
+**Current remaining: 26 TODOs**
 
 ## Completed Issues
 
@@ -36,18 +36,18 @@ The following issues have been addressed:
 - ✅ **Game Schema Consolidation**: Consolidated ProGame into Game schema (1 TODO)
 - ✅ **Week Schema Consolidation**: Consolidated ProWeek into Week schema (1 TODO)
 
-**Total Completed: 79 TODOs across 13 items**
+**Total Completed: 51 TODOs across 13 items**
 
 ## Remaining Issues
 
 The following issues have not yet been addressed:
-- ⏸️ [Issue #7](https://github.com/jkgriebel93/griddy-sdk-sources/issues/7): Consolidate duplicate or similar components (21 TODOs) - *Research-heavy*
-- ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (17 TODOs) - *Research-heavy*
-- ⏸️ [Issue #9](https://github.com/jkgriebel93/griddy-sdk-sources/issues/9): Refactor metrics explanation components (12 TODOs) - *Research-heavy*
-- ⏸️ [Issue #12](https://github.com/jkgriebel93/griddy-sdk-sources/issues/12): Create miscellaneous missing enums (2 TODOs)
-- ⏸️ [Issue #13](https://github.com/jkgriebel93/griddy-sdk-sources/issues/13): Address miscellaneous TODO comments (1 TODO)
+- ⏸️ [Issue #7](https://github.com/jkgriebel93/griddy-sdk-sources/issues/7): Consolidate duplicate or similar components (3 TODOs) - *Research-heavy*
+- ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (20 TODOs) - *Research-heavy*
+- ⏸️ [Issue #12](https://github.com/jkgriebel93/griddy-sdk-sources/issues/12): Create miscellaneous missing enums (3 TODOs)
 
-**Total Remaining: 53 TODOs across 5 issues**
+**Total Remaining: 26 TODOs across 3 issues**
+
+Note: Issues #9 (Refactor metrics explanation components) and #13 (Address miscellaneous TODO comments) have been fully resolved.
 
 ---
 

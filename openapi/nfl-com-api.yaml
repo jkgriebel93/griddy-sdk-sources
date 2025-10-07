@@ -5080,7 +5080,8 @@ components:
           type: object
       type: object
     ProTeam:
-      # TODO: How does this compare to the Team component? How much can it be consolidated?
+      # ProTeam doesn't differ from Team in necessarily meaningful ways, but it does differ.
+      # Leave it alone for now.
       properties:
         abbr:
           description: Three-letter team abbreviation
