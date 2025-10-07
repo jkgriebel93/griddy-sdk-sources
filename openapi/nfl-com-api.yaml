@@ -568,7 +568,6 @@ components:
           example: PIT
           type: string
         cityState:
-          # TODO: This example doesn't look correct.
           example: Pittsburgh
           type: string
         conferenceAbbr:
@@ -718,14 +717,7 @@ components:
           description: Background configuration
           type: object
         cameraSource:
-          description: Camera angle/source for the video
-          enum:
-            - # TODO: Create a cameraSource enum
-            - Endzone
-            - Sideline
-            - Broadcast
-          example: Endzone
-          type: string
+          $ref: '#/components/schemas/CameraSourceEnum'
         clipType:
           description: Type of video clip
           nullable: true
@@ -903,13 +895,7 @@ components:
           nullable: true
           type: string
         subType:
-          description: Video subtype classification
-          enum:
-            - # TODO: Create CoachesFileVideoSubType enum
-            - Coaches Film
-            - Coaches Film Pro
-          example: Coaches Film Pro
-          type: string
+          $ref: '#/components/schemas/CoachesFileVideoSubTypeEnum'
         summary:
           description: Content summary
           nullable: true
@@ -942,6 +928,12 @@ components:
           nullable: true
           type: string
       type: object
+    CoachesFileVideoSubTypeEnum:
+      description: Coaches film sub types
+      enum:
+        - Coaches Film
+        - Coaches Film Pro
+      type: string
     Conference:
       properties:
         abbr:
@@ -967,6 +959,13 @@ components:
         - pro-preview
         - pro-matchup
         - evergreen
+      type: string
+    CameraSourceEnum:
+      description: Location of the camera
+      enum:
+        - Endzone
+        - Sideline
+        - Broadcast
       type: string
     ContractInfo:
       properties:
@@ -1283,7 +1282,6 @@ components:
         ngsPosition:
           $ref: '#/components/schemas/NextGenStatsPositionEnum'
         ngsPositionGroup:
-          # TODO: Ensure this position groups are correct
           $ref: '#/components/schemas/DefensivePositionGroupEnum'
         position:
           $ref: '#/components/schemas/DefensivePositionEnum'
@@ -1694,12 +1692,7 @@ components:
           description: Category name
           type: string
         dataType:
-          enum:
-            - integer
-            - float
-            - percentage
-            - boolean
-          type: string
+          $ref: '#/components/schemas/DataTypeEnum'
         description:
           description: Category description
           type: string
@@ -1833,6 +1826,19 @@ components:
         year:
           type: integer
       type: object
+    DriveResultEnum:
+      description: Outcome of a given drive
+      enum:
+        - TOUCHDOWN
+        - FIELD_GOAL
+        - PUNT
+        - DOWNS
+        - FUMBLE
+        - INTERCEPTION
+        - SAFETY
+        - END_OF_HALF
+        - END_OF_GAME
+      type: string
     Drive:
       properties:
         driveNumber:
@@ -1850,18 +1856,7 @@ components:
         quarter:
           type: integer
         result:
-          # TODO: Create a DriveResultEnum component
-          enum:
-            - TOUCHDOWN
-            - FIELD_GOAL
-            - PUNT
-            - DOWNS
-            - FUMBLE
-            - INTERCEPTION
-            - SAFETY
-            - END_OF_HALF
-            - END_OF_GAME
-          type: string
+          $ref: '#/components/schemas/DriveResultEnum'
         startTime:
           description: Game clock at drive start
           type: string
@@ -1904,6 +1899,25 @@ components:
           example: elias
           type: string
       type: object
+    FantasyPlayerPositionEnum:
+      description: Player position
+      enum:
+        - QB
+        - RB
+        - WR
+        - TE
+        - K
+        - DST
+      type: string
+    FantasyPositionGroupEnum:
+      description: Position group
+      enum:
+        - QB
+        - RB
+        - WR
+        - TE
+        - SPEC
+      type: string
     FantasyPlayerStats:
       properties:
         displayName:
@@ -1974,28 +1988,9 @@ components:
           format: float
           type: number
         position:
-          # TODO: Create a FantasyPlayerPositionEnum component
-          description: Player position
-          enum:
-            - QB
-            - RB
-            - WR
-            - TE
-            - K
-            - DST
-          example: QB
-          type: string
+          $ref: '#/components/schemas/FantasyPlayerPositionEnum'
         positionGroup:
-          # TODO: Create a FantasyPositionGroupEnum component
-          description: Position group
-          enum:
-            - QB
-            - RB
-            - WR
-            - TE
-            - SPEC
-          example: QB
-          type: string
+          $ref: '#/components/schemas/FantasyPositionGroupEnum'
         rec:
           description: Receptions
           example: 0
@@ -2070,12 +2065,8 @@ components:
               example: 75
               type: integer
             positionGroup:
-              # TODO: Use the FantasyPositionEnum mentioned earlier here
-              description: Position groups included in results
-              example:
-              - QB
               items:
-                type: string
+                $ref: '#/components/schemas/FantasyPositionGroupEnum'
               type: array
             teamOffense:
               description: Offensive team filter applied (if any)
@@ -2796,6 +2787,14 @@ components:
           example: '3'
           type: string
       type: object
+    InjuredPlayerGameStatusEnum:
+      description: Game status designation
+      enum:
+        - QUESTIONABLE
+        - DOUBTFUL
+        - OUT
+        - IR
+      type: string
     HomeFilmCardsResponse:
       properties:
         cards:
@@ -2810,14 +2809,7 @@ components:
     InjuryEntry:
       properties:
         gameStatus:
-          description: Game status designation
-          # TODO: create an enum for InjuryEntry.gameStatus
-          enum:
-            - QUESTIONABLE
-            - DOUBTFUL
-            - OUT
-            - IR
-          type: string
+          $ref: '#/components/schemas/InjuredPlayerGameStatusEnum'
         injury:
           description: Injury description
           example: Ankle
@@ -3042,7 +3034,6 @@ components:
       description: Live game scoring and status information
       properties:
         awayTeam:
-          # TODO: Can the Team component not be used here?
           properties:
             abbreviation:
               type: string
@@ -3055,7 +3046,6 @@ components:
           description: Game identifier
           type: string
         homeTeam:
-          # TODO: Can the Team component not be used here?
           properties:
             abbreviation:
               type: string
@@ -3456,6 +3446,13 @@ components:
             $ref: '#/components/schemas/ScoringPlay'
           type: array
       type: object
+    PlayDirectionEnum:
+      description: Direction of play
+      enum:
+        - left
+        - right
+        - middle
+      type: string
     PlayDetail:
       properties:
         absoluteYardlineNumber:
@@ -3516,13 +3513,7 @@ components:
           description: Play description including jersey numbers
           type: string
         playDirection:
-          # TODO Use or create a PlayDirectionEnum conponent
-          description: Direction of play
-          enum:
-            - left
-            - right
-            - middle
-          type: string
+          $ref: '#/components/schemas/PlayDirectionEnum'
         playId:
           type: integer
         playState:
@@ -3592,27 +3583,27 @@ components:
           description: Yards needed for first down
           type: integer
       type: object
+    PlayParticipantRoleEnum:
+      enum:
+        - PASSER
+        - RUSHER
+        - RECEIVER
+        - TACKLER
+        - KICKER
+        - RETURNER
+        - BLOCKER
+      type: string
     PlayParticipant:
       properties:
         player:
           $ref: '#/components/schemas/Player'
         role:
-          # TODO: Use or create a PlayParticipantRoleEnum component
-          enum:
-            - PASSER
-            - RUSHER
-            - RECEIVER
-            - TACKLER
-            - KICKER
-            - RETURNER
-            - BLOCKER
-          type: string
+          $ref: '#/components/schemas/PlayParticipantRoleEnum'
         stats:
           description: Play-specific statistics
           type: object
       type: object
-    PlayPlayer:
-      # TODO: PlayPlayer is a horrible name
+    ParticipantPlayerInfo:
       properties:
         firstName:
           type: string
@@ -3665,7 +3656,7 @@ components:
         away:
           description: Away team players involved in the play
           items:
-            $ref: '#/components/schemas/PlayPlayer'
+            $ref: '#/components/schemas/ParticipantPlayerInfo'
           type: array
         gameId:
           description: Game identifier in integer format
@@ -3681,7 +3672,7 @@ components:
         home:
           description: Home team players involved in the play
           items:
-            $ref: '#/components/schemas/PlayPlayer'
+            $ref: '#/components/schemas/ParticipantPlayerInfo'
           type: array
         homeIsOffense:
           description: Whether home team has offensive possession
@@ -4877,8 +4868,7 @@ components:
         season:
           type: integer
         seasonType:
-          # TODO: Use the seasonType enum
-          type: string
+          $ref: '#/components/schemas/SeasonTypeEnum'
         statCategory:
           # TODO: Use or create a statCategory enum
           type: string
@@ -5181,9 +5171,7 @@ components:
           description: Week number
           type: integer
         weekType:
-          # TODO: Use or create the week type enum
-          description: Week type (e.g., REG, HOF)
-          type: string
+          $ref: '#/components/schemas/WeekTypeEnum'
       type: object
     ProInjuryReportResponse:
       # TODO: How does this compare to regular injury report response (if there is one)
@@ -5946,6 +5934,13 @@ components:
               type: number
           type: object
       type: object
+    DataTypeEnum:
+      enum:
+        - integer
+        - float
+        - percentage
+        - boolean
+      type: string
     StatisticalCategory:
       description: Definition of statistical categories for sorting and filtering
       properties:
@@ -5953,13 +5948,7 @@ components:
           description: Category name
           type: string
         dataType:
-          # TODO: Use or create a dataType enum component
-          enum:
-            - integer
-            - float
-            - percentage
-            - boolean
-          type: string
+          $ref: '#/components/schemas/DataTypeEnum'
         description:
           description: Category description
           type: string
@@ -7394,6 +7383,17 @@ components:
           example: -115
           type: integer
       type: object
+    TransactionTypeEnum:
+      enum:
+        - TRADE
+        - SIGNED
+        - RELEASED
+        - WAIVED
+        - PRACTICE_SQUAD
+        - IR
+        - SUSPENDED
+        - ACTIVATED
+      type: string
     Transaction:
       properties:
         compensationDetails:
@@ -7414,17 +7414,7 @@ components:
         team:
           $ref: '#/components/schemas/Team'
         type:
-          # TODO: Use or create a TransactionTypeEnum component
-          enum:
-            - TRADE
-            - SIGNED
-            - RELEASED
-            - WAIVED
-            - PRACTICE_SQUAD
-            - IR
-            - SUSPENDED
-            - ACTIVATED
-          type: string
+          $ref: '#/components/schemas/TransactionTypeEnum'
       type: object
     TransactionsResponse:
       properties:
@@ -8321,17 +8311,18 @@ components:
             $ref: '#/components/schemas/ProWeek'
           type: array
       type: object
+    CalculationMethodEnum:
+      description: Method used to calculate win probabilities
+      enum:
+        - REAL_TIME
+        - HISTORICAL
+        - SIMULATED
+      type: string
     WinProbabilityMetadata:
       description: Metadata about win probability calculations
       properties:
         calculationMethod:
-          # TODO: Use or create a CalculationMethodEnum component
-          description: Method used to calculate win probabilities
-          enum:
-            - REAL_TIME
-            - HISTORICAL
-            - SIMULATED
-          type: string
+          $ref: '#/components/schemas/CalculationMethodEnum'
         confidenceInterval:
           description: Statistical confidence interval for the predictions
           example: 0.95

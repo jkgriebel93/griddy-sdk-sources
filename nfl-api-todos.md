@@ -1,6 +1,8 @@
 # TODO Comments in nfl-com-api.yaml
 
-Total TODOs: 77 (59 completed, 73 remaining)
+Original remaining TODOs: 77
+Recently resolved: 21
+**Current remaining: 56 TODOs**
 
 ## Completed Issues
 
@@ -14,8 +16,24 @@ The following issues have been addressed:
 - ✅ **StatsQueryMetadata Component**: Created standardized pagination/query metadata component for 14 stats response schemas (1 TODO)
 - ✅ **Site Schema Consolidation**: Consolidated BoxscoreSite, GameSite, and Site into a single Site schema (3 TODOs)
 - ✅ **Venue Schema Consolidation**: Consolidated TeamVenue into Venue schema (1 TODO)
+- ✅ **Manual Enum Creation and Cleanup**: Created 11 new enum components and addressed 6 miscellaneous TODOs (17 TODOs)
+  - CameraSourceEnum
+  - CoachesFileVideoSubTypeEnum
+  - DriveResultEnum
+  - FantasyPlayerPositionEnum
+  - FantasyPositionGroupEnum
+  - InjuredPlayerGameStatusEnum
+  - PlayDirectionEnum
+  - PlayParticipantRoleEnum
+  - DataTypeEnum
+  - TransactionTypeEnum
+  - CalculationMethodEnum
+  - Renamed PlayPlayer to ParticipantPlayerInfo
+  - Applied existing enums (SeasonTypeEnum, WeekTypeEnum, FantasyPositionGroupEnum)
+  - Removed incorrect example comment
+  - Addressed LiveGame Team component questions
 
-**Total Completed: 59 TODOs across 9 items**
+**Total Completed: 76 TODOs across 10 items**
 
 ## Remaining Issues
 
@@ -23,10 +41,10 @@ The following issues have not yet been addressed:
 - ⏸️ [Issue #7](https://github.com/jkgriebel93/griddy-sdk-sources/issues/7): Consolidate duplicate or similar components (24 TODOs) - *Research-heavy*
 - ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (17 TODOs) - *Research-heavy*
 - ⏸️ [Issue #9](https://github.com/jkgriebel93/griddy-sdk-sources/issues/9): Refactor metrics explanation components (12 TODOs) - *Research-heavy*
-- ⏸️ [Issue #12](https://github.com/jkgriebel93/griddy-sdk-sources/issues/12): Create miscellaneous missing enums (13 TODOs)
-- ⏸️ [Issue #13](https://github.com/jkgriebel93/griddy-sdk-sources/issues/13): Address miscellaneous TODO comments (7 TODOs)
+- ⏸️ [Issue #12](https://github.com/jkgriebel93/griddy-sdk-sources/issues/12): Create miscellaneous missing enums (2 TODOs)
+- ⏸️ [Issue #13](https://github.com/jkgriebel93/griddy-sdk-sources/issues/13): Address miscellaneous TODO comments (1 TODO)
 
-**Total Remaining: 73 TODOs across 5 issues**
+**Total Remaining: 56 TODOs across 5 issues**
 
 ---
 
@@ -36,12 +54,6 @@ The following issues have not yet been addressed:
 |------|--------------|
 | 381 | What is the difference between a BoxscoreTeam and a Team? |
 | 422 | Should there be an enum defined for team abbreviations? |
-
-## BoxscoreTeam
-
-| Line | TODO Comment |
-|------|--------------|
-| 482 | This example doesn't look correct. |
 
 ## BroadcastInfo
 
@@ -53,9 +65,7 @@ The following issues have not yet been addressed:
 
 | Line | TODO Comment |
 |------|--------------|
-| 634 | Create a cameraSource enum |
 | 704 | Would this reference the proposed network component from earlier? |
-| 820 | Create CoachesFileVideoSubType enum |
 | 848 | Explore what this object actually looks like |
 
 ## CoverageMetrics
@@ -93,25 +103,6 @@ The following issues have not yet been addressed:
 | Line | TODO Comment |
 |------|--------------|
 | 1644 | Metrics explanations |
-
-## Drive
-
-| Line | TODO Comment |
-|------|--------------|
-| 1880 | Create a DriveResultEnum component |
-
-## FantasyPlayerStats
-
-| Line | TODO Comment |
-|------|--------------|
-| 2004 | Create a FantasyPlayerPositionEnum component |
-| 2016 | Create a FantasyPositionGroupEnum component |
-
-## FantasyStatsResponse
-
-| Line | TODO Comment |
-|------|--------------|
-| 2106 | Use the FantasyPositionEnum mentioned earlier here |
 
 ## FantayScoringExplanation
 
@@ -163,24 +154,11 @@ The following issues have not yet been addressed:
 | 2801 | Investigate the GamecenterResponse.leaders.speedLeaders object |
 | 2804 | Investigate the GamecenterResponse.leaders.timeToSackLeaders object |
 
-## InjuryEntry
-
-| Line | TODO Comment |
-|------|--------------|
-| 2919 | create an enum for InjuryEntry.gameStatus |
-
 ## InsightContentExplanation
 
 | Line | TODO Comment |
 |------|--------------|
 | 3110 | More explanation properties |
-
-## LiveGame
-
-| Line | TODO Comment |
-|------|--------------|
-| 3164 | Can the Team component not be used here? |
-| 3177 | Can the Team component not be used here? |
 
 ## OffensiveMetricsExplanation
 
@@ -211,24 +189,6 @@ The following issues have not yet been addressed:
 | Line | TODO Comment |
 |------|--------------|
 | 3484 | Investigate the difference(s) between PasserStats and PassingStats, consolidate if possible |
-
-## PlayDetail
-
-| Line | TODO Comment |
-|------|--------------|
-| 3692 | Use or create a PlayDirectionEnum conponent |
-
-## PlayParticipant
-
-| Line | TODO Comment |
-|------|--------------|
-| 3782 | Use or create a PlayParticipantRoleEnum component |
-
-## PlayPlayer
-
-| Line | TODO Comment |
-|------|--------------|
-| 3797 | PlayPlayer is a horrible name |
 
 ## Player
 
@@ -267,7 +227,6 @@ The following issues have not yet been addressed:
 | Line | TODO Comment |
 |------|--------------|
 | 5057 | Can the be specified in any more detail? |
-| 5067 | Use the seasonType enum |
 | 5070 | Use or create a statCategory enum |
 
 ## PlayerWeekProjectedPoints
@@ -352,18 +311,6 @@ The following issues have not yet been addressed:
 |------|--------------|
 | 6139 | Can this be replaced with one of the Team components? |
 
-## StatisticalCategory
-
-| Line | TODO Comment |
-|------|--------------|
-| 6220 | Use or create a dataType enum component |
-
-## Transaction
-
-| Line | TODO Comment |
-|------|--------------|
-| 7826 | Use or create a TransactionTypeEnum component |
-
 ## Venue
 
 **Note:** TeamVenue has been consolidated into Venue schema.
@@ -380,9 +327,3 @@ The following issues have not yet been addressed:
 | 8097 | Investigate the WeeklyGameDetail.replays object, define spec |
 | 8103 | Investigate the WeeklyGameDetail.summary object |
 | 8108 | Investigate the WeeklyGameDetail.taggedVideos object. |
-
-## WinProbabilityMetadata
-
-| Line | TODO Comment |
-|------|--------------|
-| 8813 | Use or create a CalculationMethodEnum component |
