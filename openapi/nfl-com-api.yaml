@@ -2174,7 +2174,7 @@ components:
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
         selectedParamValues:
-          # TODO: Investigate what the selectedParamValues object can look like
+          # TODO: Investigate the FilmRoomPlay.selectedParamValues objects
           additionalProperties: true
           description: Selected parameter values for the play filter
           type: object
@@ -2236,7 +2236,7 @@ components:
     FuturesMarket:
       properties:
         fixture:
-          # TODO: Investigate what this fixture object looks like
+          # TODO: Investigate the FuturesMarket.fixture object
           description: Associated fixture information
           nullable: true
           type: object
@@ -3890,7 +3890,6 @@ components:
           format: uuid
           type: string
         status:
-          # TODO: Surely this can be an enum
           description: Player status code
           example: ACT
           type: string
@@ -4803,7 +4802,7 @@ components:
       additionalProperties: true
       description: Individual player statistics (structure varies by category)
       type: object
-      # TODO: Can this be defined any more specifically? Perhaps not given that it can be completely different based on category
+      # TODO: Investigate the PlayerStatistic object
     PlayerStatsResponse:
       properties:
         pagination:
@@ -4821,7 +4820,7 @@ components:
               player:
                 $ref: '#/components/schemas/Player'
               stats:
-                # TODO: Can the be specified in any more detail?
+                # TODO: Investigate the PlayerStatsResponse.players.stats object
                 description: Statistics object varies by category
                 type: object
               team:
@@ -4833,7 +4832,7 @@ components:
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
         statCategory:
-          # TODO: Use or create a statCategory enum
+          # TODO: Investigate PlayerStatsResponse.statCategory; find out if it can be an enum
           type: string
       type: object
     PlayerWeekProjectedPoints:
@@ -4853,7 +4852,7 @@ components:
               description: Season year
               type: integer
             settingsCode:
-              # TODO: See if this can be an enum. It would probably be PPR, Half-PPR, STD
+              # TODO: Investigate PlayerWeekProjectedPoints.settingsCode, create enum
               description: Fantasy settings code
               type: string
             week:
@@ -5044,7 +5043,6 @@ components:
             type: number
         type: object
     ProInjuryReportResponse:
-      # TODO: How does this compare to regular injury report response (if there is one)
       properties:
         injuries:
           description: Array of injured players (empty if no injuries)
@@ -5662,7 +5660,6 @@ components:
         road:
           $ref: '#/components/schemas/PointsRecord'
         team:
-          # TODO: Can this be replaced with one of the Team components?
           properties:
             currentLogo:
               format: uri
