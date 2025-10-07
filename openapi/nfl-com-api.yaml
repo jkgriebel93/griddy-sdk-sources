@@ -538,7 +538,6 @@ components:
         visitorTeam:
           $ref: '#/components/schemas/BoxscoreTeam'
         visitorTeamAbbr:
-          # TODO: Should there be an enum defined for team abbreviations?
           example: MIN
           type: string
         visitorTeamId:
@@ -620,7 +619,6 @@ components:
             type: object
           type: array
         streamingNetworks:
-          # TODO: Should there be a component for TV and Streaming channels?
           items:
             properties:
               hostNetwork:
@@ -781,7 +779,6 @@ components:
           nullable: true
           type: string
         hostNetwork:
-          # TODO: Would this reference the proposed network component from earlier?
           description: Broadcasting network
           nullable: true
           type: string
@@ -988,8 +985,6 @@ components:
     CoverageMetrics:
       description: Explanation of coverage-specific metrics
       properties:
-        # TODO: Each of these properties has the same two fields.
-        # Perhaps this should be refactored
         completionRateOverExpected:
           properties:
             description:
@@ -1150,7 +1145,6 @@ components:
     DefensiveMetricsExplanation:
       description: Explanation of defensive metrics and calculations
       properties:
-        # TODO: Similar to earlier, all of these fields have the same two properties. Consider how it might be refactored.
         epa:
           properties:
             description:
@@ -1176,7 +1170,6 @@ components:
       type: object
     DefensiveOverviewMetricsExplanation:
       description: Explanation of defensive overview metrics
-      # TODO: More metric explanation properties
       properties:
         hardStops:
           properties:
@@ -1219,7 +1212,6 @@ components:
           type: object
     DefensivePassMetricsExplanation:
       description: Explanation of defensive pass metrics and calculations
-      # TODO: Metric explanations. Consider refactor
       properties:
         epaPass:
           properties:
@@ -1640,8 +1632,6 @@ components:
           type: number
       type: object
     DefensiveRushMetricsExplanation:
-      # TODO: Metrics explanations
-      description: Explanation of defensive rush metrics and calculations
       properties:
         boxCount:
           properties:
@@ -2083,7 +2073,6 @@ components:
               type: array
           type: object
     FantayScoringExplanation:
-      # TODO: More explanation fields, slightly different than the metrics though
       description: Explanation of fantasy scoring systems
       properties:
         halfPprScoring:
@@ -2980,7 +2969,6 @@ components:
           type: integer
       type: object
     InsightContentExplanation:
-      # TODO: More explanation properties
       description: Explanation of insight content types and usage
       properties:
         evergreenContent:
@@ -3178,7 +3166,6 @@ components:
         - TEAM_DEFENSE_MOTION
       type: string
     OffensiveMetricsExplanation:
-      # TODO: Metrics explanation properties
       description: Explanation of offensive metrics and calculations
       properties:
         epa:
@@ -3266,7 +3253,6 @@ components:
           type: integer
       type: object
     PassRushMetricsExplanation:
-      # TODO: Metrics explanation properties
       description: Explanation of pass rush metrics and calculations
       properties:
         passRushRating:
@@ -5423,7 +5409,6 @@ components:
     ReceivingMetricsExplanation:
       description: Explanation of receiving metrics and calculations
       properties:
-        # TODO: Metrics explanation properties
         catchRateOverExpected:
           properties:
             description:
@@ -7726,289 +7711,38 @@ components:
       description: Player information with weekly status
       type: object
     WeeklyPlayerPassingStats:
-      properties:
-        att:
-          description: Attempts
-          example: 37
-          type: integer
-        attPG:
-          description: Attempts per game
-          example: 37
-          format: float
-          type: number
-        avgSep:
-          description: Average receiver separation at target (yards)
-          example: 3.77628
-          format: float
-          type: number
-        avgTTP:
-          description: Average time to pass (seconds)
-          example: 2.65333
-          format: float
-          type: number
-        avgTTS:
-          description: Average time to sack (seconds)
-          example: 4.9484
-          format: float
-          type: number
-        avgTTT:
-          description: Average time to throw (seconds)
-          example: 2.65127
-          format: float
-          type: number
-        ay:
-          description: Air yards
-          example: 150.55
-          format: float
-          type: number
-        ayAtt:
-          description: Air yards per attempt
-          example: 6.2025
-          format: float
-          type: number
-        blitzR:
-          description: Blitz rate faced (0-1)
-          example: 0.42553
-          format: float
-          type: number
-        cmp:
-          description: Completions
-          example: 28
-          type: integer
-        cmpPG:
-          description: Completions per game
-          example: 28
-          format: float
-          type: number
-        cmpPct:
-          description: Completion percentage (0-1)
-          example: 0.75676
-          format: float
-          type: number
-        cpoe:
-          description: Completion percentage over expected
-          example: 0.03451
-          format: float
-          type: number
-        db:
-          description: Dropbacks
-          example: 47
-          type: integer
-        dbPG:
-          description: Dropbacks per game
-          example: 47
-          format: float
-          type: number
-        deepAttPct:
-          description: Deep attempt percentage (20+ air yards) (0-1)
-          example: 0.02703
-          format: float
-          type: number
-        displayName:
-          description: Player's full name
-          example: Drake Maye
-          type: string
-        drop:
-          description: Dropped passes by receivers
-          example: 0
-          type: integer
-        dropPG:
-          description: Drops per game
-          example: 0
-          format: float
-          type: number
-        dropR:
-          description: Drop rate (0-1)
-          example: 0
-          format: float
-          type: number
-        epa:
-          description: Expected Points Added
-          example: 1.55621
-          format: float
-          type: number
-        epaDb:
-          description: EPA per dropback
-          example: 0.03311
-          format: float
-          type: number
-        epaPG:
-          description: EPA per game
-          example: 1.55621
-          format: float
-          type: number
-        fapiGameId:
-          description: Football API game identifier
-          example: f665fc10-311e-11f0-b670-ae1250fadad1
-          format: uuid
-          type: string
-        finalScore:
-          description: Final score of the game
-          example: 14-21
-          type: string
-        gameId:
-          description: Game identifier (10-digit format YYYYMMDDNN)
-          example: 2025092104
-          type: integer
-        gameResult:
-          $ref: '#/components/schemas/GameResultEnum'
-        gp:
-          description: Games played
-          example: 1
-          type: integer
-        gs:
-          description: Games started
-          example: 1
-          type: integer
-        headshot:
-          description: URL to player headshot image (contains formatInstructions placeholder)
-          example: https://static.www.nfl.com/image/upload/formatInstructions/league/oyap81gtzcvnfmripis1
-          format: uri
-          type: string
-        int:
-          description: Interceptions
-          example: 1
-          type: integer
-        intPG:
-          description: Interceptions per game
-          example: 1
-          format: float
-          type: number
-        isHome:
-          description: Whether player's team was at home
-          example: true
-          type: boolean
-        jerseyNumber:
-          description: Player's jersey number
-          example: 10
-          type: integer
-        nflId:
-          description: NFL player identifier
-          example: '57124'
-          type: string
-        ngsPosition:
-          $ref: '#/components/schemas/NextGenStatsPositionEnum'
-        ngsPositionGroup:
-          $ref: '#/components/schemas/NextGenStatsPositionGroupEnum'
-        opponentTeamId:
-          description: Opponent team identifier
-          example: '3900'
-          type: string
-        paDbPct:
-          description: Play action dropback percentage (0-1)
-          example: 0.29787
-          format: float
-          type: number
-        position:
-          $ref: '#/components/schemas/NextGenStatsPositionEnum'
-        positionGroup:
-          $ref: '#/components/schemas/NextGenStatsPositionGroupEnum'
-        qbp:
-          description: Times under QB pressure
-          example: 19
-          type: integer
-        qbpPG:
-          description: QB pressure per game
-          example: 19
-          format: float
-          type: number
-        qbpR:
-          description: QB pressure rate (0-1)
-          example: 0.40426
-          format: float
-          type: number
-        qp:
-          description: Qualified passer status
-          example: true
-          type: boolean
-        rating:
-          description: Passer rating
-          example: 102.08333
-          format: float
-          type: number
-        sack:
-          description: Times sacked
-          example: 5
-          type: integer
-        sackPG:
-          description: Sacks per game
-          example: 5
-          format: float
-          type: number
-        shortName:
-          description: Abbreviated player name
-          example: D.Maye
-          type: string
-        td:
-          description: Touchdown passes
-          example: 2
-          type: integer
-        tdPG:
-          description: Touchdowns per game
-          example: 2
-          format: float
-          type: number
-        teamId:
-          description: Team identifier
-          example: '3200'
-          type: string
-        tg:
-          description: Team games for player
-          example: 1
-          type: integer
-        totalTg:
-          description: Total team games in period
-          example: 1
-          type: integer
-        twAttPG:
-          description: Two-minute attempts per game
-          example: 2
-          format: float
-          type: number
-        twAttPct:
-          description: Two-minute drill attempt percentage (0-1)
-          example: 0.05405
-          format: float
-          type: number
-        weekSlug:
-          description: Week identifier slug
-          example: WEEK_3
-          type: string
-        xCmp:
-          description: Expected completion percentage (0-1)
-          example: 0.72225
-          format: float
-          type: number
-        xYac:
-          description: Expected yards after catch
-          example: 121.48757
-          format: float
-          type: number
-        yac:
-          description: Yards after catch
-          example: 118.15
-          format: float
-          type: number
-        yacPct:
-          description: YAC percentage of total yards (0-1)
-          example: 0.44086
-          format: float
-          type: number
-        yds:
-          description: Passing yards
-          example: 268
-          type: integer
-        ydsPG:
-          description: Yards per game
-          example: 268
-          format: float
-          type: number
-        ypa:
-          description: Yards per attempt
-          example: 7.24324
-          format: float
-          type: number
-      type: object
+      description: Player passing statistics for a single week, extending season stats with game-specific context
+      allOf:
+        - $ref: '#/components/schemas/PlayerPassingStats'
+        - type: object
+          properties:
+            fapiGameId:
+              description: Football API game identifier
+              example: f665fc10-311e-11f0-b670-ae1250fadad1
+              format: uuid
+              type: string
+            finalScore:
+              description: Final score of the game
+              example: 14-21
+              type: string
+            gameId:
+              description: Game identifier (10-digit format YYYYMMDDNN)
+              example: 2025092104
+              type: integer
+            gameResult:
+              $ref: '#/components/schemas/GameResultEnum'
+            isHome:
+              description: Whether player's team was at home
+              example: true
+              type: boolean
+            opponentTeamId:
+              description: Opponent team identifier
+              example: '3900'
+              type: string
+            weekSlug:
+              description: Week identifier slug
+              example: WEEK_3
+              type: string
     WeeklyPlayerRushingStats:
       properties:
         att:

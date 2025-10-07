@@ -1,8 +1,8 @@
 # TODO Comments in nfl-com-api.yaml
 
 Original remaining TODOs: 77
-Recently resolved: 21
-**Current remaining: 56 TODOs**
+Recently resolved: 22
+**Current remaining: 55 TODOs**
 
 ## Completed Issues
 
@@ -32,19 +32,20 @@ The following issues have been addressed:
   - Applied existing enums (SeasonTypeEnum, WeekTypeEnum, FantasyPositionGroupEnum)
   - Removed incorrect example comment
   - Addressed LiveGame Team component questions
+- ✅ **Passing Stats Consolidation**: Consolidated WeeklyPlayerPassingStats to extend PlayerPassingStats using allOf composition (1 TODO)
 
-**Total Completed: 76 TODOs across 10 items**
+**Total Completed: 77 TODOs across 11 items**
 
 ## Remaining Issues
 
 The following issues have not yet been addressed:
-- ⏸️ [Issue #7](https://github.com/jkgriebel93/griddy-sdk-sources/issues/7): Consolidate duplicate or similar components (24 TODOs) - *Research-heavy*
+- ⏸️ [Issue #7](https://github.com/jkgriebel93/griddy-sdk-sources/issues/7): Consolidate duplicate or similar components (23 TODOs) - *Research-heavy*
 - ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (17 TODOs) - *Research-heavy*
 - ⏸️ [Issue #9](https://github.com/jkgriebel93/griddy-sdk-sources/issues/9): Refactor metrics explanation components (12 TODOs) - *Research-heavy*
 - ⏸️ [Issue #12](https://github.com/jkgriebel93/griddy-sdk-sources/issues/12): Create miscellaneous missing enums (2 TODOs)
 - ⏸️ [Issue #13](https://github.com/jkgriebel93/griddy-sdk-sources/issues/13): Address miscellaneous TODO comments (1 TODO)
 
-**Total Remaining: 56 TODOs across 5 issues**
+**Total Remaining: 55 TODOs across 5 issues**
 
 ---
 
@@ -204,9 +205,11 @@ The following issues have not yet been addressed:
 
 ## PlayerPassingStats
 
+**Note:** WeeklyPlayerPassingStats has been consolidated to extend PlayerPassingStats using allOf composition.
+
 | Line | TODO Comment |
 |------|--------------|
-| 4187 | To what degree can this be consolidated with Passing/Passer Stats? |
+| N/A | To what degree can this be consolidated with Passing/Passer Stats? (Partially addressed: WeeklyPlayerPassingStats now extends PlayerPassingStats) |
 
 ## PlayerProjection
 
