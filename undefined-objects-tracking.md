@@ -2,7 +2,9 @@
 
 **Related Issue:** [#8 - Investigate and define undefined object structures](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8)
 
-**Total TODOs:** 20
+**Total TODOs:** 18
+**Completed:** 2
+**Remaining:** 18
 
 This document tracks all schema components in the NFL API OpenAPI specification that contain undefined object structures requiring investigation and proper schema definition.
 
@@ -159,6 +161,7 @@ extensions:
 
 **Note:** The `Game` schema is also extended by `WeeklyGameDetail` using `allOf` composition.
 
+So far API responses only seem to be including empty arrays for this
 ---
 
 ### GameInsight.content
@@ -428,36 +431,47 @@ RusherStats:
 
 **Schema Location:** Multiple properties in WeeklyGameDetail
 
-#### 1. replays
+#### 1. replays ✅ RESOLVED
 
-**Line:** `openapi/nfl-com-api.yaml:7461`
+**Line:** `openapi/nfl-com-api.yaml:7787`
 
-**TODO Comment:** `Investigate the WeeklyGameDetail.replays object, define spec`
+**Status:** **COMPLETED** - Created `WeeklyGameDetailReplay` schema component
+
+**Resolution:** Defined comprehensive schema for replay video information based on example API response data.
+
+**New Schema Components Created:**
+- `WeeklyGameDetailReplay` - Main replay object with 50+ properties including video metadata, authorization requirements, tags, and playback information
 
 **Current Definition:**
 ```yaml
 replays:
   description: Replay video information (populated when includeReplays=true)
   items:
-    # TODO: Investigate the WeeklyGameDetail.replays object, define spec
-    type: object
+    $ref: '#/components/schemas/WeeklyGameDetailReplay'
   nullable: true
   type: array
 ```
 
-#### 2. summary
+#### 2. summary ✅ RESOLVED
 
-**Line:** `openapi/nfl-com-api.yaml:7467`
+**Line:** `openapi/nfl-com-api.yaml:7793`
 
-**TODO Comment:** `Investigate the WeeklyGameDetail.summary object`
+**Status:** **COMPLETED** - Created `WeeklyGameDetailSummary` schema component with supporting schemas
+
+**Resolution:** Defined comprehensive schema for live game state summary based on example API response data.
+
+**New Schema Components Created:**
+- `WeeklyGameDetailSummary` - Main summary object with game state information
+- `WeeklyGameDetailSummaryTeam` - Team-specific game state (possession, score, timeouts)
+- `WeeklyGameDetailSummaryScore` - Quarter-by-quarter score breakdown
+- `WeeklyGameDetailSummaryTimeouts` - Timeout tracking
 
 **Current Definition:**
 ```yaml
 summary:
-  description: Game summary information
-  # TODO: Investigate the WeeklyGameDetail.summary object
+  $ref: '#/components/schemas/WeeklyGameDetailSummary'
+  description: Live game state summary including score, possession, and game situation
   nullable: true
-  type: object
 ```
 
 #### 3. taggedVideos
@@ -507,9 +521,9 @@ taggedVideos:
 - CoachesFilmVideo.videos
 - FilmroomPlay.selectedParamValues
 
-**Weekly Game Details (3 TODOs):**
-- WeeklyGameDetail.replays
-- WeeklyGameDetail.summary
+**Weekly Game Details (1 TODO, 2 completed):**
+- ✅ WeeklyGameDetail.replays (COMPLETED)
+- ✅ WeeklyGameDetail.summary (COMPLETED)
 - WeeklyGameDetail.taggedVideos
 
 **Other (3 TODOs):**
@@ -526,12 +540,37 @@ taggedVideos:
 **Medium Priority** (Single endpoint, frequently accessed):
 - GameInsight.content
 - GamePreviewResponse.preview
-- WeeklyGameDetail properties (3 TODOs)
+- WeeklyGameDetail.taggedVideos (1 TODO remaining, 2 completed)
 
 **Low Priority** (Specialized or unused):
 - PlayerInjury (schema defined but not referenced by any endpoint)
 - FilmroomPlay.selectedParamValues (specialized film room feature)
 - CoachesFilmVideo.videos (secured endpoint)
+
+---
+
+## Completed Items
+
+### WeeklyGameDetail.replays ✅
+
+**Completed:** 2025-10-07
+
+**Schema Components Created:**
+- `WeeklyGameDetailReplay` (line 7448)
+
+**Description:** Comprehensive schema for replay video metadata including authorization requirements, video properties, tags, thumbnails, and playback information. Contains 50+ properties covering all aspects of NFL+ replay content.
+
+### WeeklyGameDetail.summary ✅
+
+**Completed:** 2025-10-07
+
+**Schema Components Created:**
+- `WeeklyGameDetailSummary` (line 7657)
+- `WeeklyGameDetailSummaryTeam` (line 7719)
+- `WeeklyGameDetailSummaryScore` (line 7734)
+- `WeeklyGameDetailSummaryTimeouts` (line 7762)
+
+**Description:** Complete schema for live game state including score by quarter, possession status, timeouts, field position, game clock, weather, and other real-time game situation data. Uses composition pattern with separate schemas for team state, scoring, and timeout tracking.
 
 ---
 

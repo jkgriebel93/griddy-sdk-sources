@@ -1,8 +1,8 @@
 # TODO Comments in nfl-com-api.yaml
 
 Original remaining TODOs: 77
-Total resolved: 55
-**Current remaining: 22 TODOs**
+Total resolved: 57
+**Current remaining: 20 TODOs**
 
 ## Completed Issues
 
@@ -37,16 +37,20 @@ The following issues have been addressed:
 - ✅ **Week Schema Consolidation**: Consolidated ProWeek into Week schema (1 TODO)
 - ✅ **Team Schema Cleanup**: Deleted unused ByeTeam schema and consolidated ScheduleTeam into BoxscoreTeam (1 TODO)
 - ✅ **Additional Manual Cleanup**: Resolved 3 additional TODOs through manual review and spec updates
+- ✅ **WeeklyGameDetail Schema Definition**: Created comprehensive schemas for replays and summary objects (2 TODOs)
+  - Created WeeklyGameDetailReplay with 50+ properties for video metadata
+  - Created WeeklyGameDetailSummary with supporting schemas (WeeklyGameDetailSummaryTeam, WeeklyGameDetailSummaryScore, WeeklyGameDetailSummaryTimeouts)
+  - Based on actual API response data from scratch/football_v2_experience_weekly-game-details.json
 
-**Total Completed: 55 TODOs across 15 items**
+**Total Completed: 57 TODOs across 16 items**
 
 ## Remaining Issues
 
 The following issues have not yet been addressed:
-- ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (20 TODOs) - *Research-heavy*
+- ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (18 TODOs, 2 completed) - *Research-heavy*
 - ⏸️ [Issue #12](https://github.com/jkgriebel93/griddy-sdk-sources/issues/12): Create miscellaneous missing enums (2 TODOs)
 
-**Total Remaining: 22 TODOs across 2 issues**
+**Total Remaining: 20 TODOs across 2 issues**
 
 Note: Issues #7 (Consolidate duplicate or similar components), #9 (Refactor metrics explanation components), and #13 (Address miscellaneous TODO comments) have been fully resolved.
 
@@ -155,8 +159,8 @@ Note: Issues #7 (Consolidate duplicate or similar components), #9 (Refactor metr
 
 ## WeeklyGameDetail
 
+**Note:** WeeklyGameDetailReplay and WeeklyGameDetailSummary schemas have been created with supporting components (WeeklyGameDetailSummaryTeam, WeeklyGameDetailSummaryScore, WeeklyGameDetailSummaryTimeouts).
+
 | Line | TODO Comment |
 |------|--------------|
-| 7461 | Investigate the WeeklyGameDetail.replays object, define spec |
-| 7467 | Investigate the WeeklyGameDetail.summary object |
-| 7472 | Investigate the WeeklyGameDetail.taggedVideos object |
+| 7797 | Investigate the WeeklyGameDetail.taggedVideos object |

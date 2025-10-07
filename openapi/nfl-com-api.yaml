@@ -7445,6 +7445,334 @@ components:
         weekType:
           $ref: '#/components/schemas/WeekTypeEnum'
       type: object
+    Replay:
+      description: Replay video information for a game
+      properties:
+        advertiserId:
+          nullable: true
+          type: string
+        author:
+          nullable: true
+          type: string
+        authorizations:
+          # TODO: We have this structure
+          description: Authorization requirements for different NFL+ tiers
+          type: object
+        background:
+          description: Background metadata
+          type: object
+        cameraSource:
+          nullable: true
+          type: string
+        clipType:
+          nullable: true
+          type: string
+        ctas:
+          description: Call-to-action buttons
+          items:
+            type: object
+          type: array
+        ctaLink:
+          nullable: true
+          type: string
+        ctaTarget:
+          nullable: true
+          type: string
+        ctaText:
+          nullable: true
+          type: string
+        description:
+          description: Video description
+          type: string
+        displayTitle:
+          nullable: true
+          type: string
+        duration:
+          description: Video duration in seconds (as string)
+          example: '8577'
+          type: string
+        endDate:
+          nullable: true
+          type: string
+        entitlement:
+          nullable: true
+          type: string
+        episodeNumber:
+          nullable: true
+          type: integer
+        expirationDate:
+          nullable: true
+          type: string
+        externalId:
+          description: External identifier for the video
+          type: string
+        fantasyLink:
+          nullable: true
+          type: string
+        hostNetwork:
+          nullable: true
+          type: string
+        id:
+          nullable: true
+          type: string
+        ids:
+          description: Related entity identifiers
+          properties:
+            awayTeamId:
+              format: uuid
+              type: string
+            gameId:
+              format: uuid
+              type: string
+            homeTeamId:
+              format: uuid
+              type: string
+            playId:
+              nullable: true
+              type: string
+          type: object
+        images:
+          description: Associated images
+          items:
+            type: object
+          type: array
+        intendedAudience:
+          nullable: true
+          type: string
+        introEnd:
+          nullable: true
+          type: string
+        language:
+          nullable: true
+          type: string
+        lastUpdated:
+          nullable: true
+          type: string
+        mcpPlaybackId:
+          description: Media Content Platform playback identifier
+          type: string
+        mobileLink:
+          nullable: true
+          type: string
+        mobileTitle:
+          nullable: true
+          type: string
+        originalAirDate:
+          nullable: true
+          type: string
+        outroStart:
+          nullable: true
+          type: string
+        playIds:
+          description: Associated play identifiers
+          items:
+            type: string
+          type: array
+        preRollDisabled:
+          description: Whether pre-roll ads are disabled
+          type: boolean
+        promoAssets:
+          description: Promotional assets
+          items:
+            type: object
+          type: array
+        promoLink:
+          nullable: true
+          type: string
+        promoTarget:
+          description: Link target for promotional content
+          example: _self
+          type: string
+        promoText:
+          nullable: true
+          type: string
+        publishDate:
+          description: Video publish date
+          format: date-time
+          type: string
+        radioStation:
+          nullable: true
+          type: string
+        series:
+          nullable: true
+          type: string
+        seriesSeason:
+          nullable: true
+          type: string
+        seriesTitle:
+          nullable: true
+          type: string
+        slug:
+          nullable: true
+          type: string
+        startDate:
+          nullable: true
+          type: string
+        subType:
+          # TODO: This can be an enum
+          description: Video subtype
+          example: Full Game - Spanish
+          type: string
+        summary:
+          nullable: true
+          type: string
+        tags:
+          description: Video tags for categorization
+          items:
+            properties:
+              gameId:
+                format: uuid
+                type: string
+              season:
+                type: string
+              seasonType:
+                type: string
+              week:
+                type: string
+            type: object
+          type: array
+        thumbnail:
+          description: Video thumbnail information
+          properties:
+            thumbnailUrl:
+              description: URL to video thumbnail image
+              format: uri
+              type: string
+          type: object
+        title:
+          description: Video title
+          example: TNF en Espanol
+          type: string
+        type:
+          description: Content type
+          example: video
+          type: string
+        videos:
+          description: Associated video content
+          items:
+            type: object
+          type: array
+        webLink:
+          nullable: true
+          type: string
+      type: object
+    Summary:
+      description: Live game state summary including score, possession, and game situation
+      properties:
+        attendance:
+          description: Game attendance
+          example: 73652
+          type: integer
+        awayTeam:
+          $ref: '#/components/schemas/WeeklyGameDetailSummaryTeam'
+        clock:
+          description: Current game clock
+          example: '03:36'
+          type: string
+        distance:
+          description: Yards to go for first down
+          example: 10
+          type: integer
+        down:
+          description: Current down
+          example: 1
+          type: integer
+        gameBookUrl:
+          description: URL to official NFL game book PDF
+          format: uri
+          type: string
+        gameId:
+          description: Game identifier (UUID format)
+          format: uuid
+          type: string
+        homeTeam:
+          $ref: '#/components/schemas/WeeklyGameDetailSummaryTeam'
+        isGoalToGo:
+          description: Whether it's a goal-to-go situation
+          type: boolean
+        isRedZone:
+          description: Whether the ball is in the red zone
+          type: boolean
+        offset:
+          description: Time offset in seconds
+          example: 603
+          type: integer
+        phase:
+          description: Current game phase
+          example: FINAL_OVERTIME
+          type: string
+        quarter:
+          description: Current quarter or period
+          example: END_OF_GAME
+          type: string
+        startTime:
+          description: Game start time
+          format: date-time
+          type: string
+        weather:
+          description: Weather conditions
+          example: 'Cloudy Temp: 71° F, Humidity: 65%, Wind: S 5 mph'
+          type: string
+        yardLine:
+          description: Current field position
+          example: SF 11
+          type: string
+      type: object
+    WeeklyGameDetailSummaryTeam:
+      description: Team game state in summary
+      properties:
+        hasPossession:
+          description: Whether the team currently has possession
+          type: boolean
+        score:
+          $ref: '#/components/schemas/WeeklyGameDetailSummaryScore'
+        teamId:
+          description: Team identifier (UUID format)
+          format: uuid
+          type: string
+        timeouts:
+          $ref: '#/components/schemas/WeeklyGameDetailSummaryTimeouts'
+      type: object
+    WeeklyGameDetailSummaryScore:
+      description: Team score breakdown by quarter
+      properties:
+        ot:
+          description: Overtime points
+          example: 3
+          type: integer
+        q1:
+          description: First quarter points
+          example: 7
+          type: integer
+        q2:
+          description: Second quarter points
+          example: 10
+          type: integer
+        q3:
+          description: Third quarter points
+          example: 3
+          type: integer
+        q4:
+          description: Fourth quarter points
+          example: 3
+          type: integer
+        total:
+          description: Total points scored
+          example: 26
+          type: integer
+      type: object
+    WeeklyGameDetailSummaryTimeouts:
+      description: Team timeout information
+      properties:
+        remaining:
+          description: Timeouts remaining
+          example: 1
+          type: integer
+        used:
+          description: Timeouts used
+          example: 1
+          type: integer
+      type: object
     WeeklyGameDetail:
       allOf:
       - $ref: '#/components/schemas/Game'
@@ -7458,16 +7786,13 @@ components:
           homeTeamStandings:
             $ref: '#/components/schemas/Standings'
           replays:
-            # TODO: Investigate the WeeklyGameDetail.replays object, define spec
-            description: Replay video links
+            description: Replay video information (populated when includeReplays=true)
             items:
-              type: object
+              $ref: '#/components/schemas/Replay'
+            nullable: true
             type: array
           summary:
-            # TODO: Investigate the WeeklyGameDetail.summary object
-            description: Game summary information
-            nullable: true
-            type: object
+            $ref: '#/components/schemas/Summary'
           taggedVideos:
             # TODO: Investigate the WeeklyGameDetail.taggedVideos object.
             description: Tagged video content
