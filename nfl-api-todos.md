@@ -1,8 +1,8 @@
 # TODO Comments in nfl-com-api.yaml
 
 Original remaining TODOs: 77
-Total resolved: 52
-**Current remaining: 25 TODOs**
+Total resolved: 55
+**Current remaining: 22 TODOs**
 
 ## Completed Issues
 
@@ -36,95 +36,45 @@ The following issues have been addressed:
 - ✅ **Game Schema Consolidation**: Consolidated ProGame into Game schema (1 TODO)
 - ✅ **Week Schema Consolidation**: Consolidated ProWeek into Week schema (1 TODO)
 - ✅ **Team Schema Cleanup**: Deleted unused ByeTeam schema and consolidated ScheduleTeam into BoxscoreTeam (1 TODO)
+- ✅ **Additional Manual Cleanup**: Resolved 3 additional TODOs through manual review and spec updates
 
-**Total Completed: 52 TODOs across 14 items**
+**Total Completed: 55 TODOs across 15 items**
 
 ## Remaining Issues
 
 The following issues have not yet been addressed:
-- ⏸️ [Issue #7](https://github.com/jkgriebel93/griddy-sdk-sources/issues/7): Consolidate duplicate or similar components (2 TODOs) - *Research-heavy*
 - ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (20 TODOs) - *Research-heavy*
-- ⏸️ [Issue #12](https://github.com/jkgriebel93/griddy-sdk-sources/issues/12): Create miscellaneous missing enums (3 TODOs)
+- ⏸️ [Issue #12](https://github.com/jkgriebel93/griddy-sdk-sources/issues/12): Create miscellaneous missing enums (2 TODOs)
 
-**Total Remaining: 25 TODOs across 3 issues**
+**Total Remaining: 22 TODOs across 2 issues**
 
-Note: Issues #9 (Refactor metrics explanation components) and #13 (Address miscellaneous TODO comments) have been fully resolved.
+Note: Issues #7 (Consolidate duplicate or similar components), #9 (Refactor metrics explanation components), and #13 (Address miscellaneous TODO comments) have been fully resolved.
 
 ---
-
-## BoxscoreSchedule
-
-| Line | TODO Comment |
-|------|--------------|
-| 381 | What is the difference between a BoxscoreTeam and a Team? |
-| 422 | Should there be an enum defined for team abbreviations? |
-
-## BroadcastInfo
-
-| Line | TODO Comment |
-|------|--------------|
-| 535 | Should there be a component for TV and Streaming channels? |
 
 ## CoachesFilmVideo
 
 | Line | TODO Comment |
 |------|--------------|
-| 704 | Would this reference the proposed network component from earlier? |
-| 848 | Explore what this object actually looks like |
-
-## CoverageMetrics
-
-| Line | TODO Comment |
-|------|--------------|
-| 904 | Each of these properties has the same two fields. |
+| 901 | Investigate the CoachesFilmVideo.videos object |
 
 ## CurrentGame
 
 | Line | TODO Comment |
 |------|--------------|
-| 969 | Explore to find out what CurrentGame.extensions is |
-
-## DefensiveMetricsExplanation
-
-| Line | TODO Comment |
-|------|--------------|
-| 1066 | Similar to earlier, all of these fields have the same two properties. Consider how it might be refactored. |
-
-## DefensiveOverviewMetricsExplanation
-
-| Line | TODO Comment |
-|------|--------------|
-| 1092 | More metric explanation properties |
-
-## DefensivePassMetricsExplanation
-
-| Line | TODO Comment |
-|------|--------------|
-| 1157 | Metric explanations. Consider refactor |
-
-## DefensiveRushMetricsExplanation
-
-| Line | TODO Comment |
-|------|--------------|
-| 1644 | Metrics explanations |
-
-## FantayScoringExplanation
-
-| Line | TODO Comment |
-|------|--------------|
-| 2145 | More explanation fields, slightly different than the metrics though |
+| 1033 | Investigate the CurrentGame.extensions object |
 
 ## FilmroomPlay
 
 | Line | TODO Comment |
 |------|--------------|
-| 2268 | Investigate what the selectedParamValues object can look like |
+| 2177 | Investigate what the selectedParamValues object can look like |
 
 ## FuturesMarket
 
 | Line | TODO Comment |
 |------|--------------|
-| 2333 | Investigate what this fixture object looks like |
+| 2239 | Investigate what this fixture object looks like |
 
 ## Game
 
@@ -132,187 +82,81 @@ Note: Issues #9 (Refactor metrics explanation components) and #13 (Address misce
 
 | Line | TODO Comment |
 |------|--------------|
-| 2412 | Investigate the Game.extensions object |
+| 2319 | Investigate the Game.extensions object |
 
 ## GameInsight
 
 | Line | TODO Comment |
 |------|--------------|
-| 2551 | Investigate GameInsight.content object |
+| 2444 | Investigate GameInsight.content object |
 
 ## GamePreviewResponse
 
 | Line | TODO Comment |
 |------|--------------|
-| 2606 | Investigate the GamePreviewResponse.preview object |
+| 2499 | Investigate the GamePreviewResponse.preview object |
 
 ## GameStatsResponse
 
 | Line | TODO Comment |
 |------|--------------|
-| 2764 | Investigate the GameStatsResponse.data object |
+| 2621 | Investigate the GameStatsResponse.data object |
 
 ## GamecenterResponse
 
 | Line | TODO Comment |
 |------|--------------|
-| 2798 | Investigate the GamecenterResponse.leaders.passDistanceLeaders object |
-| 2801 | Investigate the GamecenterResponse.leaders.speedLeaders object |
-| 2804 | Investigate the GamecenterResponse.leaders.timeToSackLeaders object |
-
-## InsightContentExplanation
-
-| Line | TODO Comment |
-|------|--------------|
-| 3110 | More explanation properties |
-
-## OffensiveMetricsExplanation
-
-| Line | TODO Comment |
-|------|--------------|
-| 3318 | Metrics explanation properties |
-
-## OverallRecord
-
-| Line | TODO Comment |
-|------|--------------|
-| 3374 | There is a game result enum component that can be used here |
-
-## PassRushMetricsExplanation
-
-| Line | TODO Comment |
-|------|--------------|
-| 3396 | Metrics explanation properties |
+| 2655 | Investigate the GamecenterResponse.leaders.passDistanceLeaders object |
+| 2658 | Investigate the GamecenterResponse.leaders.speedLeaders object |
+| 2661 | Investigate the GamecenterResponse.leaders.timeToSackLeaders object |
 
 ## PassRusherStats
 
 | Line | TODO Comment |
 |------|--------------|
-| 3462 | Investigate the PassRusherStats object |
-
-## PassingStats
-
-| Line | TODO Comment |
-|------|--------------|
-| 3484 | Investigate the difference(s) between PasserStats and PassingStats, consolidate if possible |
-
-## Player
-
-| Line | TODO Comment |
-|------|--------------|
-| 4122 | Surely this can be an enum |
+| 3280 | Investigate the PassRusherStats object |
 
 ## PlayerInjury
 
 | Line | TODO Comment |
 |------|--------------|
-| 4182 | Investigate the PlayerInjury object |
-
-## PlayerPassingStats
-
-**Note:** WeeklyPlayerPassingStats has been consolidated to extend PlayerPassingStats using allOf composition.
-
-| Line | TODO Comment |
-|------|--------------|
-| N/A | To what degree can this be consolidated with Passing/Passer Stats? (Partially addressed: WeeklyPlayerPassingStats now extends PlayerPassingStats) |
-
-## PlayerProjection
-
-| Line | TODO Comment |
-|------|--------------|
-| 4468 | What other values can this enum have? |
-| 4481 | What values can this enum have? |
-| 4489 | What values can this have? |
+| 3952 | Investigate the PlayerInjury object |
 
 ## PlayerStatistic
 
 | Line | TODO Comment |
 |------|--------------|
-| 5039 | Can this be defined any more specifically? Perhaps not given that it can be completely different based on category |
+| 4805 | Investigate the PlayerStatistic object |
 
 ## PlayerStatsResponse
 
 | Line | TODO Comment |
 |------|--------------|
-| 5057 | Can the be specified in any more detail? |
-| 5070 | Use or create a statCategory enum |
+| 4823 | Investigate the PlayerStatsResponse.players.stats object |
+| 4835 | Investigate PlayerStatsResponse.statCategory; find out if it can be an enum |
 
 ## PlayerWeekProjectedPoints
 
 | Line | TODO Comment |
 |------|--------------|
-| 5090 | See if this can be an enum. It would probably be PPR, Half-PPR, STD |
-| 5101 | What values can this have? |
-
-## PlayerWeekProjectedStats
-
-| Line | TODO Comment |
-|------|--------------|
-| 5242 | Are all these type fields truly enums? |
-
-## ProInjuryReportResponse
-
-| Line | TODO Comment |
-|------|--------------|
-| 5388 | How does this compare to regular injury report response (if there is one) |
-
-## ProTeam
-
-| Line | TODO Comment |
-|------|--------------|
-| 5406 | How does this compare to the Team component? How much can it be consolidated? |
+| 4855 | Investigate PlayerWeekProjectedPoints.settingsCode, create enum |
 
 ## ReceiverStats
 
 | Line | TODO Comment |
 |------|--------------|
-| 5651 | Investigate and define the ReceiverStats object |
-
-## ReceivingMetricsExplanation
-
-| Line | TODO Comment |
-|------|--------------|
-| 5657 | Metrics explanation properties |
+| 5248 | Investigate and define the ReceiverStats object |
 
 ## RusherStats
 
 | Line | TODO Comment |
 |------|--------------|
-| 5848 | Investigate the RusherStats object. Note that it may be very similar if not identical to RushingStats |
-
-## ScheduledGame
-
-| Line | TODO Comment |
-|------|--------------|
-| 5933 | How is this different from Game? Can it be consolidated? |
-
-## Site
-
-**Note:** BoxscoreSite, GameSite, and Site have been consolidated into a single Site schema.
-
-| Line | TODO Comment |
-|------|--------------|
-| N/A | Compare this to Venue and see if they can be consolidated (Venue kept separate due to different field naming and structure) |
-
-## Standings
-
-| Line | TODO Comment |
-|------|--------------|
-| 6139 | Can this be replaced with one of the Team components? |
-
-## Venue
-
-**Note:** TeamVenue has been consolidated into Venue schema.
-
-| Line | TODO Comment |
-|------|--------------|
-| N/A | Compare with Site and consolidate as possible (TeamVenue already consolidated; Site kept separate due to different field naming) |
+| 5427 | Investigate the RusherStats object. Note that it may be very similar if not identical to RushingStats |
 
 ## WeeklyGameDetail
 
 | Line | TODO Comment |
 |------|--------------|
-| 8084 | Compare to Game component, consolidate if possible |
-| 8097 | Investigate the WeeklyGameDetail.replays object, define spec |
-| 8103 | Investigate the WeeklyGameDetail.summary object |
-| 8108 | Investigate the WeeklyGameDetail.taggedVideos object. |
+| 7461 | Investigate the WeeklyGameDetail.replays object, define spec |
+| 7467 | Investigate the WeeklyGameDetail.summary object |
+| 7472 | Investigate the WeeklyGameDetail.taggedVideos object |
