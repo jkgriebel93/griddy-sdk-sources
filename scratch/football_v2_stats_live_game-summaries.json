@@ -1,0 +1,680 @@
+{
+    "data": [
+        {
+            "gameId": "f6cee331-311e-11f0-b670-ae1250fadad1",
+            "offset": 603,
+            "attendance": 73652,
+            "clock": "03:36",
+            "distance": 10,
+            "down": 1,
+            "gameBookUrl": "https://static.www.nfl.com/image/upload/v1759492372/gamecenter/f6cee331-311e-11f0-b670-ae1250fadad1.pdf",
+            "isGoalToGo": false,
+            "isRedZone": false,
+            "phase": "FINAL_OVERTIME",
+            "quarter": "END_OF_GAME",
+            "startTime": "2025-10-03T00:15:53Z",
+            "weather": "Cloudy Temp: 71\u00b0 F, Humidity: 65%, Wind: S 5 mph",
+            "yardLine": "SF 11",
+            "awayTeam": {
+                "teamId": "10404500-e7cb-7fce-3f10-4eeb269bd179",
+                "hasPossession": true,
+                "score": {
+                    "q1": 7,
+                    "q2": 10,
+                    "q3": 3,
+                    "q4": 3,
+                    "ot": 3,
+                    "total": 26
+                },
+                "timeouts": {
+                    "remaining": 1,
+                    "used": 1
+                }
+            },
+            "homeTeam": {
+                "teamId": "10402510-8931-0d5f-9815-79bb79649a65",
+                "hasPossession": false,
+                "score": {
+                    "q1": 0,
+                    "q2": 7,
+                    "q3": 7,
+                    "q4": 9,
+                    "ot": 0,
+                    "total": 23
+                },
+                "timeouts": {
+                    "remaining": 1,
+                    "used": 1
+                }
+            }
+        },
+        {
+            "gameId": "f6cee79c-311e-11f0-b670-ae1250fadad1",
+            "offset": 569,
+            "attendance": 61082,
+            "clock": "00:03",
+            "distance": 10,
+            "down": 1,
+            "gameBookUrl": "https://static.www.nfl.com/image/upload/v1759751435/gamecenter/f6cee79c-311e-11f0-b670-ae1250fadad1.pdf",
+            "isGoalToGo": false,
+            "isRedZone": false,
+            "phase": "FINAL",
+            "quarter": "END_OF_GAME",
+            "startTime": "2025-10-05T13:32:39Z",
+            "weather": "Cloudy Temp: 61\u00b0 F, Humidity: 48%, Wind: NW 14 mph",
+            "yardLine": "MIN 27",
+            "awayTeam": {
+                "teamId": "10403000-5851-f9d5-da45-78365a05b6b0",
+                "hasPossession": false,
+                "score": {
+                    "q1": 7,
+                    "q2": 0,
+                    "q3": 7,
+                    "q4": 7,
+                    "ot": 0,
+                    "total": 21
+                },
+                "timeouts": {
+                    "remaining": 0,
+                    "used": 3
+                }
+            },
+            "homeTeam": {
+                "teamId": "10401050-5e38-b907-1be1-55b91b19c057",
+                "hasPossession": true,
+                "score": {
+                    "q1": 7,
+                    "q2": 3,
+                    "q3": 7,
+                    "q4": 0,
+                    "ot": 0,
+                    "total": 17
+                },
+                "timeouts": {
+                    "remaining": 0,
+                    "used": 3
+                }
+            }
+        },
+        {
+            "gameId": "f6ceebdb-311e-11f0-b670-ae1250fadad1",
+            "offset": 512,
+            "attendance": 70077,
+            "clock": "00:36",
+            "distance": 12,
+            "down": 3,
+            "gameBookUrl": "https://static.www.nfl.com/image/upload/v1759751434/gamecenter/f6ceebdb-311e-11f0-b670-ae1250fadad1.pdf",
+            "isGoalToGo": false,
+            "isRedZone": false,
+            "phase": "FINAL",
+            "quarter": "END_OF_GAME",
+            "startTime": "2025-10-05T17:02:40Z",
+            "weather": "Temp: 78\u00b0 F, Humidity: 45%, Wind: S 2 mph",
+            "yardLine": "BAL 37",
+            "awayTeam": {
+                "teamId": "10402120-b0bc-693d-098a-803014096eb0",
+                "hasPossession": true,
+                "score": {
+                    "q1": 7,
+                    "q2": 17,
+                    "q3": 10,
+                    "q4": 10,
+                    "ot": 0,
+                    "total": 44
+                },
+                "timeouts": {
+                    "remaining": 3,
+                    "used": 0
+                }
+            },
+            "homeTeam": {
+                "teamId": "10400325-48de-3d6a-be29-8f829437f4c8",
+                "hasPossession": false,
+                "score": {
+                    "q1": 3,
+                    "q2": 0,
+                    "q3": 7,
+                    "q4": 0,
+                    "ot": 0,
+                    "total": 10
+                },
+                "timeouts": {
+                    "remaining": 3,
+                    "used": 0
+                }
+            }
+        },
+        {
+            "gameId": "f6ceeff7-311e-11f0-b670-ae1250fadad1",
+            "offset": 500,
+            "attendance": 72301,
+            "clock": "00:26",
+            "distance": 13,
+            "down": 3,
+            "gameBookUrl": "https://static.www.nfl.com/image/upload/v1759751436/gamecenter/f6ceeff7-311e-11f0-b670-ae1250fadad1.pdf",
+            "isGoalToGo": false,
+            "isRedZone": false,
+            "phase": "FINAL",
+            "quarter": "END_OF_GAME",
+            "startTime": "2025-10-05T17:02:54Z",
+            "weather": "Mostly Cloudy Temp: 77\u00b0 F, Humidity: 57%, Wind: E 8 mph",
+            "yardLine": "CAR 39",
+            "awayTeam": {
+                "teamId": "10402700-1662-d8ad-f45c-0b0ea460d045",
+                "hasPossession": false,
+                "score": {
+                    "q1": 3,
+                    "q2": 14,
+                    "q3": 0,
+                    "q4": 7,
+                    "ot": 0,
+                    "total": 24
+                },
+                "timeouts": {
+                    "remaining": 1,
+                    "used": 2
+                }
+            },
+            "homeTeam": {
+                "teamId": "10400750-259b-33ac-eee3-a3852e83cd1f",
+                "hasPossession": true,
+                "score": {
+                    "q1": 0,
+                    "q2": 10,
+                    "q3": 3,
+                    "q4": 14,
+                    "ot": 0,
+                    "total": 27
+                },
+                "timeouts": {
+                    "remaining": 2,
+                    "used": 1
+                }
+            }
+        },
+        {
+            "gameId": "f6cef419-311e-11f0-b670-ae1250fadad1",
+            "offset": 464,
+            "attendance": 64955,
+            "clock": "00:15",
+            "distance": 13,
+            "down": 3,
+            "gameBookUrl": "https://static.www.nfl.com/image/upload/v1759751435/gamecenter/f6cef419-311e-11f0-b670-ae1250fadad1.pdf",
+            "isGoalToGo": false,
+            "isRedZone": false,
+            "phase": "FINAL",
+            "quarter": "END_OF_GAME",
+            "startTime": "2025-10-05T17:02:43Z",
+            "weather": "Sunny Temp: 76\u00b0 F, Humidity: 52%, Wind: SW 2 mph",
+            "yardLine": "IND 19",
+            "awayTeam": {
+                "teamId": "10402520-96bf-e9f2-4f68-8521ca896060",
+                "hasPossession": true,
+                "score": {
+                    "q1": 3,
+                    "q2": 0,
+                    "q3": 0,
+                    "q4": 3,
+                    "ot": 0,
+                    "total": 6
+                },
+                "timeouts": {
+                    "remaining": 3,
+                    "used": 0
+                }
+            },
+            "homeTeam": {
+                "teamId": "10402200-2ea3-84c3-e627-6a6b3b39d56d",
+                "hasPossession": false,
+                "score": {
+                    "q1": 0,
+                    "q2": 20,
+                    "q3": 20,
+                    "q4": 0,
+                    "ot": 0,
+                    "total": 40
+                },
+                "timeouts": {
+                    "remaining": 3,
+                    "used": 0
+                }
+            }
+        },
+        {
+            "gameId": "f6cef823-311e-11f0-b670-ae1250fadad1",
+            "offset": 562,
+            "attendance": 70008,
+            "clock": "00:40",
+            "distance": 11,
+            "down": 2,
+            "gameBookUrl": "https://static.www.nfl.com/image/upload/v1759751434/gamecenter/f6cef823-311e-11f0-b670-ae1250fadad1.pdf",
+            "isGoalToGo": false,
+            "isRedZone": false,
+            "phase": "FINAL",
+            "quarter": "END_OF_GAME",
+            "startTime": "2025-10-05T17:03:02Z",
+            "weather": "Rain Temp: 75\u00b0 F, Humidity: 95%, Wind: NE 9 mph",
+            "yardLine": "NO 16",
+            "awayTeam": {
+                "teamId": "10403410-997c-9c75-256b-3b012f468bd0",
+                "hasPossession": false,
+                "score": {
+                    "q1": 7,
+                    "q2": 7,
+                    "q3": 0,
+                    "q4": 0,
+                    "ot": 0,
+                    "total": 14
+                },
+                "timeouts": {
+                    "remaining": 0,
+                    "used": 3
+                }
+            },
+            "homeTeam": {
+                "teamId": "10403300-f235-cf9b-6d3a-2f182be48dd1",
+                "hasPossession": true,
+                "score": {
+                    "q1": 3,
+                    "q2": 13,
+                    "q3": 3,
+                    "q4": 7,
+                    "ot": 0,
+                    "total": 26
+                },
+                "timeouts": {
+                    "remaining": 0,
+                    "used": 3
+                }
+            }
+        },
+        {
+            "gameId": "f6ef9b1f-311e-11f0-b670-ae1250fadad1",
+            "offset": 507,
+            "attendance": 81738,
+            "clock": "00:35",
+            "distance": 11,
+            "down": 4,
+            "gameBookUrl": "https://static.www.nfl.com/image/upload/v1759751436/gamecenter/f6ef9b1f-311e-11f0-b670-ae1250fadad1.pdf",
+            "isGoalToGo": false,
+            "isRedZone": false,
+            "phase": "FINAL",
+            "quarter": "END_OF_GAME",
+            "startTime": "2025-10-05T17:03:02.093Z",
+            "weather": "Sunny and Warm Temp: 82\u00b0 F, Humidity: 46%, Wind: S 3 mph",
+            "yardLine": "NYJ 46",
+            "awayTeam": {
+                "teamId": "10401200-a308-98ca-ad5f-95df2fefea68",
+                "hasPossession": true,
+                "score": {
+                    "q1": 3,
+                    "q2": 20,
+                    "q3": 7,
+                    "q4": 7,
+                    "ot": 0,
+                    "total": 37
+                },
+                "timeouts": {
+                    "remaining": 1,
+                    "used": 2
+                }
+            },
+            "homeTeam": {
+                "teamId": "10403430-1bc3-42c4-c7d8-39f38aed5f12",
+                "hasPossession": false,
+                "score": {
+                    "q1": 3,
+                    "q2": 0,
+                    "q3": 3,
+                    "q4": 16,
+                    "ot": 0,
+                    "total": 22
+                },
+                "timeouts": {
+                    "remaining": 0,
+                    "used": 3
+                }
+            }
+        },
+        {
+            "gameId": "f6efa471-311e-11f0-b670-ae1250fadad1",
+            "offset": 566,
+            "attendance": 69879,
+            "clock": "00:00",
+            "distance": 10,
+            "down": 3,
+            "gameBookUrl": "https://static.www.nfl.com/image/upload/v1759751436/gamecenter/f6efa471-311e-11f0-b670-ae1250fadad1.pdf",
+            "isGoalToGo": false,
+            "isRedZone": false,
+            "phase": "FINAL",
+            "quarter": "END_OF_GAME",
+            "startTime": "2025-10-05T17:02:36.833Z",
+            "weather": "Sunny Temp: 80\u00b0 F, Humidity: 43%, Wind: SW 6 mph",
+            "yardLine": "DEN 29",
+            "awayTeam": {
+                "teamId": "10401400-b89b-96e5-55d1-caa7e18de3d8",
+                "hasPossession": false,
+                "score": {
+                    "q1": 3,
+                    "q2": 0,
+                    "q3": 0,
+                    "q4": 18,
+                    "ot": 0,
+                    "total": 21
+                },
+                "timeouts": {
+                    "remaining": 0,
+                    "used": 3
+                }
+            },
+            "homeTeam": {
+                "teamId": "10403700-b939-3cbd-3d16-24d4d6742fa2",
+                "hasPossession": true,
+                "score": {
+                    "q1": 3,
+                    "q2": 7,
+                    "q3": 7,
+                    "q4": 0,
+                    "ot": 0,
+                    "total": 17
+                },
+                "timeouts": {
+                    "remaining": 0,
+                    "used": 3
+                }
+            }
+        },
+        {
+            "gameId": "f6efa940-311e-11f0-b670-ae1250fadad1",
+            "offset": 554,
+            "attendance": 64280,
+            "clock": "00:00",
+            "distance": 10,
+            "down": 1,
+            "gameBookUrl": "https://static.www.nfl.com/image/upload/v1759776634/gamecenter/f6efa940-311e-11f0-b670-ae1250fadad1.pdf",
+            "isGoalToGo": false,
+            "isRedZone": false,
+            "phase": "FINAL",
+            "quarter": "END_OF_GAME",
+            "startTime": "2025-10-05T20:05:34.860Z",
+            "weather": null,
+            "yardLine": "TEN 35",
+            "awayTeam": {
+                "teamId": "10402100-447f-396e-8149-0a434ffb2f23",
+                "hasPossession": true,
+                "score": {
+                    "q1": 3,
+                    "q2": 3,
+                    "q3": 0,
+                    "q4": 16,
+                    "ot": 0,
+                    "total": 22
+                },
+                "timeouts": {
+                    "remaining": 0,
+                    "used": 3
+                }
+            },
+            "homeTeam": {
+                "teamId": "10403800-517c-7b8c-65a3-c61b95d86123",
+                "hasPossession": false,
+                "score": {
+                    "q1": 14,
+                    "q2": 7,
+                    "q3": 0,
+                    "q4": 0,
+                    "ot": 0,
+                    "total": 21
+                },
+                "timeouts": {
+                    "remaining": 0,
+                    "used": 3
+                }
+            }
+        },
+        {
+            "gameId": "f6efadaa-311e-11f0-b670-ae1250fadad1",
+            "offset": 439,
+            "attendance": 68804,
+            "clock": "00:00",
+            "distance": 10,
+            "down": 1,
+            "gameBookUrl": "https://static.www.nfl.com/image/upload/v1759751438/gamecenter/f6efadaa-311e-11f0-b670-ae1250fadad1.pdf",
+            "isGoalToGo": false,
+            "isRedZone": false,
+            "phase": "FINAL",
+            "quarter": "END_OF_GAME",
+            "startTime": "2025-10-05T20:05:42Z",
+            "weather": "Sunny Temp: 61\u00b0 F, Humidity: 73%, Wind: N 8 mph",
+            "yardLine": "TB 35",
+            "awayTeam": {
+                "teamId": "10404900-d59e-b449-ef75-961e09ca027e",
+                "hasPossession": true,
+                "score": {
+                    "q1": 3,
+                    "q2": 10,
+                    "q3": 15,
+                    "q4": 10,
+                    "ot": 0,
+                    "total": 38
+                },
+                "timeouts": {
+                    "remaining": 2,
+                    "used": 1
+                }
+            },
+            "homeTeam": {
+                "teamId": "10404600-adcd-28ac-5826-b4d95ec2a228",
+                "hasPossession": false,
+                "score": {
+                    "q1": 0,
+                    "q2": 7,
+                    "q3": 14,
+                    "q4": 14,
+                    "ot": 0,
+                    "total": 35
+                },
+                "timeouts": {
+                    "remaining": 0,
+                    "used": 3
+                }
+            }
+        },
+        {
+            "gameId": "f6efb1e1-311e-11f0-b670-ae1250fadad1",
+            "offset": 551,
+            "attendance": 66115,
+            "clock": "00:33",
+            "distance": 12,
+            "down": 4,
+            "gameBookUrl": "https://static.www.nfl.com/image/upload/v1759751442/gamecenter/f6efb1e1-311e-11f0-b670-ae1250fadad1.pdf",
+            "isGoalToGo": false,
+            "isRedZone": false,
+            "phase": "FINAL",
+            "quarter": "END_OF_GAME",
+            "startTime": "2025-10-05T20:25:39Z",
+            "weather": "Mostly Sunny Temp: 84\u00b0 F, Humidity: 39%, Wind: SW 7 mph",
+            "yardLine": "CIN 12",
+            "awayTeam": {
+                "teamId": "10401540-f97c-2d19-6fcd-fac6490a48b7",
+                "hasPossession": true,
+                "score": {
+                    "q1": 7,
+                    "q2": 7,
+                    "q3": 14,
+                    "q4": 9,
+                    "ot": 0,
+                    "total": 37
+                },
+                "timeouts": {
+                    "remaining": 3,
+                    "used": 0
+                }
+            },
+            "homeTeam": {
+                "teamId": "10400920-57c1-7656-e77e-1af3d900483e",
+                "hasPossession": false,
+                "score": {
+                    "q1": 0,
+                    "q2": 3,
+                    "q3": 0,
+                    "q4": 21,
+                    "ot": 0,
+                    "total": 24
+                },
+                "timeouts": {
+                    "remaining": 1,
+                    "used": 2
+                }
+            }
+        },
+        {
+            "gameId": "f6efb612-311e-11f0-b670-ae1250fadad1",
+            "offset": 487,
+            "attendance": 71021,
+            "clock": "00:05",
+            "distance": 10,
+            "down": 1,
+            "gameBookUrl": "https://static.www.nfl.com/image/upload/v1759751441/gamecenter/f6efb612-311e-11f0-b670-ae1250fadad1.pdf",
+            "isGoalToGo": false,
+            "isRedZone": false,
+            "phase": "FINAL",
+            "quarter": "END_OF_GAME",
+            "startTime": "2025-10-05T20:25:36Z",
+            "weather": "Sunny Temp: 77\u00b0 F, Humidity: 56%, Wind: SW 7 mph",
+            "yardLine": "WAS 15",
+            "awayTeam": {
+                "teamId": "10405110-ec3c-669e-2614-db3dc1736e95",
+                "hasPossession": false,
+                "score": {
+                    "q1": 0,
+                    "q2": 10,
+                    "q3": 10,
+                    "q4": 7,
+                    "ot": 0,
+                    "total": 27
+                },
+                "timeouts": {
+                    "remaining": 0,
+                    "used": 3
+                }
+            },
+            "homeTeam": {
+                "teamId": "10404400-3b35-073f-197e-194bb8240723",
+                "hasPossession": true,
+                "score": {
+                    "q1": 10,
+                    "q2": 0,
+                    "q3": 0,
+                    "q4": 0,
+                    "ot": 0,
+                    "total": 10
+                },
+                "timeouts": {
+                    "remaining": 0,
+                    "used": 3
+                }
+            }
+        },
+        {
+            "gameId": "f6efba4d-311e-11f0-b670-ae1250fadad1",
+            "offset": 627,
+            "attendance": 70802,
+            "clock": "00:04",
+            "distance": 10,
+            "down": 1,
+            "gameBookUrl": "https://static.www.nfl.com/image/upload/v1759751444/gamecenter/f6efba4d-311e-11f0-b670-ae1250fadad1.pdf",
+            "isGoalToGo": false,
+            "isRedZone": false,
+            "phase": "FINAL",
+            "quarter": "END_OF_GAME",
+            "startTime": "2025-10-06T00:23:06.347Z",
+            "weather": "Clear Temp: 66\u00b0 F, Humidity: 58%, Wind: S 3 mph",
+            "yardLine": "BUF 31",
+            "awayTeam": {
+                "teamId": "10403200-69ab-9ea6-5af5-e240fbc08bea",
+                "hasPossession": false,
+                "score": {
+                    "q1": 3,
+                    "q2": 3,
+                    "q3": 7,
+                    "q4": 10,
+                    "ot": 0,
+                    "total": 23
+                },
+                "timeouts": {
+                    "remaining": 1,
+                    "used": 2
+                }
+            },
+            "homeTeam": {
+                "teamId": "10400610-c40e-a673-1743-2ce2a5d5d731",
+                "hasPossession": true,
+                "score": {
+                    "q1": 0,
+                    "q2": 3,
+                    "q3": 7,
+                    "q4": 10,
+                    "ot": 0,
+                    "total": 20
+                },
+                "timeouts": {
+                    "remaining": 0,
+                    "used": 3
+                }
+            }
+        },
+        {
+            "gameId": "f6efbe65-311e-11f0-b670-ae1250fadad1",
+            "offset": 545,
+            "attendance": 69329,
+            "clock": "00:00",
+            "distance": 15,
+            "down": 2,
+            "gameBookUrl": "https://static.www.nfl.com/image/upload/v1759837834/gamecenter/f6efbe65-311e-11f0-b670-ae1250fadad1.pdf",
+            "isGoalToGo": false,
+            "isRedZone": false,
+            "phase": "FINAL",
+            "quarter": "END_OF_GAME",
+            "startTime": "2025-10-07T00:15:51.900Z",
+            "weather": "Temp: 80\u00b0 F, Humidity: 79%, Wind: E 12 mph",
+            "yardLine": "KC 23",
+            "awayTeam": {
+                "teamId": "10402310-a47e-10ea-7442-16b633633637",
+                "hasPossession": true,
+                "score": {
+                    "q1": 7,
+                    "q2": 7,
+                    "q3": 0,
+                    "q4": 14,
+                    "ot": 0,
+                    "total": 28
+                },
+                "timeouts": {
+                    "remaining": 1,
+                    "used": 2
+                }
+            },
+            "homeTeam": {
+                "teamId": "10402250-89fe-7b86-ef98-9062cd354256",
+                "hasPossession": false,
+                "score": {
+                    "q1": 0,
+                    "q2": 7,
+                    "q3": 14,
+                    "q4": 10,
+                    "ot": 0,
+                    "total": 31
+                },
+                "timeouts": {
+                    "remaining": 0,
+                    "used": 3
+                }
+            }
+        }
+    ],
+    "pagination": {
+        "limit": 20,
+        "token": null
+    }
+}

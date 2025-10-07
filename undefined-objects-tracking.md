@@ -133,6 +133,9 @@ fixture:
 
 ### Game.extensions
 
+So far API responses only seem to be including empty arrays for this
+
+
 **Schema Location:** `openapi/nfl-com-api.yaml:2319`
 
 **TODO Comment:** `Investigate the Game.extensions object`
@@ -160,8 +163,6 @@ extensions:
   - Returns: `FilmroomPlaysResponse`
 
 **Note:** The `Game` schema is also extended by `WeeklyGameDetail` using `allOf` composition.
-
-So far API responses only seem to be including empty arrays for this
 ---
 
 ### GameInsight.content

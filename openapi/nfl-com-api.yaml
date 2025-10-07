@@ -2615,6 +2615,99 @@ components:
           nullable: true
           type: integer
       type: object
+    GameSummaryTeam:
+      type: object
+      properties:
+        teamId:
+          type: string
+          format: uuid
+        hasPossession:
+          type: boolean
+        score:
+          type: object
+          properties:
+            q1:
+              type: integer
+              nullable: true
+            q2:
+              type: integer
+              nullable: true
+            q3:
+              type: integer
+              nullable: true
+            q4:
+              type: integer
+              nullable: true
+            ot:
+              type: integer
+              nullable: true
+            total:
+              type: integer
+              nullable: true
+        timeouts:
+          type: object
+          properties:
+            remaining:
+              type: integer
+              minimum: 0
+              maximum: 3
+            used:
+              type: integer
+              minimum: 0
+              maximum: 3
+    GameQuarterEnum:
+      # TODO: Unsure what values are possible here.
+      type: string
+      enum:
+        - END_OF_GAME
+    LiveGameSummaryData:
+      type: object
+      properties:
+        gameId:
+          type: string
+          format: uuid
+        offset:
+          type: integer
+          example: 603
+        attendance:
+          type: integer
+          example: 73652
+        clock:
+          type: string
+          example: '03:36'
+        distance:
+          type: integer
+          example: 10
+        down:
+          type: integer
+          minimum: 1
+          maximum: 4
+          example: 3
+        gameBookUrl:
+          type: string
+          format: uri
+        isGoalToGo:
+          type: boolean
+        isRedZone:
+          type: boolean
+        phase:
+          $ref: '#/components/schemas/GamePhaseEnum'
+        quarter:
+          $ref: '#/components/schemas/GameQuarterEnum'
+        weather:
+          type: string
+          example: 'Cloudy Temp: 71° F, Humidity: 65%, Wind: S 5 mph'
+        yardLine:
+          type: string
+          example: 'SF 11'
+        startTime:
+          type: string
+          format: date-time
+        awayTeam:
+          $ref: '#/components/schemas/GameSummaryTeam'
+        homeTeam:
+          $ref: '#/components/schemas/GameSummaryTeam'
+
     GameStatsResponse:
       properties:
         data:
