@@ -1776,7 +1776,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         sortKey:
           description: Field used for sorting
           example: cov
@@ -2143,7 +2142,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         sortKey:
           description: Field used for sorting
           example: fpStd
@@ -2302,7 +2300,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         selectedParamValues:
           additionalProperties: true
           description: Selected parameter values for the play filter
@@ -2942,7 +2939,6 @@ components:
           type: string
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         week:
           description: Week number
           example: '3'
@@ -3081,7 +3077,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         secondTeamAbbr:
           description: Opponent or related team abbreviation
           example: KC
@@ -3285,7 +3280,6 @@ components:
           type: string
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         week:
           description: Week number
           example: '4'
@@ -3510,7 +3504,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         sortKey:
           description: Field used for sorting
           example: pr
@@ -3600,7 +3593,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         sortKey:
           description: Field used for sorting
           example: yds
@@ -5866,7 +5858,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         sortKey:
           description: Field used for sorting
           example: yds
@@ -6047,7 +6038,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         sortKey:
           description: Field used for sorting
           example: yds
@@ -6678,7 +6668,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         sortKey:
           description: Field used for sorting
           example: passYpg
@@ -6829,7 +6818,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         sortKey:
           description: Field used for sorting
           example: rushYpg
@@ -7042,7 +7030,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         sortKey:
           description: Field used for sorting
           example: ypg
@@ -7676,7 +7663,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         sortKey:
           description: Field used for sorting
           example: ypg
@@ -7852,7 +7838,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         sortKey:
           description: Field used for sorting
           example: passYpg
@@ -8269,7 +8254,6 @@ components:
           type: string
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         slug:
           description: URL-friendly tag identifier
           example: boswell,-christopher-(2014---2020)
@@ -8383,7 +8367,6 @@ components:
           type: string
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         week:
           description: Week number
           example: '4'
@@ -8413,7 +8396,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         sortKey:
           description: Field used for sorting
           example: yds
@@ -9072,7 +9054,6 @@ components:
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
         sortKey:
           description: Field used for sorting
           example: yds
@@ -9269,7 +9250,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Week number
         in: query
         name: week
@@ -9793,7 +9773,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Team identifier (UUID format)
         in: query
         name: teamId
@@ -9853,7 +9832,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Week number within the season
         in: query
         name: week
@@ -9934,7 +9912,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Week number within the season
         in: query
         name: week
@@ -9985,7 +9962,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Week number within the season
         in: query
         name: week
@@ -10069,7 +10045,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Week number
         in: query
         name: week
@@ -10361,7 +10336,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Maximum number of players to return
         in: query
         name: limit
@@ -10493,7 +10467,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Maximum number of players to return
         in: query
         name: limit
@@ -10608,7 +10581,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Maximum number of players to return
         in: query
         name: limit
@@ -10768,7 +10740,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Maximum number of players to return
         in: query
         name: limit
@@ -10999,7 +10970,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Maximum number of players to return
         in: query
         name: limit
@@ -11112,7 +11082,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Week identifier
         in: query
         name: week
@@ -11230,7 +11199,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Maximum number of players to return
         in: query
         name: limit
@@ -11368,7 +11336,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Week identifier
         in: query
         name: week
@@ -11504,7 +11471,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Maximum number of teams to return
         in: query
         name: limit
@@ -11658,7 +11624,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Maximum number of teams to return
         in: query
         name: limit
@@ -11774,7 +11739,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Maximum number of teams to return
         in: query
         name: limit
@@ -11880,7 +11844,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Maximum number of teams to return
         in: query
         name: limit
@@ -12028,7 +11991,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Maximum number of teams to return
         in: query
         name: limit
@@ -12698,7 +12660,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Away team UUID
         in: query
         name: awayTeamId
@@ -12798,7 +12759,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: First statistical category
         in: query
         name: stat0
@@ -12950,7 +12910,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Week number within the season
         in: query
         name: week
@@ -13046,7 +13005,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Week number within the season
         in: query
         name: week
@@ -13185,7 +13143,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Week number
         in: query
         name: week
@@ -13262,7 +13219,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Week number
         in: path
         name: week
@@ -13532,7 +13488,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Week number
         in: query
         name: week
@@ -13588,7 +13543,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Week number
         in: query
         name: week
@@ -13635,7 +13589,6 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/SeasonTypeEnum'
-          type: string
       - description: Filter by position group
         in: query
         name: position
