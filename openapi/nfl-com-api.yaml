@@ -4,13 +4,7 @@ info:
   contact:
     name: NFL
     url: https://www.nfl.com
-  description: "Regular API - NFL's public API for accessing game schedules,
-    team information, standings, statistics, and venue data. This API
-    provides comprehensive access to NFL data including real-time game information,
-    team rosters, seasonal statistics, and historical data. The NFL Pro API is for 
-    accessing advanced statistics, film room content, player data, and fantasy information. 
-    This API provides comprehensive access to NFL Pro features including Next Gen Stats, 
-    Film Room analysis, player projections, and game insights."
+  description: "Regular API - NFL's public API for accessing game schedules, team information, standings, statistics, and venue data. This API provides comprehensive access to NFL data including real-time game information, team rosters, seasonal statistics, and historical data. The NFL Pro API is for accessing advanced statistics, film room content, player data, and fantasy information. This API provides comprehensive access to NFL Pro features including Next Gen Stats, Film Room analysis, player projections, and game insights."
   title: NFL REST APIs
   version: 1.0.0
 
@@ -280,19 +274,6 @@ components:
         - APPROVED
         - PENDING
         - REVIEWED
-      type: string
-    PlayTypeEnum:
-      description: Type of play
-      enum:
-        - PASS
-        - RUSH
-        - PUNT
-        - KICKOFF
-        - FIELD_GOAL
-        - EXTRA_POINT
-        - PENALTY
-        - TIMEOUT
-        - TWO_MINUTE_WARNING
       type: string
     PrimetimeGameCategoryEnum:
       description: Prime time game designation
@@ -2252,8 +2233,6 @@ components:
               description: Target ID for receiver film
               type: string
             weekSlug:
-              description: Week identifier
-              example: WEEK_3
               $ref: '#/components/schemas/WeekSlugEnum'
           type: object
         teamId:
@@ -2346,8 +2325,6 @@ components:
           example: 3
           type: integer
         weekSlug:
-          description: Week identifier slug
-          example: WEEK_3
           $ref: '#/components/schemas/WeekSlugEnum'
         yardline:
           description: Field position where play occurred
@@ -2494,8 +2471,6 @@ components:
           description: Whether game is at neutral venue
           type: boolean
         phase:
-          description: Game phase
-          example: PREGAME
           $ref: '#/components/schemas/GamePhaseEnum'
         season:
           description: Season year
@@ -2503,7 +2478,6 @@ components:
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
         status:
-          description: Game status
           $ref: '#/components/schemas/GameStatusEnum'
         ticketUrl:
           description: Primary ticket purchase URL
@@ -3877,6 +3851,9 @@ components:
         - play_type_pass
         - play_type_punt
         - play_type_unknown
+        - play_type_penalty
+        - play_type_timeout
+        - play_type_two_minute_warning
       type: string
     PlayWinProbability:
       properties:
@@ -5319,8 +5296,6 @@ components:
           description: Whether game is at neutral venue
           type: boolean
         phase:
-          description: Game phase
-          example: PREGAME
           $ref: '#/components/schemas/GamePhaseEnum'
         season:
           description: Season year
@@ -5328,7 +5303,6 @@ components:
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
         status:
-          description: Game status
           $ref: '#/components/schemas/GameStatusEnum'
         ticketUrl:
           description: Primary ticket purchase URL
@@ -5523,12 +5497,8 @@ components:
           example: 4
           type: integer
         weekSlug:
-          description: Week identifier slug
-          example: WEEK_4
           $ref: '#/components/schemas/WeekSlugEnum'
         weekType:
-          description: Type of week
-          example: REG
           $ref: '#/components/schemas/WeekTypeEnum'
       type: object
     ProjectedStatsResponse:
@@ -5693,8 +5663,6 @@ components:
           example: 12
           type: integer
         week:
-          description: Week identifier
-          example: WEEK_3
           $ref: '#/components/schemas/WeekSlugEnum'
       type: object
     RoofTypeEnum:
@@ -7994,12 +7962,8 @@ components:
           example: 4
           type: integer
         weekSlug:
-          description: Week identifier slug
-          example: WEEK_4
           $ref: '#/components/schemas/WeekSlugEnum'
         weekType:
-          description: Type of week
-          example: REG
           $ref: '#/components/schemas/WeekTypeEnum'
       type: object
     WeeklyGameDetail:
@@ -8701,8 +8665,6 @@ components:
           example: 4
           type: integer
         week:
-          description: Week identifier
-          example: WEEK_3
           $ref: '#/components/schemas/WeekSlugEnum'
       type: object
     WeeksResponse:

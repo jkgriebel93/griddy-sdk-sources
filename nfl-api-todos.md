@@ -1,27 +1,39 @@
 # TODO Comments in nfl-com-api.yaml
 
-Total TODOs: 132
+Total TODOs: 78 (54 completed, 78 remaining)
+
+## Completed Issues
+
+The following issues have been addressed:
+- ✅ [Issue #4](https://github.com/jkgriebel93/griddy-sdk-sources/issues/4): Create and consolidate position-related enums (16 TODOs)
+- ✅ [Issue #5](https://github.com/jkgriebel93/griddy-sdk-sources/issues/5): Create game type, phase, and status enums (10 TODOs)
+- ✅ [Issue #6](https://github.com/jkgriebel93/griddy-sdk-sources/issues/6): Consolidate week and week slug enum usage (10 TODOs)
+- ✅ [Issue #10](https://github.com/jkgriebel93/griddy-sdk-sources/issues/10): Create and use roof type enum consistently (4 TODOs)
+- ✅ [Issue #11](https://github.com/jkgriebel93/griddy-sdk-sources/issues/11): Refactor inline enums to top-level components (13 TODOs)
+- ✅ [Issue #14](https://github.com/jkgriebel93/griddy-sdk-sources/issues/14): Fix data type inconsistencies (1 TODO)
+
+**Total Completed: 54 TODOs across 6 issues**
+
+## Remaining Issues
+
+The following issues have not yet been addressed:
+- ⏸️ [Issue #7](https://github.com/jkgriebel93/griddy-sdk-sources/issues/7): Consolidate duplicate or similar components (28 TODOs) - *Research-heavy*
+- ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (17 TODOs) - *Research-heavy*
+- ⏸️ [Issue #9](https://github.com/jkgriebel93/griddy-sdk-sources/issues/9): Refactor metrics explanation components (12 TODOs) - *Research-heavy*
+- ⏸️ [Issue #12](https://github.com/jkgriebel93/griddy-sdk-sources/issues/12): Create miscellaneous missing enums (13 TODOs)
+- ⏸️ [Issue #13](https://github.com/jkgriebel93/griddy-sdk-sources/issues/13): Address miscellaneous TODO comments (8 TODOs)
+
+**Total Remaining: 78 TODOs across 5 issues**
+
+---
 
 ## BoxscoreSchedule
 
 | Line | TODO Comment |
 |------|--------------|
-| 372 | Should there be a different enum for game types? |
 | 381 | What is the difference between a BoxscoreTeam and a Team? |
 | 407 | Is BoxscoreSite just a venue? |
 | 422 | Should there be an enum defined for team abbreviations? |
-
-## BoxscoreScore
-
-| Line | TODO Comment |
-|------|--------------|
-| 440 | Should there be a phase enum? |
-
-## BoxscoreSite
-
-| Line | TODO Comment |
-|------|--------------|
-| 453 | Create roofType enum |
 
 ## BoxscoreTeam
 
@@ -40,7 +52,6 @@ Total TODOs: 132
 | Line | TODO Comment |
 |------|--------------|
 | 634 | Create a cameraSource enum |
-| 673 | Shouldn't this be an integer? |
 | 704 | Would this reference the proposed network component from earlier? |
 | 820 | Create CoachesFileVideoSubType enum |
 | 848 | Explore what this object actually looks like |
@@ -75,39 +86,11 @@ Total TODOs: 132
 |------|--------------|
 | 1157 | Metric explanations. Consider refactor |
 
-## DefensivePassRushStats
-
-| Line | TODO Comment |
-|------|--------------|
-| 1219 | Create a schema for this enum |
-| 1227 | Ensure this position groups are correct |
-| 1231 | Create a schema for this enum |
-
-## DefensivePlayerOverviewStats
-
-| Line | TODO Comment |
-|------|--------------|
-| 1360 | Refactor to use enum mentioned earlier |
-| 1379 | Use enum |
-
-## DefensivePlayerStats
-
-| Line | TODO Comment |
-|------|--------------|
-| 1542 | Use enum |
-| 1561 | Use enum |
-
 ## DefensiveRushMetricsExplanation
 
 | Line | TODO Comment |
 |------|--------------|
 | 1644 | Metrics explanations |
-
-## DefensiveSplitCategory
-
-| Line | TODO Comment |
-|------|--------------|
-| 1687 | Consider moving this enum to a top level component |
 
 ## Drive
 
@@ -127,7 +110,6 @@ Total TODOs: 132
 | Line | TODO Comment |
 |------|--------------|
 | 2106 | Use the FantasyPositionEnum mentioned earlier here |
-| 2134 | There is a week enum that can be used here |
 
 ## FantayScoringExplanation
 
@@ -135,18 +117,11 @@ Total TODOs: 132
 |------|--------------|
 | 2145 | More explanation fields, slightly different than the metrics though |
 
-## FilmCard
-
-| Line | TODO Comment |
-|------|--------------|
-| 2195 | Use the WeekEnum here |
-
 ## FilmroomPlay
 
 | Line | TODO Comment |
 |------|--------------|
 | 2268 | Investigate what the selectedParamValues object can look like |
-| 2289 | Use the week enum |
 
 ## FuturesMarket
 
@@ -159,9 +134,6 @@ Total TODOs: 132
 | Line | TODO Comment |
 |------|--------------|
 | 2412 | Investigate the Game.extensions object |
-| 2422 | Surely there is a gameType enum |
-| 2439 | Use or create a GamePhase enum |
-| 2449 | If a game status enum doesn't exist, create it and use it here |
 | 2472 | Is this the same as GameSite or whatever it was I saw earlier? |
 
 ## GameInsight
@@ -176,24 +148,11 @@ Total TODOs: 132
 |------|--------------|
 | 2606 | Investigate the GamePreviewResponse.preview object |
 
-## GameSchedule
-
-| Line | TODO Comment |
-|------|--------------|
-| 2627 | Should there be a separate gameType enum? |
-
-## GameScore
-
-| Line | TODO Comment |
-|------|--------------|
-| 2692 | Refactor this out to a top level enum component |
-
 ## GameSite
 
 | Line | TODO Comment |
 |------|--------------|
 | 2709 | Again, what is the difference between GameSite and Venue? |
-| 2715 | Add roofType enum |
 
 ## GameStatsResponse
 
@@ -215,12 +174,6 @@ Total TODOs: 132
 |------|--------------|
 | 2919 | create an enum for InjuryEntry.gameStatus |
 
-## Insight
-
-| Line | TODO Comment |
-|------|--------------|
-| 3015 | Use or create player position enum |
-
 ## InsightContentExplanation
 
 | Line | TODO Comment |
@@ -233,19 +186,12 @@ Total TODOs: 132
 |------|--------------|
 | 3164 | Can the Team component not be used here? |
 | 3177 | Can the Team component not be used here? |
-| 3199 | Use or create game status enum |
 
 ## OffensiveMetricsExplanation
 
 | Line | TODO Comment |
 |------|--------------|
 | 3318 | Metrics explanation properties |
-
-## OffensiveSplitCategory
-
-| Line | TODO Comment |
-|------|--------------|
-| 3353 | Consider making this enum a top level component |
 
 ## OverallRecord
 
@@ -277,19 +223,11 @@ Total TODOs: 132
 |------|--------------|
 | 3484 | Investigate the difference(s) between PasserStats and PassingStats, consolidate if possible |
 
-## Play
-
-| Line | TODO Comment |
-|------|--------------|
-| 3590 | Refactor this into a top level component |
-
 ## PlayDetail
 
 | Line | TODO Comment |
 |------|--------------|
 | 3692 | Use or create a PlayDirectionEnum conponent |
-| 3702 | Refactor this out to be a top level enum component |
-| 3715 | Use the PlayTypeEnum |
 
 ## PlayParticipant
 
@@ -307,10 +245,6 @@ Total TODOs: 132
 
 | Line | TODO Comment |
 |------|--------------|
-| 4088 | Use or create the next gen stats position enum |
-| 4093 | Use or create the next gen stats position group enum |
-| 4098 | Use or create the position enum |
-| 4103 | Use or create the position group enum |
 | 4122 | Surely this can be an enum |
 
 ## PlayerInjury
@@ -366,10 +300,6 @@ Total TODOs: 132
 |------|--------------|
 | 5283 | Compare how this differs from Game |
 | 5316 | Investigate the ProGame.extensions object |
-| 5325 | Use or create the gameType enum |
-| 5342 | Use or create the game phase enum |
-| 5352 | Use or create the game status enum |
-| 5383 | Use or create the week type enum |
 
 ## ProInjuryReportResponse
 
@@ -382,16 +312,12 @@ Total TODOs: 132
 | Line | TODO Comment |
 |------|--------------|
 | 5406 | How does this compare to the Team component? How much can it be consolidated? |
-| 5427 | use or create the conference abbr enum |
-| 5508 | Make this a top level enum component |
 
 ## ProWeek
 
 | Line | TODO Comment |
 |------|--------------|
 | 5528 | How does this compare to a regular Week, and how can it be consolidated? |
-| 5564 | Use the week slug enum component |
-| 5569 | Use or create a week type enum |
 
 ## ReceiverStats
 
@@ -404,12 +330,6 @@ Total TODOs: 132
 | Line | TODO Comment |
 |------|--------------|
 | 5657 | Metrics explanation properties |
-
-## ReceivingStatsResponse
-
-| Line | TODO Comment |
-|------|--------------|
-| 5740 | Use the week slug enum |
 
 ## RusherStats
 
@@ -429,18 +349,11 @@ Total TODOs: 132
 |------|--------------|
 | 5933 | How is this different from Game? Can it be consolidated? |
 
-## ScoringPlay
-
-| Line | TODO Comment |
-|------|--------------|
-| 6038 | Refactor this out to a top level enum component |
-
 ## Site
 
 | Line | TODO Comment |
 |------|--------------|
 | 6084 | Compare this to Venue and see if they can be consolidated |
-| 6090 | Use or create a roof type enum |
 
 ## Standings
 
@@ -454,24 +367,11 @@ Total TODOs: 132
 |------|--------------|
 | 6220 | Use or create a dataType enum component |
 
-## Team
-
-| Line | TODO Comment |
-|------|--------------|
-| 6248 | Refactor this out to a top level enum component? |
-| 6319 | Consider refactoring this out to a top level enum component |
-
 ## TeamVenue
 
 | Line | TODO Comment |
 |------|--------------|
 | 7708 | Compare to Site, Venue, other similar components. Consolidate as and if possible |
-
-## TokenRequest
-
-| Line | TODO Comment |
-|------|--------------|
-| 7757 | Refactor this out to a top level enum component |
 
 ## Transaction
 
@@ -485,19 +385,6 @@ Total TODOs: 132
 |------|--------------|
 | 7848 | Compare with Site, TeamVenue, etc. and consolidate as possible |
 
-## VenueInfo
-
-| Line | TODO Comment |
-|------|--------------|
-| 7885 | Use or create roof type enum |
-
-## Week
-
-| Line | TODO Comment |
-|------|--------------|
-| 8069 | use the week slug enum |
-| 8074 | Use or create the top level week type enum component |
-
 ## WeeklyGameDetail
 
 | Line | TODO Comment |
@@ -506,27 +393,6 @@ Total TODOs: 132
 | 8097 | Investigate the WeeklyGameDetail.replays object, define spec |
 | 8103 | Investigate the WeeklyGameDetail.summary object |
 | 8108 | Investigate the WeeklyGameDetail.taggedVideos object. |
-
-## WeeklyPlayerPassingStats
-
-| Line | TODO Comment |
-|------|--------------|
-| 8347 | Use or create the next gen stats position enum |
-| 8352 | Use or create the next gen stats position group enum |
-| 8366 | Use or create the position enum |
-| 8371 | Use or create the position group enum |
-
-## WeeklyPlayerRushingStats
-
-| Line | TODO Comment |
-|------|--------------|
-| 8587 | Verify the possible values where this OffensivePlayerPositionEnum is being used. |
-
-## WeeklyRushingStatsResponse
-
-| Line | TODO Comment |
-|------|--------------|
-| 8795 | Use the week slug enum |
 
 ## WinProbabilityMetadata
 
