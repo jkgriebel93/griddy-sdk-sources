@@ -108,6 +108,15 @@ components:
         - POST
       example: REG
       type: string
+    ScoreTypeEnum:
+      description: Type of scoring play
+      enum:
+        - TOUCHDOWN
+        - FIELD_GOAL
+        - SAFETY
+        - EXTRA_POINT
+        - TWO_POINT_CONVERSION
+      type: string
     SortOrderEnum:
       description: Sort direction for ordered results
       enum:
@@ -121,6 +130,14 @@ components:
         - AFC
         - NFC
       type: string
+    DefensiveSituationTypeEnum:
+      description: Defensive split situation type
+      enum:
+        - PERSONNEL
+        - GAME_SITUATION
+        - FIELD_POSITION
+        - OFFENSIVE_FORMATION
+      type: string
     DefensivePositionGroupEnum:
       description: Defensive position group
       enum:
@@ -128,11 +145,21 @@ components:
         - DL
         - LB
       type: string
+    GamePhaseEnum:
+      description: Current phase of the game
+      enum:
+        - PREGAME
+        - INGAME
+        - HALFTIME
+        - FINAL
+        - SUSPENDED
+      type: string
     GameStatusEnum:
       description: Game status
       enum:
         - CANCELLED
         - FINAL
+        - HALFTIME
         - IN_PROGRESS
         - POSTPONED
         - SCHEDULED
@@ -142,6 +169,86 @@ components:
       enum:
         - AM
         - PM
+      type: string
+    NetworkTypeEnum:
+      description: Type of network connection
+      enum:
+        - other
+        - wifi
+        - cellular
+        - ethernet
+      type: string
+    NextGenStatsPositionEnum:
+      description: Next Gen Stats player position
+      enum:
+        - C
+        - CB
+        - DB
+        - DE
+        - DT
+        - ED
+        - FB
+        - FS
+        - G
+        - ILB
+        - K
+        - LB
+        - LS
+        - MLB
+        - NT
+        - OL
+        - OLB
+        - P
+        - QB
+        - RB
+        - S
+        - SCB
+        - SS
+        - T
+        - TE
+        - WR
+      type: string
+    NextGenStatsPositionGroupEnum:
+      description: Next Gen Stats position group
+      enum:
+        - DB
+        - DL
+        - K
+        - LB
+        - OL
+        - P
+        - QB
+        - RB
+        - TE
+        - WR
+      type: string
+    DefensivePositionEnum:
+      description: Defensive player position
+      enum:
+        - CB
+        - DE
+        - DT
+        - FS
+        - ILB
+        - MLB
+        - NT
+        - OLB
+        - SCB
+        - SS
+      type: string
+    PositionGroupEnum:
+      description: Player position group
+      enum:
+        - DB
+        - DL
+        - K
+        - LB
+        - OL
+        - P
+        - QB
+        - RB
+        - TE
+        - WR
       type: string
     OffensivePlayerPositionEnum:
       description: Offensive player position
@@ -159,6 +266,33 @@ components:
         - RB
         - TE
         - WR
+      type: string
+    OffensiveSituationTypeEnum:
+      description: Offensive split situation type
+      enum:
+        - FORMATION
+        - GAME_SITUATION
+        - FIELD_POSITION
+      type: string
+    PlayStateEnum:
+      description: Play review state
+      enum:
+        - APPROVED
+        - PENDING
+        - REVIEWED
+      type: string
+    PlayTypeEnum:
+      description: Type of play
+      enum:
+        - PASS
+        - RUSH
+        - PUNT
+        - KICKOFF
+        - FIELD_GOAL
+        - EXTRA_POINT
+        - PENALTY
+        - TIMEOUT
+        - TWO_MINUTE_WARNING
       type: string
     PrimetimeGameCategoryEnum:
       description: Prime time game designation
@@ -222,6 +356,13 @@ components:
       enum:
         - PRO
         - TEAM
+      type: string
+    WeekTypeEnum:
+      description: Type of week (HOF, Preseason, Regular season)
+      enum:
+        - HOF
+        - PRE
+        - REG
       type: string
     WeekSlugEnum:
       description: Week identifier slug
@@ -369,7 +510,6 @@ components:
           example: 09:30:00
           type: string
         gameType:
-          # TODO: Should there be a different enum for game types?
           $ref: '#/components/schemas/SeasonTypeEnum'
         homeDisplayName:
           example: Pittsburgh Steelers
@@ -437,7 +577,6 @@ components:
         homeTeamScore:
           $ref: '#/components/schemas/TeamScore'
         phase:
-          # TODO: Should there be a phase enum?
           description: Game phase (P=Pregame, 1-4=Quarter, F=Final)
           example: P
           type: string
@@ -450,12 +589,7 @@ components:
           example: D03 P6K7
           type: string
         roofType:
-          # TODO: Create roofType enum
-          enum:
-            - OUTDOOR
-            - DOME
-            - RETRACTABLE
-          type: string
+          $ref: '#/components/schemas/RoofTypeEnum'
         siteCity:
           example: Dublin
           type: string
@@ -670,9 +804,8 @@ components:
           type: string
         duration:
           description: Video duration in seconds
-          # TODO: Shouldn't this be an integer?
-          example: '17'
-          type: string
+          example: 17
+          type: integer
         endDate:
           description: Content end date
           format: date-time
@@ -1215,29 +1348,12 @@ components:
           example: '47889'
           type: string
         ngsPosition:
-          description: Next Gen Stats position
-          # TODO: Create a schema for this enum
-          enum:
-            - ED
-            - DT
-            - LB
-          example: ED
-          type: string
+          $ref: '#/components/schemas/NextGenStatsPositionEnum'
         ngsPositionGroup:
           # TODO: Ensure this position groups are correct
           $ref: '#/components/schemas/DefensivePositionGroupEnum'
         position:
-          description: Player position
-          # TODO: Create a schema for this enum
-          enum:
-            - DE
-            - DT
-            - NT
-            - OLB
-            - ILB
-            - MLB
-          example: DE
-          type: string
+          $ref: '#/components/schemas/DefensivePositionEnum'
         positionGroup:
           $ref: '#/components/schemas/DefensivePositionGroupEnum'
         pr:
@@ -1356,17 +1472,7 @@ components:
           example: '37104'
           type: string
         ngsPosition:
-          description: Next Gen Stats position
-          # TODO: Refactor to use enum mentioned earlier
-          enum:
-            - DT
-            - DE
-            - LB
-            - S
-            - CB
-            - SCB
-          example: DT
-          type: string
+          $ref: '#/components/schemas/NextGenStatsPositionEnum'
         ngsPositionGroup:
           $ref: '#/components/schemas/DefensivePositionGroupEnum'
         passRatingNd:
@@ -1375,21 +1481,7 @@ components:
           format: float
           type: number
         position:
-          description: Player position
-          # TODO: Use enum
-          enum:
-            - DE
-            - DT
-            - NT
-            - OLB
-            - ILB
-            - MLB
-            - FS
-            - SS
-            - CB
-            - SCB
-          example: DT
-          type: string
+          $ref: '#/components/schemas/DefensivePositionEnum'
         positionGroup:
           $ref: '#/components/schemas/DefensivePositionGroupEnum'
         pr:
@@ -1538,17 +1630,7 @@ components:
           example: '49410'
           type: string
         ngsPosition:
-          description: Next Gen Stats position
-          # TODO: Use enum
-          enum:
-            - S
-            - CB
-            - SCB
-            - LB
-            - DE
-            - DT
-          example: S
-          type: string
+          $ref: '#/components/schemas/NextGenStatsPositionEnum'
         ngsPositionGroup:
           $ref: '#/components/schemas/DefensivePositionGroupEnum'
         passRatingNd:
@@ -1557,21 +1639,7 @@ components:
           format: float
           type: number
         position:
-          description: Player position
-          # TODO: Use enum
-          enum:
-            - FS
-            - SS
-            - CB
-            - SCB
-            - ILB
-            - OLB
-            - MLB
-            - DE
-            - DT
-            - NT
-          example: FS
-          type: string
+          $ref: '#/components/schemas/DefensivePositionEnum'
         positionGroup:
           $ref: '#/components/schemas/DefensivePositionGroupEnum'
         qd:
@@ -1684,13 +1752,7 @@ components:
           description: Category description
           type: string
         situationType:
-          # TODO: Consider moving this enum to a top level component
-          enum:
-            - PERSONNEL
-            - GAME_SITUATION
-            - FIELD_POSITION
-            - OFFENSIVE_FORMATION
-          type: string
+          $ref: '#/components/schemas/DefensiveSituationTypeEnum'
       type: object
     DefensiveStatCategory:
       description: Definition of defensive statistical categories
@@ -2131,14 +2193,13 @@ components:
           example: 0
           type: integer
         week:
-          # TODO: There is a week enum that can be used here
           description: Specific weeks included in analysis
           example:
           - WEEK_16
           - WEEK_17
           - WEEK_18
           items:
-            type: string
+            $ref: '#/components/schemas/WeekSlugEnum'
           type: array
       type: object
     FantayScoringExplanation:
@@ -2192,9 +2253,8 @@ components:
               type: string
             weekSlug:
               description: Week identifier
-              # TODO: Use the WeekEnum here
               example: WEEK_3
-              type: string
+              $ref: '#/components/schemas/WeekSlugEnum'
           type: object
         teamId:
           description: Team identifier
@@ -2286,10 +2346,9 @@ components:
           example: 3
           type: integer
         weekSlug:
-          # TODO: Use the week enum
           description: Week identifier slug
           example: WEEK_3
-          type: string
+          $ref: '#/components/schemas/WeekSlugEnum'
         yardline:
           description: Field position where play occurred
           example: NE 13
@@ -2419,7 +2478,6 @@ components:
             $ref: '#/components/schemas/ExternalId'
           type: array
         gameType:
-          # TODO: Surely there is a gameType enum
           description: Type of game
           example: UNSPECIFIED
           type: string
@@ -2436,25 +2494,17 @@ components:
           description: Whether game is at neutral venue
           type: boolean
         phase:
-          # TODO: Use or create a GamePhase enum
           description: Game phase
           example: PREGAME
-          type: string
+          $ref: '#/components/schemas/GamePhaseEnum'
         season:
           description: Season year
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
         status:
-          # TODO: If a game status enum doesn't exist, create it and use it here
           description: Game status
-          enum:
-            - SCHEDULED
-            - IN_PROGRESS
-            - FINAL
-            - POSTPONED
-            - CANCELLED
-          type: string
+          $ref: '#/components/schemas/GameStatusEnum'
         ticketUrl:
           description: Primary ticket purchase URL
           format: uri
@@ -2624,7 +2674,6 @@ components:
           description: Eastern time
           type: string
         gameType:
-          # TODO: Should there be a separate gameType enum?
           $ref: '#/components/schemas/SeasonTypeEnum'
         homeDisplayName:
           type: string
@@ -2689,15 +2738,7 @@ components:
         homeTeamScore:
           $ref: '#/components/schemas/TeamScore'
         phase:
-          # TODO: Refactor this out to a top level enum component
-          description: Game phase (P=Pregame, 1-4=Quarter, FINAL=Final)
-          enum:
-            - PREGAME
-            - INGAME
-            - HALFTIME
-            - FINAL
-            - SUSPENDED
-          type: string
+          $ref: '#/components/schemas/GamePhaseEnum'
         time:
           description: Game clock time or status
           example: '11:24'
@@ -2712,12 +2753,7 @@ components:
           nullable: true
           type: string
         roofType:
-          # TODO: Add roofType enum
-          enum:
-            - INDOOR
-            - OUTDOOR
-            - RETRACTABLE
-          type: string
+          $ref: '#/components/schemas/RoofTypeEnum'
         siteCity:
           type: string
         siteFullName:
@@ -3012,21 +3048,7 @@ components:
           example: Lamar Jackson
           type: string
         position:
-          # TODO: Use or create player position enum
-          description: Player position
-          enum:
-            - QB
-            - RB
-            - WR
-            - TE
-            - OL
-            - DL
-            - LB
-            - DB
-            - K
-            - P
-          example: QB
-          type: string
+          $ref: '#/components/schemas/PositionGroupEnum'
         season:
           description: Season year
           example: 2025
@@ -3196,15 +3218,7 @@ components:
           description: Whether team is in red zone
           type: boolean
         status:
-          # TODO: Use or create game status enum
-          enum:
-            - SCHEDULED
-            - IN_PROGRESS
-            - HALFTIME
-            - FINAL
-            - POSTPONED
-            - CANCELLED
-          type: string
+          $ref: '#/components/schemas/GameStatusEnum'
         timeRemaining:
           description: Time remaining in current period
           type: string
@@ -3350,12 +3364,7 @@ components:
           description: Category description
           type: string
         situationType:
-          # TODO: Consider making this enum a top level component
-          enum:
-            - FORMATION
-            - GAME_SITUATION
-            - FIELD_POSITION
-          type: string
+          $ref: '#/components/schemas/OffensiveSituationTypeEnum'
       type: object
     OverallRecord:
       allOf:
@@ -3587,18 +3596,7 @@ components:
         playNumber:
           type: integer
         playType:
-          # TODO: Refactor this into a top level component
-          enum:
-            - PASS
-            - RUSH
-            - PUNT
-            - KICKOFF
-            - FIELD_GOAL
-            - EXTRA_POINT
-            - PENALTY
-            - TIMEOUT
-            - TWO_MINUTE_WARNING
-          type: string
+          $ref: '#/components/schemas/PlayTypeEnum'
         players:
           items:
             $ref: '#/components/schemas/PlayParticipant'
@@ -3699,23 +3697,14 @@ components:
         playId:
           type: integer
         playState:
-          # TODO: Refactor this out to be a top level enum component
-          description: Review state of play
-          enum:
-            - APPROVED
-            - PENDING
-            - REVIEWED
-          type: string
+          $ref: '#/components/schemas/PlayStateEnum'
         playStats:
           description: Individual player statistics for this play
           items:
             $ref: '#/components/schemas/PlayStat'
           type: array
         playType:
-          # TODO: Use the PlayTypeEnum
-          description: Type of play
-          example: play_type_kickoff
-          type: string
+          $ref: '#/components/schemas/PlayTypeEnum'
         playTypeCode:
           description: Numeric code for play type
           type: integer
@@ -4085,25 +4074,17 @@ components:
           example: 52430
           type: integer
         ngsPosition:
-          # TODO: Use or create the next gen stats position enum
-          description: Next Gen Stats position
+          allOf:
+            - $ref: '#/components/schemas/NextGenStatsPositionEnum'
           nullable: true
-          type: string
         ngsPositionGroup:
-          # TODO: Use or create the next gen stats position group enum
-          description: Next Gen Stats position group
+          allOf:
+            - $ref: '#/components/schemas/NextGenStatsPositionGroupEnum'
           nullable: true
-          type: string
         position:
-          # TODO: Use or create the position enum
-          description: Player's position
-          example: WR
-          type: string
+          $ref: '#/components/schemas/NextGenStatsPositionEnum'
         positionGroup:
-          # TODO: Use or create the position group enum
-          description: Player's position group
-          example: WR
-          type: string
+          $ref: '#/components/schemas/NextGenStatsPositionGroupEnum'
         rookieYear:
           description: Player's rookie year
           type: integer
@@ -5322,7 +5303,6 @@ components:
             $ref: '#/components/schemas/ExternalId'
           type: array
         gameType:
-          # TODO: Use or create the gameType enum
           description: Type of game
           example: UNSPECIFIED
           type: string
@@ -5339,25 +5319,17 @@ components:
           description: Whether game is at neutral venue
           type: boolean
         phase:
-          # TODO: Use or create the game phase enum
           description: Game phase
           example: PREGAME
-          type: string
+          $ref: '#/components/schemas/GamePhaseEnum'
         season:
           description: Season year
           type: integer
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
         status:
-          # TODO: Use or create the game status enum
           description: Game status
-          enum:
-            - SCHEDULED
-            - IN_PROGRESS
-            - FINAL
-            - POSTPONED
-            - CANCELLED
-          type: string
+          $ref: '#/components/schemas/GameStatusEnum'
         ticketUrl:
           description: Primary ticket purchase URL
           format: uri
@@ -5424,12 +5396,7 @@ components:
         conference:
           $ref: '#/components/schemas/Conference'
         conferenceAbbr:
-          # TODO: use or create the conference abbr enum
-          description: Conference abbreviation
-          enum:
-            - AFC
-            - NFC
-          type: string
+          $ref: '#/components/schemas/ConferenceEnum'
         darkColor:
           description: Dark team color in hex format
           example: '#ffc62f'
@@ -5505,12 +5472,7 @@ components:
           nullable: true
           type: string
         teamType:
-          # TODO: Make this a top level enum component
-          description: Type of team (regular or Pro Bowl)
-          enum:
-            - TEAM
-            - PRO
-          type: string
+          $ref: '#/components/schemas/TeamTypeEnum'
         tertiaryColor:
           description: Tertiary team color in hex format
           example: '#ffffff'
@@ -5561,19 +5523,13 @@ components:
           example: 4
           type: integer
         weekSlug:
-          # TODO: Use the week slug enum component
           description: Week identifier slug
           example: WEEK_4
-          type: string
+          $ref: '#/components/schemas/WeekSlugEnum'
         weekType:
-          # TODO: Use or create a week type enum
           description: Type of week
-          enum:
-            - HOF
-            - PRE
-            - REG
           example: REG
-          type: string
+          $ref: '#/components/schemas/WeekTypeEnum'
       type: object
     ProjectedStatsResponse:
       description: JSON:API formatted response for projected statistics
@@ -5737,11 +5693,18 @@ components:
           example: 12
           type: integer
         week:
-          # TODO: Use the week slug enum
           description: Week identifier
           example: WEEK_3
-          type: string
+          $ref: '#/components/schemas/WeekSlugEnum'
       type: object
+    RoofTypeEnum:
+      description: Stadium roof type
+      enum:
+        - OUTDOOR
+        - INDOOR
+        - DOME
+        - RETRACTABLE
+      type: string
     ReceivingStatsCategoryEnum:
       description: Statistics categories for receiving stats sorting
       enum:
@@ -6035,14 +5998,7 @@ components:
         quarter:
           type: integer
         scoreType:
-          # TODO: Refactor this out to a top level enum component
-          enum:
-            - TOUCHDOWN
-            - FIELD_GOAL
-            - SAFETY
-            - EXTRA_POINT
-            - TWO_POINT_CONVERSION
-          type: string
+          $ref: '#/components/schemas/ScoreTypeEnum'
         team:
           $ref: '#/components/schemas/Team'
       type: object
@@ -6087,12 +6043,7 @@ components:
           nullable: true
           type: string
         roofType:
-          # TODO: Use or create a roof type enum
-          enum:
-            - OUTDOOR
-            - INDOOR
-            - RETRACTABLE
-          type: string
+          $ref: '#/components/schemas/RoofTypeEnum'
         siteCity:
           type: string
         siteFullName:
@@ -6245,12 +6196,7 @@ components:
           example: ARI
           type: string
         conferenceAbbr:
-          # TODO: Refactor this out to a top level enum component?
-          description: Conference abbreviation
-          enum:
-            - AFC
-            - NFC
-          type: string
+          $ref: '#/components/schemas/ConferenceEnum'
         conferenceFullName:
           description: Full conference name
           example: National Football Conference
@@ -6316,12 +6262,7 @@ components:
             $ref: '#/components/schemas/SocialMedia'
           type: array
         teamType:
-          # TODO: Consider refactoring this out to a top level enum component
-          description: Type of team (regular or Pro Bowl)
-          enum:
-            - TEAM
-            - PRO
-          type: string
+          $ref: '#/components/schemas/TeamTypeEnum'
         venues:
           items:
             $ref: '#/components/schemas/TeamVenue'
@@ -7754,15 +7695,7 @@ components:
           example: eyJtb2RlbCI6ImRlc2t0b3AiLCJ2ZXJzaW9uIjoiQ2hyb21lIiwib3NOYW1lIjoiV2luZG93cyIsIm9zVmVyc2lvbiI6IjEwIn0=
           type: string
         networkType:
-          # TODO: Refactor this out to a top level enum component
-          description: Type of network connection
-          enum:
-            - other
-            - wifi
-            - cellular
-            - ethernet
-          example: other
-          type: string
+          $ref: '#/components/schemas/NetworkTypeEnum'
       type: object
     TokenResponse:
       properties:
@@ -7882,12 +7815,7 @@ components:
         postalCode:
           type: string
         roofType:
-          # TODO: Use or create roof type enum
-          enum:
-            - OUTDOOR
-            - DOME
-            - RETRACTABLE
-          type: string
+          $ref: '#/components/schemas/RoofTypeEnum'
         siteCity:
           type: string
         siteFullName:
@@ -8066,19 +7994,13 @@ components:
           example: 4
           type: integer
         weekSlug:
-          # TODO: use the week slug enum
           description: Week identifier slug
           example: WEEK_4
-          type: string
+          $ref: '#/components/schemas/WeekSlugEnum'
         weekType:
-          # TODO: Use or create the top level week type enum component
           description: Type of week
-          enum:
-            - HOF
-            - PRE
-            - REG
           example: REG
-          type: string
+          $ref: '#/components/schemas/WeekTypeEnum'
       type: object
     WeeklyGameDetail:
       # TODO: Compare to Game component, consolidate if possible
@@ -8344,15 +8266,9 @@ components:
           example: '57124'
           type: string
         ngsPosition:
-          # TODO: Use or create the next gen stats position enum
-          description: Next Gen Stats position
-          example: QB
-          type: string
+          $ref: '#/components/schemas/NextGenStatsPositionEnum'
         ngsPositionGroup:
-          # TODO: Use or create the next gen stats position group enum
-          description: Next Gen Stats position group
-          example: QB
-          type: string
+          $ref: '#/components/schemas/NextGenStatsPositionGroupEnum'
         opponentTeamId:
           description: Opponent team identifier
           example: '3900'
@@ -8363,15 +8279,9 @@ components:
           format: float
           type: number
         position:
-          # TODO: Use or create the position enum
-          description: Player position
-          example: QB
-          type: string
+          $ref: '#/components/schemas/NextGenStatsPositionEnum'
         positionGroup:
-          # TODO: Use or create the position group enum
-          description: Position group
-          example: QB
-          type: string
+          $ref: '#/components/schemas/NextGenStatsPositionGroupEnum'
         qbp:
           description: Times under QB pressure
           example: 19
@@ -8584,7 +8494,6 @@ components:
           description: Opponent team identifier
           example: '3900'
           type: string
-        # TODO: Verify the possible values where this OffensivePlayerPositionEnum is being used.
         position:
           $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         positionGroup:
@@ -8792,10 +8701,9 @@ components:
           example: 4
           type: integer
         week:
-          # TODO: Use the week slug enum
           description: Week identifier
           example: WEEK_3
-          type: string
+          $ref: '#/components/schemas/WeekSlugEnum'
       type: object
     WeeksResponse:
       properties:
