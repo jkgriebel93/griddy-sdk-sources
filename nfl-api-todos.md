@@ -1,8 +1,8 @@
 # TODO Comments in nfl-com-api.yaml
 
 Original remaining TODOs: 77
-Total resolved: 57
-**Current remaining: 20 TODOs**
+Total resolved: 61
+**Current remaining: 16 TODOs**
 
 ## Completed Issues
 
@@ -41,16 +41,24 @@ The following issues have been addressed:
   - Created WeeklyGameDetailReplay with 50+ properties for video metadata
   - Created WeeklyGameDetailSummary with supporting schemas (WeeklyGameDetailSummaryTeam, WeeklyGameDetailSummaryScore, WeeklyGameDetailSummaryTimeouts)
   - Based on actual API response data from scratch/football_v2_experience_weekly-game-details.json
+- ✅ **GamecenterResponse Leaders Schema Definition**: Previously defined all three leader leaderboard types (3 TODOs)
+  - Created PassDistanceLeaderEntry schema extending LeaderEntryBaseSchema
+  - Created SpeedLeaderEntry schema extending LeaderEntryBaseSchema
+  - Created TimeToSackLeaderEntry schema extending LeaderEntryBaseSchema
+  - All follow consistent pattern with home/visitor arrays
+- ✅ **PassRusherStats Schema Definition**: Previously defined comprehensive pass rusher statistics schema (1 TODO)
+  - Complete schema with player identification and pass rush performance metrics
+  - Includes blitzCount, avgSeparationToQb, tackles, assists, sacks, and forcedFumbles
 
-**Total Completed: 57 TODOs across 16 items**
+**Total Completed: 61 TODOs across 18 items**
 
 ## Remaining Issues
 
 The following issues have not yet been addressed:
-- ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (18 TODOs, 2 completed) - *Research-heavy*
+- ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (14 TODOs, 6 completed) - *Research-heavy*
 - ⏸️ [Issue #12](https://github.com/jkgriebel93/griddy-sdk-sources/issues/12): Create miscellaneous missing enums (2 TODOs)
 
-**Total Remaining: 20 TODOs across 2 issues**
+**Total Remaining: 16 TODOs across 2 issues**
 
 Note: Issues #7 (Consolidate duplicate or similar components), #9 (Refactor metrics explanation components), and #13 (Address miscellaneous TODO comments) have been fully resolved.
 
@@ -108,17 +116,11 @@ Note: Issues #7 (Consolidate duplicate or similar components), #9 (Refactor metr
 
 ## GamecenterResponse
 
-| Line | TODO Comment |
-|------|--------------|
-| 2655 | Investigate the GamecenterResponse.leaders.passDistanceLeaders object |
-| 2658 | Investigate the GamecenterResponse.leaders.speedLeaders object |
-| 2661 | Investigate the GamecenterResponse.leaders.timeToSackLeaders object |
+**Note:** All three leader properties (passDistanceLeaders, speedLeaders, timeToSackLeaders) have been defined with proper schemas (PassDistanceLeaderEntry, SpeedLeaderEntry, TimeToSackLeaderEntry).
 
 ## PassRusherStats
 
-| Line | TODO Comment |
-|------|--------------|
-| 3280 | Investigate the PassRusherStats object |
+**Note:** PassRusherStats schema has been fully defined with player identification and pass rush performance metrics.
 
 ## PlayerInjury
 

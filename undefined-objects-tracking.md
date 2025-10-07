@@ -2,9 +2,9 @@
 
 **Related Issue:** [#8 - Investigate and define undefined object structures](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8)
 
-**Total TODOs:** 18
-**Completed:** 2
-**Remaining:** 18
+**Total TODOs:** 20
+**Completed:** 6
+**Remaining:** 14
 
 This document tracks all schema components in the NFL API OpenAPI specification that contain undefined object structures requiring investigation and proper schema definition.
 
@@ -232,50 +232,68 @@ data:
 
 ---
 
-### GamecenterResponse.leaders
+### GamecenterResponse.leaders ✅ RESOLVED
 
-**Schema Location:** Multiple properties in GamecenterResponse
+**Schema Location:** Multiple properties in GamecenterResponse (lines 2713-2745)
 
-#### 1. passDistanceLeaders
+**Status:** **COMPLETED** - All three leader properties now have proper schema definitions
 
-**Line:** `openapi/nfl-com-api.yaml:2655`
+**Resolution:** Defined comprehensive schemas for all leader leaderboard types with supporting entry schemas.
 
-**TODO Comment:** `Investigate the GamecenterResponse.leaders.passDistanceLeaders object`
+**New Schema Components Created:**
+- `PassDistanceLeaderEntry` (line 2698) - Extends LeaderEntryBaseSchema with passInfo.airDistance
+- `SpeedLeaderEntry` (line 2678) - Extends LeaderEntryBaseSchema with maxSpeed
+- `TimeToSackLeaderEntry` (line 2687) - Extends LeaderEntryBaseSchema with tackleInfo.timeToTackle
+
+#### 1. passDistanceLeaders ✅
 
 **Current Definition:**
 ```yaml
 passDistanceLeaders:
-  description: Top pass distance leaders for the game
-  # TODO: Investigate the GamecenterResponse.leaders.passDistanceLeaders object
   type: object
+  properties:
+    home:
+      items:
+        $ref: '#/components/schemas/PassDistanceLeaderEntry'
+      type: array
+    visitor:
+      items:
+        $ref: '#/components/schemas/PassDistanceLeaderEntry'
+      type: array
 ```
 
-#### 2. speedLeaders
-
-**Line:** `openapi/nfl-com-api.yaml:2658`
-
-**TODO Comment:** `Investigate the GamecenterResponse.leaders.speedLeaders object`
+#### 2. speedLeaders ✅
 
 **Current Definition:**
 ```yaml
 speedLeaders:
-  description: Top speed leaders for the game
-  # TODO: Investigate the GamecenterResponse.leaders.speedLeaders object
   type: object
+  properties:
+    home:
+      items:
+        $ref: '#/components/schemas/SpeedLeaderEntry'
+      type: array
+    visitor:
+      items:
+        $ref: '#/components/schemas/SpeedLeaderEntry'
+      type: array
 ```
 
-#### 3. timeToSackLeaders
-
-**Line:** `openapi/nfl-com-api.yaml:2661`
-
-**TODO Comment:** `Investigate the GamecenterResponse.leaders.timeToSackLeaders object`
+#### 3. timeToSackLeaders ✅
 
 **Current Definition:**
 ```yaml
 timeToSackLeaders:
-  description: Time to sack leaders for the game
-  # TODO: Investigate the GamecenterResponse.leaders.timeToSackLeaders object
   type: object
+  properties:
+    home:
+      items:
+        $ref: '#/components/schemas/TimeToSackLeaderEntry'
+      type: array
+    visitor:
+      items:
+        $ref: '#/components/schemas/TimeToSackLeaderEntry'
+      type: array
 ```
 
 **API Endpoint:**
@@ -285,21 +303,67 @@ timeToSackLeaders:
 
 ---
 
-### PassRusherStats
+### PassRusherStats ✅ RESOLVED
 
-**Schema Location:** `openapi/nfl-com-api.yaml:3280`
+**Schema Location:** `openapi/nfl-com-api.yaml:3361`
 
-**TODO Comment:** `Investigate the PassRusherStats object`
+**Status:** **COMPLETED** - Comprehensive schema with player identification and pass rush statistics
+
+**Resolution:** Defined complete schema for pass rusher statistics including player info and performance metrics.
 
 **Current Definition:**
 ```yaml
 PassRusherStats:
-  # TODO: Investigate the PassRusherStats object
+  properties:
+    esbId:
+      type: string
+      example: 'VER641394'
+    gsisId:
+      type: string
+      example: '00-0039852'
+    teamId:
+      type: string
+      example: '2510'
+    playerName:
+      type: string
+      example: 'Jared Verse'
+    shortName:
+      type: string
+      example: 'J. Verse'
+    jerseyNumber:
+      type: integer
+      example: 8
+    position:
+      $ref: '#/components/schemas/NextGenStatsPositionEnum'
+    blitzCount:
+      type: integer
+      example: 37
+    avgSeparationToQb:
+      type: number
+      format: float
+      example: 4.797052221914545
+    headshot:
+      description: URL to player headshot image
+      format: uri
+      type: string
+    tackles:
+      type: integer
+      example: 4
+    assists:
+      type: integer
+      example: 2
+    sacks:
+      type: number
+      format: float
+      example: 1.5
+    forcedFumbles:
+      type: integer
+      example: 1
   type: object
 ```
 
 **Referenced By:**
-- `GamecenterResponse.passRushers` (lines 2668, 2678) - Used in both home and visitor arrays
+- `GamecenterResponse.passRushers` (lines 2750, 2761) - Used in both home and visitor arrays
 
 **API Endpoint:**
 - `GET /api/stats/gamecenter` (line 11418)
@@ -502,16 +566,18 @@ taggedVideos:
 
 ### By Category
 
-**Game-Related Objects (7 TODOs):**
+**Game-Related Objects (4 TODOs, 3 completed):**
 - CurrentGame.extensions
 - Game.extensions
 - GameInsight.content
 - GamePreviewResponse.preview
 - GameStatsResponse.data
-- GamecenterResponse.leaders (3 properties)
+- ✅ GamecenterResponse.leaders.passDistanceLeaders (COMPLETED)
+- ✅ GamecenterResponse.leaders.speedLeaders (COMPLETED)
+- ✅ GamecenterResponse.leaders.timeToSackLeaders (COMPLETED)
 
-**Player Statistics (5 TODOs):**
-- PassRusherStats
+**Player Statistics (4 TODOs, 1 completed):**
+- ✅ PassRusherStats (COMPLETED)
 - ReceiverStats
 - RusherStats
 - PlayerStatistic
@@ -534,7 +600,6 @@ taggedVideos:
 
 **High Priority** (Used by multiple endpoints or core functionality):
 - Game.extensions (used in 3 different response schemas)
-- GamecenterResponse.leaders (3 properties, core stats endpoint)
 - PlayerStatistic (used across 11 different stat categories in boxscores)
 
 **Medium Priority** (Single endpoint, frequently accessed):
@@ -571,6 +636,25 @@ taggedVideos:
 - `WeeklyGameDetailSummaryTimeouts` (line 7762)
 
 **Description:** Complete schema for live game state including score by quarter, possession status, timeouts, field position, game clock, weather, and other real-time game situation data. Uses composition pattern with separate schemas for team state, scoring, and timeout tracking.
+
+### GamecenterResponse.leaders (3 properties) ✅
+
+**Completed:** Previously (before 2025-10-07)
+
+**Schema Components Created:**
+- `PassDistanceLeaderEntry` (line 2698) - Pass distance leader with airDistance property
+- `SpeedLeaderEntry` (line 2678) - Speed leader with maxSpeed property
+- `TimeToSackLeaderEntry` (line 2687) - Time to sack leader with timeToTackle property
+
+**Description:** All three leader leaderboard types (passDistanceLeaders, speedLeaders, timeToSackLeaders) now have proper schema definitions. Each extends `LeaderEntryBaseSchema` and adds sport-specific metrics. All three follow the same pattern with home/visitor arrays for each team.
+
+### PassRusherStats ✅
+
+**Completed:** Previously (before 2025-10-07)
+
+**Schema Component:** `PassRusherStats` (line 3361)
+
+**Description:** Complete schema for pass rusher statistics including player identification (esbId, gsisId, playerName, etc.) and performance metrics (blitzCount, avgSeparationToQb, tackles, assists, sacks, forcedFumbles). Used in GamecenterResponse for both home and visitor pass rush statistics.
 
 ---
 
