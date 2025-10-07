@@ -2647,19 +2647,102 @@ components:
           format: uuid
           type: string
       type: object
+    LeaderEntryBaseSchema:
+      type: object
+      properties:
+        gsisPlayId:
+          type: integer
+          example: 4847
+        esbId:
+          type: string
+          example: 'ATW460468'
+        jerseyNumber:
+          type: integer
+          example: 5
+        playerName:
+          type: string
+          example: 'Tutu Atwell'
+        position:
+          $ref: '#/components/schemas/NextGenStatsPositionEnum'
+        shortName:
+          type: string
+          example: 'T. Atwell'
+        teamId:
+          type: string
+          example: '2510'
+        headshot:
+          description: URL to player headshot image (contains formatInstructions placeholder)
+          example: https://static.www.nfl.com/image/upload/formatInstructions/league/cruqs6qpbykh7a2whd7p
+          format: uri
+          type: string
+    SpeedLeaderEntry:
+      allOf:
+        - $ref: '#/components/schemas/LeaderEntryBaseSchema'
+      properties:
+        maxSpeed:
+          type: number
+          format: float
+          example: 20.0250000445
+
+    TimeToSackLeaderEntry:
+      allOf:
+        - $ref: '#/components/schemas/LeaderEntryBaseSchema'
+      properties:
+        tackleInfo:
+          type: object
+          properties:
+            timeToTackle:
+              type: number
+              format: float
+              example: 3.75
+    PassDistanceLeaderEntry:
+      allOf:
+        - $ref: '#/components/schemas/LeaderEntryBaseSchema'
+      properties:
+        passInfo:
+          type: object
+          properties:
+            airDistance:
+              type: number
+              format: float
+              example: 53.34561369034946
     GamecenterResponse:
       properties:
         leaders:
           properties:
             passDistanceLeaders:
-              # TODO: Investigate the GamecenterResponse.leaders.passDistanceLeaders object
               type: object
+              properties:
+                home:
+                  items:
+                    $ref: '#/components/schemas/PassDistanceLeaderEntry'
+                  type:
+                    array
+                visitor:
+                  items:
+                    $ref: '#/components/schemas/PassDistanceLeaderEntry'
+                  type: array
             speedLeaders:
-              # TODO: Investigate the GamecenterResponse.leaders.speedLeaders object
               type: object
+              properties:
+                home:
+                  items:
+                    $ref: '#/components/schemas/SpeedLeaderEntry'
+                  type: array
+                visitor:
+                  items:
+                    $ref: '#/components/schemas/SpeedLeaderEntry'
             timeToSackLeaders:
-              # TODO: Investigate the GamecenterResponse.leaders.timeToSackLeaders object
               type: object
+              properties:
+                home:
+                  items:
+                    $ref: '#/components/schemas/TimeToSackLeaderEntry'
+                  type: array
+                visitor:
+                  items:
+                    $ref: '#/components/schemas/TimeToSackLeaderEntry'
+                  type: array
           type: object
         passRushers:
           properties:
@@ -3276,8 +3359,51 @@ components:
               type: boolean
           type: object
     PassRusherStats:
-      additionalProperties: true
-      # TODO: Investigate the PassRusherStats object
+      properties:
+        esbId:
+          type: string
+          example: 'VER641394'
+        gsisId:
+          type: string
+          example: '00-0039852'
+        teamId:
+          type: string
+          example: '2510'
+        playerName:
+          type: string
+          example: 'Jared Verse'
+        shortName:
+          type: string
+          example: 'J. Verse'
+        jerseyNumber:
+          type: integer
+          example: 8
+        position:
+          $ref: '#/components/schemas/NextGenStatsPositionEnum'
+        blitzCount:
+          type: integer
+          example: 37
+        avgSeparationToQb:
+          type: number
+          format: float
+          example: 4.797052221914545
+        headshot:
+          description: URL to player headshot image
+          format: uri
+          type: string
+        tackles:
+          type: integer
+          example: 4
+        assists:
+          type: integer
+          example: 2
+        sacks:
+          type: number
+          format: float
+          example: 1.5
+        forcedFumbles:
+          type: integer
+          example: 1
       type: object
     PasserStats:
       properties:
