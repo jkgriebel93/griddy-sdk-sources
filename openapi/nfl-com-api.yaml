@@ -1245,7 +1245,6 @@ components:
           example: DE
           type: string
         positionGroup:
-          description: Position group
           $ref: '#/components/schemas/DefensivePositionGroupEnum'
         pr:
           description: Pass rush grade/rating
@@ -1374,7 +1373,6 @@ components:
           example: DT
           type: string
         ngsPositionGroup:
-          description: Next Gen Stats position group
           $ref: '#/components/schemas/DefensivePositionGroupEnum'
         passRatingNd:
           description: Passer rating allowed when targeted (no data excluded)
@@ -1397,7 +1395,6 @@ components:
           example: DT
           type: string
         positionGroup:
-          description: Position group
           $ref: '#/components/schemas/DefensivePositionGroupEnum'
         pr:
           description: Pass rush snaps
@@ -1556,7 +1553,6 @@ components:
           example: S
           type: string
         ngsPositionGroup:
-          description: Next Gen Stats position group
           $ref: '#/components/schemas/DefensivePositionGroupEnum'
         passRatingNd:
           description: Passer rating allowed when targeted
@@ -1579,7 +1575,6 @@ components:
           example: FS
           type: string
         positionGroup:
-          description: Position group
           $ref: '#/components/schemas/DefensivePositionGroupEnum'
         qd:
           description: Qualified defender status
@@ -4744,20 +4739,16 @@ components:
           example: '54905'
           type: string
         ngsPosition:
-          description: Next Gen Stats position
           $ref: '#/components/schemas/OffensiveSkillPositionEnum'
         ngsPositionGroup:
-          description: Next Gen Stats position group
           $ref: '#/components/schemas/OffensiveSkillPositionEnum'
         opponentTeamId:
           description: Opponent team identifier
           example: '3900'
           type: string
         position:
-          description: Player position
           $ref: '#/components/schemas/OffensiveSkillPositionEnum'
         positionGroup:
-          description: Position group
           $ref: '#/components/schemas/OffensiveSkillPositionEnum'
         qr:
           description: Qualified receiver status
@@ -4986,16 +4977,12 @@ components:
           example: '55113'
           type: string
         ngsPosition:
-          description: Next Gen Stats position
           $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         ngsPositionGroup:
-          description: Next Gen Stats position group
           $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         position:
-          description: Player position
           $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         positionGroup:
-          description: Position group
           $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         qr:
           description: Qualified rusher status
@@ -8840,20 +8827,18 @@ components:
           example: '57124'
           type: string
         ngsPosition:
-          description: Next Gen Stats position
           $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         ngsPositionGroup:
-          description: Next Gen Stats position group
           $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         opponentTeamId:
           description: Opponent team identifier
           example: '3900'
           type: string
+        # TODO: Verify the possible values where this OffensivePlayerPositionEnum is being used.
+        # It seems to be used to cover _all_ position related fields, perhaps incorrectly.
         position:
-          description: Player position
           $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         positionGroup:
-          description: Position group
           $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         qr:
           description: Qualified rusher status
