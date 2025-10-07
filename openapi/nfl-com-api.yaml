@@ -421,7 +421,7 @@ components:
     BoxScoreResponse:
       properties:
         game:
-          $ref: '#/components/schemas/ProGame'
+          $ref: '#/components/schemas/Game'
         playerStats:
           properties:
             away:
@@ -916,7 +916,7 @@ components:
         videos:
           description: Additional video information
           items:
-            # TODO: Explore what this object actually looks like
+            # TODO: Investigate the CoachesFilmVideo.videos object
             type: object
           type: array
         webLink:
@@ -1048,7 +1048,7 @@ components:
           type: string
         extensions:
           items:
-            # TODO: Explore to find out what CurrentGame.extensions is
+            # TODO: Investigate the CurrentGame.extensions object
             type: object
           type: array
         externalIds:
@@ -1867,7 +1867,7 @@ components:
       properties:
         games:
           items:
-            $ref: '#/components/schemas/ProGame'
+            $ref: '#/components/schemas/Game'
           type: array
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -2239,7 +2239,7 @@ components:
       properties:
         games:
           items:
-            $ref: '#/components/schemas/ProGame'
+            $ref: '#/components/schemas/Game'
           type: array
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -2302,9 +2302,10 @@ components:
           type: object
       type: object
     Game:
+      description: NFL game information including teams, scheduling, and venue details
       properties:
         awayTeam:
-          $ref: '#/components/schemas/ProTeam'
+          $ref: '#/components/schemas/Team'
         broadcastInfo:
           $ref: '#/components/schemas/BroadcastInfo'
         category:
@@ -2347,7 +2348,7 @@ components:
           example: UNSPECIFIED
           type: string
         homeTeam:
-          $ref: '#/components/schemas/ProTeam'
+          $ref: '#/components/schemas/Team'
         id:
           description: Unique game identifier
           format: uuid
@@ -2389,8 +2390,7 @@ components:
           description: Week number
           type: integer
         weekType:
-          description: Week type (e.g., REG, HOF)
-          type: string
+          $ref: '#/components/schemas/WeekTypeEnum'
       type: object
     GameDetail:
       properties:
@@ -3317,7 +3317,6 @@ components:
           type: array
       type: object
     PassingStats:
-      # TODO: Investigate the difference(s) between PasserStats and PassingStats, consolidate if possible
       properties:
         attempts:
           type: integer
@@ -3424,7 +3423,7 @@ components:
             $ref: '#/components/schemas/Drive'
           type: array
         game:
-          $ref: '#/components/schemas/ProGame'
+          $ref: '#/components/schemas/Game'
         lastPlay:
           $ref: '#/components/schemas/Play'
         scoringSummary:
@@ -3974,7 +3973,6 @@ components:
       description: Player injury information (structure varies based on injury details)
       type: object
     PlayerPassingStats:
-      # TODO: To what degree can this be consolidated with Passing/Passer Stats?
       properties:
         att:
           description: Attempts
@@ -4255,7 +4253,6 @@ components:
                     description: Reference to projected points
                     type: string
                   type:
-                    # TODO: What other values can this enum have?
                     enum: 
                       - player-week-projected-points
                     type: string
@@ -4268,7 +4265,6 @@ components:
                     description: Reference to projected stats
                     type: string
                   type:
-                    # TODO: What values can this enum have?
                     enum:
                       - player-week-projected-stats
                     type: string
@@ -4276,7 +4272,6 @@ components:
               type: array
           type: object
         type:
-          # TODO: What values can this have?
           description: Resource type
           enum:
             - player
@@ -4887,7 +4882,6 @@ components:
           description: Unique identifier for this projection
           type: string
         type:
-          # TODO: What values can this have?
           enum:
             - player-week-projected-points
           type: string
@@ -5028,7 +5022,6 @@ components:
           description: Unique identifier for these stats
           type: string
         type:
-          # TODO: Are all these type fields truly enums?
           enum:
             - player-week-projected-stats
           type: string
@@ -5068,97 +5061,6 @@ components:
             format: float
             type: number
         type: object
-    ProGame:
-      # TODO: Compare how this differs from Game
-      properties:
-        awayTeam:
-          $ref: '#/components/schemas/Team'
-        broadcastInfo:
-          $ref: '#/components/schemas/BroadcastInfo'
-        category:
-          allOf:
-          - $ref: '#/components/schemas/PrimetimeGameCategoryEnum'
-          nullable: true
-        date:
-          description: Game date (YYYY-MM-DD)
-          format: date
-          type: string
-        dateAmPm:
-          $ref: '#/components/schemas/MeridiemEnum'
-        dateDay:
-          description: Day of week (full)
-          type: string
-        dateDayMonth:
-          description: Date in M/D format
-          type: string
-        dateDayShort:
-          description: Day of week (abbreviated)
-          type: string
-        dateTime:
-          description: Time without AM/PM
-          type: string
-        dateTimeAmPm:
-          description: Time with AM/PM
-          type: string
-        extensions:
-          description: Additional game data extensions
-          # TODO: Investigate the ProGame.extensions object
-          items:
-            type: object
-          type: array
-        externalIds:
-          items:
-            $ref: '#/components/schemas/ExternalId'
-          type: array
-        gameType:
-          description: Type of game
-          example: UNSPECIFIED
-          type: string
-        homeTeam:
-          $ref: '#/components/schemas/Team'
-        id:
-          description: Unique game identifier
-          format: uuid
-          type: string
-        international:
-          description: Whether game is played internationally
-          type: boolean
-        neutralSite:
-          description: Whether game is at neutral venue
-          type: boolean
-        phase:
-          $ref: '#/components/schemas/GamePhaseEnum'
-        season:
-          description: Season year
-          type: integer
-        seasonType:
-          $ref: '#/components/schemas/SeasonTypeEnum'
-        status:
-          $ref: '#/components/schemas/GameStatusEnum'
-        ticketUrl:
-          description: Primary ticket purchase URL
-          format: uri
-          nullable: true
-          type: string
-        ticketVendors:
-          items:
-            $ref: '#/components/schemas/TicketVendor'
-          type: array
-        time:
-          description: Game time in UTC
-          format: date-time
-          type: string
-        venue:
-          $ref: '#/components/schemas/Venue'
-        version:
-          description: Data version number
-          type: integer
-        week:
-          description: Week number
-          type: integer
-        weekType:
-          $ref: '#/components/schemas/WeekTypeEnum'
-      type: object
     ProInjuryReportResponse:
       # TODO: How does this compare to regular injury report response (if there is one)
       properties:
@@ -5645,7 +5547,6 @@ components:
           $ref: '#/components/schemas/TeamTypeEnum'
       type: object
     ScheduledGame:
-      # TODO: How is this different from Game? Can it be consolidated?
       properties:
         gameDate:
           description: Game date (YYYY-MM-DD format)
@@ -7631,9 +7532,8 @@ components:
           $ref: '#/components/schemas/WeekTypeEnum'
       type: object
     WeeklyGameDetail:
-      # TODO: Compare to Game component, consolidate if possible
       allOf:
-      - $ref: '#/components/schemas/ProGame'
+      - $ref: '#/components/schemas/Game'
       - properties:
           awayTeamStandings:
             $ref: '#/components/schemas/Standings'

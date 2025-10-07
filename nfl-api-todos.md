@@ -1,8 +1,8 @@
 # TODO Comments in nfl-com-api.yaml
 
 Original remaining TODOs: 77
-Recently resolved: 22
-**Current remaining: 55 TODOs**
+Recently resolved: 23
+**Current remaining: 54 TODOs**
 
 ## Completed Issues
 
@@ -33,19 +33,20 @@ The following issues have been addressed:
   - Removed incorrect example comment
   - Addressed LiveGame Team component questions
 - ✅ **Passing Stats Consolidation**: Consolidated WeeklyPlayerPassingStats to extend PlayerPassingStats using allOf composition (1 TODO)
+- ✅ **Game Schema Consolidation**: Consolidated ProGame into Game schema (1 TODO)
 
-**Total Completed: 77 TODOs across 11 items**
+**Total Completed: 78 TODOs across 12 items**
 
 ## Remaining Issues
 
 The following issues have not yet been addressed:
-- ⏸️ [Issue #7](https://github.com/jkgriebel93/griddy-sdk-sources/issues/7): Consolidate duplicate or similar components (23 TODOs) - *Research-heavy*
+- ⏸️ [Issue #7](https://github.com/jkgriebel93/griddy-sdk-sources/issues/7): Consolidate duplicate or similar components (22 TODOs) - *Research-heavy*
 - ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (17 TODOs) - *Research-heavy*
 - ⏸️ [Issue #9](https://github.com/jkgriebel93/griddy-sdk-sources/issues/9): Refactor metrics explanation components (12 TODOs) - *Research-heavy*
 - ⏸️ [Issue #12](https://github.com/jkgriebel93/griddy-sdk-sources/issues/12): Create miscellaneous missing enums (2 TODOs)
 - ⏸️ [Issue #13](https://github.com/jkgriebel93/griddy-sdk-sources/issues/13): Address miscellaneous TODO comments (1 TODO)
 
-**Total Remaining: 55 TODOs across 5 issues**
+**Total Remaining: 54 TODOs across 5 issues**
 
 ---
 
@@ -124,6 +125,8 @@ The following issues have not yet been addressed:
 | 2333 | Investigate what this fixture object looks like |
 
 ## Game
+
+**Note:** ProGame has been consolidated into Game schema. Game now uses Team (instead of ProTeam) and WeekTypeEnum.
 
 | Line | TODO Comment |
 |------|--------------|
@@ -244,13 +247,6 @@ The following issues have not yet been addressed:
 | Line | TODO Comment |
 |------|--------------|
 | 5242 | Are all these type fields truly enums? |
-
-## ProGame
-
-| Line | TODO Comment |
-|------|--------------|
-| 5283 | Compare how this differs from Game |
-| 5316 | Investigate the ProGame.extensions object |
 
 ## ProInjuryReportResponse
 
