@@ -9678,10 +9678,7 @@ paths:
       - Betting
   /api/schedules/weeks:
     get:
-      description: "Retrieves all weeks for a specific season including preseason,\
-        \ regular season, \nand postseason weeks. Returns week dates, types, and teams\
-        \ on bye for each week.\nThis endpoint provides a comprehensive season calendar\
-        \ with all scheduling information.\n"
+      description: "Retrieves all weeks for a specific season including preseason, regular season, and postseason weeks. Returns week dates, types, and teams on bye for each week. This endpoint provides a comprehensive season calendar with all scheduling information."
       operationId: getScheduleSeasonWeeks
       parameters:
       - description: Season year
@@ -9777,8 +9774,7 @@ paths:
         '
       operationId: getPlaysWinProbability
       parameters:
-      - description: "Game identifier(s) in 10-digit format (YYYYMMDDNN). \nCan be\
-          \ a single game ID or multiple game IDs for batch retrieval.\n"
+      - description: "Game identifier(s) in 10-digit format (YYYYMMDDNN). Can be a single game ID or multiple game IDs for batch retrieval. "
         examples:
           multiple:
             summary: Multiple games
@@ -9881,13 +9877,7 @@ paths:
       - Win Probability
   /api/secured/stats/defense/nearest/season:
     get:
-      description: "Retrieves comprehensive defensive statistics for NFL players during\
-        \ a specified season.\nReturns detailed coverage metrics including targets\
-        \ allowed, completion rates, pass rating allowed,\nyards after catch prevention,\
-        \ and advanced Next Gen Stats data. Supports filtering by qualified \ndefenders,\
-        \ teams, and various sorting options. Data includes traditional defensive\
-        \ stats and \nadvanced analytics like EPA (Expected Points Added), CROE (Completion\
-        \ Rate Over Expected), \nreceiver separation allowed, and coverage snap counts.\n"
+      description: "Retrieves comprehensive defensive statistics for NFL players during a specified season. Returns detailed coverage metrics including targets allowed, completion rates, pass rating allowed, yards after catch prevention, and advanced Next Gen Stats data. Supports filtering by qualified defenders, teams, and various sorting options. Data includes traditional defensive stats and advanced analytics like EPA (Expected Points Added), CROE (Completion Rate Over Expected), receiver separation allowed, and coverage snap counts."
       operationId: getDefensiveStatsBySeason
       parameters:
       - description: Season year
@@ -10003,13 +9993,7 @@ paths:
       - Defensive Statistics
   /api/secured/stats/defense/overview/season:
     get:
-      description: "Retrieves comprehensive defensive overview statistics for NFL\
-        \ players during a specified season.\nReturns detailed metrics including traditional\
-        \ defensive stats (tackles, stops, sacks), coverage \nmetrics (targets, completions\
-        \ allowed, pass rating allowed), pass rush data, and advanced \nanalytics.\
-        \ Supports filtering by qualified defenders, teams, and various sorting options.\n\
-        Data includes snap counts, tackle efficiency, coverage effectiveness, and\
-        \ situational performance.\n"
+      description: "Retrieves comprehensive defensive overview statistics for NFL players during a specified season. Returns detailed metrics including traditional defensive stats (tackles, stops, sacks), coverage metrics (targets, completions allowed, pass rating allowed), pass rush data, and advanced analytics. Supports filtering by qualified defenders, teams, and various sorting options. Data includes snap counts, tackle efficiency, coverage effectiveness, and situational performance."
       operationId: getDefensiveOverviewStatsBySeason
       parameters:
       - description: Season year
@@ -11138,13 +11122,7 @@ paths:
       - Player Rushing Statistics
   /api/secured/stats/team-defense/overview/season:
     get:
-      description: "Retrieves comprehensive defensive statistics for NFL teams during\
-        \ a specified season.\nReturns detailed metrics including traditional defensive\
-        \ stats, advanced analytics like EPA\nand RYOE, Next Gen Stats data, and situational\
-        \ performance breakdowns. Supports filtering\nby various defensive situations\
-        \ including personnel packages (Base, Nickel, Dime), \ngame situations (leading,\
-        \ trailing, tied), field positions (red zone, goal-to-go), \nand offensive\
-        \ formations faced (shotgun, under center, pistol, motion).\n"
+      description: "Retrieves comprehensive defensive statistics for NFL teams during a specified season. Returns detailed metrics including traditional defensive stats, advanced analytics like EPA and RYOE, Next Gen Stats data, and situational performance breakdowns. Supports filtering by various defensive situations including personnel packages (Base, Nickel, Dime), game situations (leading, trailing, tied), field positions (red zone, goal-to-go), and offensive formations faced (shotgun, under center, pistol, motion)."
       operationId: getTeamDefenseStatsBySeason
       parameters:
       - description: Season year
@@ -11510,14 +11488,7 @@ paths:
       - Team Defense Rush Statistics
   /api/secured/stats/team-offense/overview/season:
     get:
-      description: "Retrieves comprehensive offensive overview statistics for NFL\
-        \ teams during a specified season.\nReturns detailed metrics including traditional\
-        \ offensive stats, advanced analytics like EPA\nand efficiency ratings, Next\
-        \ Gen Stats data, and situational performance breakdowns. \nSupports filtering\
-        \ by various offensive situations including formations (shotgun, under center,\
-        \ pistol),\ngame situations (leading, trailing, tied), and field positions\
-        \ (red zone, goal-to-go).\nIncludes total offense, passing offense, rushing\
-        \ offense, and scoring metrics.\n"
+      description: "Retrieves comprehensive offensive overview statistics for NFL teams during a specified season. Returns detailed metrics including traditional offensive stats, advanced analytics like EPA and efficiency ratings, Next Gen Stats data, and situational performance breakdowns. Supports filtering by various offensive situations including formations (shotgun, under center, pistol), game situations (leading, trailing, tied), and field positions (red zone, goal-to-go). Includes total offense, passing offense, rushing offense, and scoring metrics."
       operationId: getTeamOffenseOverviewStatsBySeason
       parameters:
       - description: Season year
@@ -13068,8 +13039,7 @@ paths:
       - Football
   /football/v2/players/teams/{teamId}/roster:
     get:
-      description: "Retrieves the complete roster for a specific team including active,\
-        \ practice squad, \nand injured reserve players with detailed player information.\n"
+      description: "Retrieves the complete roster for a specific team including active, practice squad, and injured reserve players with detailed player information."
       operationId: getPlayersTeamRoster
       parameters:
       - description: Team identifier (UUID)
@@ -13511,9 +13481,7 @@ paths:
       - Football
   /identity/v3/token:
     post:
-      description: "Creates a new access token and refresh token for a client device.\
-        \ This is the initial authentication \nendpoint that establishes a session\
-        \ for accessing NFL APIs. Requires client credentials and device information.\n"
+      description: "Creates a new access token and refresh token for a client device. This is the initial authentication endpoint that establishes a session for accessing NFL APIs. Requires client credentials and device information."
       operationId: generateToken
       requestBody:
         content:
@@ -13549,9 +13517,7 @@ paths:
       - Authentication
   /identity/v3/token/refresh:
     post:
-      description: "Refreshes an existing access token using a valid refresh token.\
-        \ This endpoint extends the user's \nsession by generating new access and\
-        \ refresh tokens. Requires the previous refresh token and \nsignature verification.\n"
+      description: "Refreshes an existing access token using a valid refresh token. This endpoint extends the user's session by generating new access and refresh tokens. Requires the previous refresh token and signature verification."
       operationId: refreshToken
       requestBody:
         content:
