@@ -1,8 +1,8 @@
 # TODO Comments in nfl-com-api.yaml
 
 Original remaining TODOs: 77
-Total resolved: 51
-**Current remaining: 26 TODOs**
+Total resolved: 52
+**Current remaining: 25 TODOs**
 
 ## Completed Issues
 
@@ -35,17 +35,18 @@ The following issues have been addressed:
 - ✅ **Passing Stats Consolidation**: Consolidated WeeklyPlayerPassingStats to extend PlayerPassingStats using allOf composition (1 TODO)
 - ✅ **Game Schema Consolidation**: Consolidated ProGame into Game schema (1 TODO)
 - ✅ **Week Schema Consolidation**: Consolidated ProWeek into Week schema (1 TODO)
+- ✅ **Team Schema Cleanup**: Deleted unused ByeTeam schema and consolidated ScheduleTeam into BoxscoreTeam (1 TODO)
 
-**Total Completed: 51 TODOs across 13 items**
+**Total Completed: 52 TODOs across 14 items**
 
 ## Remaining Issues
 
 The following issues have not yet been addressed:
-- ⏸️ [Issue #7](https://github.com/jkgriebel93/griddy-sdk-sources/issues/7): Consolidate duplicate or similar components (3 TODOs) - *Research-heavy*
+- ⏸️ [Issue #7](https://github.com/jkgriebel93/griddy-sdk-sources/issues/7): Consolidate duplicate or similar components (2 TODOs) - *Research-heavy*
 - ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (20 TODOs) - *Research-heavy*
 - ⏸️ [Issue #12](https://github.com/jkgriebel93/griddy-sdk-sources/issues/12): Create miscellaneous missing enums (3 TODOs)
 
-**Total Remaining: 26 TODOs across 3 issues**
+**Total Remaining: 25 TODOs across 3 issues**
 
 Note: Issues #9 (Refactor metrics explanation components) and #13 (Address miscellaneous TODO comments) have been fully resolved.
 
@@ -278,12 +279,6 @@ Note: Issues #9 (Refactor metrics explanation components) and #13 (Address misce
 | Line | TODO Comment |
 |------|--------------|
 | 5848 | Investigate the RusherStats object. Note that it may be very similar if not identical to RushingStats |
-
-## ScheduleTeam
-
-| Line | TODO Comment |
-|------|--------------|
-| 5907 | How is this different from Team? Can it be consolidated? |
 
 ## ScheduledGame
 

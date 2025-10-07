@@ -638,24 +638,6 @@ components:
             - REGIONAL
           type: string
       type: object
-    ByeTeam:
-      description: Team information for teams on bye
-      properties:
-        currentLogo:
-          description: URL to team logo (contains formatInstructions placeholder)
-          example: https://static.www.nfl.com/formatInstructions/league/api/clubs/logos/ATL
-          format: uri
-          type: string
-        fullName:
-          description: Full team name
-          example: Atlanta Falcons
-          type: string
-        id:
-          description: Team UUID
-          example: 10400200-f401-4e53-5175-0974e4f16cf7
-          format: uuid
-          type: string
-      type: object
     CareerStats:
       properties:
         seasonStats:
@@ -5480,32 +5462,6 @@ components:
               example: '3000'
               type: string
           type: object
-    ScheduleTeam:
-      # TODO: How is this different from Team? Can it be consolidated?
-      properties:
-        abbr:
-          type: string
-        cityState:
-          type: string
-        conferenceAbbr:
-          $ref: '#/components/schemas/ConferenceEnum'
-        divisionAbbr:
-          type: string
-        fullName:
-          type: string
-        logo:
-          format: uri
-          type: string
-        nick:
-          type: string
-        smartId:
-          format: uuid
-          type: string
-        teamId:
-          type: string
-        teamType:
-          $ref: '#/components/schemas/TeamTypeEnum'
-      type: object
     ScheduledGame:
       properties:
         gameDate:
@@ -5538,7 +5494,7 @@ components:
           description: Home team nickname
           type: string
         homeTeam:
-          $ref: '#/components/schemas/ScheduleTeam'
+          $ref: '#/components/schemas/BoxscoreTeam'
         homeTeamAbbr:
           description: Home team abbreviation
           type: string
@@ -5583,7 +5539,7 @@ components:
           description: Visitor team nickname
           type: string
         visitorTeam:
-          $ref: '#/components/schemas/ScheduleTeam'
+          $ref: '#/components/schemas/BoxscoreTeam'
         visitorTeamAbbr:
           description: Visitor team abbreviation
           type: string
