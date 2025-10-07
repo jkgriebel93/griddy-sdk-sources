@@ -269,13 +269,7 @@ components:
         americanOdds:
           properties:
             description:
-              example: 'American odds are displayed with + or - signs.
-
-                Positive (+) odds show profit on $100 bet.
-
-                Negative (-) odds show amount to bet to win $100.
-
-                '
+              example: 'American odds are displayed with + or - signs. Positive (+) odds show profit on $100 bet. Negative (-) odds show amount to bet to win $100.'
               type: string
             examples:
               items:
@@ -343,7 +337,7 @@ components:
               $ref: '#/components/schemas/TeamGameStats'
           type: object
       type: object
-    BoxscoreResponse:
+    TeamBoxScore:
       properties:
         away:
           $ref: '#/components/schemas/TeamBoxscore'
@@ -375,6 +369,7 @@ components:
           example: 09:30:00
           type: string
         gameType:
+          # TODO: Should there be a different enum for game types?
           $ref: '#/components/schemas/SeasonTypeEnum'
         homeDisplayName:
           example: Pittsburgh Steelers
@@ -383,6 +378,7 @@ components:
           example: Steelers
           type: string
         homeTeam:
+          # TODO: What is the difference between a BoxscoreTeam and a Team?
           $ref: '#/components/schemas/BoxscoreTeam'
         homeTeamAbbr:
           example: PIT
@@ -408,6 +404,7 @@ components:
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
         site:
+          # TODO: Is BoxscoreSite just a venue?
           $ref: '#/components/schemas/BoxscoreSite'
         smartId:
           example: f688dfde-311e-11f0-b670-ae1250fadad1
@@ -422,6 +419,7 @@ components:
         visitorTeam:
           $ref: '#/components/schemas/BoxscoreTeam'
         visitorTeamAbbr:
+          # TODO: Should there be an enum defined for team abbreviations?
           example: MIN
           type: string
         visitorTeamId:
@@ -439,6 +437,7 @@ components:
         homeTeamScore:
           $ref: '#/components/schemas/TeamScore'
         phase:
+          # TODO: Should there be a phase enum?
           description: Game phase (P=Pregame, 1-4=Quarter, F=Final)
           example: P
           type: string
@@ -451,6 +450,7 @@ components:
           example: D03 P6K7
           type: string
         roofType:
+          # TODO: Create roofType enum
           enum:
             - OUTDOOR
             - DOME
@@ -479,6 +479,7 @@ components:
           example: PIT
           type: string
         cityState:
+          # TODO: This example doesn't look correct.
           example: Pittsburgh
           type: string
         conferenceAbbr:
@@ -531,6 +532,7 @@ components:
             type: object
           type: array
         streamingNetworks:
+          # TODO: Should there be a component for TV and Streaming channels?
           items:
             properties:
               hostNetwork:
@@ -610,9 +612,6 @@ components:
           $ref: '#/components/schemas/ResponseMetadata'
         pagination:
           $ref: '#/components/schemas/Pagination'
-      required:
-      - items
-      - metadata
       type: object
     CoachesFilmVideo:
       properties:
@@ -632,6 +631,7 @@ components:
         cameraSource:
           description: Camera angle/source for the video
           enum:
+            - # TODO: Create a cameraSource enum
             - Endzone
             - Sideline
             - Broadcast
@@ -670,6 +670,7 @@ components:
           type: string
         duration:
           description: Video duration in seconds
+          # TODO: Shouldn't this be an integer?
           example: '17'
           type: string
         endDate:
@@ -700,6 +701,7 @@ components:
           nullable: true
           type: string
         hostNetwork:
+          # TODO: Would this reference the proposed network component from earlier?
           description: Broadcasting network
           nullable: true
           type: string
@@ -815,6 +817,7 @@ components:
         subType:
           description: Video subtype classification
           enum:
+            - # TODO: Create CoachesFileVideoSubType enum
             - Coaches Film
             - Coaches Film Pro
           example: Coaches Film Pro
@@ -842,6 +845,7 @@ components:
         videos:
           description: Additional video information
           items:
+            # TODO: Explore what this object actually looks like
             type: object
           type: array
         webLink:
@@ -849,14 +853,6 @@ components:
           format: uri
           nullable: true
           type: string
-      required:
-      - type
-      - cameraSource
-      - duration
-      - externalId
-      - ids
-      - title
-      - description
       type: object
     Conference:
       properties:
@@ -905,6 +901,8 @@ components:
     CoverageMetrics:
       description: Explanation of coverage-specific metrics
       properties:
+        # TODO: Each of these properties has the same two fields.
+        # Perhaps this should be refactored
         completionRateOverExpected:
           properties:
             description:
@@ -968,6 +966,7 @@ components:
           type: string
         extensions:
           items:
+            # TODO: Explore to find out what CurrentGame.extensions is
             type: object
           type: array
         externalIds:
@@ -1064,6 +1063,7 @@ components:
     DefensiveMetricsExplanation:
       description: Explanation of defensive metrics and calculations
       properties:
+        # TODO: Similar to earlier, all of these fields have the same two properties. Consider how it might be refactored.
         epa:
           properties:
             description:
@@ -1089,6 +1089,7 @@ components:
       type: object
     DefensiveOverviewMetricsExplanation:
       description: Explanation of defensive overview metrics
+      # TODO: More metric explanation properties
       properties:
         hardStops:
           properties:
@@ -1150,18 +1151,10 @@ components:
           description: Total number of players matching the criteria
           example: 26
           type: integer
-      required:
-      - limit
-      - offset
-      - season
-      - seasonType
-      - sortKey
-      - sortValue
-      - total
-      - defenders
       type: object
     DefensivePassMetricsExplanation:
       description: Explanation of defensive pass metrics and calculations
+      # TODO: Metric explanations. Consider refactor
       properties:
         epaPass:
           properties:
@@ -1231,6 +1224,7 @@ components:
           example: ED
           type: string
         ngsPositionGroup:
+          # TODO: Ensure this position groups are correct
           $ref: '#/components/schemas/DefensivePositionGroupEnum'
         position:
           description: Player position
@@ -1363,6 +1357,7 @@ components:
           type: string
         ngsPosition:
           description: Next Gen Stats position
+          # TODO: Refactor to use enum mentioned earlier
           enum:
             - DT
             - DE
@@ -1381,6 +1376,7 @@ components:
           type: number
         position:
           description: Player position
+          # TODO: Use enum
           enum:
             - DE
             - DT
@@ -1543,6 +1539,7 @@ components:
           type: string
         ngsPosition:
           description: Next Gen Stats position
+          # TODO: Use enum
           enum:
             - S
             - CB
@@ -1561,6 +1558,7 @@ components:
           type: number
         position:
           description: Player position
+          # TODO: Use enum
           enum:
             - FS
             - SS
@@ -1641,17 +1639,9 @@ components:
           example: 3.55556
           format: float
           type: number
-      required:
-      - nflId
-      - displayName
-      - teamId
-      - position
-      - gp
-      - gs
-      - cov
-      - covNd
       type: object
     DefensiveRushMetricsExplanation:
+      # TODO: Metrics explanations
       description: Explanation of defensive rush metrics and calculations
       properties:
         boxCount:
@@ -1694,6 +1684,7 @@ components:
           description: Category description
           type: string
         situationType:
+          # TODO: Consider moving this enum to a top level component
           enum:
             - PERSONNEL
             - GAME_SITUATION
@@ -1781,15 +1772,6 @@ components:
           description: Total number of players matching the criteria
           example: 730
           type: integer
-      required:
-      - limit
-      - offset
-      - season
-      - seasonType
-      - sortKey
-      - sortValue
-      - total
-      - defenders
       type: object
     DeviceInfo:
       description: Device information object (normally base64 encoded in requests)
@@ -1895,6 +1877,7 @@ components:
         quarter:
           type: integer
         result:
+          # TODO: Create a DriveResultEnum component
           enum:
             - TOUCHDOWN
             - FIELD_GOAL
@@ -2018,6 +2001,7 @@ components:
           format: float
           type: number
         position:
+          # TODO: Create a FantasyPlayerPositionEnum component
           description: Player position
           enum:
             - QB
@@ -2029,6 +2013,7 @@ components:
           example: QB
           type: string
         positionGroup:
+          # TODO: Create a FantasyPositionGroupEnum component
           description: Position group
           enum:
             - QB
@@ -2094,13 +2079,6 @@ components:
           description: Targets
           example: 0
           type: integer
-      required:
-      - nflId
-      - displayName
-      - teamId
-      - position
-      - gp
-      - fpStd
       type: object
     FantasyStatsResponse:
       properties:
@@ -2125,6 +2103,7 @@ components:
             $ref: '#/components/schemas/FantasyPlayerStats'
           type: array
         positionGroup:
+          # TODO: Use the FantasyPositionEnum mentioned earlier here
           description: Position groups included in results
           example:
           - QB
@@ -2152,6 +2131,7 @@ components:
           example: 0
           type: integer
         week:
+          # TODO: There is a week enum that can be used here
           description: Specific weeks included in analysis
           example:
           - WEEK_16
@@ -2160,17 +2140,9 @@ components:
           items:
             type: string
           type: array
-      required:
-      - limit
-      - offset
-      - season
-      - seasonType
-      - sortKey
-      - sortValue
-      - total
-      - players
       type: object
     FantayScoringExplanation:
+      # TODO: More explanation fields, slightly different than the metrics though
       description: Explanation of fantasy scoring systems
       properties:
         halfPprScoring:
@@ -2220,6 +2192,7 @@ components:
               type: string
             weekSlug:
               description: Week identifier
+              # TODO: Use the WeekEnum here
               example: WEEK_3
               type: string
           type: object
@@ -2231,10 +2204,6 @@ components:
           description: Title of the film content
           example: Justin Herbert Dropbacks vs. DEN
           type: string
-      required:
-      - title
-      - linkParams
-      - teamId
       type: object
     FilmroomPlay:
       properties:
@@ -2296,6 +2265,7 @@ components:
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
         selectedParamValues:
+          # TODO: Investigate what the selectedParamValues object can look like
           additionalProperties: true
           description: Selected parameter values for the play filter
           type: object
@@ -2316,6 +2286,7 @@ components:
           example: 3
           type: integer
         weekSlug:
+          # TODO: Use the week enum
           description: Week identifier slug
           example: WEEK_3
           type: string
@@ -2327,28 +2298,6 @@ components:
           description: Yards needed for first down
           example: 10
           type: integer
-      required:
-      - season
-      - seasonType
-      - week
-      - weekSlug
-      - gameId
-      - fapiGameId
-      - playId
-      - sequence
-      - quarter
-      - down
-      - yardsToGo
-      - yardline
-      - playDescription
-      - gameClock
-      - playType
-      - homeTeamAbbr
-      - homeTeamId
-      - visitorTeamAbbr
-      - visitorTeamId
-      - possessionTeamId
-      - defenseTeamId
       type: object
     FilmroomPlaysResponse:
       properties:
@@ -2361,9 +2310,6 @@ components:
           items:
             $ref: '#/components/schemas/FilmroomPlay'
           type: array
-      required:
-      - count
-      - plays
       type: object
     FootballGamesResponse:
       properties:
@@ -2384,6 +2330,7 @@ components:
     FuturesMarket:
       properties:
         fixture:
+          # TODO: Investigate what this fixture object looks like
           description: Associated fixture information
           nullable: true
           type: object
@@ -2462,6 +2409,7 @@ components:
           description: Time with AM/PM
           type: string
         extensions:
+          # TODO: Investigate the Game.extensions object
           description: Additional game data extensions
           items:
             type: object
@@ -2471,6 +2419,7 @@ components:
             $ref: '#/components/schemas/ExternalId'
           type: array
         gameType:
+          # TODO: Surely there is a gameType enum
           description: Type of game
           example: UNSPECIFIED
           type: string
@@ -2487,6 +2436,7 @@ components:
           description: Whether game is at neutral venue
           type: boolean
         phase:
+          # TODO: Use or create a GamePhase enum
           description: Game phase
           example: PREGAME
           type: string
@@ -2496,6 +2446,7 @@ components:
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
         status:
+          # TODO: If a game status enum doesn't exist, create it and use it here
           description: Game status
           enum:
             - SCHEDULED
@@ -2518,6 +2469,7 @@ components:
           format: date-time
           type: string
         venue:
+          # TODO: Is this the same as GameSite or whatever it was I saw earlier?
           $ref: '#/components/schemas/Venue'
         version:
           description: Data version number
@@ -2596,6 +2548,7 @@ components:
       description: Game-specific analytical insight
       properties:
         content:
+          # TODO: Investigate GameInsight.content object
           description: Insight content and analysis
           type: object
         gameId:
@@ -2650,6 +2603,7 @@ components:
       description: Game preview content (may be empty if no preview available)
       properties:
         preview:
+          # TODO: Investigate the GamePreviewResponse.preview object
           description: Preview content and analysis
           nullable: true
           type: object
@@ -2670,6 +2624,7 @@ components:
           description: Eastern time
           type: string
         gameType:
+          # TODO: Should there be a separate gameType enum?
           $ref: '#/components/schemas/SeasonTypeEnum'
         homeDisplayName:
           type: string
@@ -2734,6 +2689,7 @@ components:
         homeTeamScore:
           $ref: '#/components/schemas/TeamScore'
         phase:
+          # TODO: Refactor this out to a top level enum component
           description: Game phase (P=Pregame, 1-4=Quarter, FINAL=Final)
           enum:
             - PREGAME
@@ -2750,11 +2706,13 @@ components:
           $ref: '#/components/schemas/TeamScore'
       type: object
     GameSite:
+      # TODO: Again, what is the difference between GameSite and Venue?
       properties:
         postalCode:
           nullable: true
           type: string
         roofType:
+          # TODO: Add roofType enum
           enum:
             - INDOOR
             - OUTDOOR
@@ -2803,6 +2761,7 @@ components:
     GameStatsResponse:
       properties:
         data:
+          # TODO: Investigate the GameStatsResponse.data object
           items:
             description: Game statistics data
             type: object
@@ -2836,10 +2795,13 @@ components:
         leaders:
           properties:
             passDistanceLeaders:
+              # TODO: Investigate the GamecenterResponse.leaders.passDistanceLeaders object
               type: object
             speedLeaders:
+              # TODO: Investigate the GamecenterResponse.leaders.speedLeaders object
               type: object
             timeToSackLeaders:
+              # TODO: Investigate the GamecenterResponse.leaders.timeToSackLeaders object
               type: object
           type: object
         passRushers:
@@ -2949,14 +2911,12 @@ components:
           description: Title of the film card collection
           example: Week 3 Playlists
           type: string
-      required:
-      - title
-      - cards
       type: object
     InjuryEntry:
       properties:
         gameStatus:
           description: Game status designation
+          # TODO: create an enum for InjuryEntry.gameStatus
           enum:
             - QUESTIONABLE
             - DOUBTFUL
@@ -3052,6 +3012,7 @@ components:
           example: Lamar Jackson
           type: string
         position:
+          # TODO: Use or create player position enum
           description: Player position
           enum:
             - QB
@@ -3110,11 +3071,11 @@ components:
         tags:
           description: Content classification tags
           example:
-          - next-gen-stats
-          - nfl-pro
-          - pregame
-          - pro-preview
-          - pro-matchup
+            - next-gen-stats
+            - nfl-pro
+            - pregame
+            - pro-preview
+            - pro-matchup
           items:
             type: string
           type: array
@@ -3144,26 +3105,9 @@ components:
           description: Week number (if applicable)
           example: 4
           type: integer
-      required:
-      - season
-      - seasonType
-      - week
-      - nflId
-      - playerName
-      - position
-      - teamId
-      - teamAbbr
-      - title
-      - date
-      - evergreen
-      - createdAt
-      - createdBy
-      - updatedAt
-      - updatedBy
-      - tags
-      - id
       type: object
     InsightContentExplanation:
+      # TODO: More explanation properties
       description: Explanation of insight content types and usage
       properties:
         evergreenContent:
@@ -3217,6 +3161,7 @@ components:
       description: Live game scoring and status information
       properties:
         awayTeam:
+          # TODO: Can the Team component not be used here?
           properties:
             abbreviation:
               type: string
@@ -3229,6 +3174,7 @@ components:
           description: Game identifier
           type: string
         homeTeam:
+          # TODO: Can the Team component not be used here?
           properties:
             abbreviation:
               type: string
@@ -3250,6 +3196,7 @@ components:
           description: Whether team is in red zone
           type: boolean
         status:
+          # TODO: Use or create game status enum
           enum:
             - SCHEDULED
             - IN_PROGRESS
@@ -3279,11 +3226,6 @@ components:
           description: Week number
           example: '4'
           type: string
-      required:
-      - games
-      - season
-      - seasonType
-      - week
       type: object
     MatchupRankingsResponse:
       properties:
@@ -3373,6 +3315,7 @@ components:
         - TEAM_DEFENSE_MOTION
       type: string
     OffensiveMetricsExplanation:
+      # TODO: Metrics explanation properties
       description: Explanation of offensive metrics and calculations
       properties:
         epa:
@@ -3407,6 +3350,7 @@ components:
           description: Category description
           type: string
         situationType:
+          # TODO: Consider making this enum a top level component
           enum:
             - FORMATION
             - GAME_SITUATION
@@ -3427,6 +3371,7 @@ components:
                 type: integer
               type:
                 description: Type of current streak
+                # TODO: There is a game result enum component that can be used here
                 enum:
                   - W
                   - L
@@ -3448,6 +3393,7 @@ components:
           type: string
       type: object
     PassRushMetricsExplanation:
+      # TODO: Metrics explanation properties
       description: Explanation of pass rush metrics and calculations
       properties:
         passRushRating:
@@ -3477,6 +3423,7 @@ components:
       type: object
     PassRushStatsResponse:
       properties:
+        # TODO: Are some of these *Response properties standardized enough that a component can be created?
         defenders:
           items:
             $ref: '#/components/schemas/DefensivePassRushStats'
@@ -3509,18 +3456,10 @@ components:
           description: Total number of players matching the criteria
           example: 730
           type: integer
-      required:
-      - limit
-      - offset
-      - season
-      - seasonType
-      - sortKey
-      - sortValue
-      - total
-      - defenders
       type: object
     PassRusherStats:
       additionalProperties: true
+      # TODO: Investigate the PassRusherStats object
       type: object
     PasserStats:
       properties:
@@ -3542,6 +3481,7 @@ components:
           type: array
       type: object
     PassingStats:
+      # TODO: Investigate the difference(s) between PasserStats and PassingStats, consolidate if possible
       properties:
         attempts:
           type: integer
@@ -3598,15 +3538,6 @@ components:
           description: Total number of players matching the criteria
           example: 31
           type: integer
-      required:
-      - limit
-      - offset
-      - season
-      - seasonType
-      - sortKey
-      - sortValue
-      - total
-      - passers
       type: object
     Penalty:
       properties:
@@ -3656,6 +3587,7 @@ components:
         playNumber:
           type: integer
         playType:
+          # TODO: Refactor this into a top level component
           enum:
             - PASS
             - RUSH
@@ -3757,6 +3689,7 @@ components:
           description: Play description including jersey numbers
           type: string
         playDirection:
+          # TODO Use or create a PlayDirectionEnum conponent
           description: Direction of play
           enum:
             - left
@@ -3766,6 +3699,7 @@ components:
         playId:
           type: integer
         playState:
+          # TODO: Refactor this out to be a top level enum component
           description: Review state of play
           enum:
             - APPROVED
@@ -3778,6 +3712,7 @@ components:
             $ref: '#/components/schemas/PlayStat'
           type: array
         playType:
+          # TODO: Use the PlayTypeEnum
           description: Type of play
           example: play_type_kickoff
           type: string
@@ -3844,6 +3779,7 @@ components:
         player:
           $ref: '#/components/schemas/Player'
         role:
+          # TODO: Use or create a PlayParticipantRoleEnum component
           enum:
             - PASSER
             - RUSHER
@@ -3858,6 +3794,7 @@ components:
           type: object
       type: object
     PlayPlayer:
+      # TODO: PlayPlayer is a horrible name
       properties:
         firstName:
           type: string
@@ -3884,15 +3821,6 @@ components:
         uniformNumber:
           description: Jersey number
           type: string
-      required:
-      - nflId
-      - gsisId
-      - position
-      - positionGroup
-      - teamId
-      - firstName
-      - lastName
-      - playerName
       type: object
     PlayStat:
       properties:
@@ -3913,13 +3841,6 @@ components:
         yards:
           description: Yards gained/lost
           type: integer
-      required:
-      - gsisId
-      - playId
-      - clubCode
-      - playerName
-      - statId
-      - yards
       type: object
     PlaySummaryResponse:
       properties:
@@ -3954,11 +3875,6 @@ components:
           type: integer
         schedule:
           $ref: '#/components/schemas/GameSchedule'
-      required:
-      - gameId
-      - playId
-      - play
-      - schedule
       type: object
     PlayTypeEnum:
       description: Enumeration of all possible play types
@@ -4098,20 +4014,6 @@ components:
           description: Yards needed for first down
           example: 10
           type: integer
-      required:
-      - playId
-      - sequence
-      - down
-      - homeScore
-      - visitorScore
-      - playDescription
-      - possessionTeamId
-      - preSnapHomeScore
-      - preSnapVisitorScore
-      - quarter
-      - yardsToGo
-      - homeTimeoutsLeft
-      - visitorTimeoutsLeft
       type: object
     Player:
       properties:
@@ -4183,18 +4085,22 @@ components:
           example: 52430
           type: integer
         ngsPosition:
+          # TODO: Use or create the next gen stats position enum
           description: Next Gen Stats position
           nullable: true
           type: string
         ngsPositionGroup:
+          # TODO: Use or create the next gen stats position group enum
           description: Next Gen Stats position group
           nullable: true
           type: string
         position:
+          # TODO: Use or create the position enum
           description: Player's position
           example: WR
           type: string
         positionGroup:
+          # TODO: Use or create the position group enum
           description: Player's position group
           example: WR
           type: string
@@ -4213,6 +4119,7 @@ components:
           format: uuid
           type: string
         status:
+          # TODO: Surely this can be an enum
           description: Player status code
           example: ACT
           type: string
@@ -4272,10 +4179,12 @@ components:
           $ref: '#/components/schemas/RushingStats'
       type: object
     PlayerInjury:
+      # TODO: Investigate the PlayerInjury object
       additionalProperties: true
       description: Player injury information (structure varies based on injury details)
       type: object
     PlayerPassingStats:
+      # TODO: To what degree can this be consolidated with Passing/Passer Stats?
       properties:
         att:
           description: Attempts
@@ -4539,13 +4448,6 @@ components:
           example: 7.96296
           format: float
           type: number
-      required:
-      - nflId
-      - displayName
-      - teamId
-      - position
-      - gp
-      - gs
       type: object
     PlayerProjection:
       properties:
@@ -4563,7 +4465,8 @@ components:
                     description: Reference to projected points
                     type: string
                   type:
-                    enum:
+                    # TODO: What other values can this enum have?
+                    enum: 
                       - player-week-projected-points
                     type: string
                 type: object
@@ -4575,6 +4478,7 @@ components:
                     description: Reference to projected stats
                     type: string
                   type:
+                    # TODO: What values can this enum have?
                     enum:
                       - player-week-projected-stats
                     type: string
@@ -4582,14 +4486,11 @@ components:
               type: array
           type: object
         type:
+          # TODO: What values can this have?
           description: Resource type
           enum:
             - player
           type: string
-      required:
-      - type
-      - id
-      - relationships
       type: object
     PlayerReceivingStats:
       properties:
@@ -4884,18 +4785,6 @@ components:
           example: 2.72727
           format: float
           type: number
-      required:
-      - nflId
-      - displayName
-      - teamId
-      - position
-      - gp
-      - gs
-      - rt
-      - tgt
-      - rec
-      - yds
-      - td
       type: object
     PlayerRushingStats:
       properties:
@@ -5124,17 +5013,6 @@ components:
           example: 5.35
           format: float
           type: number
-      required:
-      - nflId
-      - displayName
-      - teamId
-      - position
-      - gp
-      - gs
-      - att
-      - yds
-      - td
-      - ypc
       type: object
     PlayerSearchResponse:
       properties:
@@ -5147,9 +5025,6 @@ components:
           description: Search term used
           example: Pickens
           type: string
-      required:
-      - term
-      - players
       type: object
     PlayerSearchResult:
       allOf:
@@ -5161,6 +5036,7 @@ components:
       additionalProperties: true
       description: Individual player statistics (structure varies by category)
       type: object
+      # TODO: Can this be defined any more specifically? Perhaps not given that it can be completely different based on category
     PlayerStatsResponse:
       properties:
         pagination:
@@ -5178,6 +5054,7 @@ components:
               player:
                 $ref: '#/components/schemas/Player'
               stats:
+                # TODO: Can the be specified in any more detail?
                 description: Statistics object varies by category
                 type: object
               team:
@@ -5187,8 +5064,10 @@ components:
         season:
           type: integer
         seasonType:
+          # TODO: Use the seasonType enum
           type: string
         statCategory:
+          # TODO: Use or create a statCategory enum
           type: string
       type: object
     PlayerWeekProjectedPoints:
@@ -5208,28 +5087,21 @@ components:
               description: Season year
               type: integer
             settingsCode:
+              # TODO: See if this can be an enum. It would probably be PPR, Half-PPR, STD
               description: Fantasy settings code
               type: string
             week:
               description: Week number
               type: integer
-          required:
-          - playerId
-          - season
-          - week
-          - settingsCode
           type: object
         id:
           description: Unique identifier for this projection
           type: string
         type:
+          # TODO: What values can this have?
           enum:
             - player-week-projected-points
           type: string
-      required:
-      - type
-      - id
-      - attributes
       type: object
     PlayerWeekProjectedStats:
       properties:
@@ -5362,22 +5234,15 @@ components:
               type: number
             week:
               type: integer
-          required:
-          - playerId
-          - season
-          - week
           type: object
         id:
           description: Unique identifier for these stats
           type: string
         type:
+          # TODO: Are all these type fields truly enums?
           enum:
             - player-week-projected-stats
           type: string
-      required:
-      - type
-      - id
-      - attributes
       type: object
     PointSpread:
       description: Point spread betting odds
@@ -5415,6 +5280,7 @@ components:
             type: number
         type: object
     ProGame:
+      # TODO: Compare how this differs from Game
       properties:
         awayTeam:
           $ref: '#/components/schemas/Team'
@@ -5447,6 +5313,7 @@ components:
           type: string
         extensions:
           description: Additional game data extensions
+          # TODO: Investigate the ProGame.extensions object
           items:
             type: object
           type: array
@@ -5455,6 +5322,7 @@ components:
             $ref: '#/components/schemas/ExternalId'
           type: array
         gameType:
+          # TODO: Use or create the gameType enum
           description: Type of game
           example: UNSPECIFIED
           type: string
@@ -5471,6 +5339,7 @@ components:
           description: Whether game is at neutral venue
           type: boolean
         phase:
+          # TODO: Use or create the game phase enum
           description: Game phase
           example: PREGAME
           type: string
@@ -5480,6 +5349,7 @@ components:
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
         status:
+          # TODO: Use or create the game status enum
           description: Game status
           enum:
             - SCHEDULED
@@ -5510,10 +5380,12 @@ components:
           description: Week number
           type: integer
         weekType:
+          # TODO: Use or create the week type enum
           description: Week type (e.g., REG, HOF)
           type: string
       type: object
     ProInjuryReportResponse:
+      # TODO: How does this compare to regular injury report response (if there is one)
       properties:
         injuries:
           description: Array of injured players (empty if no injuries)
@@ -5531,6 +5403,7 @@ components:
           type: object
       type: object
     ProTeam:
+      # TODO: How does this compare to the Team component? How much can it be consolidated?
       properties:
         abbr:
           description: Three-letter team abbreviation
@@ -5551,6 +5424,7 @@ components:
         conference:
           $ref: '#/components/schemas/Conference'
         conferenceAbbr:
+          # TODO: use or create the conference abbr enum
           description: Conference abbreviation
           enum:
             - AFC
@@ -5631,6 +5505,7 @@ components:
           nullable: true
           type: string
         teamType:
+          # TODO: Make this a top level enum component
           description: Type of team (regular or Pro Bowl)
           enum:
             - TEAM
@@ -5650,6 +5525,7 @@ components:
           type: integer
       type: object
     ProWeek:
+      # TODO: How does this compare to a regular Week, and how can it be consolidated?
       properties:
         byeTeams:
           description: Teams on bye this week (empty array if no bye teams)
@@ -5685,10 +5561,12 @@ components:
           example: 4
           type: integer
         weekSlug:
+          # TODO: Use the week slug enum component
           description: Week identifier slug
           example: WEEK_4
           type: string
         weekType:
+          # TODO: Use or create a week type enum
           description: Type of week
           enum:
             - HOF
@@ -5730,9 +5608,6 @@ components:
               description: Token for next page of results
               type: string
           type: object
-      required:
-      - data
-      - included
       type: object
     QBAlignmentEnum:
       description: Quarterback alignment types
@@ -5773,11 +5648,13 @@ components:
           $ref: '#/components/schemas/SeasonTypeEnum'
       type: object
     ReceiverStats:
+      # TODO: Investigate and define the ReceiverStats object
       additionalProperties: true
       type: object
     ReceivingMetricsExplanation:
       description: Explanation of receiving metrics and calculations
       properties:
+        # TODO: Metrics explanation properties
         catchRateOverExpected:
           properties:
             description:
@@ -5860,18 +5737,10 @@ components:
           example: 12
           type: integer
         week:
+          # TODO: Use the week slug enum
           description: Week identifier
           example: WEEK_3
           type: string
-      required:
-      - limit
-      - offset
-      - season
-      - seasonType
-      - sortKey
-      - sortValue
-      - total
-      - receivers
       type: object
     ReceivingStatsCategoryEnum:
       description: Statistics categories for receiving stats sorting
@@ -5936,11 +5805,6 @@ components:
             description: HMAC signature for request verification
             example: 587bdNt6EKYhhX9ASFOELX+2lqE=
             type: string
-        required:
-        - signatureTimestamp
-        - uid
-        - uidSignature
-        - refreshToken
         type: object
     ResponseMetadata:
       properties:
@@ -5949,8 +5813,6 @@ components:
           example: '2025-09-24T16:07:01.654Z'
           format: date-time
           type: string
-      required:
-      - generatedAt
       type: object
     RosterResponse:
       properties:
@@ -5983,6 +5845,7 @@ components:
           $ref: '#/components/schemas/Team'
       type: object
     RusherStats:
+      # TODO: Investigate the RusherStats object. Note that it may be very similar if not identical to RushingStats 
       additionalProperties: true
       type: object
     RushingStats:
@@ -6039,17 +5902,9 @@ components:
           description: Total number of players matching the criteria
           example: 7
           type: integer
-      required:
-      - limit
-      - offset
-      - season
-      - seasonType
-      - sortKey
-      - sortValue
-      - total
-      - rushers
       type: object
     ScheduleTeam:
+      # TODO: How is this different from Team? Can it be consolidated?
       properties:
         abbr:
           type: string
@@ -6075,6 +5930,7 @@ components:
           $ref: '#/components/schemas/TeamTypeEnum'
       type: object
     ScheduledGame:
+      # TODO: How is this different from Game? Can it be consolidated?
       properties:
         gameDate:
           description: Game date (YYYY-MM-DD format)
@@ -6179,6 +6035,7 @@ components:
         quarter:
           type: integer
         scoreType:
+          # TODO: Refactor this out to a top level enum component
           enum:
             - TOUCHDOWN
             - FIELD_GOAL
@@ -6224,11 +6081,13 @@ components:
           type: array
       type: object
     Site:
+      # TODO: Compare this to Venue and see if they can be consolidated
       properties:
         postalCode:
           nullable: true
           type: string
         roofType:
+          # TODO: Use or create a roof type enum
           enum:
             - OUTDOOR
             - INDOOR
@@ -6277,6 +6136,7 @@ components:
         road:
           $ref: '#/components/schemas/PointsRecord'
         team:
+          # TODO: Can this be replaced with one of the Team components?
           properties:
             currentLogo:
               format: uri
@@ -6357,6 +6217,7 @@ components:
           description: Category name
           type: string
         dataType:
+          # TODO: Use or create a dataType enum component
           enum:
             - integer
             - float
@@ -6384,6 +6245,7 @@ components:
           example: ARI
           type: string
         conferenceAbbr:
+          # TODO: Refactor this out to a top level enum component?
           description: Conference abbreviation
           enum:
             - AFC
@@ -6454,6 +6316,7 @@ components:
             $ref: '#/components/schemas/SocialMedia'
           type: array
         teamType:
+          # TODO: Consider refactoring this out to a top level enum component
           description: Type of team (regular or Pro Bowl)
           enum:
             - TEAM
@@ -6626,14 +6489,6 @@ components:
           description: Yards after catch over expected allowed (negative is better)
           example: -50
           type: integer
-      required:
-      - teamId
-      - gp
-      - total
-      - pass
-      - passPct
-      - passYds
-      - passYpp
       type: object
     TeamDefensePassStatsResponse:
       properties:
@@ -6665,15 +6520,6 @@ components:
           description: Total number of teams matching the criteria
           example: 32
           type: integer
-      required:
-      - limit
-      - offset
-      - season
-      - seasonType
-      - sortKey
-      - sortValue
-      - total
-      - defense
       type: object
     TeamDefenseRushStats:
       properties:
@@ -6776,14 +6622,6 @@ components:
           example: -0.50693
           format: float
           type: number
-      required:
-      - teamId
-      - gp
-      - total
-      - run
-      - runPct
-      - rushYds
-      - rushYpp
       type: object
     TeamDefenseRushStatsResponse:
       properties:
@@ -6815,15 +6653,6 @@ components:
           description: Total number of teams matching the criteria
           example: 32
           type: integer
-      required:
-      - limit
-      - offset
-      - season
-      - seasonType
-      - sortKey
-      - sortValue
-      - total
-      - defense
       type: object
     TeamDefenseStats:
       properties:
@@ -6989,13 +6818,6 @@ components:
           example: 4.5122
           format: float
           type: number
-      required:
-      - teamId
-      - gp
-      - total
-      - pass
-      - run
-      - yds
       type: object
     TeamDefenseStatsResponse:
       properties:
@@ -7026,7 +6848,7 @@ components:
         split:
           description: Applied defensive situation splits
           example:
-          - TEAM_DEFENSE_MOTION
+            - TEAM_DEFENSE_MOTION
           items:
             type: string
           type: array
@@ -7034,15 +6856,6 @@ components:
           description: Total number of teams matching the criteria
           example: 32
           type: integer
-      required:
-      - limit
-      - offset
-      - season
-      - seasonType
-      - sortKey
-      - sortValue
-      - total
-      - defense
       type: object
     TeamGameStats:
       properties:
@@ -7622,13 +7435,6 @@ components:
           example: 6.789
           format: float
           type: number
-      required:
-      - teamId
-      - gp
-      - total
-      - pass
-      - run
-      - yds
       type: object
     TeamOffenseOverviewStatsResponse:
       properties:
@@ -7659,7 +7465,7 @@ components:
         split:
           description: Applied offensive situation splits
           example:
-          - TEAM_WHEN_LEADING
+            - TEAM_WHEN_LEADING
           items:
             type: string
           type: array
@@ -7671,15 +7477,6 @@ components:
           description: Total number of teams matching the criteria
           example: 0
           type: integer
-      required:
-      - limit
-      - offset
-      - season
-      - seasonType
-      - sortKey
-      - sortValue
-      - total
-      - offense
       type: object
     TeamOffensePassStats:
       properties:
@@ -7796,14 +7593,6 @@ components:
           description: Yards after catch over expected (positive is better)
           example: 49
           type: integer
-      required:
-      - teamId
-      - gp
-      - total
-      - pass
-      - passPct
-      - passYds
-      - passYpp
       type: object
     TeamOffensePassStatsResponse:
       properties:
@@ -7839,15 +7628,6 @@ components:
           description: Total number of teams matching the criteria
           example: 3
           type: integer
-      required:
-      - limit
-      - offset
-      - season
-      - seasonType
-      - sortKey
-      - sortValue
-      - total
-      - offense
       type: object
     TeamRankingEntry:
       properties:
@@ -7925,6 +7705,7 @@ components:
           type: integer
       type: object
     TeamVenue:
+      # TODO: Compare to Site, Venue, other similar components. Consolidate as and if possible
       properties:
         city:
           description: Venue city
@@ -7968,13 +7749,12 @@ components:
           type: string
         deviceInfo:
           description: 'Base64-encoded JSON containing device information such as:
-
             {"model":"desktop","version":"Chrome","osName":"Windows","osVersion":"10"}
-
             '
           example: eyJtb2RlbCI6ImRlc2t0b3AiLCJ2ZXJzaW9uIjoiQ2hyb21lIiwib3NOYW1lIjoiV2luZG93cyIsIm9zVmVyc2lvbiI6IjEwIn0=
           type: string
         networkType:
+          # TODO: Refactor this out to a top level enum component
           description: Type of network connection
           enum:
             - other
@@ -7983,23 +7763,13 @@ components:
             - ethernet
           example: other
           type: string
-      required:
-      - clientKey
-      - clientSecret
-      - deviceId
-      - deviceInfo
-      - networkType
       type: object
     TokenResponse:
       properties:
         accessToken:
           description: 'JWT access token containing user permissions, subscription
-            plans, location data, and roles.
-
-            Include this token in the Authorization header as "Bearer {accessToken}"
-            for authenticated requests.
-
-            '
+            plans, location data, and roles. Include this token in the Authorization header as "Bearer {accessToken}"
+            for authenticated requests.'
           example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
           type: string
         expiresIn:
@@ -8012,10 +7782,6 @@ components:
           example: 0f5452b5-7f40-4c8e-9801-cf7fd2830de3
           format: uuid
           type: string
-      required:
-      - expiresIn
-      - refreshToken
-      - accessToken
       type: object
     Totals:
       description: Over/Under (totals) betting odds
@@ -8057,6 +7823,7 @@ components:
         team:
           $ref: '#/components/schemas/Team'
         type:
+          # TODO: Use or create a TransactionTypeEnum component
           enum:
             - TRADE
             - SIGNED
@@ -8078,6 +7845,7 @@ components:
           type: array
       type: object
     Venue:
+      # TODO: Compare with Site, TeamVenue, etc. and consolidate as possible
       properties:
         address:
           description: Street address
@@ -8114,6 +7882,7 @@ components:
         postalCode:
           type: string
         roofType:
+          # TODO: Use or create roof type enum
           enum:
             - OUTDOOR
             - DOME
@@ -8146,7 +7915,7 @@ components:
         nfl_plus_plus:
           items:
             properties:
-              NFL PLUS - COACHES FILM:
+              'NFL PLUS - COACHES FILM':
                 properties:
                   requirements:
                     properties:
@@ -8216,11 +7985,6 @@ components:
           description: Play identifier
           example: '40'
           type: string
-      required:
-      - gameId
-      - playId
-      - awayTeamId
-      - homeTeamId
       type: object
     VideoTag:
       description: Video tag information
@@ -8265,8 +8029,6 @@ components:
           example: https://o300810-mp-lura-live.akamaized.net/1/73/pvw/6FE/F5F/6FEF5FB4858CA5E0E9087008F597FC65_1.jpg?hdntl=st=1715000000~exp=2082787200~acl=/*~hmac=7903d9d310da4e4b7d0867e2098dcbb50dfa5d908bf53dd2c392d70447c347e3
           format: uri
           type: string
-      required:
-      - thumbnailUrl
       type: object
     Week:
       properties:
@@ -8304,10 +8066,12 @@ components:
           example: 4
           type: integer
         weekSlug:
+          # TODO: use the week slug enum
           description: Week identifier slug
           example: WEEK_4
           type: string
         weekType:
+          # TODO: Use or create the top level week type enum component
           description: Type of week
           enum:
             - HOF
@@ -8317,6 +8081,7 @@ components:
           type: string
       type: object
     WeeklyGameDetail:
+      # TODO: Compare to Game component, consolidate if possible
       allOf:
       - $ref: '#/components/schemas/ProGame'
       - properties:
@@ -8329,15 +8094,18 @@ components:
           homeTeamStandings:
             $ref: '#/components/schemas/Standings'
           replays:
+            # TODO: Investigate the WeeklyGameDetail.replays object, define spec
             description: Replay video links
             items:
               type: object
             type: array
           summary:
+            # TODO: Investigate the WeeklyGameDetail.summary object
             description: Game summary information
             nullable: true
             type: object
           taggedVideos:
+            # TODO: Investigate the WeeklyGameDetail.taggedVideos object.
             description: Tagged video content
             nullable: true
             type: object
@@ -8401,16 +8169,6 @@ components:
           description: Week identifier
           example: WEEK_3
           type: string
-      required:
-      - limit
-      - offset
-      - season
-      - seasonType
-      - week
-      - sortKey
-      - sortValue
-      - total
-      - passers
       type: object
     WeeklyPlayer:
       allOf:
@@ -8586,10 +8344,12 @@ components:
           example: '57124'
           type: string
         ngsPosition:
+          # TODO: Use or create the next gen stats position enum
           description: Next Gen Stats position
           example: QB
           type: string
         ngsPositionGroup:
+          # TODO: Use or create the next gen stats position group enum
           description: Next Gen Stats position group
           example: QB
           type: string
@@ -8603,10 +8363,12 @@ components:
           format: float
           type: number
         position:
+          # TODO: Use or create the position enum
           description: Player position
           example: QB
           type: string
         positionGroup:
+          # TODO: Use or create the position group enum
           description: Position group
           example: QB
           type: string
@@ -8715,18 +8477,6 @@ components:
           example: 7.24324
           format: float
           type: number
-      required:
-      - nflId
-      - displayName
-      - teamId
-      - position
-      - gp
-      - gs
-      - cmp
-      - att
-      - yds
-      - td
-      - int
       type: object
     WeeklyPlayerRushingStats:
       properties:
@@ -8835,7 +8585,6 @@ components:
           example: '3900'
           type: string
         # TODO: Verify the possible values where this OffensivePlayerPositionEnum is being used.
-        # It seems to be used to cover _all_ position related fields, perhaps incorrectly.
         position:
           $ref: '#/components/schemas/OffensivePlayerPositionEnum'
         positionGroup:
@@ -8984,17 +8733,6 @@ components:
           example: 6.42857
           format: float
           type: number
-      required:
-      - nflId
-      - displayName
-      - teamId
-      - position
-      - gp
-      - gs
-      - att
-      - yds
-      - td
-      - ypc
       type: object
     WeeklyRosterResponse:
       properties:
@@ -9054,19 +8792,10 @@ components:
           example: 4
           type: integer
         week:
+          # TODO: Use the week slug enum
           description: Week identifier
           example: WEEK_3
           type: string
-      required:
-      - limit
-      - offset
-      - season
-      - seasonType
-      - week
-      - sortKey
-      - sortValue
-      - total
-      - rushers
       type: object
     WeeksResponse:
       properties:
@@ -9081,6 +8810,7 @@ components:
       description: Metadata about win probability calculations
       properties:
         calculationMethod:
+          # TODO: Use or create a CalculationMethodEnum component
           description: Method used to calculate win probabilities
           enum:
             - REAL_TIME
@@ -9108,31 +8838,18 @@ components:
       properties:
         criticalPlays:
           description: 'Plays with high absolute WPA values (typically > 0.10) are
-            considered
-
-            critical or momentum-shifting plays that significantly impact the game
-            outcome.
-
-            '
+            considered critical or momentum-shifting plays that significantly impact the game
+            outcome.'
           type: string
         winProbability:
           description: 'Probability (0-1) that a team will win the game at any given
-            point.
-
-            1.0 = 100% chance of winning, 0.0 = 0% chance of winning.
-
-            '
+            point. 1.0 = 100% chance of winning, 0.0 = 0% chance of winning.'
           type: string
         winProbabilityAdded:
           description: 'Change in win probability caused by a single play.
-
             Positive WPA means the play helped the team''s chances of winning.
-
             Negative WPA means the play hurt the team''s chances of winning.
-
-            The sum of all WPA values for both teams in a game equals zero.
-
-            '
+            The sum of all WPA values for both teams in a game equals zero.'
           type: string
       type: object
     WinProbabilityResponse:
@@ -9164,12 +8881,6 @@ components:
           maximum: 1
           minimum: 0
           type: number
-      required:
-      - gameId
-      - gameKey
-      - pregameAwayTeamWinProbability
-      - pregameHomeTeamWinProbability
-      - plays
       type: object
     WinProbabilityTrend:
       description: Win probability trend analysis
@@ -9269,14 +8980,11 @@ paths:
           description: Internal server error
       summary: Get Game Preview Content
       tags:
-      - Content
+        - Content
   /api/content/home-film-cards:
     get:
       description: 'Retrieves featured film room content cards for the home page.
-
-        Returns weekly playlists and featured player film breakdowns.
-
-        '
+      Returns weekly playlists and featured player film breakdowns.'
       operationId: getHomeFilmCards
       responses:
         '200':
@@ -9291,15 +8999,11 @@ paths:
           description: Internal server error
       summary: Get Home Film Cards
       tags:
-      - Content
+        - Content
   /api/content/insights/game:
     get:
       description: 'Retrieves analytical insights and advanced statistics for a specific
-        game.
-
-        Can filter by tags and exclude specific content types.
-
-        '
+        game. Can filter by tags and exclude specific content types.'
       operationId: getGameInsights
       parameters:
       - description: Season year
@@ -12608,7 +12312,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BoxscoreResponse'
+                $ref: '#/components/schemas/TeamBoxScore'
           description: Successfully retrieved boxscore
         '400':
           description: Invalid game ID
