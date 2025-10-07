@@ -3,8 +3,8 @@
 **Related Issue:** [#8 - Investigate and define undefined object structures](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8)
 
 **Total TODOs:** 20
-**Completed:** 6
-**Remaining:** 14
+**Completed:** 7
+**Remaining:** 13
 
 This document tracks all schema components in the NFL API OpenAPI specification that contain undefined object structures requiring investigation and proper schema definition.
 
@@ -210,19 +210,20 @@ preview:
 
 ---
 
-### GameStatsResponse.data
+### GameStatsResponse.data ✅ RESOLVED
 
-**Schema Location:** `openapi/nfl-com-api.yaml:2621`
+**Schema Location:** `openapi/nfl-com-api.yaml:2713`
 
-**TODO Comment:** `Investigate the GameStatsResponse.data object`
+**Status:** **COMPLETED** - Now references WeeklyGameDetailSummary schema
+
+**Resolution:** Discovered that GameStatsResponse.data items have identical structure to WeeklyGameDetailSummary (live game state with scores, possession, field position, etc.).
 
 **Current Definition:**
 ```yaml
 data:
+  description: Array of live game state summaries
   items:
-    description: Game statistics data
-    # TODO: Investigate the GameStatsResponse.data object
-    type: object
+    $ref: '#/components/schemas/WeeklyGameDetailSummary'
   type: array
 ```
 
@@ -230,6 +231,8 @@ data:
 - `GET /football/v2/stats/live/game-summaries` (line 12236)
   - Operation ID: `getLiveGameStatsSummaries`
   - Returns: `GameStatsResponse`
+
+**Note:** Reuses existing WeeklyGameDetailSummary schema created for WeeklyGameDetail.summary
 
 ---
 
@@ -567,12 +570,12 @@ taggedVideos:
 
 ### By Category
 
-**Game-Related Objects (4 TODOs, 3 completed):**
+**Game-Related Objects (3 TODOs, 4 completed):**
 - CurrentGame.extensions
 - Game.extensions
 - GameInsight.content
 - GamePreviewResponse.preview
-- GameStatsResponse.data
+- ✅ GameStatsResponse.data (COMPLETED)
 - ✅ GamecenterResponse.leaders.passDistanceLeaders (COMPLETED)
 - ✅ GamecenterResponse.leaders.speedLeaders (COMPLETED)
 - ✅ GamecenterResponse.leaders.timeToSackLeaders (COMPLETED)
@@ -656,6 +659,14 @@ taggedVideos:
 **Schema Component:** `PassRusherStats` (line 3361)
 
 **Description:** Complete schema for pass rusher statistics including player identification (esbId, gsisId, playerName, etc.) and performance metrics (blitzCount, avgSeparationToQb, tackles, assists, sacks, forcedFumbles). Used in GamecenterResponse for both home and visitor pass rush statistics.
+
+### GameStatsResponse.data ✅
+
+**Completed:** 2025-10-07
+
+**Resolution:** Reuses existing `WeeklyGameDetailSummary` schema
+
+**Description:** Discovered that GameStatsResponse.data items have the exact same structure as WeeklyGameDetailSummary (live game state with scores by quarter, possession status, timeouts, field position, game clock, weather, etc.). Updated to reference the existing schema instead of leaving it as a generic object.
 
 ---
 

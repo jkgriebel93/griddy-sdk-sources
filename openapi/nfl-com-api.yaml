@@ -2711,10 +2711,9 @@ components:
     GameStatsResponse:
       properties:
         data:
-          # TODO: Investigate the GameStatsResponse.data object
+          description: Array of live game state summaries
           items:
-            description: Game statistics data
-            type: object
+            $ref: '#/components/schemas/WeeklyGameDetailSummary'
           type: array
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -6063,6 +6062,85 @@ components:
           description: Year team was established
           example: 1920
           type: integer
+      type: object
+    PlayerStatisticBaseSchema:
+      type: object
+      properties:
+        nflId:
+          type: integer
+          example: 34452
+        jerseyNumber:
+          type: integer
+          example: 9
+        playerName:
+          type: string
+          example: 'Matthew Stafford'
+        position:
+          $ref: '#/components/schemas/NextGenStatsPositionEnum'
+    BoxScorePlayerPassingStatistic:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+        - properties:
+            attempts:
+              type: integer
+              example: 47
+            completions:
+              type: integer
+              example: 30
+            completionPct:
+              type: number
+              format: float
+              example: 63.8
+            yards:
+              type: integer
+              example: 389
+            yardsPerAttempt:
+              type: number
+              format: float
+              example: 8.3
+            lostSackedYards:
+              type: integer
+              example: 11
+            sacks:
+              type: integer
+              example: 1
+            touchdowns:
+              type: integer
+              example: 3
+            longestPassCompletion:
+              type: integer
+              example: 38
+            longestTdPass:
+              type: integer
+              example: 14
+            interceptions:
+              type: integer
+              example: 0
+            qbRating:
+              type: number
+              format: float
+              minimum: 0.0
+              maximum: 158.3
+    BoxScorePlayerRushingStatistic:
+      type: object
+    BoxScorePlayerReceivingStatistic:
+      type: object
+    BoxScorePlayerKickingStatistic:
+      type: object
+    BoxScorePlayerKickReturnStatistic:
+      type: object
+    BoxScorePlayerPuntReturnStatistic:
+      type: object
+    BoxScorePlayerTacklesStatistic:
+      type: object
+    BoxScorePlayerFumblesStatistic:
+      type: object
+    BoxScorePlayerFieldGoalsStatistic:
+      type: object
+    BoxScorePlayerPuntingStatistic:
+      type: object
+    BoxScorePlayerExtraPointsStatistic:
       type: object
     TeamBoxscore:
       properties:

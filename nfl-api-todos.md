@@ -1,8 +1,8 @@
 # TODO Comments in nfl-com-api.yaml
 
 Original remaining TODOs: 77
-Total resolved: 61
-**Current remaining: 16 TODOs**
+Total resolved: 62
+**Current remaining: 15 TODOs**
 
 ## Completed Issues
 
@@ -49,16 +49,19 @@ The following issues have been addressed:
 - ✅ **PassRusherStats Schema Definition**: Previously defined comprehensive pass rusher statistics schema (1 TODO)
   - Complete schema with player identification and pass rush performance metrics
   - Includes blitzCount, avgSeparationToQb, tackles, assists, sacks, and forcedFumbles
+- ✅ **GameStatsResponse.data Schema Definition**: Reused WeeklyGameDetailSummary for live game state data (1 TODO)
+  - Discovered GameStatsResponse.data has identical structure to WeeklyGameDetailSummary
+  - Now properly references existing schema instead of generic object
 
-**Total Completed: 61 TODOs across 18 items**
+**Total Completed: 62 TODOs across 19 items**
 
 ## Remaining Issues
 
 The following issues have not yet been addressed:
-- ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (14 TODOs, 6 completed) - *Research-heavy*
+- ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (13 TODOs, 7 completed) - *Research-heavy*
 - ⏸️ [Issue #12](https://github.com/jkgriebel93/griddy-sdk-sources/issues/12): Create miscellaneous missing enums (2 TODOs)
 
-**Total Remaining: 16 TODOs across 2 issues**
+**Total Remaining: 15 TODOs across 2 issues**
 
 Note: Issues #7 (Consolidate duplicate or similar components), #9 (Refactor metrics explanation components), and #13 (Address miscellaneous TODO comments) have been fully resolved.
 
@@ -110,9 +113,7 @@ Note: Issues #7 (Consolidate duplicate or similar components), #9 (Refactor metr
 
 ## GameStatsResponse
 
-| Line | TODO Comment |
-|------|--------------|
-| 2621 | Investigate the GameStatsResponse.data object |
+**Note:** GameStatsResponse.data now references WeeklyGameDetailSummary schema (identical structure to live game state).
 
 ## GamecenterResponse
 
