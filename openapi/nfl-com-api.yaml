@@ -499,7 +499,6 @@ components:
           example: Steelers
           type: string
         homeTeam:
-          # TODO: What is the difference between a BoxscoreTeam and a Team?
           $ref: '#/components/schemas/BoxscoreTeam'
         homeTeamAbbr:
           example: PIT
@@ -525,8 +524,7 @@ components:
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
         site:
-          # TODO: Is BoxscoreSite just a venue?
-          $ref: '#/components/schemas/BoxscoreSite'
+          $ref: '#/components/schemas/Site'
         smartId:
           example: f688dfde-311e-11f0-b670-ae1250fadad1
           format: uuid
@@ -563,30 +561,6 @@ components:
           type: string
         visitorTeamScore:
           $ref: '#/components/schemas/TeamScore'
-      type: object
-    BoxscoreSite:
-      properties:
-        postalCode:
-          example: D03 P6K7
-          type: string
-        roofType:
-          $ref: '#/components/schemas/RoofTypeEnum'
-        siteCity:
-          example: Dublin
-          type: string
-        siteFullName:
-          example: Croke Park
-          type: string
-        siteId:
-          example: 1685
-          type: integer
-        siteState:
-          nullable: true
-          type: string
-        smartId:
-          example: 00081685-c941-9e9a-e0cd-ee645ca67a74
-          format: uuid
-          type: string
       type: object
     BoxscoreTeam:
       properties:
@@ -2427,7 +2401,6 @@ components:
           format: date-time
           type: string
         venue:
-          # TODO: Is this the same as GameSite or whatever it was I saw earlier?
           $ref: '#/components/schemas/Venue'
         version:
           description: Data version number
@@ -2653,28 +2626,6 @@ components:
           type: string
         visitorTeamScore:
           $ref: '#/components/schemas/TeamScore'
-      type: object
-    GameSite:
-      # TODO: Again, what is the difference between GameSite and Venue?
-      properties:
-        postalCode:
-          nullable: true
-          type: string
-        roofType:
-          $ref: '#/components/schemas/RoofTypeEnum'
-        siteCity:
-          type: string
-        siteFullName:
-          description: Stadium name
-          type: string
-        siteId:
-          type: integer
-        siteState:
-          nullable: true
-          type: string
-        smartId:
-          format: uuid
-          type: string
       type: object
     GameSituation:
       description: Game situation context for win probability calculations
@@ -3287,15 +3238,7 @@ components:
                 description: Length of current streak
                 type: integer
               type:
-                description: Type of current streak
-                # TODO: There is a game result enum component that can be used here
-                enum:
-                  - W
-                  - L
-                  - T
-                  - STREAK_TYPE_WINNING
-                  - STREAK_TYPE_LOSING
-                type: string
+                $ref: '#/components/schemas/GameResultEnum'
             type: object
         type: object
     Pagination:
@@ -5791,7 +5734,7 @@ components:
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
         site:
-          $ref: '#/components/schemas/GameSite'
+          $ref: '#/components/schemas/Site'
         smartId:
           description: Smart identifier for the game
           format: uuid
@@ -5873,23 +5816,29 @@ components:
           type: array
       type: object
     Site:
-      # TODO: Compare this to Venue and see if they can be consolidated
+      description: Stadium or venue information for a game
       properties:
         postalCode:
+          example: D03 P6K7
           nullable: true
           type: string
         roofType:
           $ref: '#/components/schemas/RoofTypeEnum'
         siteCity:
+          example: Dublin
           type: string
         siteFullName:
+          description: Stadium name
+          example: Croke Park
           type: string
         siteId:
+          example: 1685
           type: integer
         siteState:
           nullable: true
           type: string
         smartId:
+          example: 00081685-c941-9e9a-e0cd-ee645ca67a74
           format: uuid
           type: string
       type: object
@@ -6101,7 +6050,7 @@ components:
           $ref: '#/components/schemas/TeamTypeEnum'
         venues:
           items:
-            $ref: '#/components/schemas/TeamVenue'
+            $ref: '#/components/schemas/Venue'
           type: array
         yearEstablished:
           description: Year team was established
@@ -7371,23 +7320,6 @@ components:
           description: Timeouts left
           type: integer
       type: object
-    TeamVenue:
-      # TODO: Compare to Site, Venue, other similar components. Consolidate as and if possible
-      properties:
-        city:
-          description: Venue city
-          type: string
-        country:
-          description: Venue country
-          type: string
-        id:
-          description: Venue identifier
-          format: uuid
-          type: string
-        name:
-          description: Venue name
-          type: string
-      type: object
     TicketVendor:
       properties:
         ticketUrl:
@@ -7504,7 +7436,6 @@ components:
           type: array
       type: object
     Venue:
-      # TODO: Compare with Site, TeamVenue, etc. and consolidate as possible
       properties:
         address:
           description: Street address

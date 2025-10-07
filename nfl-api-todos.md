@@ -1,6 +1,6 @@
 # TODO Comments in nfl-com-api.yaml
 
-Total TODOs: 77 (55 completed, 77 remaining)
+Total TODOs: 77 (59 completed, 73 remaining)
 
 ## Completed Issues
 
@@ -12,19 +12,21 @@ The following issues have been addressed:
 - ✅ [Issue #11](https://github.com/jkgriebel93/griddy-sdk-sources/issues/11): Refactor inline enums to top-level components (13 TODOs)
 - ✅ [Issue #14](https://github.com/jkgriebel93/griddy-sdk-sources/issues/14): Fix data type inconsistencies (1 TODO)
 - ✅ **StatsQueryMetadata Component**: Created standardized pagination/query metadata component for 14 stats response schemas (1 TODO)
+- ✅ **Site Schema Consolidation**: Consolidated BoxscoreSite, GameSite, and Site into a single Site schema (3 TODOs)
+- ✅ **Venue Schema Consolidation**: Consolidated TeamVenue into Venue schema (1 TODO)
 
-**Total Completed: 55 TODOs across 7 items**
+**Total Completed: 59 TODOs across 9 items**
 
 ## Remaining Issues
 
 The following issues have not yet been addressed:
-- ⏸️ [Issue #7](https://github.com/jkgriebel93/griddy-sdk-sources/issues/7): Consolidate duplicate or similar components (28 TODOs) - *Research-heavy*
+- ⏸️ [Issue #7](https://github.com/jkgriebel93/griddy-sdk-sources/issues/7): Consolidate duplicate or similar components (24 TODOs) - *Research-heavy*
 - ⏸️ [Issue #8](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8): Investigate and define undefined object structures (17 TODOs) - *Research-heavy*
 - ⏸️ [Issue #9](https://github.com/jkgriebel93/griddy-sdk-sources/issues/9): Refactor metrics explanation components (12 TODOs) - *Research-heavy*
 - ⏸️ [Issue #12](https://github.com/jkgriebel93/griddy-sdk-sources/issues/12): Create miscellaneous missing enums (13 TODOs)
 - ⏸️ [Issue #13](https://github.com/jkgriebel93/griddy-sdk-sources/issues/13): Address miscellaneous TODO comments (7 TODOs)
 
-**Total Remaining: 77 TODOs across 5 issues**
+**Total Remaining: 73 TODOs across 5 issues**
 
 ---
 
@@ -33,7 +35,6 @@ The following issues have not yet been addressed:
 | Line | TODO Comment |
 |------|--------------|
 | 381 | What is the difference between a BoxscoreTeam and a Team? |
-| 407 | Is BoxscoreSite just a venue? |
 | 422 | Should there be an enum defined for team abbreviations? |
 
 ## BoxscoreTeam
@@ -135,7 +136,6 @@ The following issues have not yet been addressed:
 | Line | TODO Comment |
 |------|--------------|
 | 2412 | Investigate the Game.extensions object |
-| 2472 | Is this the same as GameSite or whatever it was I saw earlier? |
 
 ## GameInsight
 
@@ -148,12 +148,6 @@ The following issues have not yet been addressed:
 | Line | TODO Comment |
 |------|--------------|
 | 2606 | Investigate the GamePreviewResponse.preview object |
-
-## GameSite
-
-| Line | TODO Comment |
-|------|--------------|
-| 2709 | Again, what is the difference between GameSite and Venue? |
 
 ## GameStatsResponse
 
@@ -346,9 +340,11 @@ The following issues have not yet been addressed:
 
 ## Site
 
+**Note:** BoxscoreSite, GameSite, and Site have been consolidated into a single Site schema.
+
 | Line | TODO Comment |
 |------|--------------|
-| 6084 | Compare this to Venue and see if they can be consolidated |
+| N/A | Compare this to Venue and see if they can be consolidated (Venue kept separate due to different field naming and structure) |
 
 ## Standings
 
@@ -362,12 +358,6 @@ The following issues have not yet been addressed:
 |------|--------------|
 | 6220 | Use or create a dataType enum component |
 
-## TeamVenue
-
-| Line | TODO Comment |
-|------|--------------|
-| 7708 | Compare to Site, Venue, other similar components. Consolidate as and if possible |
-
 ## Transaction
 
 | Line | TODO Comment |
@@ -376,9 +366,11 @@ The following issues have not yet been addressed:
 
 ## Venue
 
+**Note:** TeamVenue has been consolidated into Venue schema.
+
 | Line | TODO Comment |
 |------|--------------|
-| 7848 | Compare with Site, TeamVenue, etc. and consolidate as possible |
+| N/A | Compare with Site and consolidate as possible (TeamVenue already consolidated; Site kept separate due to different field naming) |
 
 ## WeeklyGameDetail
 
