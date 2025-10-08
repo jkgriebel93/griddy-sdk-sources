@@ -3,8 +3,8 @@
 **Related Issue:** [#8 - Investigate and define undefined object structures](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8)
 
 **Total TODOs:** 20
-**Completed:** 10
-**Remaining:** 10
+**Completed:** 11
+**Remaining:** 9
 
 This document tracks all schema components in the NFL API OpenAPI specification that contain undefined object structures requiring investigation and proper schema definition.
 
@@ -170,19 +170,21 @@ extensions:
 
 ---
 
-### GameInsight.content
+### GameInsight.content ✅ RESOLVED
 
-**Schema Location:** `openapi/nfl-com-api.yaml:2444`
+**Schema Location:** `openapi/nfl-com-api.yaml:2440`
 
-**TODO Comment:** `Investigate GameInsight.content object`
+**Status:** **COMPLETED** - False TODO; schema was already complete
 
-**Current Definition:**
-```yaml
-content:
-  description: Content body of the insight
-  # TODO: Investigate GameInsight.content object
-  type: object
-```
+**Resolution:** This was a tracking error. No `content` field with a TODO comment exists in the `GameInsight` schema. The schema is comprehensive and well-defined with 20+ properties.
+
+**Actual GameInsight Schema:**
+The `GameInsight` schema (line 2440) is fully defined with the following properties:
+- **Player Identification**: nflId, playerName, esbId, gsisId, smartId, jerseyNumber, position, headshot
+- **Team Info**: teamId, teamAbbr
+- **Game Context**: season, seasonType, week, gameId, date
+- **Insight Content**: title, subNote1 (the actual content fields)
+- **Metadata**: tags, id, evergreen, createdAt, createdBy, updatedAt, updatedBy
 
 **Referenced By:**
 - Used directly as array response schema
@@ -191,6 +193,8 @@ content:
 - `GET /api/content/insights/game` (line 8057)
   - Operation ID: `getGameInsights`
   - Returns: `array of GameInsight`
+
+**Note:** The insight content is stored in `title` (short description) and `subNote1` (longer elaboration), not in a separate `content` object.
 
 ---
 
@@ -460,6 +464,8 @@ PlayerStatistic:
 ---
 
 ### PlayerStatsResponse.players.stats
+
+I can't find the page that triggers this request
 
 **Schema Location:** `openapi/nfl-com-api.yaml:4823`
 

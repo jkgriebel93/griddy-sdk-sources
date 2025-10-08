@@ -2440,19 +2440,73 @@ components:
     GameInsight:
       description: Game-specific analytical insight
       properties:
-        content:
-          # TODO: Investigate GameInsight.content object
-          description: Insight content and analysis
-          type: object
+        season:
+          type: integer
+        seasonType:
+          $ref: '#/components/schemas/SeasonTypeEnum'
+        week:
+          type: integer
+        nflId:
+          type: integer
+          example: 47834
+        playerName:
+          type: string
+          example: 'A.J. Brown'
+        esbId:
+          type: string
+        gsisId:
+          type: string
+        smartId:
+          type: string
+          format: uuid
+        jerseyNumber:
+          type: integer
+        position:
+          $ref: '#/components/schemas/NextGenStatsPositionEnum'
+        teamId:
+          type: string
+        teamAbbr:
+          type: string
+        title:
+          type: string
+          description: A short-ish description of the insight
+        subNote1:
+          type: string
+          description: A longer elaboration of the insight
+        date:
+          type: string
+          format: date
+        evergreen:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+          description: Appears to be the username of the NFL staff that created the insight
+        updatedAt:
+          type: string
+          format: date-time
+        updatedBy:
+          type: string
         gameId:
-          description: Game identifier
+          type: integer
+          example: 2025100900
+        headshot:
+          description: URL to player headshot image (contains formatInstructions placeholder)
+          example: https://static.www.nfl.com/image/upload/formatInstructions/league/cruqs6qpbykh7a2whd7p
+          format: uri
           type: string
+        tags:
+          type: array
+          items:
+            type: string
+            example: 'next-gen-stats'
         id:
-          description: Insight identifier
           type: string
-        type:
-          description: Type of insight
-          type: string
+          description: 'Appears to be a UUID with dashes removed'
+          example: '68e583063593b744ef32f18f'
+
       type: object
     GameOdds:
       properties:
