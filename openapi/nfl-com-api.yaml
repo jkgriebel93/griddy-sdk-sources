@@ -2767,7 +2767,7 @@ components:
         data:
           description: Array of live game state summaries
           items:
-            $ref: '#/components/schemas/WeeklyGameDetailSummary'
+            $ref: '#/components/schemas/Summary'
           type: array
         pagination:
           $ref: '#/components/schemas/Pagination'
@@ -5817,7 +5817,6 @@ components:
           $ref: '#/components/schemas/RushingMap'
 
     RusherStats:
-      type: object
       allOf:
         - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
         - properties:

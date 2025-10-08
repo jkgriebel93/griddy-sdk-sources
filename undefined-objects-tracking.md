@@ -17,7 +17,7 @@ This document tracks all schema components in the NFL API OpenAPI specification 
 3. [FilmroomPlay.selectedParamValues](#filmroomplayselectedparamvalues)
 4. [FuturesMarket.fixture](#futuresmarketfixture)
 5. [Game.extensions](#gameextensions)
-6. [GameInsight.content](#gameinsightcontent)
+6. ~~[GameInsight.content](#gameinsightcontent)~~
 7. [GamePreviewResponse.preview](#gamepreviewresponsepreview)
 8. ~~[GameStatsResponse.data](#gamestatsresponsedata)~~
 9. ~~[GamecenterResponse.leaders (3 properties)](#gamecenterresponseleaders)~~
@@ -37,6 +37,8 @@ This document tracks all schema components in the NFL API OpenAPI specification 
 ## Schema Details
 
 ### CoachesFilmVideo.videos
+
+**Note: ** This array has been empty in all requests I've seen.
 
 **Schema Location:** `openapi/nfl-com-api.yaml:901`
 

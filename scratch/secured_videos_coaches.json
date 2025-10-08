@@ -1,0 +1,418 @@
+{
+    "items": [
+        {
+            "type": "video",
+            "language": null,
+            "advertiserId": null,
+            "author": null,
+            "authorizations": {
+                "nfl_plus_premium": [
+                    {
+                        "NFL PLUS - COACHES FILM": {
+                            "requirements": {
+                                "countryCode": [
+                                    "US"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "pro_premium": [
+                    {
+                        "NFL PLUS - COACHES FILM": {
+                            "requirements": {
+                                "countryCode": [
+                                    "US"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "nfl_plus_plus": [
+                    {
+                        "NFL PLUS - COACHES FILM": {
+                            "requirements": {
+                                "countryCode": [
+                                    "US"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "background": {},
+            "cameraSource": "Broadcast",
+            "clipType": null,
+            "ctas": [],
+            "ctaLink": null,
+            "ctaText": null,
+            "ctaTarget": null,
+            "description": "16-J.Karty kicks 49 yards from LA 35 to SF 16. 9-S.Moore MUFFS catch, and recovers at SF 27. 9-S.Moore to SF 28 for 1 yard (30-J.Wallace; 56-S.Dolac).",
+            "displayTitle": null,
+            "startDate": null,
+            "endDate": null,
+            "duration": "16",
+            "episodeNumber": null,
+            "entitlement": null,
+            "expirationDate": "2035-10-01T00:46:27.000Z",
+            "externalId": "0xP2nZbSZUBR2Fk2-vt3xA",
+            "fantasyLink": null,
+            "hostNetwork": null,
+            "id": null,
+            "ids": {
+                "awayTeamId": "10404500-e7cb-7fce-3f10-4eeb269bd179",
+                "gameId": "f6cee331-311e-11f0-b670-ae1250fadad1",
+                "homeTeamId": "10402510-8931-0d5f-9815-79bb79649a65",
+                "playId": "43"
+            },
+            "images": [],
+            "intendedAudience": null,
+            "introEnd": null,
+            "mcpPlaybackId": "2340125",
+            "mobileLink": null,
+            "mobileTitle": null,
+            "originalAirDate": "2025-10-02T07:00:00.000Z",
+            "outroStart": null,
+            "playIds": [
+                "43"
+            ],
+            "preRollDisabled": false,
+            "promoAssets": [],
+            "promoLink": null,
+            "promoText": null,
+            "promoTarget": "_self",
+            "lastUpdated": null,
+            "publishDate": "2025-10-03T10:00:00.000Z",
+            "radioStation": null,
+            "seriesTitle": null,
+            "seriesSeason": null,
+            "series": null,
+            "slug": null,
+            "subType": "Coaches Film",
+            "summary": null,
+            "tags": [
+                {
+                    "title": "Moore, Skyy",
+                    "slug": "moore,-skyy",
+                    "personId": "32004d4f-4f67-8505-ee46-18aa406b13ff"
+                },
+                {
+                    "title": "Karty, Joshua",
+                    "slug": "karty,-joshua",
+                    "personId": "32004b41-5273-7693-d111-9d4c625e76c8"
+                },
+                {
+                    "title": "Wallace, Josh",
+                    "slug": "wallace,-josh",
+                    "personId": "32005741-4c46-3437-5d1d-34c8f1403e41"
+                },
+                {
+                    "title": "49ers",
+                    "slug": "49ers",
+                    "teamId": "10402510_8931_0d5f_9815_79bb79649a65"
+                },
+                {
+                    "title": "Rams",
+                    "slug": "rams",
+                    "teamId": "10404500_e7cb_7fce_3f10_4eeb269bd179"
+                },
+                {
+                    "gameId": "f6cee331-311e-11f0-b670-ae1250fadad1",
+                    "season": "2025",
+                    "week": "5",
+                    "seasonType": "REG"
+                },
+                {
+                    "gameId": "f6cee331-311e-11f0-b670-ae1250fadad1",
+                    "season": "2025",
+                    "week": "5",
+                    "seasonType": "REG"
+                }
+            ],
+            "thumbnail": {
+                "thumbnailUrl": "https://o300810-mp-lura-live.akamaized.net/1/73/pvw/D92/0B8/D920B8F455FC01BD7114A71193C49198_2.jpg?hdntl=st=1715000000~exp=2082787200~acl=/*~hmac=7903d9d310da4e4b7d0867e2098dcbb50dfa5d908bf53dd2c392d70447c347e3"
+            },
+            "title": "LA  KO  LA 35",
+            "videos": [],
+            "webLink": null
+        },
+        {
+            "type": "video",
+            "language": null,
+            "advertiserId": null,
+            "author": null,
+            "authorizations": {
+                "nfl_plus_premium": [
+                    {
+                        "NFL PLUS - COACHES FILM": {
+                            "requirements": {
+                                "countryCode": [
+                                    "US"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "pro_premium": [
+                    {
+                        "NFL PLUS - COACHES FILM": {
+                            "requirements": {
+                                "countryCode": [
+                                    "US"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "nfl_plus_plus": [
+                    {
+                        "NFL PLUS - COACHES FILM": {
+                            "requirements": {
+                                "countryCode": [
+                                    "US"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "background": {},
+            "cameraSource": "Endzone",
+            "clipType": null,
+            "ctas": [],
+            "ctaLink": null,
+            "ctaText": null,
+            "ctaTarget": null,
+            "description": "16-J.Karty kicks 49 yards from LA 35 to SF 16. 9-S.Moore MUFFS catch, and recovers at SF 27. 9-S.Moore to SF 28 for 1 yard (30-J.Wallace; 56-S.Dolac).",
+            "displayTitle": null,
+            "startDate": null,
+            "endDate": null,
+            "duration": "16",
+            "episodeNumber": null,
+            "entitlement": null,
+            "expirationDate": "2035-10-01T00:45:04.000Z",
+            "externalId": "jYgkpiy6XwKpgA795kLd4g",
+            "fantasyLink": null,
+            "hostNetwork": null,
+            "id": null,
+            "ids": {
+                "awayTeamId": "10404500-e7cb-7fce-3f10-4eeb269bd179",
+                "gameId": "f6cee331-311e-11f0-b670-ae1250fadad1",
+                "homeTeamId": "10402510-8931-0d5f-9815-79bb79649a65",
+                "playId": "43"
+            },
+            "images": [],
+            "intendedAudience": null,
+            "introEnd": null,
+            "mcpPlaybackId": "2340113",
+            "mobileLink": null,
+            "mobileTitle": null,
+            "originalAirDate": "2025-10-02T07:00:00.000Z",
+            "outroStart": null,
+            "playIds": [
+                "43"
+            ],
+            "preRollDisabled": false,
+            "promoAssets": [],
+            "promoLink": null,
+            "promoText": null,
+            "promoTarget": "_self",
+            "lastUpdated": null,
+            "publishDate": "2025-10-03T10:00:00.000Z",
+            "radioStation": null,
+            "seriesTitle": null,
+            "seriesSeason": null,
+            "series": null,
+            "slug": null,
+            "subType": "Coaches Film Pro",
+            "summary": null,
+            "tags": [
+                {
+                    "title": "Moore, Skyy",
+                    "slug": "moore,-skyy",
+                    "personId": "32004d4f-4f67-8505-ee46-18aa406b13ff"
+                },
+                {
+                    "title": "Karty, Joshua",
+                    "slug": "karty,-joshua",
+                    "personId": "32004b41-5273-7693-d111-9d4c625e76c8"
+                },
+                {
+                    "title": "Wallace, Josh",
+                    "slug": "wallace,-josh",
+                    "personId": "32005741-4c46-3437-5d1d-34c8f1403e41"
+                },
+                {
+                    "title": "49ers",
+                    "slug": "49ers",
+                    "teamId": "10402510_8931_0d5f_9815_79bb79649a65"
+                },
+                {
+                    "title": "Rams",
+                    "slug": "rams",
+                    "teamId": "10404500_e7cb_7fce_3f10_4eeb269bd179"
+                },
+                {
+                    "gameId": "f6cee331-311e-11f0-b670-ae1250fadad1",
+                    "season": "2025",
+                    "week": "5",
+                    "seasonType": "REG"
+                },
+                {
+                    "gameId": "f6cee331-311e-11f0-b670-ae1250fadad1",
+                    "season": "2025",
+                    "week": "5",
+                    "seasonType": "REG"
+                }
+            ],
+            "thumbnail": {
+                "thumbnailUrl": "https://o300810-mp-lura-live.akamaized.net/1/73/pvw/26A/87C/26A87C65F5D7E8E97954A2B6B641C736_2.jpg?hdntl=st=1715000000~exp=2082787200~acl=/*~hmac=7903d9d310da4e4b7d0867e2098dcbb50dfa5d908bf53dd2c392d70447c347e3"
+            },
+            "title": "LA  KO  LA 35",
+            "videos": [],
+            "webLink": null
+        },
+        {
+            "type": "video",
+            "language": null,
+            "advertiserId": null,
+            "author": null,
+            "authorizations": {
+                "nfl_plus_premium": [
+                    {
+                        "NFL PLUS - COACHES FILM": {
+                            "requirements": {
+                                "countryCode": [
+                                    "US"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "pro_premium": [
+                    {
+                        "NFL PLUS - COACHES FILM": {
+                            "requirements": {
+                                "countryCode": [
+                                    "US"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "nfl_plus_plus": [
+                    {
+                        "NFL PLUS - COACHES FILM": {
+                            "requirements": {
+                                "countryCode": [
+                                    "US"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "background": {},
+            "cameraSource": "Sideline",
+            "clipType": null,
+            "ctas": [],
+            "ctaLink": null,
+            "ctaText": null,
+            "ctaTarget": null,
+            "description": "16-J.Karty kicks 49 yards from LA 35 to SF 16. 9-S.Moore MUFFS catch, and recovers at SF 27. 9-S.Moore to SF 28 for 1 yard (30-J.Wallace; 56-S.Dolac).",
+            "displayTitle": null,
+            "startDate": null,
+            "endDate": null,
+            "duration": "16",
+            "episodeNumber": null,
+            "entitlement": null,
+            "expirationDate": "2035-10-01T00:44:54.000Z",
+            "externalId": "Opi3w7X50yEnuTWFLyej8w",
+            "fantasyLink": null,
+            "hostNetwork": null,
+            "id": null,
+            "ids": {
+                "awayTeamId": "10404500-e7cb-7fce-3f10-4eeb269bd179",
+                "gameId": "f6cee331-311e-11f0-b670-ae1250fadad1",
+                "homeTeamId": "10402510-8931-0d5f-9815-79bb79649a65",
+                "playId": "43"
+            },
+            "images": [],
+            "intendedAudience": null,
+            "introEnd": null,
+            "mcpPlaybackId": "2340108",
+            "mobileLink": null,
+            "mobileTitle": null,
+            "originalAirDate": "2025-10-02T07:00:00.000Z",
+            "outroStart": null,
+            "playIds": [
+                "43"
+            ],
+            "preRollDisabled": false,
+            "promoAssets": [],
+            "promoLink": null,
+            "promoText": null,
+            "promoTarget": "_self",
+            "lastUpdated": null,
+            "publishDate": "2025-10-03T10:00:00.000Z",
+            "radioStation": null,
+            "seriesTitle": null,
+            "seriesSeason": null,
+            "series": null,
+            "slug": null,
+            "subType": "Coaches Film Pro",
+            "summary": null,
+            "tags": [
+                {
+                    "title": "Moore, Skyy",
+                    "slug": "moore,-skyy",
+                    "personId": "32004d4f-4f67-8505-ee46-18aa406b13ff"
+                },
+                {
+                    "title": "Karty, Joshua",
+                    "slug": "karty,-joshua",
+                    "personId": "32004b41-5273-7693-d111-9d4c625e76c8"
+                },
+                {
+                    "title": "Wallace, Josh",
+                    "slug": "wallace,-josh",
+                    "personId": "32005741-4c46-3437-5d1d-34c8f1403e41"
+                },
+                {
+                    "title": "49ers",
+                    "slug": "49ers",
+                    "teamId": "10402510_8931_0d5f_9815_79bb79649a65"
+                },
+                {
+                    "title": "Rams",
+                    "slug": "rams",
+                    "teamId": "10404500_e7cb_7fce_3f10_4eeb269bd179"
+                },
+                {
+                    "gameId": "f6cee331-311e-11f0-b670-ae1250fadad1",
+                    "season": "2025",
+                    "week": "5",
+                    "seasonType": "REG"
+                },
+                {
+                    "gameId": "f6cee331-311e-11f0-b670-ae1250fadad1",
+                    "season": "2025",
+                    "week": "5",
+                    "seasonType": "REG"
+                }
+            ],
+            "thumbnail": {
+                "thumbnailUrl": "https://o300810-mp-lura-live.akamaized.net/1/73/pvw/D59/B7E/D59B7E281433AA4D49B24468D4AA5690_1.jpg?hdntl=st=1715000000~exp=2082787200~acl=/*~hmac=7903d9d310da4e4b7d0867e2098dcbb50dfa5d908bf53dd2c392d70447c347e3"
+            },
+            "title": "LA  KO  LA 35",
+            "videos": [],
+            "webLink": null
+        }
+    ],
+    "metadata": {
+        "generatedAt": "2025-10-08T10:37:34.196Z"
+    },
+    "pagination": {
+        "token": "eyJhbGciOiJIUzI1NiJ9.eyJsaW1pdCI6MjUsIm9mZnNldCI6MjUsInF1ZXJ5Ijp7ImdhbWVpZCI6ImY2Y2VlMzMxLTMxMWUtMTFmMC1iNjcwLWFlMTI1MGZhZGFkMSIsInBsYXlpZCI6IjQzIn19.jH_pCcnUOX_X97B5zCmemqm2V0QCF4NMHNn8tVmecZo"
+    }
+}
