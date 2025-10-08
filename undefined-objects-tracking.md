@@ -3,8 +3,8 @@
 **Related Issue:** [#8 - Investigate and define undefined object structures](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8)
 
 **Total TODOs:** 20
-**Completed:** 8
-**Remaining:** 12
+**Completed:** 10
+**Remaining:** 10
 
 This document tracks all schema components in the NFL API OpenAPI specification that contain undefined object structures requiring investigation and proper schema definition.
 
@@ -25,8 +25,8 @@ This document tracks all schema components in the NFL API OpenAPI specification 
 11. [PlayerInjury](#playerinjury)
 12. ~~[PlayerStatistic](#playerstatistic)~~
 13. [PlayerStatsResponse.players.stats](#playerstatsresponseplayersstats)
-14. [ReceiverStats](#receiverstats)
-15. [RusherStats](#rusherstats)
+14. ~~[ReceiverStats](#receiverstats)~~
+15. ~~[RusherStats](#rusherstats)~~
 16. [WeeklyGameDetail (3 properties)](#weeklygamedetail)
     - ~~replays~~
     - ~~summary~~
@@ -479,18 +479,58 @@ stats:
 
 ---
 
-### ReceiverStats
+### ReceiverStats ✅ RESOLVED
 
-**Schema Location:** `openapi/nfl-com-api.yaml:5248`
+**Schema Location:** `openapi/nfl-com-api.yaml:5501`
 
-**TODO Comment:** `Investigate and define the ReceiverStats object`
+**Status:** **COMPLETED** - Comprehensive schema for Next Gen Stats receiving statistics
+
+**Resolution:** Defined a complete schema extending `PlayerStatisticBaseSchema` with receiving metrics including targets, receptions, yards, touchdowns, and advanced Next Gen Stats metrics for separation, air yards, and cushion.
 
 **Current Definition:**
 ```yaml
 ReceiverStats:
-  # TODO: Investigate and define the ReceiverStats object
   type: object
+  allOf:
+    - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+    - properties:
+        recYards:
+          type: integer
+          example: 85
+        targets:
+          type: integer
+          example: 12
+        receptions:
+          type: integer
+          example: 10
+        touchdowns:
+          type: integer
+          example: 1
+        receptionInfo:
+          type: object
+          properties:
+            avgAirYards:
+              type: number
+              format: float
+              example: 9.5725
+            avgCushion:
+              type: number
+              format: float
+              example: 6.998333333333334
+            avgSeparation:
+              type: number
+              format: float
+              example: 3.486743522705502
 ```
+
+**Key Properties:**
+- **recYards**: Total receiving yards
+- **targets**: Number of times targeted
+- **receptions**: Number of receptions
+- **touchdowns**: Receiving touchdowns
+- **receptionInfo.avgAirYards**: Average air yards (distance ball travels in air)
+- **receptionInfo.avgCushion**: Average cushion (defender distance at snap)
+- **receptionInfo.avgSeparation**: Average separation (defender distance at target)
 
 **Referenced By:**
 - `GamecenterResponse.receivers` (lines 2692, 2702) - Used in both home and visitor arrays
@@ -502,18 +542,45 @@ ReceiverStats:
 
 ---
 
-### RusherStats
+### RusherStats ✅ RESOLVED
 
-**Schema Location:** `openapi/nfl-com-api.yaml:5427`
+**Schema Location:** `openapi/nfl-com-api.yaml:5766`
 
-**TODO Comment:** `Investigate the RusherStats object. Note that it may be very similar if not identical to RushingStats`
+**Status:** **COMPLETED** - Comprehensive schema for Next Gen Stats rushing statistics
+
+**Resolution:** Defined a complete schema extending `PlayerStatisticBaseSchema` with rushing metrics including attempts, yards, touchdowns, and advanced Next Gen Stats metrics for distance traveled, time to line of scrimmage, and rush location maps.
 
 **Current Definition:**
 ```yaml
 RusherStats:
-  # TODO: Investigate the RusherStats object. Note that it may be very similar if not identical to RushingStats
   type: object
+  allOf:
+    - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+    - properties:
+        yards:
+          type: integer
+          example: 131
+        attempts:
+          type: integer
+          example: 14
+        touchdowns:
+          type: integer
+          example: 2
+        rushInfo:
+          $ref: '#/components/schemas/RushingInfo'
 ```
+
+**Key Properties:**
+- **yards**: Total rushing yards
+- **attempts**: Number of rushing attempts
+- **touchdowns**: Rushing touchdowns
+- **rushInfo**: Advanced Next Gen Stats metrics:
+  - `distance`: Total distance traveled (e.g., 190.79 yards on 14 carries)
+  - `avgYards`: Average yards per carry
+  - `avgDistance`: Average distance traveled per carry
+  - `avgTimeToLos`: Average time to reach line of scrimmage
+  - `rushLocationMap`: Rush location distribution map
+  - `preSnapRushLocationMap`: Pre-snap rush location distribution
 
 **Referenced By:**
 - `GamecenterResponse.rushers` (lines 2709, 2713) - Used in both home and visitor arrays
@@ -523,7 +590,7 @@ RusherStats:
   - Operation ID: `getGamecenter`
   - Returns: `GamecenterResponse`
 
-**Note:** A `RushingStats` schema exists separately. Comparison needed to determine if consolidation is possible.
+**Note:** `RusherStats` is used by the Gamecenter endpoint with Next Gen Stats metrics, while the separate `RushingStats` schema is used by traditional stats endpoints. These serve different purposes and are intentionally kept separate.
 
 ---
 
