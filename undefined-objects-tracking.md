@@ -19,15 +19,18 @@ This document tracks all schema components in the NFL API OpenAPI specification 
 5. [Game.extensions](#gameextensions)
 6. [GameInsight.content](#gameinsightcontent)
 7. [GamePreviewResponse.preview](#gamepreviewresponsepreview)
-8. [GameStatsResponse.data](#gamestatsresponsedata)
-9. [GamecenterResponse.leaders (3 properties)](#gamecenterresponseleaders)
-10. [PassRusherStats](#passrusherstats)
+8. ~~[GameStatsResponse.data](#gamestatsresponsedata)~~
+9. ~~[GamecenterResponse.leaders (3 properties)](#gamecenterresponseleaders)~~
+10. ~~[PassRusherStats](#passrusherstats)~~
 11. [PlayerInjury](#playerinjury)
-12. [PlayerStatistic](#playerstatistic)
+12. ~~[PlayerStatistic](#playerstatistic)~~
 13. [PlayerStatsResponse.players.stats](#playerstatsresponseplayersstats)
 14. [ReceiverStats](#receiverstats)
 15. [RusherStats](#rusherstats)
 16. [WeeklyGameDetail (3 properties)](#weeklygamedetail)
+    - ~~replays~~
+    - ~~summary~~
+    - taggedVideos
 
 ---
 
