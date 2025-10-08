@@ -3,8 +3,8 @@
 **Related Issue:** [#8 - Investigate and define undefined object structures](https://github.com/jkgriebel93/griddy-sdk-sources/issues/8)
 
 **Total TODOs:** 20
-**Completed:** 7
-**Remaining:** 13
+**Completed:** 8
+**Remaining:** 12
 
 This document tracks all schema components in the NFL API OpenAPI specification that contain undefined object structures requiring investigation and proper schema definition.
 
@@ -163,6 +163,8 @@ extensions:
   - Returns: `FilmroomPlaysResponse`
 
 **Note:** The `Game` schema is also extended by `WeeklyGameDetail` using `allOf` composition.
+
+
 ---
 
 ### GameInsight.content
@@ -400,25 +402,52 @@ PlayerInjury:
 
 ---
 
-### PlayerStatistic
+### PlayerStatistic ✅ RESOLVED
 
-**Schema Location:** `openapi/nfl-com-api.yaml:4805`
+**Schema Location:** `openapi/nfl-com-api.yaml:5019`
 
-**TODO Comment:** `Investigate the PlayerStatistic object`
+**Status:** **COMPLETED** - Created comprehensive schemas for all player statistic categories
+
+**Resolution:** Defined a base schema (`PlayerStatisticBaseSchema`) with common player identification fields, and created 11 specific statistic schemas that extend this base for different statistical categories.
+
+**New Schema Components Created:**
+- `PlayerStatisticBaseSchema` (line 6066) - Base schema with nflId, jerseyNumber, playerName, position
+- `BoxScorePlayerPassingStatistic` (line 6080) - Passing statistics with completion percentage, QB rating, etc.
+- `BoxScorePlayerRushingStatistic` (line 6125) - Rushing statistics with attempts, yards, touchdowns
+- `BoxScorePlayerReceivingStatistic` (line 6143) - Receiving statistics with receptions, yards after catch
+- `BoxScorePlayerKickingStatistic` (line 6168) - Kickoff statistics
+- `BoxScorePlayerKickReturnStatistic` (line 6187) - Kick return statistics
+- `BoxScorePlayerPuntReturnStatistic` (line 6207) - Punt return statistics
+- `BoxScorePlayerTacklesStatistic` (line 6228) - Defensive statistics with tackles, sacks, QB hits
+- `BoxScorePlayerFumblesStatistic` (line 6261) - Fumble-related statistics
+- `BoxScorePlayerFieldGoalsStatistic` (line 6294) - Field goal statistics
+- `BoxScorePlayerPuntingStatistic` (line 6312) - Punting statistics
+- `BoxScorePlayerExtraPointsStatistic` (line 6335) - Extra point statistics
 
 **Current Definition:**
 ```yaml
 PlayerStatistic:
-  # TODO: Investigate the PlayerStatistic object
+  additionalProperties: true
+  description: Individual player statistics (structure varies by category)
   type: object
 ```
 
 **Referenced By:**
-- `TeamBoxscore` (lines 5852, 5856, 5860, 5864, 5868, 5872, 5876, 5880, 5884, 5888, 5892)
-  - Used for: extraPoints, fieldGoals, fumbles, kickReturn, kicking, passing, puntReturn, punting, receiving, rushing, tackles
+- `TeamBoxscore` now uses specific statistic schemas:
+  - `extraPoints` → `BoxScorePlayerExtraPointsStatistic`
+  - `fieldGoals` → `BoxScorePlayerFieldGoalsStatistic`
+  - `fumbles` → `BoxScorePlayerFumblesStatistic`
+  - `kickReturn` → `BoxScorePlayerKickReturnStatistic`
+  - `kicking` → `BoxScorePlayerKickingStatistic`
+  - `passing` → `BoxScorePlayerPassingStatistic`
+  - `puntReturn` → `BoxScorePlayerPuntReturnStatistic`
+  - `punting` → `BoxScorePlayerPuntingStatistic`
+  - `receiving` → `BoxScorePlayerReceivingStatistic`
+  - `rushing` → `BoxScorePlayerRushingStatistic`
+  - `tackles` → `BoxScorePlayerTacklesStatistic`
 
 **Parent Schema:**
-- `TeamBoxScore` (lines 465, 471) - References `TeamBoxscore` for both away and home teams
+- `TeamBoxScore` - References `TeamBoxscore` for both away and home teams
 
 **API Endpoint:**
 - `GET /api/stats/boxscore` (line 11316)

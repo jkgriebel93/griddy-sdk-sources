@@ -5020,7 +5020,6 @@ components:
       additionalProperties: true
       description: Individual player statistics (structure varies by category)
       type: object
-      # TODO: Investigate the PlayerStatistic object
     PlayerStatsResponse:
       properties:
         pagination:
