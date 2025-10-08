@@ -1,0 +1,1195 @@
+{
+    "schedule": {
+        "gameKey": 59907,
+        "gameDate": "10/02/2025",
+        "gameId": 2025100200,
+        "gameTimeEastern": "20:15:00",
+        "homeTeamAbbr": "LAR",
+        "homeTeamId": "2510",
+        "season": 2025,
+        "seasonType": "REG",
+        "visitorTeamAbbr": "SF",
+        "visitorTeamId": "4500",
+        "week": 5
+    },
+    "passers": {
+        "home": {
+            "gameId": 2025100200,
+            "esbId": "STA134157",
+            "teamId": "2510",
+            "teamAbbr": "LAR",
+            "shortName": "M.Stafford",
+            "position": "QB",
+            "jerseyNumber": 9,
+            "playerName": "Matthew Stafford",
+            "zones": [
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "behindLOS",
+                    "section": "leftThird",
+                    "attempts": 2,
+                    "completionPct": 0.5,
+                    "completions": 1,
+                    "interceptions": 0,
+                    "qbRating": 66.66666666666666,
+                    "touchdowns": 0,
+                    "yards": 11,
+                    "qbRatingSuccessLevel": "BELOW"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "10To19",
+                    "section": "rightThird",
+                    "attempts": 3,
+                    "completionPct": 1,
+                    "completions": 3,
+                    "interceptions": 0,
+                    "qbRating": 118.75,
+                    "touchdowns": 0,
+                    "yards": 50,
+                    "qbRatingSuccessLevel": "ABOVE"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "10To19",
+                    "section": "leftThird",
+                    "attempts": 6,
+                    "completionPct": 0.5,
+                    "completions": 3,
+                    "interceptions": 0,
+                    "qbRating": 79.16666666666666,
+                    "touchdowns": 0,
+                    "yards": 51,
+                    "qbRatingSuccessLevel": "AVERAGE"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "losTo9",
+                    "section": "middleThird",
+                    "attempts": 9,
+                    "completionPct": 0.8888888888888888,
+                    "completions": 8,
+                    "interceptions": 0,
+                    "qbRating": 130.09259259259258,
+                    "touchdowns": 1,
+                    "yards": 57,
+                    "qbRatingSuccessLevel": "ABOVE"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "behindLOS",
+                    "section": "rightThird",
+                    "attempts": 2,
+                    "completionPct": 1,
+                    "completions": 2,
+                    "interceptions": 0,
+                    "qbRating": 91.66666666666666,
+                    "touchdowns": 0,
+                    "yards": 12,
+                    "qbRatingSuccessLevel": "AVERAGE"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "20Plus",
+                    "section": "rightThird",
+                    "attempts": 4,
+                    "completionPct": 0.25,
+                    "completions": 1,
+                    "interceptions": 0,
+                    "qbRating": 66.66666666666666,
+                    "touchdowns": 0,
+                    "yards": 38,
+                    "qbRatingSuccessLevel": "AVERAGE"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "20Plus",
+                    "section": "middleThird",
+                    "attempts": 2,
+                    "completionPct": 1,
+                    "completions": 2,
+                    "interceptions": 0,
+                    "qbRating": 118.75,
+                    "touchdowns": 0,
+                    "yards": 60,
+                    "qbRatingSuccessLevel": "ABOVE"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "losTo9",
+                    "section": "leftThird",
+                    "attempts": 6,
+                    "completionPct": 0.6666666666666666,
+                    "completions": 4,
+                    "interceptions": 0,
+                    "qbRating": 122.91666666666667,
+                    "touchdowns": 1,
+                    "yards": 37,
+                    "qbRatingSuccessLevel": "ABOVE"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "20Plus",
+                    "section": "leftThird",
+                    "attempts": 2,
+                    "completionPct": 0,
+                    "completions": 0,
+                    "interceptions": 0,
+                    "qbRating": 39.58333333333333,
+                    "touchdowns": 0,
+                    "yards": 0,
+                    "qbRatingSuccessLevel": "BELOW"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "10To19",
+                    "section": "middleThird",
+                    "attempts": 2,
+                    "completionPct": 0.5,
+                    "completions": 1,
+                    "interceptions": 0,
+                    "qbRating": 93.75,
+                    "touchdowns": 0,
+                    "yards": 24,
+                    "qbRatingSuccessLevel": "AVERAGE"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "losTo9",
+                    "section": "rightThird",
+                    "attempts": 8,
+                    "completionPct": 0.625,
+                    "completions": 5,
+                    "interceptions": 0,
+                    "qbRating": 119.27083333333333,
+                    "touchdowns": 1,
+                    "yards": 49,
+                    "qbRatingSuccessLevel": "ABOVE"
+                }
+            ],
+            "passYards": 389,
+            "touchdowns": 3,
+            "interceptions": 0,
+            "attempts": 47,
+            "completions": 30,
+            "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/svxl2pk2cuqf26zrhii4"
+        },
+        "visitor": {
+            "gameId": 2025100200,
+            "esbId": "JON586540",
+            "teamId": "4500",
+            "teamAbbr": "SF",
+            "shortName": "M.Jones",
+            "position": "QB",
+            "jerseyNumber": 10,
+            "playerName": "Mac Jones",
+            "zones": [
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "10To19",
+                    "section": "rightThird",
+                    "attempts": 1,
+                    "completionPct": 1,
+                    "completions": 1,
+                    "interceptions": 0,
+                    "qbRating": 118.75,
+                    "touchdowns": 0,
+                    "yards": 13,
+                    "qbRatingSuccessLevel": "ABOVE"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "10To19",
+                    "section": "leftThird",
+                    "attempts": 5,
+                    "completionPct": 0.4,
+                    "completions": 2,
+                    "interceptions": 0,
+                    "qbRating": 66.25000000000001,
+                    "touchdowns": 0,
+                    "yards": 37,
+                    "qbRatingSuccessLevel": "AVERAGE"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "losTo9",
+                    "section": "middleThird",
+                    "attempts": 14,
+                    "completionPct": 0.7857142857142857,
+                    "completions": 11,
+                    "interceptions": 0,
+                    "qbRating": 125.59523809523809,
+                    "touchdowns": 1,
+                    "yards": 118,
+                    "qbRatingSuccessLevel": "ABOVE"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "behindLOS",
+                    "section": "leftThird",
+                    "attempts": 3,
+                    "completionPct": 0.6666666666666666,
+                    "completions": 2,
+                    "interceptions": 0,
+                    "qbRating": 71.52777777777777,
+                    "touchdowns": 0,
+                    "yards": 10,
+                    "qbRatingSuccessLevel": "BELOW"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "20Plus",
+                    "section": "rightThird",
+                    "attempts": 1,
+                    "completionPct": 0,
+                    "completions": 0,
+                    "interceptions": 0,
+                    "qbRating": 39.58333333333333,
+                    "touchdowns": 0,
+                    "yards": 0,
+                    "qbRatingSuccessLevel": "BELOW"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "behindLOS",
+                    "section": "rightThird",
+                    "attempts": 1,
+                    "completionPct": 1,
+                    "completions": 1,
+                    "interceptions": 0,
+                    "qbRating": 118.75,
+                    "touchdowns": 0,
+                    "yards": 15,
+                    "qbRatingSuccessLevel": "ABOVE"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "behindLOS",
+                    "section": "middleThird",
+                    "attempts": 2,
+                    "completionPct": 0.5,
+                    "completions": 1,
+                    "interceptions": 0,
+                    "qbRating": 75,
+                    "touchdowns": 0,
+                    "yards": 15,
+                    "qbRatingSuccessLevel": "BELOW"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "losTo9",
+                    "section": "leftThird",
+                    "attempts": 12,
+                    "completionPct": 0.8333333333333334,
+                    "completions": 10,
+                    "interceptions": 0,
+                    "qbRating": 119.44444444444444,
+                    "touchdowns": 1,
+                    "yards": 72,
+                    "qbRatingSuccessLevel": "ABOVE"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "10To19",
+                    "section": "middleThird",
+                    "attempts": 4,
+                    "completionPct": 0.5,
+                    "completions": 2,
+                    "interceptions": 0,
+                    "qbRating": 79.16666666666666,
+                    "touchdowns": 0,
+                    "yards": 34,
+                    "qbRatingSuccessLevel": "AVERAGE"
+                },
+                {
+                    "type": "threeColumns",
+                    "lineOfScrimmageDistance": "losTo9",
+                    "section": "rightThird",
+                    "attempts": 5,
+                    "completionPct": 0.6,
+                    "completions": 3,
+                    "interceptions": 0,
+                    "qbRating": 75.41666666666667,
+                    "touchdowns": 0,
+                    "yards": 28,
+                    "qbRatingSuccessLevel": "AVERAGE"
+                }
+            ],
+            "passYards": 342,
+            "touchdowns": 2,
+            "interceptions": 0,
+            "attempts": 49,
+            "completions": 33,
+            "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/v5sg1z9qvdpjeapblndz"
+        }
+    },
+    "rushers": {
+        "home": [
+            {
+                "esbId": "WIL415359",
+                "jerseyNumber": 23,
+                "playerName": "Kyren Williams",
+                "position": "RB",
+                "rushYards": 65,
+                "shortName": "K.Williams",
+                "teamId": "2510",
+                "yards": 131,
+                "rushInfo": {
+                    "yards": 65,
+                    "attempts": 14,
+                    "touchdowns": 0,
+                    "distance": 190.78999999999996,
+                    "avgYards": 4.642857142857143,
+                    "avgDistance": 13.62785714285714,
+                    "avgTimeToLos": 2.574142857142857,
+                    "rushLocationMap": {
+                        "OUTSIDE_RIGHT": {
+                            "yards": 25,
+                            "attempts": 4,
+                            "touchdowns": 0,
+                            "distance": 66.75999999999999,
+                            "avgYards": 6.25,
+                            "avgDistance": 16.689999999999998,
+                            "avgTimeToLos": 2.6765
+                        },
+                        "OUTSIDE_LEFT": {
+                            "yards": 6,
+                            "attempts": 1,
+                            "touchdowns": 0,
+                            "distance": 19.709999999999997,
+                            "avgYards": 6,
+                            "avgDistance": 19.709999999999997,
+                            "avgTimeToLos": 2.738
+                        },
+                        "INSIDE_LEFT": {
+                            "yards": 22,
+                            "attempts": 6,
+                            "touchdowns": 0,
+                            "distance": 71.06,
+                            "avgYards": 3.6666666666666665,
+                            "avgDistance": 11.843333333333334,
+                            "avgTimeToLos": 2.438
+                        },
+                        "INSIDE_RIGHT": {
+                            "yards": 12,
+                            "attempts": 3,
+                            "touchdowns": 0,
+                            "distance": 33.26,
+                            "avgYards": 4,
+                            "avgDistance": 11.086666666666666,
+                            "avgTimeToLos": 2.655333333333333
+                        }
+                    },
+                    "preSnapRushLocationMap": {
+                        "OUTSIDE_RIGHT": {
+                            "yards": 21,
+                            "attempts": 2,
+                            "touchdowns": 0,
+                            "distance": 48.949999999999996,
+                            "avgYards": 10.5,
+                            "avgDistance": 24.474999999999998,
+                            "avgTimeToLos": 3.5175
+                        },
+                        "INSIDE_LEFT": {
+                            "yards": 13,
+                            "attempts": 4,
+                            "touchdowns": 0,
+                            "distance": 54.64,
+                            "avgYards": 3.25,
+                            "avgDistance": 13.66,
+                            "avgTimeToLos": 2.457
+                        },
+                        "INSIDE_RIGHT": {
+                            "yards": 31,
+                            "attempts": 8,
+                            "touchdowns": 0,
+                            "distance": 87.19999999999999,
+                            "avgYards": 3.875,
+                            "avgDistance": 10.899999999999999,
+                            "avgTimeToLos": 2.396875
+                        }
+                    }
+                },
+                "attempts": 14,
+                "touchdowns": 0,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/smsyrjrwy0lf0hu9hkvg"
+            },
+            {
+                "esbId": "COR783995",
+                "jerseyNumber": 22,
+                "playerName": "Blake Corum",
+                "position": "RB",
+                "rushYards": 13,
+                "shortName": "B.Corum",
+                "teamId": "2510",
+                "yards": 13,
+                "rushInfo": {
+                    "yards": 13,
+                    "attempts": 1,
+                    "touchdowns": 0,
+                    "distance": 20.849999999999994,
+                    "avgYards": 13,
+                    "avgDistance": 20.849999999999994,
+                    "avgTimeToLos": 2.643,
+                    "rushLocationMap": {
+                        "INSIDE_LEFT": {
+                            "yards": 13,
+                            "attempts": 1,
+                            "touchdowns": 0,
+                            "distance": 20.849999999999994,
+                            "avgYards": 13,
+                            "avgDistance": 20.849999999999994,
+                            "avgTimeToLos": 2.643
+                        }
+                    },
+                    "preSnapRushLocationMap": {
+                        "INSIDE_LEFT": {
+                            "yards": 13,
+                            "attempts": 1,
+                            "touchdowns": 0,
+                            "distance": 20.849999999999994,
+                            "avgYards": 13,
+                            "avgDistance": 20.849999999999994,
+                            "avgTimeToLos": 2.643
+                        }
+                    }
+                },
+                "attempts": 1,
+                "touchdowns": 0,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/gytdgnrjj3jk8rlfxz85"
+            },
+            {
+                "esbId": "STA134157",
+                "jerseyNumber": 9,
+                "playerName": "Matthew Stafford",
+                "position": "QB",
+                "rushYards": 0,
+                "shortName": "M.Stafford",
+                "teamId": "2510",
+                "yards": 0,
+                "rushInfo": {
+                    "yards": 0,
+                    "attempts": 1,
+                    "touchdowns": 0,
+                    "distance": 6.86,
+                    "avgYards": 0,
+                    "avgDistance": 6.86,
+                    "avgTimeToLos": 0.006,
+                    "rushLocationMap": {
+                        "OUTSIDE_RIGHT": {
+                            "yards": 0,
+                            "attempts": 1,
+                            "touchdowns": 0,
+                            "distance": 6.86,
+                            "avgYards": 0,
+                            "avgDistance": 6.86,
+                            "avgTimeToLos": 0.006
+                        }
+                    },
+                    "preSnapRushLocationMap": {
+                        "INSIDE_LEFT": {
+                            "yards": 0,
+                            "attempts": 1,
+                            "touchdowns": 0,
+                            "distance": 6.86,
+                            "avgYards": 0,
+                            "avgDistance": 6.86,
+                            "avgTimeToLos": 0.006
+                        }
+                    }
+                },
+                "touchdowns": 0,
+                "attempts": 1,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/svxl2pk2cuqf26zrhii4"
+            }
+        ],
+        "visitor": [
+            {
+                "esbId": "MCC035988",
+                "jerseyNumber": 23,
+                "playerName": "Christian McCaffrey",
+                "position": "RB",
+                "rushYards": 57,
+                "shortName": "C.McCaffrey",
+                "teamId": "4500",
+                "yards": 139,
+                "rushInfo": {
+                    "yards": 57,
+                    "attempts": 22,
+                    "touchdowns": 0,
+                    "distance": 294.34000000000003,
+                    "avgYards": 2.590909090909091,
+                    "avgDistance": 14.016190476190477,
+                    "avgTimeToLos": 2.6722727272727274,
+                    "rushLocationMap": {
+                        "OUTSIDE_RIGHT": {
+                            "yards": 10,
+                            "attempts": 5,
+                            "touchdowns": 0,
+                            "distance": 64.80000000000001,
+                            "avgYards": 2,
+                            "avgDistance": 16.200000000000003,
+                            "avgTimeToLos": 2.9454000000000002
+                        },
+                        "OUTSIDE_LEFT": {
+                            "yards": 6,
+                            "attempts": 4,
+                            "touchdowns": 0,
+                            "distance": 53.890000000000015,
+                            "avgYards": 1.5,
+                            "avgDistance": 13.472500000000004,
+                            "avgTimeToLos": 2.91725
+                        },
+                        "INSIDE_LEFT": {
+                            "yards": 23,
+                            "attempts": 8,
+                            "touchdowns": 0,
+                            "distance": 98.00000000000001,
+                            "avgYards": 2.875,
+                            "avgDistance": 12.250000000000002,
+                            "avgTimeToLos": 2.377875
+                        },
+                        "INSIDE_RIGHT": {
+                            "yards": 18,
+                            "attempts": 5,
+                            "touchdowns": 0,
+                            "distance": 77.65,
+                            "avgYards": 3.6,
+                            "avgDistance": 15.530000000000001,
+                            "avgTimeToLos": 2.6742
+                        }
+                    },
+                    "preSnapRushLocationMap": {
+                        "OUTSIDE_RIGHT": {
+                            "yards": 6,
+                            "attempts": 5,
+                            "touchdowns": 0,
+                            "distance": 75.65,
+                            "avgYards": 1.2,
+                            "avgDistance": 18.9125,
+                            "avgTimeToLos": 3.3520000000000003
+                        },
+                        "OUTSIDE_LEFT": {
+                            "yards": 13,
+                            "attempts": 6,
+                            "touchdowns": 0,
+                            "distance": 89.04,
+                            "avgYards": 2.1666666666666665,
+                            "avgDistance": 14.840000000000002,
+                            "avgTimeToLos": 2.7285000000000004
+                        },
+                        "INSIDE_LEFT": {
+                            "yards": 9,
+                            "attempts": 4,
+                            "touchdowns": 0,
+                            "distance": 43.550000000000004,
+                            "avgYards": 2.25,
+                            "avgDistance": 10.887500000000001,
+                            "avgTimeToLos": 2.54725
+                        },
+                        "INSIDE_RIGHT": {
+                            "yards": 29,
+                            "attempts": 7,
+                            "touchdowns": 0,
+                            "distance": 86.10000000000001,
+                            "avgYards": 4.142857142857143,
+                            "avgDistance": 12.3,
+                            "avgTimeToLos": 2.21
+                        }
+                    }
+                },
+                "attempts": 22,
+                "touchdowns": 0,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/resjdwihunsqckohcorj"
+            },
+            {
+                "esbId": "ROB736177",
+                "jerseyNumber": 3,
+                "playerName": "Brian Robinson",
+                "position": "RB",
+                "rushYards": 12,
+                "shortName": "B.Robinson",
+                "teamId": "4500",
+                "yards": 12,
+                "rushInfo": {
+                    "yards": 12,
+                    "attempts": 5,
+                    "touchdowns": 0,
+                    "distance": 62.52,
+                    "avgYards": 2.4,
+                    "avgDistance": 12.504000000000001,
+                    "avgTimeToLos": 2.6350000000000002,
+                    "rushLocationMap": {
+                        "OUTSIDE_LEFT": {
+                            "yards": 2,
+                            "attempts": 2,
+                            "touchdowns": 0,
+                            "distance": 22.89,
+                            "avgYards": 1,
+                            "avgDistance": 11.445,
+                            "avgTimeToLos": 2.6825
+                        },
+                        "INSIDE_LEFT": {
+                            "yards": 10,
+                            "attempts": 2,
+                            "touchdowns": 0,
+                            "distance": 32.940000000000005,
+                            "avgYards": 5,
+                            "avgDistance": 16.470000000000002,
+                            "avgTimeToLos": 2.6014999999999997
+                        },
+                        "INSIDE_RIGHT": {
+                            "yards": 0,
+                            "attempts": 1,
+                            "touchdowns": 0,
+                            "distance": 6.69,
+                            "avgYards": 0,
+                            "avgDistance": 6.69,
+                            "avgTimeToLos": 2.607
+                        }
+                    },
+                    "preSnapRushLocationMap": {
+                        "OUTSIDE_RIGHT": {
+                            "yards": 5,
+                            "attempts": 1,
+                            "touchdowns": 0,
+                            "distance": 14.040000000000003,
+                            "avgYards": 5,
+                            "avgDistance": 14.040000000000003,
+                            "avgTimeToLos": 2.26
+                        },
+                        "OUTSIDE_LEFT": {
+                            "yards": 6,
+                            "attempts": 2,
+                            "touchdowns": 0,
+                            "distance": 32.96,
+                            "avgYards": 3,
+                            "avgDistance": 16.48,
+                            "avgTimeToLos": 2.9450000000000003
+                        },
+                        "INSIDE_LEFT": {
+                            "yards": 1,
+                            "attempts": 2,
+                            "touchdowns": 0,
+                            "distance": 15.520000000000001,
+                            "avgYards": 0.5,
+                            "avgDistance": 7.760000000000001,
+                            "avgTimeToLos": 2.5125
+                        }
+                    }
+                },
+                "attempts": 5,
+                "touchdowns": 0,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/n1xhex1ytisxcbcggqu7"
+            },
+            {
+                "esbId": "JON586540",
+                "jerseyNumber": 10,
+                "playerName": "Mac Jones",
+                "position": "QB",
+                "rushYards": 5,
+                "shortName": "M.Jones",
+                "teamId": "4500",
+                "yards": 5,
+                "rushInfo": {
+                    "yards": 5,
+                    "attempts": 4,
+                    "touchdowns": 0,
+                    "distance": 11.059999999999999,
+                    "avgYards": 1.25,
+                    "avgDistance": 2.7649999999999997,
+                    "avgTimeToLos": 1.09125,
+                    "rushLocationMap": {
+                        "OUTSIDE_LEFT": {
+                            "yards": 0,
+                            "attempts": 1,
+                            "touchdowns": 0,
+                            "distance": 3.0400000000000005,
+                            "avgYards": 0,
+                            "avgDistance": 3.0400000000000005,
+                            "avgTimeToLos": 1.053
+                        },
+                        "INSIDE_LEFT": {
+                            "yards": 1,
+                            "attempts": 1,
+                            "touchdowns": 0,
+                            "distance": 2.6199999999999988,
+                            "avgYards": 1,
+                            "avgDistance": 2.6199999999999988,
+                            "avgTimeToLos": 1.661
+                        },
+                        "INSIDE_RIGHT": {
+                            "yards": 4,
+                            "attempts": 2,
+                            "touchdowns": 0,
+                            "distance": 5.3999999999999995,
+                            "avgYards": 2,
+                            "avgDistance": 2.6999999999999997,
+                            "avgTimeToLos": 0.8255
+                        }
+                    },
+                    "preSnapRushLocationMap": {
+                        "INSIDE_LEFT": {
+                            "yards": 0,
+                            "attempts": 1,
+                            "touchdowns": 0,
+                            "distance": 3.0400000000000005,
+                            "avgYards": 0,
+                            "avgDistance": 3.0400000000000005,
+                            "avgTimeToLos": 1.053
+                        },
+                        "INSIDE_RIGHT": {
+                            "yards": 5,
+                            "attempts": 3,
+                            "touchdowns": 0,
+                            "distance": 8.019999999999998,
+                            "avgYards": 1.6666666666666667,
+                            "avgDistance": 2.6733333333333325,
+                            "avgTimeToLos": 1.1039999999999999
+                        }
+                    }
+                },
+                "touchdowns": 0,
+                "attempts": 4,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/v5sg1z9qvdpjeapblndz"
+            }
+        ]
+    },
+    "passRushers": {
+        "leagueAverageSeparationToQb": {
+            "avg": 4.574248599719279
+        },
+        "home": [
+            {
+                "esbId": "VER641394",
+                "gsisId": "00-0039852",
+                "teamId": "2510",
+                "playerName": "Jared Verse",
+                "shortName": "J.Verse",
+                "jerseyNumber": 8,
+                "position": "OLB",
+                "blitzCount": 37,
+                "avgSeparationToQb": 4.797052221914545,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/rapkhulnj8vsblkkgcca",
+                "tackles": 4,
+                "assists": 2,
+                "sacks": 0,
+                "forcedFumbles": 0
+            },
+            {
+                "esbId": "TUR561805",
+                "gsisId": "00-0039138",
+                "teamId": "2510",
+                "playerName": "Kobie Turner",
+                "shortName": "K.Turner",
+                "jerseyNumber": 91,
+                "position": "DT",
+                "blitzCount": 32,
+                "avgSeparationToQb": 4.682735275222742,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/tmifh6zibjgxpesgp7bf",
+                "tackles": 1,
+                "assists": 3,
+                "sacks": 0.5,
+                "forcedFumbles": 0
+            },
+            {
+                "esbId": "YOU127040",
+                "gsisId": "00-0039137",
+                "teamId": "2510",
+                "playerName": "Byron Young",
+                "shortName": "B.Young",
+                "jerseyNumber": 0,
+                "position": "OLB",
+                "blitzCount": 31,
+                "avgSeparationToQb": 4.669022092846981,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/q68ctteciw57fgxh8c4u",
+                "tackles": 4,
+                "assists": 2,
+                "sacks": 0.5,
+                "forcedFumbles": 0
+            },
+            {
+                "esbId": "FIS731693",
+                "gsisId": "00-0039734",
+                "teamId": "2510",
+                "playerName": "Braden Fiske",
+                "shortName": "B.Fiske",
+                "jerseyNumber": 55,
+                "position": "DE",
+                "blitzCount": 27,
+                "avgSeparationToQb": 4.751416192955077,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/eviqsptyuqhpsxjcann2",
+                "tackles": 1,
+                "assists": 2,
+                "sacks": 0,
+                "forcedFumbles": 0
+            }
+        ],
+        "visitor": [
+            {
+                "esbId": "OKU096406",
+                "gsisId": "00-0037602",
+                "teamId": "4500",
+                "playerName": "Sam Okuayinonu",
+                "shortName": "S.Okuayinonu",
+                "jerseyNumber": 91,
+                "position": "DE",
+                "blitzCount": 33,
+                "avgSeparationToQb": 5.3609734259558826,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/bz3qx6p6ua5e7e5kuukk",
+                "tackles": 1,
+                "assists": 1,
+                "sacks": 0,
+                "forcedFumbles": 0
+            },
+            {
+                "esbId": "WIL454914",
+                "gsisId": "00-0040660",
+                "teamId": "4500",
+                "playerName": "Mykel Williams",
+                "shortName": "M.Williams",
+                "jerseyNumber": 98,
+                "position": "DE",
+                "blitzCount": 31,
+                "avgSeparationToQb": 4.4555413185928066,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/glewua5vtcbfvbm6j8s3",
+                "tackles": 0,
+                "assists": 0,
+                "sacks": 0,
+                "forcedFumbles": 0
+            },
+            {
+                "esbId": "COL480656",
+                "gsisId": "00-0040721",
+                "teamId": "4500",
+                "playerName": "Alfred Collins",
+                "shortName": "A.Collins",
+                "jerseyNumber": 95,
+                "position": "DT",
+                "blitzCount": 28,
+                "avgSeparationToQb": 5.49019258925625,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/rjziol6cqynoyc0w0qfh",
+                "tackles": 2,
+                "assists": 0,
+                "sacks": 0,
+                "forcedFumbles": 1
+            },
+            {
+                "esbId": "ELL323955",
+                "gsisId": "00-0036266",
+                "teamId": "4500",
+                "playerName": "Jordan Elliott",
+                "shortName": "J.Elliott",
+                "jerseyNumber": 92,
+                "position": "DT",
+                "blitzCount": 26,
+                "avgSeparationToQb": 5.040812033491725,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/vkl6igrusm0srrkge1d9",
+                "tackles": 1,
+                "assists": 0,
+                "sacks": 0,
+                "forcedFumbles": 0
+            }
+        ]
+    },
+    "receivers": {
+        "leagueAverageReceiverSeparation": {
+            "avg": 2.9820212408656297
+        },
+        "home": [
+            {
+                "esbId": "NAC559347",
+                "jerseyNumber": 12,
+                "playerName": "Puka Nacua",
+                "position": "WR",
+                "recYards": 85,
+                "shortName": "P.Nacua",
+                "teamId": "2510",
+                "receptionInfo": {
+                    "avgAirYards": 9.5725,
+                    "avgCushion": 6.998333333333334,
+                    "avgSeparation": 3.486743522705502,
+                    "targets": 12,
+                    "receptions": 10,
+                    "touchdowns": 1
+                },
+                "targets": 12,
+                "receptions": 10,
+                "touchdowns": 1,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/zvi4hdm6fywcekfe7ceb"
+            },
+            {
+                "esbId": "ADA218591",
+                "jerseyNumber": 17,
+                "playerName": "Davante Adams",
+                "position": "WR",
+                "recYards": 88,
+                "shortName": "D.Adams",
+                "teamId": "2510",
+                "receptionInfo": {
+                    "avgAirYards": 14.887272727272727,
+                    "avgCushion": 6.569999999999999,
+                    "avgSeparation": 2.7255687946603584,
+                    "targets": 11,
+                    "receptions": 5,
+                    "touchdowns": 0
+                },
+                "targets": 11,
+                "receptions": 5,
+                "touchdowns": 0,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/qtonvcqpixixqhc6lhnc"
+            },
+            {
+                "esbId": "ATW460468",
+                "jerseyNumber": 5,
+                "playerName": "Tutu Atwell",
+                "position": "WR",
+                "recYards": 72,
+                "shortName": "T.Atwell",
+                "teamId": "2510",
+                "receptionInfo": {
+                    "avgAirYards": 27.5225,
+                    "avgCushion": 4.525,
+                    "avgSeparation": 2.213119607869202,
+                    "targets": 4,
+                    "receptions": 2,
+                    "touchdowns": 0
+                },
+                "targets": 4,
+                "receptions": 2,
+                "touchdowns": 0,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/twlslcaa7c2wblveaafu"
+            },
+            {
+                "esbId": "WHI807684",
+                "jerseyNumber": 88,
+                "playerName": "Jordan Whittington",
+                "position": "WR",
+                "recYards": 33,
+                "shortName": "J.Whittington",
+                "teamId": "2510",
+                "receptionInfo": {
+                    "avgAirYards": 7.013333333333335,
+                    "avgCushion": 6.52,
+                    "avgSeparation": 5.283831589831417,
+                    "targets": 3,
+                    "receptions": 2,
+                    "touchdowns": 0
+                },
+                "targets": 3,
+                "receptions": 2,
+                "touchdowns": 0,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/w5h5q9jwyaimdjlnracx"
+            },
+            {
+                "esbId": "ALL098299",
+                "jerseyNumber": 87,
+                "playerName": "Davis Allen",
+                "position": "TE",
+                "recYards": 24,
+                "shortName": "D.Allen",
+                "teamId": "2510",
+                "receptionInfo": {
+                    "avgAirYards": 7.585000000000001,
+                    "avgCushion": 8.83,
+                    "avgSeparation": 2.335979320179941,
+                    "targets": 2,
+                    "receptions": 2,
+                    "touchdowns": 0
+                },
+                "targets": 2,
+                "receptions": 2,
+                "touchdowns": 0,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/knzujvs0ge3lozkyilsf"
+            }
+        ],
+        "visitor": [
+            {
+                "esbId": "TON644321",
+                "jerseyNumber": 88,
+                "playerName": "Jake Tonges",
+                "position": "TE",
+                "recYards": 41,
+                "shortName": "J.Tonges",
+                "teamId": "4500",
+                "receptionInfo": {
+                    "avgAirYards": 2.489999999999999,
+                    "avgCushion": 4.776363636363636,
+                    "avgSeparation": 4.291793899406199,
+                    "targets": 11,
+                    "receptions": 7,
+                    "touchdowns": 1
+                },
+                "targets": 11,
+                "receptions": 7,
+                "touchdowns": 1,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/uztcdowl4wig2uhy1qxh"
+            },
+            {
+                "esbId": "BOU434790",
+                "jerseyNumber": 84,
+                "playerName": "Kendrick Bourne",
+                "position": "WR",
+                "recYards": 142,
+                "shortName": "K.Bourne",
+                "teamId": "4500",
+                "receptionInfo": {
+                    "avgAirYards": 7.780909090909091,
+                    "avgCushion": 5.949,
+                    "avgSeparation": 2.9378837971255054,
+                    "targets": 11,
+                    "receptions": 10,
+                    "touchdowns": 0
+                },
+                "targets": 11,
+                "receptions": 10,
+                "touchdowns": 0,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/mkciutibcbq7phnplozn"
+            },
+            {
+                "esbId": "ROB399065",
+                "jerseyNumber": 5,
+                "playerName": "Demarcus Robinson",
+                "position": "WR",
+                "recYards": 39,
+                "shortName": "D.Robinson",
+                "teamId": "4500",
+                "receptionInfo": {
+                    "avgAirYards": 13.861428571428572,
+                    "avgCushion": 6.403333333333333,
+                    "avgSeparation": 2.2411014649366043,
+                    "targets": 7,
+                    "receptions": 3,
+                    "touchdowns": 0
+                },
+                "targets": 7,
+                "receptions": 3,
+                "touchdowns": 0,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/aynbxqjpwz1vhpxbxvv8"
+            },
+            {
+                "esbId": "VAL142116",
+                "jerseyNumber": 83,
+                "playerName": "Marquez Valdes-Scantling",
+                "position": "WR",
+                "recYards": 9,
+                "shortName": "M.Valdes-Scantling",
+                "teamId": "4500",
+                "receptionInfo": {
+                    "avgAirYards": 8.856666666666667,
+                    "avgCushion": 5.136666666666667,
+                    "avgSeparation": 1.7967232165573448,
+                    "targets": 3,
+                    "receptions": 1,
+                    "touchdowns": 0
+                },
+                "targets": 3,
+                "receptions": 1,
+                "touchdowns": 0,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/vvk5v3hfjw0tevqxrhnf"
+            },
+            {
+                "esbId": "FAR615740",
+                "jerseyNumber": 89,
+                "playerName": "Luke Farrell",
+                "position": "TE",
+                "recYards": 8,
+                "shortName": "L.Farrell",
+                "teamId": "4500",
+                "receptionInfo": {
+                    "avgAirYards": 6.755000000000003,
+                    "avgCushion": 5.765,
+                    "avgSeparation": 3.3998111553829546,
+                    "targets": 2,
+                    "receptions": 1,
+                    "touchdowns": 0
+                },
+                "targets": 2,
+                "receptions": 1,
+                "touchdowns": 0,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/sccmpo8xbzdbjasmwcfj"
+            }
+        ]
+    },
+    "leaders": {
+        "speedLeaders": {
+            "home": {
+                "gsisPlayId": 4847,
+                "esbId": "ATW460468",
+                "jerseyNumber": 5,
+                "playerName": "Tutu Atwell",
+                "position": "WR",
+                "shortName": "T.Atwell",
+                "teamId": "2510",
+                "maxSpeed": 20.0250000445,
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/twlslcaa7c2wblveaafu"
+            },
+            "visitor": {
+                "gsisPlayId": 1809,
+                "esbId": "MCC035988",
+                "jerseyNumber": 23,
+                "playerName": "Christian McCaffrey",
+                "position": "RB",
+                "shortName": "C.McCaffrey",
+                "teamId": "4500",
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/resjdwihunsqckohcorj"
+            }
+        },
+        "timeToSackLeaders": {
+            "home": {
+                "gsisPlayId": 4731,
+                "esbId": "YOU127040",
+                "jerseyNumber": 0,
+                "playerName": "Byron Young",
+                "position": "OLB",
+                "shortName": "B.Young",
+                "teamId": "2510",
+                "tackleInfo": {
+                    "timeToTackle": 3.75
+                },
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/q68ctteciw57fgxh8c4u"
+            },
+            "visitor": {
+                "gsisPlayId": 457,
+                "esbId": "HUF090844",
+                "jerseyNumber": 47,
+                "playerName": "Bryce Huff",
+                "position": "DE",
+                "shortName": "B.Huff",
+                "teamId": "4500",
+                "tackleInfo": {
+                    "timeToTackle": 2.84
+                },
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/pminx3vvyt9laihkxk55"
+            }
+        },
+        "passDistanceLeaders": {
+            "home": {
+                "gsisPlayId": 4847,
+                "esbId": "STA134157",
+                "jerseyNumber": 9,
+                "playerName": "Matthew Stafford",
+                "position": "QB",
+                "shortName": "M.Stafford",
+                "teamId": "2510",
+                "passInfo": {
+                    "airDistance": 53.34561369034946
+                },
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/svxl2pk2cuqf26zrhii4"
+            },
+            "visitor": {
+                "gsisPlayId": 2395,
+                "esbId": "JON586540",
+                "jerseyNumber": 10,
+                "playerName": "Mac Jones",
+                "position": "QB",
+                "shortName": "M.Jones",
+                "teamId": "4500",
+                "passInfo": {
+                    "airDistance": 40.83240134990839
+                },
+                "headshot": "https://static.www.nfl.com/image/upload/{formatInstructions}/league/v5sg1z9qvdpjeapblndz"
+            }
+        }
+    }
+}
