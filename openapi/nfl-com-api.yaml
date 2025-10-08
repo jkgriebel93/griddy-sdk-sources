@@ -6124,69 +6124,270 @@ components:
               maximum: 158.3
     BoxScorePlayerRushingStatistic:
       type: object
+      allOf:
+        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+        - properties:
+            attempts:
+              type: integer
+            yards:
+              type: integer
+            avgYards:
+              type: number
+              format: float
+            longestRush:
+              type: integer
+            touchdowns:
+              type: integer
+            longestTdRush:
+              type: integer
     BoxScorePlayerReceivingStatistic:
       type: object
+      allOf:
+        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+        - properties:
+            receptions:
+              type: integer
+            yards:
+              type: integer
+            avgYards:
+              type: number
+              format: float
+            longestPassReception:
+              type: integer
+            touchdowns:
+              type: integer
+            longestTdReception:
+              type: integer
+            passTarget:
+              type: integer
+            yardsAfterCatch:
+              type: integer
+            totalComputedYardsAfterCatch:
+              type: number
+              format: float
     BoxScorePlayerKickingStatistic:
       type: object
+      allOf:
+        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+        - properties:
+            count:
+              type: integer
+            yards:
+              type: integer
+            touchbackCnt:
+              type: integer
+            inside20Cnt:
+              type: integer
+            outOfBoundsCnt:
+              type: integer
+            toEndzoneCnt:
+              type: integer
+            returnYards:
+              type: integer
     BoxScorePlayerKickReturnStatistic:
       type: object
+      allOf:
+        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+        - properties:
+            count:
+              type: integer
+            yards:
+              type: integer
+            avgYards:
+              type: number
+              format: float
+            touchdowns:
+              type: integer
+            longestReturn:
+              type: integer
+            fairCatches:
+              type: integer
+            longestTdReturn:
+              type: integer
     BoxScorePlayerPuntReturnStatistic:
       type: object
+      allOf:
+        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+        - properties:
+            count:
+              type: integer
+            yards:
+              type: integer
+            avgYards:
+              type: number
+              format: float
+            touchdowns:
+              type: integer
+            longestReturn:
+              type: integer
+            fairCatches:
+              type: integer
+            longestTdReturn:
+              type: integer
+
     BoxScorePlayerTacklesStatistic:
       type: object
+      allOf:
+        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+        - properties:
+            count:
+              type: integer
+            assists:
+              type: integer
+            sacks:
+              type: number
+              format: float
+              example: 1.5
+            sackYards:
+              type: integer
+            qbHits:
+              type: integer
+            safeties:
+              type: integer
+            tacklesForLoss:
+              type: integer
+            tacklesForLossYards:
+              type: integer
+            specialTeamsTackles:
+              type: integer
+            specialTeamsAssists:
+              type: integer
+            specialTeamsBlocks:
+              type: integer
+            miscellaneousTackles:
+              type: integer
+            miscellaneousAssists:
+              type: integer
     BoxScorePlayerFumblesStatistic:
       type: object
+      allOf:
+        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+        - properties:
+            fumbles:
+              type: integer
+            ownFumbleRecoveries:
+              type: integer
+            ownFumbleRecoveryYards:
+              type: integer
+            ownFumbleRecoveryTds:
+              type: integer
+            opponentFumbleRecoveries:
+              type: integer
+            opponentFumbleRecoveryYards:
+              type: integer
+            opponentFumbleRecoveryTds:
+              type: integer
+            forcedFumbles:
+              type: integer
+            fumbleOutOfBounds:
+              type: integer
+            miscellaneousForcedFumbles:
+              type: integer
+            miscellaneousFumbleRecoveries:
+              type: integer
+            specialTeamsForcedFumbles:
+              type: integer
+            specialTeamsFumbleRecoveries:
+              type: integer
+            lostPossession:
+              type: integer
     BoxScorePlayerFieldGoalsStatistic:
       type: object
+      allOf:
+        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+        - properties:
+            attempts:
+              type: integer
+            successCnt:
+              type: integer
+            blockedCnt:
+              type: integer
+            yards:
+              type: integer
+            avgYard:
+              type: number
+              format: float
+            longestMadeFieldGoal:
+              type: integer
     BoxScorePlayerPuntingStatistic:
       type: object
+      allOf:
+        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+        - properties:
+            attempts:
+              type: integer
+            yards:
+              type: integer
+            grossAvgPuntLength:
+              type: integer
+            blockedCnt:
+              type: integer
+            longestPunt:
+              type: integer
+            touchbackCnts:
+              type: integer
+            inside20Cnt:
+              type: integer
+            netPuntingAvg:
+              type: integer
+            returnYards:
+              type: integer
     BoxScorePlayerExtraPointsStatistic:
       type: object
+      allOf:
+        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+        - properties:
+            attemptCnt:
+              type: integer
+            successCnt:
+              type: integer
+            blockedCnt:
+              type: integer
     TeamBoxscore:
       properties:
         extraPoints:
           items:
-            $ref: '#/components/schemas/PlayerStatistic'
+            $ref: '#/components/schemas/BoxScorePlayerExtraPointsStatistic'
           type: array
         fieldGoals:
           items:
-            $ref: '#/components/schemas/PlayerStatistic'
+            $ref: '#/components/schemas/BoxScorePlayerFieldGoalsStatistic'
           type: array
         fumbles:
           items:
-            $ref: '#/components/schemas/PlayerStatistic'
+            $ref: '#/components/schemas/BoxScorePlayerFumblesStatistic'
           type: array
         kickReturn:
           items:
-            $ref: '#/components/schemas/PlayerStatistic'
+            $ref: '#/components/schemas/BoxScorePlayerKickReturnStatistic'
           type: array
         kicking:
           items:
-            $ref: '#/components/schemas/PlayerStatistic'
+            $ref: '#/components/schemas/BoxScorePlayerKickingStatistic'
           type: array
         passing:
           items:
-            $ref: '#/components/schemas/PlayerStatistic'
+            $ref: '#/components/schemas/BoxScorePlayerPassingStatistic'
           type: array
         puntReturn:
           items:
-            $ref: '#/components/schemas/PlayerStatistic'
+            $ref: '#/components/schemas/BoxScorePlayerPuntReturnStatistic'
           type: array
         punting:
           items:
-            $ref: '#/components/schemas/PlayerStatistic'
+            $ref: '#/components/schemas/BoxScorePlayerPuntingStatistic'
           type: array
         receiving:
           items:
-            $ref: '#/components/schemas/PlayerStatistic'
+            $ref: '#/components/schemas/BoxScorePlayerReceivingStatistic'
           type: array
         rushing:
           items:
-            $ref: '#/components/schemas/PlayerStatistic'
+            $ref: '#/components/schemas/BoxScorePlayerRushingStatistic'
           type: array
         tackles:
           items:
-            $ref: '#/components/schemas/PlayerStatistic'
+            $ref: '#/components/schemas/BoxScorePlayerTacklesStatistic'
           type: array
       type: object
     TeamDefensePassStats:
