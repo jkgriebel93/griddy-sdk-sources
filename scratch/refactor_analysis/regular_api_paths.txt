@@ -1,0 +1,21 @@
+Regular API Paths (18 total)
+================================================================================
+
+/experience/v1/games
+/experience/v1/teams
+/football/v2/draft/{year}
+/football/v2/experience/weekly-game-details
+/football/v2/games/season/{season}/seasonType/{seasonType}/week/{week}
+/football/v2/games/{gameId}/boxscore
+/football/v2/games/{gameId}/playbyplay
+/football/v2/injuries
+/football/v2/players/teams/{teamId}/roster
+/football/v2/players/{playerId}
+/football/v2/standings
+/football/v2/stats/live/game-summaries
+/football/v2/stats/players/season
+/football/v2/transactions
+/football/v2/venues
+/football/v2/weeks/season/{season}
+/identity/v3/token
+/identity/v3/token/refresh

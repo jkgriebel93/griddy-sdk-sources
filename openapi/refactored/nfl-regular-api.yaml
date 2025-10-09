@@ -1,0 +1,1767 @@
+openapi: 3.0.3
+info:
+  title: NFL Regular API
+  description: NFL's public API for accessing game schedules, team information, standings, statistics, and venue data. This
+    API provides comprehensive access to NFL data including real-time game information, team rosters, seasonal statistics,
+    and historical data.
+  version: 1.0.0
+  contact:
+    name: NFL
+    url: https://www.nfl.com
+servers:
+- url: https://api.nfl.com
+  description: Production Regular NFL API
+security:
+- NFLAuth: []
+tags:
+- description: Token generation and refresh operations for NFL API access
+  name: Authentication
+- description: Experience API endpoints for games and teams
+  name: Experience
+- description: Football API endpoints for games, standings, stats, and venues
+  name: Football
+paths:
+  /experience/v1/games:
+    get:
+      description: |
+        Retrieves game information for a specific season, season type, and week.
+        Returns comprehensive game data including teams, venues, broadcast information, and ticket details.
+      operationId: getExperienceGames
+      parameters:
+      - description: Season year (e.g., 2025)
+        in: query
+        name: season
+        required: true
+        schema:
+          example: 2025
+          type: integer
+      - description: Type of season
+        in: query
+        name: seasonType
+        required: true
+        schema:
+          $ref: './nfl-shared.yaml#/components/schemas/SeasonTypeEnum'
+      - description: Week number within the season
+        in: query
+        name: week
+        required: true
+        schema:
+          example: 4
+          maximum: 18
+          minimum: 1
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExperienceGamesResponse'
+          description: Successfully retrieved games
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized - Invalid or missing authentication token
+        '500':
+          description: Internal server error
+      summary: Get Games by Season and Week
+      tags:
+      - Experience
+  /experience/v1/teams:
+    get:
+      description: |
+        Retrieves information for all NFL teams including Pro Bowl teams.
+        Returns comprehensive team data including logos, colors, venues, and social media links.
+      operationId: getExperienceTeams
+      parameters:
+      - description: Include all teams including special teams
+        in: query
+        name: allteams
+        required: false
+        schema:
+          example: true
+          type: boolean
+      - description: Season year
+        in: query
+        name: season
+        required: true
+        schema:
+          example: 2025
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExperienceTeamsResponse'
+          description: Successfully retrieved teams
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+      summary: Get All Teams
+      tags:
+      - Experience
+  /football/v2/draft/{year}:
+    get:
+      description: |
+        Retrieves draft information for a specific year including all rounds,
+        picks, traded picks, and compensatory selections.
+      operationId: getDraftInfo
+      parameters:
+      - description: Draft year
+        in: path
+        name: year
+        required: true
+        schema:
+          example: 2025
+          type: integer
+      - description: Filter by round
+        in: query
+        name: round
+        required: false
+        schema:
+          maximum: 7
+          minimum: 1
+          type: integer
+      - description: Filter by team
+        in: query
+        name: teamId
+        required: false
+        schema:
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DraftResponse'
+          description: Successfully retrieved draft information
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Draft year not found
+        '500':
+          description: Internal server error
+      summary: Get Draft Information
+      tags:
+      - Football
+  /football/v2/experience/weekly-game-details:
+    get:
+      description: |
+        Retrieves detailed game information for a specific week including team standings,
+        drive charts, replays, and tagged videos.
+      operationId: getWeeklyGameDetails
+      parameters:
+      - description: Season year
+        in: query
+        name: season
+        required: true
+        schema:
+          example: 2025
+          type: integer
+      - description: Season type
+        in: query
+        name: type
+        required: true
+        schema:
+          $ref: './nfl-shared.yaml#/components/schemas/SeasonTypeEnum'
+      - description: Week number
+        in: query
+        name: week
+        required: true
+        schema:
+          example: 4
+          type: integer
+      - description: Include drive chart data
+        in: query
+        name: includeDriveChart
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: Include replay videos
+        in: query
+        name: includeReplays
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: Include team standings
+        in: query
+        name: includeStandings
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: Include tagged video content
+        in: query
+        name: includeTaggedVideos
+        required: false
+        schema:
+          default: false
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/WeeklyGameDetail'
+                type: array
+          description: Successfully retrieved weekly game details
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+      summary: Get Weekly Game Details with Standings
+      tags:
+      - Football
+  /football/v2/games/season/{season}/seasonType/{seasonType}/week/{week}:
+    get:
+      description: |
+        Retrieves game information for a specific season, season type, and week from the Football API.
+        This endpoint provides core game data with external IDs.
+      operationId: getFootballGames
+      parameters:
+      - description: Season year
+        in: path
+        name: season
+        required: true
+        schema:
+          example: 2025
+          type: integer
+      - description: Type of season
+        in: path
+        name: seasonType
+        required: true
+        schema:
+          $ref: './nfl-shared.yaml#/components/schemas/SeasonTypeEnum'
+      - description: Week number
+        in: path
+        name: week
+        required: true
+        schema:
+          example: 4
+          type: integer
+      - description: Include external IDs in response
+        in: query
+        name: withExternalIds
+        required: false
+        schema:
+          default: false
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FootballGamesResponse'
+          description: Successfully retrieved games
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+      summary: Get Games by Season, Type, and Week
+      tags:
+      - Football
+  /football/v2/games/{gameId}/boxscore:
+    get:
+      description: |
+        Retrieves comprehensive box score data for a specific game including
+        team statistics, individual player statistics, and scoring summary.
+      operationId: getFootballBoxScore
+      parameters:
+      - description: Game identifier (UUID)
+        in: path
+        name: gameId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoxScoreResponse'
+          description: Successfully retrieved box score
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Game not found
+        '500':
+          description: Internal server error
+      summary: Get Game Box Score (Football API)
+      tags:
+      - Football
+  /football/v2/games/{gameId}/playbyplay:
+    get:
+      description: |
+        Retrieves detailed play-by-play data for a specific game including
+        all plays, drives, scoring events, and key statistics.
+      operationId: getPlayByPlay
+      parameters:
+      - description: Game identifier (UUID)
+        in: path
+        name: gameId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Include penalty details
+        in: query
+        name: includePenalties
+        required: false
+        schema:
+          default: true
+          type: boolean
+      - description: Include offensive/defensive formations
+        in: query
+        name: includeFormations
+        required: false
+        schema:
+          default: false
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlayByPlayResponse'
+          description: Successfully retrieved play-by-play data
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Game not found
+        '500':
+          description: Internal server error
+      summary: Get Play-by-Play Data
+      tags:
+      - Football
+  /football/v2/injuries:
+    get:
+      description: |
+        Retrieves current injury reports for all teams or specific teams
+        with injury status, designation, and practice participation.
+      operationId: getInjuryReports
+      parameters:
+      - description: Season year
+        in: query
+        name: season
+        required: true
+        schema:
+          example: 2025
+          type: integer
+      - description: Week number
+        in: query
+        name: week
+        required: true
+        schema:
+          example: 4
+          type: integer
+      - description: Filter by specific team
+        in: query
+        name: teamId
+        required: false
+        schema:
+          format: uuid
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: './nfl-shared.yaml#/components/schemas/InjuryReportResponse'
+          description: Successfully retrieved injury reports
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+      summary: Get Injury Reports
+      tags:
+      - Football
+  /football/v2/players/teams/{teamId}/roster:
+    get:
+      description: Retrieves the complete roster for a specific team including active, practice squad, and injured reserve
+        players with detailed player information.
+      operationId: getPlayersTeamRoster
+      parameters:
+      - description: Team identifier (UUID)
+        in: path
+        name: teamId
+        required: true
+        schema:
+          example: 10403800-517c-7b8c-65a3-c61b95d86123
+          format: uuid
+          type: string
+      - description: Season year
+        in: query
+        name: season
+        required: true
+        schema:
+          example: 2025
+          type: integer
+      - description: Include current season statistics
+        in: query
+        name: includeStats
+        required: false
+        schema:
+          default: false
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RosterResponse'
+          description: Successfully retrieved roster
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Team not found
+        '500':
+          description: Internal server error
+      summary: Get Team Roster
+      tags:
+      - Football
+  /football/v2/players/{playerId}:
+    get:
+      description: |
+        Retrieves detailed information about a specific player including biography,
+        career statistics, and current season performance.
+      operationId: getPlayerDetails
+      parameters:
+      - description: Player identifier
+        in: path
+        name: playerId
+        required: true
+        schema:
+          example: '2560726'
+          type: string
+      - description: Season for statistics (defaults to current)
+        in: query
+        name: season
+        required: false
+        schema:
+          example: 2025
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: './nfl-shared.yaml#/components/schemas/PlayerDetail'
+          description: Successfully retrieved player details
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Player not found
+        '500':
+          description: Internal server error
+      summary: Get Player Details
+      tags:
+      - Football
+  /football/v2/standings:
+    get:
+      description: |
+        Retrieves team standings for a specific season, season type, and week.
+        Includes division, conference, and overall standings with detailed statistics.
+      operationId: getStandings
+      parameters:
+      - description: Season year
+        in: query
+        name: season
+        required: true
+        schema:
+          example: 2025
+          type: integer
+      - description: Type of season
+        in: query
+        name: seasonType
+        required: true
+        schema:
+          $ref: './nfl-shared.yaml#/components/schemas/SeasonTypeEnum'
+      - description: Week number
+        in: query
+        name: week
+        required: true
+        schema:
+          example: 3
+          type: integer
+      - description: Maximum number of results to return
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          maximum: 100
+          minimum: 1
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: './nfl-shared.yaml#/components/schemas/StandingsResponse'
+          description: Successfully retrieved standings
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+      summary: Get Standings
+      tags:
+      - Football
+  /football/v2/stats/live/game-summaries:
+    get:
+      description: |
+        Retrieves live game statistics and summaries for games in progress or completed games.
+        Provides real-time statistical data for specified season, type, and week.
+      operationId: getLiveGameStats
+      parameters:
+      - description: Season year
+        in: query
+        name: season
+        required: true
+        schema:
+          example: 2025
+          type: integer
+      - description: Type of season
+        in: query
+        name: seasonType
+        required: true
+        schema:
+          $ref: './nfl-shared.yaml#/components/schemas/SeasonTypeEnum'
+      - description: Week number
+        in: query
+        name: week
+        required: true
+        schema:
+          example: 4
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameStatsResponse'
+          description: Successfully retrieved game statistics
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+      summary: Get Live Game Statistics
+      tags:
+      - Football
+  /football/v2/stats/players/season:
+    get:
+      description: |
+        Retrieves aggregated player statistics for a specific season with filtering
+        options by position, team, and statistical categories.
+      operationId: getSeasonPlayerStats
+      parameters:
+      - description: Season year
+        in: query
+        name: season
+        required: true
+        schema:
+          example: 2025
+          type: integer
+      - description: Type of season
+        in: query
+        name: seasonType
+        required: true
+        schema:
+          $ref: './nfl-shared.yaml#/components/schemas/SeasonTypeEnum'
+      - description: Filter by position group
+        in: query
+        name: position
+        required: false
+        schema:
+          enum:
+          - QB
+          - RB
+          - WR
+          - TE
+          - OL
+          - DL
+          - LB
+          - DB
+          - K
+          - P
+          - LS
+          type: string
+      - description: Filter by team
+        in: query
+        name: teamId
+        required: false
+        schema:
+          format: uuid
+          type: string
+      - description: Statistical category to retrieve
+        in: query
+        name: statCategory
+        required: false
+        schema:
+          enum:
+          - passing
+          - rushing
+          - receiving
+          - defense
+          - kicking
+          - punting
+          - returning
+          example: passing
+          type: string
+      - description: Sort field and order
+        in: query
+        name: sort
+        required: false
+        schema:
+          example: passingYards:desc
+          type: string
+      - description: Maximum number of results
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          maximum: 500
+          minimum: 1
+          type: integer
+      - description: Offset for pagination
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          minimum: 0
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlayerStatsResponse'
+          description: Successfully retrieved player statistics
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+      summary: Get Season Player Statistics
+      tags:
+      - Football
+  /football/v2/transactions:
+    get:
+      description: |
+        Retrieves recent transactions including trades, signings, releases,
+        practice squad moves, and injured reserve designations.
+      operationId: getTransactions
+      parameters:
+      - description: Start date for transactions (ISO 8601)
+        in: query
+        name: startDate
+        required: false
+        schema:
+          example: '2025-01-01'
+          format: date
+          type: string
+      - description: End date for transactions (ISO 8601)
+        in: query
+        name: endDate
+        required: false
+        schema:
+          example: '2025-09-24'
+          format: date
+          type: string
+      - description: Filter by team
+        in: query
+        name: teamId
+        required: false
+        schema:
+          format: uuid
+          type: string
+      - description: Type of transaction
+        in: query
+        name: transactionType
+        required: false
+        schema:
+          enum:
+          - TRADE
+          - SIGNED
+          - RELEASED
+          - WAIVED
+          - PRACTICE_SQUAD
+          - IR
+          - SUSPENDED
+          type: string
+      - description: Maximum number of results
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          maximum: 100
+          minimum: 1
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionsResponse'
+          description: Successfully retrieved transactions
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+      summary: Get Transactions
+      tags:
+      - Football
+  /football/v2/venues:
+    get:
+      description: |
+        Retrieves information about all NFL stadiums and venues, including international venues.
+        Provides venue details such as addresses, locations, and territories.
+      operationId: getVenues
+      parameters:
+      - description: Season year
+        in: query
+        name: season
+        required: true
+        schema:
+          example: 2025
+          type: integer
+      - description: Maximum number of venues to return
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          maximum: 100
+          minimum: 1
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VenuesResponse'
+          description: Successfully retrieved venues
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+      summary: Get NFL Venues
+      tags:
+      - Football
+  /football/v2/weeks/season/{season}:
+    get:
+      description: Retrieves all weeks for a specific season including preseason, regular season, and postseason. Includes
+        bye team information for each week.
+      operationId: getSeasonWeeks
+      parameters:
+      - description: Season year
+        in: path
+        name: season
+        required: true
+        schema:
+          example: 2025
+          type: integer
+      - description: Maximum number of weeks to return
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          maximum: 100
+          minimum: 1
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeeksResponse'
+          description: Successfully retrieved weeks
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+      summary: Get Season Weeks
+      tags:
+      - Football
+  /identity/v3/token:
+    post:
+      description: Creates a new access token and refresh token for a client device. This is the initial authentication endpoint
+        that establishes a session for accessing NFL APIs. Requires client credentials and device information.
+      operationId: generateToken
+      requestBody:
+        content:
+          application/json:
+            example:
+              clientKey: 4cFUW6DmwJpzT9L7LrG3qRAcABG5s04g
+              clientSecret: CZuvCL49d9OwfGsR
+              deviceId: 3cfdef35-c7fe-4f2d-8630-1ec72f52b44d
+              deviceInfo: eyJtb2RlbCI6ImRlc2t0b3AiLCJ2ZXJzaW9uIjoiQ2hyb21lIiwib3NOYW1lIjoiV2luZG93cyIsIm9zVmVyc2lvbiI6IjEwIn0=
+              networkType: other
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                accessToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+                expiresIn: 1758732647
+                refreshToken: 0f5452b5-7f40-4c8e-9801-cf7fd2830de3
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+          description: Successfully generated tokens
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Invalid client credentials
+        '500':
+          description: Internal server error
+      summary: Generate Initial Access Token
+      tags:
+      - Authentication
+  /identity/v3/token/refresh:
+    post:
+      description: Refreshes an existing access token using a valid refresh token. This endpoint extends the user's session
+        by generating new access and refresh tokens. Requires the previous refresh token and signature verification.
+      operationId: refreshToken
+      requestBody:
+        content:
+          application/json:
+            example:
+              clientKey: 4cFUW6DmwJpzT9L7LrG3qRAcABG5s04g
+              clientSecret: CZuvCL49d9OwfGsR
+              deviceId: 3cfdef35-c7fe-4f2d-8630-1ec72f52b44d
+              deviceInfo: eyJtb2RlbCI6ImRlc2t0b3AiLCJ2ZXJzaW9uIjoiQ2hyb21lIiwib3NOYW1lIjoiV2luZG93cyIsIm9zVmVyc2lvbiI6IjEwIn0=
+              networkType: other
+              refreshToken: 640b00c7-33d8-44f2-ab46-e3d1284a4061
+              signatureTimestamp: '1758729181'
+              uid: df990acd951e4bd6940c3babc4341584
+              uidSignature: 587bdNt6EKYhhX9ASFOELX+2lqE=
+            schema:
+              $ref: '#/components/schemas/RefreshTokenRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                accessToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+                expiresIn: 1758732782
+                refreshToken: a175ada6-a2e2-4689-8ea4-b9d6cfb0da13
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+          description: Successfully refreshed tokens
+        '400':
+          description: Invalid request parameters
+        '401':
+          description: Invalid or expired refresh token
+        '403':
+          description: Invalid signature verification
+        '500':
+          description: Internal server error
+      summary: Refresh Access Token
+      tags:
+      - Authentication
+components:
+  schemas:
+    BoxScoreResponse:
+      properties:
+        game:
+          $ref: './nfl-shared.yaml#/components/schemas/Game'
+        playerStats:
+          properties:
+            away:
+              properties:
+                defense:
+                  items:
+                    $ref: '#/components/schemas/PlayerGameStats'
+                  type: array
+                offense:
+                  items:
+                    $ref: '#/components/schemas/PlayerGameStats'
+                  type: array
+              type: object
+            home:
+              properties:
+                defense:
+                  items:
+                    $ref: '#/components/schemas/PlayerGameStats'
+                  type: array
+                offense:
+                  items:
+                    $ref: '#/components/schemas/PlayerGameStats'
+                  type: array
+              type: object
+          type: object
+        scoringSummary:
+          items:
+            $ref: '#/components/schemas/ScoringPlay'
+          type: array
+        teamStats:
+          properties:
+            away:
+              $ref: '#/components/schemas/TeamGameStats'
+            home:
+              $ref: '#/components/schemas/TeamGameStats'
+          type: object
+      type: object
+    DraftPick:
+      properties:
+        college:
+          type: string
+        isCompensatory:
+          type: boolean
+        originalTeam:
+          $ref: './nfl-shared.yaml#/components/schemas/Team'
+        overallPick:
+          type: integer
+        pick:
+          type: integer
+        player:
+          $ref: './nfl-shared.yaml#/components/schemas/Player'
+        position:
+          type: string
+        round:
+          type: integer
+        team:
+          $ref: './nfl-shared.yaml#/components/schemas/Team'
+      type: object
+    DraftResponse:
+      properties:
+        rounds:
+          items:
+            properties:
+              picks:
+                items:
+                  $ref: '#/components/schemas/DraftPick'
+                type: array
+              round:
+                type: integer
+            type: object
+          type: array
+        year:
+          type: integer
+      type: object
+    Drive:
+      properties:
+        driveNumber:
+          type: integer
+        endTime:
+          description: Game clock at drive end
+          type: string
+        endYardLine:
+          description: Ending field position
+          type: string
+        plays:
+          items:
+            $ref: '#/components/schemas/Play'
+          type: array
+        quarter:
+          type: integer
+        result:
+          $ref: '#/components/schemas/DriveResultEnum'
+        startTime:
+          description: Game clock at drive start
+          type: string
+        startYardLine:
+          description: Starting field position
+          type: string
+        team:
+          $ref: './nfl-shared.yaml#/components/schemas/Team'
+        timeOfPossession:
+          description: Drive duration (MM:SS)
+          type: string
+        totalPlays:
+          type: integer
+        totalYards:
+          type: integer
+      type: object
+    DriveResultEnum:
+      description: Outcome of a given drive
+      enum:
+      - TOUCHDOWN
+      - FIELD_GOAL
+      - PUNT
+      - DOWNS
+      - FUMBLE
+      - INTERCEPTION
+      - SAFETY
+      - END_OF_HALF
+      - END_OF_GAME
+      type: string
+    ExperienceGamesResponse:
+      properties:
+        games:
+          items:
+            $ref: './nfl-shared.yaml#/components/schemas/Game'
+          type: array
+        pagination:
+          $ref: './nfl-shared.yaml#/components/schemas/Pagination'
+      type: object
+    ExperienceTeamsResponse:
+      properties:
+        teams:
+          items:
+            $ref: './nfl-shared.yaml#/components/schemas/Team'
+          type: array
+      type: object
+    FootballGamesResponse:
+      properties:
+        games:
+          items:
+            $ref: './nfl-shared.yaml#/components/schemas/Game'
+          type: array
+        pagination:
+          $ref: './nfl-shared.yaml#/components/schemas/Pagination'
+      type: object
+    GameStatsResponse:
+      properties:
+        data:
+          description: Array of live game state summaries
+          items:
+            $ref: '#/components/schemas/Summary'
+          type: array
+        pagination:
+          $ref: './nfl-shared.yaml#/components/schemas/Pagination'
+      type: object
+    NetworkTypeEnum:
+      description: Type of network connection
+      enum:
+      - other
+      - wifi
+      - cellular
+      - ethernet
+      type: string
+    Penalty:
+      properties:
+        accepted:
+          type: boolean
+        noPlay:
+          type: boolean
+        player:
+          $ref: './nfl-shared.yaml#/components/schemas/Player'
+        team:
+          $ref: './nfl-shared.yaml#/components/schemas/Team'
+        type:
+          type: string
+        yards:
+          type: integer
+      type: object
+    Play:
+      properties:
+        description:
+          type: string
+        distance:
+          type: integer
+        down:
+          type: integer
+        gameClock:
+          type: string
+        penalties:
+          items:
+            $ref: '#/components/schemas/Penalty'
+          type: array
+        playId:
+          type: string
+        playNumber:
+          type: integer
+        playType:
+          $ref: './nfl-shared.yaml#/components/schemas/PlayTypeEnum'
+        players:
+          items:
+            $ref: '#/components/schemas/PlayParticipant'
+          type: array
+        quarter:
+          type: integer
+        result:
+          type: string
+        yardLine:
+          type: string
+        yardsGained:
+          type: integer
+      type: object
+    PlayByPlayResponse:
+      properties:
+        currentDrive:
+          $ref: '#/components/schemas/Drive'
+        drives:
+          items:
+            $ref: '#/components/schemas/Drive'
+          type: array
+        game:
+          $ref: './nfl-shared.yaml#/components/schemas/Game'
+        lastPlay:
+          $ref: '#/components/schemas/Play'
+        scoringSummary:
+          items:
+            $ref: '#/components/schemas/ScoringPlay'
+          type: array
+      type: object
+    PlayParticipant:
+      properties:
+        player:
+          $ref: './nfl-shared.yaml#/components/schemas/Player'
+        role:
+          $ref: '#/components/schemas/PlayParticipantRoleEnum'
+        stats:
+          description: Play-specific statistics
+          type: object
+      type: object
+    PlayParticipantRoleEnum:
+      enum:
+      - PASSER
+      - RUSHER
+      - RECEIVER
+      - TACKLER
+      - KICKER
+      - RETURNER
+      - BLOCKER
+      type: string
+    PlayerGameStats:
+      properties:
+        defensive:
+          $ref: './nfl-shared.yaml#/components/schemas/DefensiveStats'
+        kicking:
+          $ref: './nfl-shared.yaml#/components/schemas/KickingStats'
+        passing:
+          $ref: './nfl-shared.yaml#/components/schemas/PassingStats'
+        player:
+          $ref: './nfl-shared.yaml#/components/schemas/Player'
+        receiving:
+          $ref: './nfl-shared.yaml#/components/schemas/ReceivingStats'
+        rushing:
+          $ref: './nfl-shared.yaml#/components/schemas/RushingStats'
+      type: object
+    PlayerStatsResponse:
+      properties:
+        pagination:
+          properties:
+            limit:
+              type: integer
+            offset:
+              type: integer
+            total:
+              type: integer
+          type: object
+        players:
+          items:
+            properties:
+              player:
+                $ref: './nfl-shared.yaml#/components/schemas/Player'
+              stats:
+                description: Statistics object varies by category
+                type: object
+              team:
+                $ref: './nfl-shared.yaml#/components/schemas/Team'
+            type: object
+          type: array
+        season:
+          type: integer
+        seasonType:
+          $ref: './nfl-shared.yaml#/components/schemas/SeasonTypeEnum'
+        statCategory:
+          type: string
+      type: object
+    RefreshTokenRequest:
+      allOf:
+      - $ref: '#/components/schemas/TokenRequest'
+      - properties:
+          refreshToken:
+            description: Valid refresh token from previous authentication
+            example: 640b00c7-33d8-44f2-ab46-e3d1284a4061
+            format: uuid
+            type: string
+          signatureTimestamp:
+            description: Unix timestamp for signature verification
+            example: '1758729181'
+            type: string
+          uid:
+            description: User identifier hash
+            example: df990acd951e4bd6940c3babc4341584
+            type: string
+          uidSignature:
+            description: HMAC signature for request verification
+            example: 587bdNt6EKYhhX9ASFOELX+2lqE=
+            type: string
+        type: object
+    Replay:
+      description: Replay video information for a game
+      properties:
+        advertiserId:
+          nullable: true
+          type: string
+        author:
+          nullable: true
+          type: string
+        authorizations:
+          description: Authorization requirements for different NFL+ tiers
+          type: object
+        background:
+          description: Background metadata
+          type: object
+        cameraSource:
+          nullable: true
+          type: string
+        clipType:
+          nullable: true
+          type: string
+        ctas:
+          description: Call-to-action buttons
+          items:
+            type: object
+          type: array
+        ctaLink:
+          nullable: true
+          type: string
+        ctaTarget:
+          nullable: true
+          type: string
+        ctaText:
+          nullable: true
+          type: string
+        description:
+          description: Video description
+          type: string
+        displayTitle:
+          nullable: true
+          type: string
+        duration:
+          description: Video duration in seconds (as string)
+          example: '8577'
+          type: string
+        endDate:
+          nullable: true
+          type: string
+        entitlement:
+          nullable: true
+          type: string
+        episodeNumber:
+          nullable: true
+          type: integer
+        expirationDate:
+          nullable: true
+          type: string
+        externalId:
+          description: External identifier for the video
+          type: string
+        fantasyLink:
+          nullable: true
+          type: string
+        hostNetwork:
+          nullable: true
+          type: string
+        id:
+          nullable: true
+          type: string
+        ids:
+          description: Related entity identifiers
+          properties:
+            awayTeamId:
+              format: uuid
+              type: string
+            gameId:
+              format: uuid
+              type: string
+            homeTeamId:
+              format: uuid
+              type: string
+            playId:
+              nullable: true
+              type: string
+          type: object
+        images:
+          description: Associated images
+          items:
+            type: object
+          type: array
+        intendedAudience:
+          nullable: true
+          type: string
+        introEnd:
+          nullable: true
+          type: string
+        language:
+          nullable: true
+          type: string
+        lastUpdated:
+          nullable: true
+          type: string
+        mcpPlaybackId:
+          description: Media Content Platform playback identifier
+          type: string
+        mobileLink:
+          nullable: true
+          type: string
+        mobileTitle:
+          nullable: true
+          type: string
+        originalAirDate:
+          nullable: true
+          type: string
+        outroStart:
+          nullable: true
+          type: string
+        playIds:
+          description: Associated play identifiers
+          items:
+            type: string
+          type: array
+        preRollDisabled:
+          description: Whether pre-roll ads are disabled
+          type: boolean
+        promoAssets:
+          description: Promotional assets
+          items:
+            type: object
+          type: array
+        promoLink:
+          nullable: true
+          type: string
+        promoTarget:
+          description: Link target for promotional content
+          example: _self
+          type: string
+        promoText:
+          nullable: true
+          type: string
+        publishDate:
+          description: Video publish date
+          format: date-time
+          type: string
+        radioStation:
+          nullable: true
+          type: string
+        series:
+          nullable: true
+          type: string
+        seriesSeason:
+          nullable: true
+          type: string
+        seriesTitle:
+          nullable: true
+          type: string
+        slug:
+          nullable: true
+          type: string
+        startDate:
+          nullable: true
+          type: string
+        subType:
+          description: Video subtype
+          example: Full Game - Spanish
+          type: string
+        summary:
+          nullable: true
+          type: string
+        tags:
+          description: Video tags for categorization
+          items:
+            properties:
+              gameId:
+                format: uuid
+                type: string
+              season:
+                type: string
+              seasonType:
+                type: string
+              week:
+                type: string
+            type: object
+          type: array
+        thumbnail:
+          description: Video thumbnail information
+          properties:
+            thumbnailUrl:
+              description: URL to video thumbnail image
+              format: uri
+              type: string
+          type: object
+        title:
+          description: Video title
+          example: TNF en Espanol
+          type: string
+        type:
+          description: Content type
+          example: video
+          type: string
+        videos:
+          description: Associated video content
+          items:
+            type: object
+          type: array
+        webLink:
+          nullable: true
+          type: string
+      type: object
+    RosterResponse:
+      properties:
+        roster:
+          properties:
+            defense:
+              items:
+                $ref: './nfl-shared.yaml#/components/schemas/Player'
+              type: array
+            injuredReserve:
+              items:
+                $ref: './nfl-shared.yaml#/components/schemas/Player'
+              type: array
+            offense:
+              items:
+                $ref: './nfl-shared.yaml#/components/schemas/Player'
+              type: array
+            practiceSquad:
+              items:
+                $ref: './nfl-shared.yaml#/components/schemas/Player'
+              type: array
+            specialTeams:
+              items:
+                $ref: './nfl-shared.yaml#/components/schemas/Player'
+              type: array
+          type: object
+        season:
+          type: integer
+        team:
+          $ref: './nfl-shared.yaml#/components/schemas/Team'
+      type: object
+    ScoreTypeEnum:
+      description: Type of scoring play
+      enum:
+      - TOUCHDOWN
+      - FIELD_GOAL
+      - SAFETY
+      - EXTRA_POINT
+      - TWO_POINT_CONVERSION
+      type: string
+    ScoringPlay:
+      properties:
+        awayScore:
+          type: integer
+        description:
+          type: string
+        gameClock:
+          type: string
+        homeScore:
+          type: integer
+        quarter:
+          type: integer
+        scoreType:
+          $ref: '#/components/schemas/ScoreTypeEnum'
+        team:
+          $ref: './nfl-shared.yaml#/components/schemas/Team'
+      type: object
+    Summary:
+      description: Live game state summary including score, possession, and game situation
+      properties:
+        attendance:
+          description: Game attendance
+          example: 73652
+          type: integer
+        awayTeam:
+          $ref: '#/components/schemas/WeeklyGameDetailSummaryTeam'
+        clock:
+          description: Current game clock
+          example: 03:36
+          type: string
+        distance:
+          description: Yards to go for first down
+          example: 10
+          type: integer
+        down:
+          description: Current down
+          example: 1
+          type: integer
+        gameBookUrl:
+          description: URL to official NFL game book PDF
+          format: uri
+          type: string
+        gameId:
+          description: Game identifier (UUID format)
+          format: uuid
+          type: string
+        homeTeam:
+          $ref: '#/components/schemas/WeeklyGameDetailSummaryTeam'
+        isGoalToGo:
+          description: Whether it's a goal-to-go situation
+          type: boolean
+        isRedZone:
+          description: Whether the ball is in the red zone
+          type: boolean
+        offset:
+          description: Time offset in seconds
+          example: 603
+          type: integer
+        phase:
+          description: Current game phase
+          example: FINAL_OVERTIME
+          type: string
+        quarter:
+          description: Current quarter or period
+          example: END_OF_GAME
+          type: string
+        startTime:
+          description: Game start time
+          format: date-time
+          type: string
+        weather:
+          description: Weather conditions
+          example: "Cloudy Temp: 71\xB0 F, Humidity: 65%, Wind: S 5 mph"
+          type: string
+        yardLine:
+          description: Current field position
+          example: SF 11
+          type: string
+      type: object
+    TeamGameStats:
+      properties:
+        firstDowns:
+          type: integer
+        fourthDownConversions:
+          example: 1/2
+          type: string
+        passingYards:
+          type: integer
+        penalties:
+          type: integer
+        penaltyYards:
+          type: integer
+        rushingYards:
+          type: integer
+        score:
+          type: integer
+        team:
+          $ref: './nfl-shared.yaml#/components/schemas/Team'
+        thirdDownConversions:
+          example: 5/12
+          type: string
+        timeOfPossession:
+          example: '31:45'
+          type: string
+        totalYards:
+          type: integer
+        turnovers:
+          type: integer
+      type: object
+    TokenRequest:
+      properties:
+        clientKey:
+          description: Client application identifier key
+          example: 4cFUW6DmwJpzT9L7LrG3qRAcABG5s04g
+          type: string
+        clientSecret:
+          description: Client application secret for authentication
+          example: CZuvCL49d9OwfGsR
+          type: string
+        deviceId:
+          description: Unique device identifier (UUID format)
+          example: 3cfdef35-c7fe-4f2d-8630-1ec72f52b44d
+          format: uuid
+          type: string
+        deviceInfo:
+          description: 'Base64-encoded JSON containing device information such as: {"model":"desktop","version":"Chrome","osName":"Windows","osVersion":"10"} '
+          example: eyJtb2RlbCI6ImRlc2t0b3AiLCJ2ZXJzaW9uIjoiQ2hyb21lIiwib3NOYW1lIjoiV2luZG93cyIsIm9zVmVyc2lvbiI6IjEwIn0=
+          type: string
+        networkType:
+          $ref: '#/components/schemas/NetworkTypeEnum'
+      type: object
+    TokenResponse:
+      properties:
+        accessToken:
+          description: JWT access token containing user permissions, subscription plans, location data, and roles. Include
+            this token in the Authorization header as "Bearer {accessToken}" for authenticated requests.
+          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+          type: string
+        expiresIn:
+          description: Unix timestamp when the access token expires
+          example: 1758732647
+          format: int64
+          type: integer
+        refreshToken:
+          description: New refresh token for future token refresh requests
+          example: 0f5452b5-7f40-4c8e-9801-cf7fd2830de3
+          format: uuid
+          type: string
+      type: object
+    Transaction:
+      properties:
+        compensationDetails:
+          description: Trade compensation or contract details
+          type: string
+        date:
+          format: date-time
+          type: string
+        details:
+          description: Transaction details
+          type: string
+        id:
+          type: string
+        player:
+          $ref: './nfl-shared.yaml#/components/schemas/Player'
+        relatedTeam:
+          $ref: './nfl-shared.yaml#/components/schemas/Team'
+        team:
+          $ref: './nfl-shared.yaml#/components/schemas/Team'
+        type:
+          $ref: '#/components/schemas/TransactionTypeEnum'
+      type: object
+    TransactionTypeEnum:
+      enum:
+      - TRADE
+      - SIGNED
+      - RELEASED
+      - WAIVED
+      - PRACTICE_SQUAD
+      - IR
+      - SUSPENDED
+      - ACTIVATED
+      type: string
+    TransactionsResponse:
+      properties:
+        pagination:
+          $ref: './nfl-shared.yaml#/components/schemas/Pagination'
+        transactions:
+          items:
+            $ref: '#/components/schemas/Transaction'
+          type: array
+      type: object
+    VenuesResponse:
+      properties:
+        pagination:
+          $ref: './nfl-shared.yaml#/components/schemas/Pagination'
+        venues:
+          items:
+            $ref: './nfl-shared.yaml#/components/schemas/Venue'
+          type: array
+      type: object
+    WeeklyGameDetail:
+      allOf:
+      - $ref: './nfl-shared.yaml#/components/schemas/Game'
+      - properties:
+          awayTeamStandings:
+            $ref: './nfl-shared.yaml#/components/schemas/Standings'
+          driveChart:
+            description: Drive-by-drive data
+            nullable: true
+            type: object
+          homeTeamStandings:
+            $ref: './nfl-shared.yaml#/components/schemas/Standings'
+          replays:
+            description: Replay video information (populated when includeReplays=true)
+            items:
+              $ref: '#/components/schemas/Replay'
+            nullable: true
+            type: array
+          summary:
+            $ref: '#/components/schemas/Summary'
+          taggedVideos:
+            description: Tagged video content
+            nullable: true
+            type: object
+        type: object
+    WeeklyGameDetailSummaryScore:
+      description: Team score breakdown by quarter
+      properties:
+        ot:
+          description: Overtime points
+          example: 3
+          type: integer
+        q1:
+          description: First quarter points
+          example: 7
+          type: integer
+        q2:
+          description: Second quarter points
+          example: 10
+          type: integer
+        q3:
+          description: Third quarter points
+          example: 3
+          type: integer
+        q4:
+          description: Fourth quarter points
+          example: 3
+          type: integer
+        total:
+          description: Total points scored
+          example: 26
+          type: integer
+      type: object
+    WeeklyGameDetailSummaryTeam:
+      description: Team game state in summary
+      properties:
+        hasPossession:
+          description: Whether the team currently has possession
+          type: boolean
+        score:
+          $ref: '#/components/schemas/WeeklyGameDetailSummaryScore'
+        teamId:
+          description: Team identifier (UUID format)
+          format: uuid
+          type: string
+        timeouts:
+          $ref: '#/components/schemas/WeeklyGameDetailSummaryTimeouts'
+      type: object
+    WeeklyGameDetailSummaryTimeouts:
+      description: Team timeout information
+      properties:
+        remaining:
+          description: Timeouts remaining
+          example: 1
+          type: integer
+        used:
+          description: Timeouts used
+          example: 1
+          type: integer
+      type: object
+    WeeksResponse:
+      properties:
+        pagination:
+          $ref: './nfl-shared.yaml#/components/schemas/Pagination'
+        weeks:
+          items:
+            $ref: './nfl-shared.yaml#/components/schemas/Week'
+          type: array
+      type: object
+  securitySchemes:
+    NFLAuth:
+      type: http
+      scheme: bearer
+      x-speakeasy-token: sometokenvalue

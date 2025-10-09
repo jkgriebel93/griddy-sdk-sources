@@ -1,0 +1,79 @@
+================================================================================
+NFL API SPLIT - QUICK REFERENCE CARD
+================================================================================
+
+OVERVIEW
+--------
+Source: /home/jkgriebel/Repos/griddy-sdk-sources/openapi/nfl-com-api.yaml
+Total: 63 paths, 268 schemas
+
+PATHS
+-----
+Pro API (/api/*):        45 paths → nfl-pro-api.yaml
+Regular API (other):     18 paths → nfl-regular-api.yaml
+
+SCHEMAS
+-------
+Shared (both APIs):      45 schemas → nfl-shared.yaml
+Pro API exclusive:      142 schemas → nfl-pro-api.yaml
+Regular API exclusive:   35 schemas → nfl-regular-api.yaml
+
+Pro API total:          187 schemas (45 shared + 142 exclusive)
+Regular API total:       80 schemas (45 shared + 35 exclusive)
+
+KEY DIFFERENTIATORS
+-------------------
+Pro API specializes in:
+  - Next Gen Stats & advanced analytics
+  - Fantasy football projections
+  - Coaches Film & Film Room content
+  - Betting odds & futures
+  - Win probability analytics
+  - Enhanced team/player rankings
+
+Regular API specializes in:
+  - Authentication (token management)
+  - Play-by-play data
+  - Draft information
+  - Player transactions
+  - Basic game & roster data
+
+SHARED COMPONENTS
+-----------------
+Both APIs share:
+  - Core entities (Game, Team, Player, Venue)
+  - Basic stats (Passing, Receiving, Rushing, Defensive, Kicking)
+  - Common enums (Season types, game status, positions)
+  - Injury reports & standings
+  - Pagination & metadata structures
+
+SPLIT IMPLEMENTATION
+--------------------
+1. Create nfl-shared.yaml with 45 shared schemas
+2. Create nfl-pro-api.yaml with 45 Pro paths + refs to shared
+3. Create nfl-regular-api.yaml with 18 Regular paths + refs to shared
+
+Reference syntax:
+  $ref: './nfl-shared.yaml#/components/schemas/SchemaName'
+
+FILES GENERATED
+---------------
+SCHEMA_ANALYSIS_REPORT.md    - Full analysis report (markdown)
+ANALYSIS_SUMMARY.txt         - Detailed breakdown with paths
+QUICK_REFERENCE.txt          - This file
+schema_analysis_summary.txt  - Statistics only
+pro_api_paths.txt           - List of 45 Pro API paths
+regular_api_paths.txt       - List of 18 Regular API paths
+shared_schemas.txt          - List of 45 shared schemas
+pro_exclusive_schemas.txt   - List of 142 Pro-only schemas
+regular_exclusive_schemas.txt - List of 35 Regular-only schemas
+analyze_schemas.py          - Python analysis script
+
+USAGE
+-----
+1. Review SCHEMA_ANALYSIS_REPORT.md for complete details
+2. Use *_schemas.txt files to know which schemas go where
+3. Use *_paths.txt files to extract path definitions
+4. Reference shared schemas from both Pro and Regular specs
+
+================================================================================

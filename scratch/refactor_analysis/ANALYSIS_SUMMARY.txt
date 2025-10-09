@@ -1,0 +1,266 @@
+================================================================================
+NFL API OPENAPI SPECIFICATION ANALYSIS
+================================================================================
+
+SOURCE FILE: /home/jkgriebel/Repos/griddy-sdk-sources/openapi/nfl-com-api.yaml
+
+================================================================================
+PATHS BREAKDOWN
+================================================================================
+
+Total Paths: 63
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ Pro API Paths (/api/*)                                        45 paths │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                         │
+│  Content & Insights:                                                   │
+│    - /api/content/game/preview                                         │
+│    - /api/content/home-film-cards                                      │
+│    - /api/content/insights/game                                        │
+│    - /api/content/insights/season                                      │
+│                                                                         │
+│  Players:                                                              │
+│    - /api/players/player                                               │
+│    - /api/players/projectedStats                                       │
+│    - /api/players/search                                               │
+│                                                                         │
+│  Plays:                                                                │
+│    - /api/plays/summaryPlay                                            │
+│                                                                         │
+│  Schedules & Games:                                                    │
+│    - /api/schedules/current                                            │
+│    - /api/schedules/game                                               │
+│    - /api/schedules/game/matchup/rankings                              │
+│    - /api/schedules/game/team/injuries                                 │
+│    - /api/schedules/games                                              │
+│    - /api/schedules/genius/future/odds                                 │
+│    - /api/schedules/standings                                          │
+│    - /api/schedules/week/odds                                          │
+│    - /api/schedules/weeks                                              │
+│                                                                         │
+│  Scores:                                                               │
+│    - /api/scores/live/games                                            │
+│                                                                         │
+│  Secured Stats & Analytics (Next Gen Stats):                          │
+│    - /api/secured/stats/defense/nearest/season                         │
+│    - /api/secured/stats/defense/overview/season                        │
+│    - /api/secured/stats/defense/passRush/season                        │
+│    - /api/secured/stats/fantasy/season                                 │
+│    - /api/secured/stats/players-offense/passing/season                 │
+│    - /api/secured/stats/players-offense/passing/week                   │
+│    - /api/secured/stats/players-offense/receiving/season               │
+│    - /api/secured/stats/players-offense/receiving/week                 │
+│    - /api/secured/stats/players-offense/rushing/season                 │
+│    - /api/secured/stats/players-offense/rushing/week                   │
+│    - /api/secured/stats/team-defense/overview/season                   │
+│    - /api/secured/stats/team-defense/pass/season                       │
+│    - /api/secured/stats/team-defense/rush/season                       │
+│    - /api/secured/stats/team-offense/overview/season                   │
+│    - /api/secured/stats/team-offense/pass/season                       │
+│                                                                         │
+│  Secured Videos (Film Room & Coaches Film):                           │
+│    - /api/secured/videos/coaches                                       │
+│    - /api/secured/videos/filmroom/plays                                │
+│                                                                         │
+│  Secured Win Probability:                                             │
+│    - /api/secured/plays/winProbability                                 │
+│    - /api/secured/plays/winProbabilityMin                              │
+│                                                                         │
+│  Stats:                                                                │
+│    - /api/stats/boxscore                                               │
+│    - /api/stats/game/team-rankings                                     │
+│    - /api/stats/gamecenter                                             │
+│    - /api/stats/multiple-rankings/all-teams                            │
+│                                                                         │
+│  Teams:                                                                │
+│    - /api/teams/all                                                    │
+│    - /api/teams/roster                                                 │
+│    - /api/teams/rosterWeek                                             │
+│    - /api/teams/schedule                                               │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ Regular API Paths                                             18 paths │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                         │
+│  Authentication:                                                       │
+│    - /identity/v3/token                                                │
+│    - /identity/v3/token/refresh                                        │
+│                                                                         │
+│  Experience:                                                           │
+│    - /experience/v1/games                                              │
+│    - /experience/v1/teams                                              │
+│                                                                         │
+│  Football Data:                                                        │
+│    - /football/v2/draft/{year}                                         │
+│    - /football/v2/experience/weekly-game-details                       │
+│    - /football/v2/games/season/{season}/seasonType/{seasonType}/week/  │
+│      {week}                                                            │
+│    - /football/v2/games/{gameId}/boxscore                              │
+│    - /football/v2/games/{gameId}/playbyplay                            │
+│    - /football/v2/injuries                                             │
+│    - /football/v2/players/teams/{teamId}/roster                        │
+│    - /football/v2/players/{playerId}                                   │
+│    - /football/v2/standings                                            │
+│    - /football/v2/stats/live/game-summaries                            │
+│    - /football/v2/stats/players/season                                 │
+│    - /football/v2/transactions                                         │
+│    - /football/v2/venues                                               │
+│    - /football/v2/weeks/season/{season}                                │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+================================================================================
+SCHEMAS BREAKDOWN
+================================================================================
+
+Total Unique Schemas: 268
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                     SCHEMA DISTRIBUTION                                 │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                         │
+│  Shared Schemas (Used by BOTH APIs):                       45 schemas  │
+│    These go in: nfl-shared.yaml                                        │
+│                                                                         │
+│  Pro API Exclusive Schemas:                                142 schemas │
+│    These go in: nfl-pro-api.yaml (plus refs to shared)                 │
+│                                                                         │
+│  Regular API Exclusive Schemas:                             35 schemas │
+│    These go in: nfl-regular-api.yaml (plus refs to shared)             │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+Pro API Total Schema Count:     187 (45 shared + 142 exclusive)
+Regular API Total Schema Count:  80 (45 shared + 35 exclusive)
+
+================================================================================
+KEY SHARED SCHEMAS (Common to Both APIs)
+================================================================================
+
+Core Types:
+  • Game, Team, Player, PlayerDetail
+  • Venue, Week, Season
+  • Record types (OverallRecord, PointsRecord, StandingsRecord)
+
+Enums:
+  • SeasonTypeEnum, GameStatusEnum, GamePhaseEnum, GameResultEnum
+  • ConferenceEnum, TeamTypeEnum, MeridiemEnum
+  • WeekSlugEnum, WeekTypeEnum
+  • NextGenStatsPositionEnum, NextGenStatsPositionGroupEnum
+  • PlayTypeEnum, PrimetimeGameCategoryEnum
+  • PracticeStatusEnum, InjuredPlayerGameStatusEnum
+
+Statistics:
+  • PassingStats, ReceivingStats, RushingStats, DefensiveStats, KickingStats
+  • CareerStats, SeasonStats
+
+Data Structures:
+  • Pagination, Award, ContractInfo, SocialMedia
+  • BroadcastInfo, ExternalId, TicketVendor
+
+Injuries & Status:
+  • InjuryEntry, InjuryReportResponse, TeamInjuryReport
+
+Standings:
+  • Standings, StandingsResponse, Clinched
+
+================================================================================
+PRO API EXCLUSIVE FEATURES
+================================================================================
+
+Advanced Analytics & Next Gen Stats:
+  • Defensive analytics (pass rush, coverage, overview)
+  • Offensive analytics (passing, receiving, rushing by season/week)
+  • Team analytics (offense/defense breakdowns)
+  • Win probability data
+  • EPA, CPOE, RYOE metrics
+
+Fantasy Football:
+  • Player projections
+  • Fantasy statistics and scoring
+  • Weekly fantasy data
+
+Premium Content:
+  • Coaches Film videos
+  • Film Room play analysis
+  • Game insights and previews
+  • Content insights
+
+Betting & Odds:
+  • Game odds, spreads, money lines
+  • Futures odds (Super Bowl, conference, division)
+  • Weekly betting odds
+
+Enhanced Stats:
+  • Detailed box scores
+  • Game center data
+  • Team rankings and matchup analysis
+  • Player search functionality
+
+================================================================================
+REGULAR API EXCLUSIVE FEATURES
+================================================================================
+
+Core Football Data:
+  • Play-by-play data
+  • Detailed game drives
+  • Scoring plays with details
+
+Player Management:
+  • Team rosters
+  • Player transactions
+  • Draft information
+
+Authentication:
+  • Token generation
+  • Token refresh
+  • OAuth flows
+
+Experience APIs:
+  • Simplified game data
+  • Weekly game details
+  • Team information
+
+Live Data:
+  • Game summaries
+  • Real-time stats
+
+================================================================================
+RECOMMENDED IMPLEMENTATION
+================================================================================
+
+File Structure:
+  ├── nfl-shared.yaml          (45 shared schemas)
+  ├── nfl-pro-api.yaml         (45 Pro paths + 142 exclusive schemas)
+  └── nfl-regular-api.yaml     (18 Regular paths + 35 exclusive schemas)
+
+Reference Pattern:
+  $ref: './nfl-shared.yaml#/components/schemas/SchemaName'
+
+Benefits:
+  ✓ No schema duplication
+  ✓ Single source of truth for shared types
+  ✓ Easier maintenance and updates
+  ✓ Clear API separation
+  ✓ Independent SDK generation per API
+  ✓ Type consistency across APIs
+
+================================================================================
+GENERATED FILES
+================================================================================
+
+Analysis Files Created:
+  • SCHEMA_ANALYSIS_REPORT.md         - Comprehensive markdown report
+  • ANALYSIS_SUMMARY.txt              - This summary file
+  • schema_analysis_summary.txt       - Statistics summary
+  • pro_api_paths.txt                 - Pro API endpoint list
+  • regular_api_paths.txt             - Regular API endpoint list
+  • shared_schemas.txt                - Shared schema list
+  • pro_exclusive_schemas.txt         - Pro-only schema list
+  • regular_exclusive_schemas.txt     - Regular-only schema list
+  • analyze_schemas.py                - Analysis script
+
+================================================================================

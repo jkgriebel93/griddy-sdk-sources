@@ -1,0 +1,31 @@
+================================================================================
+NFL API SCHEMA ANALYSIS SUMMARY
+================================================================================
+
+PATH COUNTS:
+--------------------------------------------------------------------------------
+Pro API paths (/api/*):       45
+Regular API paths:            18
+Total paths:                  63
+
+SCHEMA COUNTS (including transitive dependencies):
+--------------------------------------------------------------------------------
+Pro API schemas:             187
+Regular API schemas:          80
+Shared schemas (both):        45
+Pro API exclusive:           142
+Regular API exclusive:        35
+Total unique schemas:        268
+
+SPLIT STRATEGY:
+--------------------------------------------------------------------------------
+1. Create shared spec with 45 schemas
+2. Pro API spec references shared + 142 exclusive schemas
+3. Regular API spec references shared + 35 exclusive schemas
+
+Files generated:
+  - pro_api_paths.txt (list of Pro API paths)
+  - regular_api_paths.txt (list of Regular API paths)
+  - shared_schemas.txt (schemas for shared spec)
+  - pro_exclusive_schemas.txt (schemas only in Pro API)
+  - regular_exclusive_schemas.txt (schemas only in Regular API)

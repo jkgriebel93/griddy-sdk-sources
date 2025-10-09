@@ -1,0 +1,990 @@
+openapi: 3.0.3
+info:
+  title: NFL Shared Schemas
+  description: Shared schema definitions used by both NFL Pro API and NFL Regular API
+  version: 1.0.0
+components:
+  schemas:
+    Award:
+      properties:
+        awardType:
+          enum:
+          - MVP
+          - OPOY
+          - DPOY
+          - OROY
+          - DROY
+          - PRO_BOWL
+          - ALL_PRO
+          - SUPER_BOWL_MVP
+          type: string
+        description:
+          type: string
+        year:
+          type: integer
+      type: object
+    BroadcastInfo:
+      properties:
+        awayNetworkChannels:
+          description: Networks broadcasting in away market
+          items:
+            type: string
+          type: array
+        homeNetworkChannels:
+          description: Networks broadcasting in home market
+          items:
+            type: string
+          type: array
+        internationalWatchOptions:
+          description: International viewing options
+          items:
+            properties:
+              broadcasters:
+                items:
+                  type: string
+                type: array
+              countryCode:
+                type: string
+            type: object
+          type: array
+        streamingNetworks:
+          items:
+            properties:
+              hostNetwork:
+                description: Primary streaming network
+                type: string
+              networks:
+                description: Available streaming networks
+                items:
+                  type: string
+                type: array
+            type: object
+          type: array
+        territory:
+          description: Broadcast territory scope
+          enum:
+          - NATIONAL
+          - REGIONAL
+          type: string
+      type: object
+    CareerStats:
+      properties:
+        seasonStats:
+          items:
+            $ref: '#/components/schemas/SeasonStats'
+          type: array
+        totalGames:
+          type: integer
+        totalStarts:
+          type: integer
+      type: object
+    Clinched:
+      properties:
+        bye:
+          description: Clinched first-round bye
+          type: boolean
+        division:
+          description: Clinched division title
+          type: boolean
+        eliminated:
+          description: Eliminated from playoff contention
+          type: boolean
+        homeField:
+          description: Clinched home field advantage
+          type: boolean
+        playoff:
+          description: Clinched playoff berth
+          type: boolean
+        wildCard:
+          description: Clinched wild card berth
+          type: boolean
+      type: object
+    ConferenceEnum:
+      description: NFL conference
+      enum:
+      - AFC
+      - NFC
+      type: string
+    ContractInfo:
+      properties:
+        expirationYear:
+          description: Contract expiration year
+          type: integer
+        guaranteed:
+          description: Guaranteed money
+          type: number
+        signingBonus:
+          description: Signing bonus
+          type: number
+        totalValue:
+          description: Total contract value
+          type: number
+        years:
+          description: Contract length in years
+          type: integer
+      type: object
+    DefensiveStats:
+      properties:
+        assistedTackles:
+          type: integer
+        forcedFumbles:
+          type: integer
+        fumbleRecoveries:
+          type: integer
+        interceptions:
+          type: integer
+        passesDefended:
+          type: integer
+        qbHits:
+          type: integer
+        sacks:
+          format: float
+          type: number
+        safeties:
+          type: integer
+        soloTackles:
+          type: integer
+        tackles:
+          type: integer
+        tacklesForLoss:
+          type: integer
+      type: object
+    ExternalId:
+      properties:
+        id:
+          description: ID in external system
+          type: string
+        source:
+          description: External system name
+          example: elias
+          type: string
+      type: object
+    Game:
+      description: NFL game information including teams, scheduling, and venue details
+      properties:
+        awayTeam:
+          $ref: '#/components/schemas/Team'
+        broadcastInfo:
+          $ref: '#/components/schemas/BroadcastInfo'
+        category:
+          allOf:
+          - $ref: '#/components/schemas/PrimetimeGameCategoryEnum'
+          nullable: true
+        date:
+          description: Game date (YYYY-MM-DD)
+          format: date
+          type: string
+        dateAmPm:
+          $ref: '#/components/schemas/MeridiemEnum'
+        dateDay:
+          description: Day of week (full)
+          type: string
+        dateDayMonth:
+          description: Date in M/D format
+          type: string
+        dateDayShort:
+          description: Day of week (abbreviated)
+          type: string
+        dateTime:
+          description: Time without AM/PM
+          type: string
+        dateTimeAmPm:
+          description: Time with AM/PM
+          type: string
+        extensions:
+          description: Additional game data extensions
+          items:
+            type: object
+          type: array
+        externalIds:
+          items:
+            $ref: '#/components/schemas/ExternalId'
+          type: array
+        gameType:
+          description: Type of game
+          example: UNSPECIFIED
+          type: string
+        homeTeam:
+          $ref: '#/components/schemas/Team'
+        id:
+          description: Unique game identifier
+          format: uuid
+          type: string
+        international:
+          description: Whether game is played internationally
+          type: boolean
+        neutralSite:
+          description: Whether game is at neutral venue
+          type: boolean
+        phase:
+          $ref: '#/components/schemas/GamePhaseEnum'
+        season:
+          description: Season year
+          type: integer
+        seasonType:
+          $ref: '#/components/schemas/SeasonTypeEnum'
+        status:
+          $ref: '#/components/schemas/GameStatusEnum'
+        ticketUrl:
+          description: Primary ticket purchase URL
+          format: uri
+          nullable: true
+          type: string
+        ticketVendors:
+          items:
+            $ref: '#/components/schemas/TicketVendor'
+          type: array
+        time:
+          description: Game time in UTC
+          format: date-time
+          type: string
+        venue:
+          $ref: '#/components/schemas/Venue'
+        version:
+          description: Data version number
+          type: integer
+        week:
+          description: Week number
+          type: integer
+        weekType:
+          $ref: '#/components/schemas/WeekTypeEnum'
+      type: object
+    GamePhaseEnum:
+      description: Current phase of the game
+      enum:
+      - PREGAME
+      - INGAME
+      - HALFTIME
+      - FINAL
+      - SUSPENDED
+      type: string
+    GameResultEnum:
+      description: Game result (Win/Loss/Tie)
+      enum:
+      - W
+      - L
+      - T
+      type: string
+    GameStatusEnum:
+      description: Game status
+      enum:
+      - CANCELLED
+      - FINAL
+      - HALFTIME
+      - IN_PROGRESS
+      - POSTPONED
+      - SCHEDULED
+      type: string
+    InjuredPlayerGameStatusEnum:
+      description: Game status designation
+      enum:
+      - QUESTIONABLE
+      - DOUBTFUL
+      - OUT
+      - IR
+      type: string
+    InjuryEntry:
+      properties:
+        gameStatus:
+          $ref: '#/components/schemas/InjuredPlayerGameStatusEnum'
+        injury:
+          description: Injury description
+          example: Ankle
+          type: string
+        player:
+          $ref: '#/components/schemas/Player'
+        practiceStatus:
+          properties:
+            friday:
+              $ref: '#/components/schemas/PracticeStatusEnum'
+            thursday:
+              $ref: '#/components/schemas/PracticeStatusEnum'
+            wednesday:
+              $ref: '#/components/schemas/PracticeStatusEnum'
+          type: object
+      type: object
+    InjuryReportResponse:
+      properties:
+        reports:
+          items:
+            $ref: '#/components/schemas/TeamInjuryReport'
+          type: array
+        season:
+          type: integer
+        week:
+          type: integer
+      type: object
+    KickingStats:
+      properties:
+        extraPointsAttempted:
+          type: integer
+        extraPointsMade:
+          type: integer
+        fieldGoalPct:
+          format: float
+          type: number
+        fieldGoalsAttempted:
+          type: integer
+        fieldGoalsMade:
+          type: integer
+        longFieldGoal:
+          type: integer
+        points:
+          type: integer
+      type: object
+    MeridiemEnum:
+      description: Time of day indicator
+      enum:
+      - AM
+      - PM
+      type: string
+    NextGenStatsPositionEnum:
+      description: Next Gen Stats player position
+      enum:
+      - C
+      - CB
+      - DB
+      - DE
+      - DT
+      - ED
+      - FB
+      - FS
+      - G
+      - ILB
+      - K
+      - LB
+      - LS
+      - MLB
+      - NT
+      - OL
+      - OLB
+      - P
+      - QB
+      - RB
+      - S
+      - SCB
+      - SS
+      - T
+      - TE
+      - WR
+      type: string
+    NextGenStatsPositionGroupEnum:
+      description: Next Gen Stats position group
+      enum:
+      - DB
+      - DL
+      - K
+      - LB
+      - OL
+      - P
+      - QB
+      - RB
+      - TE
+      - WR
+      type: string
+    OverallRecord:
+      allOf:
+      - $ref: '#/components/schemas/PointsRecord'
+      - properties:
+          games:
+            description: Total games played
+            type: integer
+          streak:
+            properties:
+              length:
+                description: Length of current streak
+                type: integer
+              type:
+                $ref: '#/components/schemas/GameResultEnum'
+            type: object
+        type: object
+    Pagination:
+      properties:
+        limit:
+          description: Maximum items per page
+          example: 40
+          type: integer
+        token:
+          description: Token for next page of results
+          nullable: true
+          type: string
+      type: object
+    PassingStats:
+      properties:
+        attempts:
+          type: integer
+        completionPct:
+          format: float
+          type: number
+        completions:
+          type: integer
+        interceptions:
+          type: integer
+        rating:
+          format: float
+          type: number
+        sackYards:
+          type: integer
+        sacks:
+          type: integer
+        touchdowns:
+          type: integer
+        yards:
+          type: integer
+      type: object
+    PlayTypeEnum:
+      description: Enumeration of all possible play types
+      enum:
+      - play_type_kickoff
+      - play_type_field_goal
+      - play_type_rush
+      - play_type_sack
+      - play_type_two_point_conversion
+      - play_type_xp
+      - play_type_pass
+      - play_type_punt
+      - play_type_unknown
+      - play_type_penalty
+      - play_type_timeout
+      - play_type_two_minute_warning
+      type: string
+    Player:
+      properties:
+        birthDate:
+          description: Player's birth date
+          format: date
+          type: string
+        collegeConference:
+          description: Player's college conference
+          example: Southeastern Conference
+          type: string
+        collegeName:
+          description: Player's college
+          example: Louisiana State
+          type: string
+        currentTeamId:
+          description: Current team identifier
+          type: string
+        displayName:
+          description: Player's display name
+          example: Justin Jefferson
+          type: string
+        draftClub:
+          description: Team that drafted the player
+          nullable: true
+          type: string
+        draftNumber:
+          description: Overall draft pick number
+          nullable: true
+          type: integer
+        draftround:
+          description: Draft round
+          nullable: true
+          type: integer
+        entryYear:
+          description: Year player entered the league
+          type: integer
+        esbId:
+          description: ESB identifier
+          type: string
+        firstName:
+          description: Player's first name
+          type: string
+        footballName:
+          description: Player's football name (nickname)
+          type: string
+        gsisId:
+          description: GSIS identifier
+          type: string
+        gsisItId:
+          description: GSIS IT identifier
+          type: integer
+        headshot:
+          description: URL to player headshot image
+          format: uri
+          type: string
+        height:
+          description: Player height (format is feet-inches)
+          example: 6-3
+          type: string
+        jerseyNumber:
+          description: Player's jersey number
+          type: integer
+        lastName:
+          description: Player's last name
+          type: string
+        nflId:
+          description: NFL player identifier
+          example: 52430
+          type: integer
+        ngsPosition:
+          allOf:
+          - $ref: '#/components/schemas/NextGenStatsPositionEnum'
+          nullable: true
+        ngsPositionGroup:
+          allOf:
+          - $ref: '#/components/schemas/NextGenStatsPositionGroupEnum'
+          nullable: true
+        position:
+          $ref: '#/components/schemas/NextGenStatsPositionEnum'
+        positionGroup:
+          $ref: '#/components/schemas/NextGenStatsPositionGroupEnum'
+        rookieYear:
+          description: Player's rookie year
+          type: integer
+        season:
+          description: Current season
+          type: integer
+        shortName:
+          description: Shortened player name
+          example: J.Jefferson
+          type: string
+        smartId:
+          description: Smart identifier for the player
+          format: uuid
+          type: string
+        status:
+          description: Player status code
+          example: ACT
+          type: string
+        statusDescriptionAbbr:
+          description: Abbreviated status description
+          example: A01
+          type: string
+        statusShortDescription:
+          description: Short status description
+          example: Active
+          type: string
+        teamAbbr:
+          description: Current team abbreviation
+          type: string
+        uniformNumber:
+          description: Player's uniform number (formatted)
+          example: '18'
+          type: string
+        weight:
+          description: Player weight in pounds
+          type: integer
+        yearsOfExperience:
+          description: Years of NFL experience
+          type: integer
+      type: object
+    PlayerDetail:
+      allOf:
+      - $ref: '#/components/schemas/Player'
+      - properties:
+          awards:
+            items:
+              $ref: '#/components/schemas/Award'
+            type: array
+          biography:
+            description: Player biography
+            type: string
+          careerStats:
+            $ref: '#/components/schemas/CareerStats'
+          contractInfo:
+            $ref: '#/components/schemas/ContractInfo'
+          currentSeasonStats:
+            $ref: '#/components/schemas/SeasonStats'
+        type: object
+    PointsRecord:
+      allOf:
+      - $ref: '#/components/schemas/Record'
+      - properties:
+          points:
+            properties:
+              against:
+                type: integer
+              for:
+                type: integer
+            type: object
+          winPct:
+            format: float
+            type: number
+        type: object
+    PracticeStatusEnum:
+      description: Player practice participation status
+      enum:
+      - DNP
+      - LIMITED
+      - FULL
+      - NOT_LISTED
+      type: string
+    PrimetimeGameCategoryEnum:
+      description: Prime time game designation
+      enum:
+      - MNF
+      - SNF
+      - TNF
+      type: string
+    ReceivingStats:
+      properties:
+        drops:
+          type: integer
+        longReception:
+          type: integer
+        receptions:
+          type: integer
+        targets:
+          type: integer
+        touchdowns:
+          type: integer
+        yards:
+          type: integer
+        yardsPerReception:
+          format: float
+          type: number
+      type: object
+    Record:
+      properties:
+        losses:
+          type: integer
+        ties:
+          type: integer
+        wins:
+          type: integer
+      type: object
+    RushingStats:
+      properties:
+        carries:
+          type: integer
+        fumbles:
+          type: integer
+        longRush:
+          type: integer
+        touchdowns:
+          type: integer
+        yards:
+          type: integer
+        yardsPerCarry:
+          format: float
+          type: number
+      type: object
+    SeasonStats:
+      properties:
+        defensive:
+          $ref: '#/components/schemas/DefensiveStats'
+        games:
+          type: integer
+        kicking:
+          $ref: '#/components/schemas/KickingStats'
+        passing:
+          $ref: '#/components/schemas/PassingStats'
+        receiving:
+          $ref: '#/components/schemas/ReceivingStats'
+        rushing:
+          $ref: '#/components/schemas/RushingStats'
+        season:
+          type: integer
+        seasonType:
+          $ref: '#/components/schemas/SeasonTypeEnum'
+        starts:
+          type: integer
+      type: object
+    SeasonTypeEnum:
+      description: Type of NFL season
+      enum:
+      - PRE
+      - REG
+      - POST
+      example: REG
+      type: string
+    SocialMedia:
+      properties:
+        link:
+          description: URL to social media profile
+          format: uri
+          type: string
+        platform:
+          description: Social media platform name
+          example: Facebook
+          type: string
+      type: object
+    Standings:
+      properties:
+        clinched:
+          $ref: '#/components/schemas/Clinched'
+        closeGames:
+          $ref: '#/components/schemas/Record'
+        conference:
+          $ref: '#/components/schemas/StandingsRecord'
+        division:
+          $ref: '#/components/schemas/StandingsRecord'
+        home:
+          $ref: '#/components/schemas/PointsRecord'
+        last5:
+          $ref: '#/components/schemas/PointsRecord'
+        overall:
+          $ref: '#/components/schemas/OverallRecord'
+        road:
+          $ref: '#/components/schemas/PointsRecord'
+        team:
+          properties:
+            currentLogo:
+              format: uri
+              type: string
+            fullName:
+              type: string
+            id:
+              format: uuid
+              type: string
+          type: object
+      type: object
+    StandingsRecord:
+      allOf:
+      - $ref: '#/components/schemas/Record'
+      - properties:
+          points:
+            properties:
+              against:
+                description: Points allowed
+                type: integer
+              for:
+                description: Points scored
+                type: integer
+            type: object
+          rank:
+            description: Ranking within group
+            type: integer
+          winPct:
+            description: Win percentage
+            format: float
+            type: number
+        type: object
+    StandingsResponse:
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        season:
+          type: integer
+        seasonType:
+          $ref: '#/components/schemas/SeasonTypeEnum'
+        week:
+          description: Current week for standings
+          type: integer
+        weeks:
+          items:
+            properties:
+              standings:
+                items:
+                  $ref: '#/components/schemas/Standings'
+                type: array
+              week:
+                type: integer
+            type: object
+          type: array
+      type: object
+    Team:
+      properties:
+        abbreviation:
+          description: Three-letter team abbreviation
+          example: ARI
+          type: string
+        conferenceAbbr:
+          $ref: '#/components/schemas/ConferenceEnum'
+        conferenceFullName:
+          description: Full conference name
+          example: National Football Conference
+          type: string
+        currentLogo:
+          description: URL to team logo (may contain {formatInstructions} placeholder)
+          example: https://static.www.nfl.com/formatInstructions/league/api/clubs/logos/ARI
+          format: uri
+          type: string
+        divisionFullName:
+          description: Full division name
+          example: NFC West
+          type: string
+        fullName:
+          description: Full team name
+          example: Arizona Cardinals
+          type: string
+        id:
+          description: Unique team identifier
+          example: 10403800-517c-7b8c-65a3-c61b95d86123
+          format: uuid
+          type: string
+        league:
+          description: League name
+          example: National Football League
+          type: string
+        location:
+          description: Team location/city
+          example: Arizona
+          type: string
+        nflShopUrl:
+          description: URL to team's NFL shop
+          format: uri
+          nullable: true
+          type: string
+        nickName:
+          description: Team nickname
+          example: Cardinals
+          type: string
+        officialWebsiteUrl:
+          description: Team's official website
+          format: uri
+          nullable: true
+          type: string
+        owners:
+          description: Team ownership information
+          nullable: true
+          type: string
+        primaryColor:
+          description: Primary team color (hex)
+          example: '#97233F'
+          type: string
+        season:
+          description: Current season
+          example: '2025'
+          type: string
+        secondaryColor:
+          description: Secondary team color (hex)
+          example: '#000000'
+          type: string
+        socials:
+          items:
+            $ref: '#/components/schemas/SocialMedia'
+          type: array
+        teamType:
+          $ref: '#/components/schemas/TeamTypeEnum'
+        venues:
+          items:
+            $ref: '#/components/schemas/Venue'
+          type: array
+        yearEstablished:
+          description: Year team was established
+          example: 1920
+          type: integer
+      type: object
+    TeamInjuryReport:
+      properties:
+        injuries:
+          items:
+            $ref: '#/components/schemas/InjuryEntry'
+          type: array
+        lastUpdated:
+          format: date-time
+          type: string
+        team:
+          $ref: '#/components/schemas/Team'
+      type: object
+    TeamTypeEnum:
+      description: Team type classification
+      enum:
+      - PRO
+      - TEAM
+      type: string
+    TicketVendor:
+      properties:
+        ticketUrl:
+          description: Vendor-specific ticket URL
+          format: uri
+          type: string
+        vendorName:
+          description: Vendor identifier
+          example: ticketmaster
+          type: string
+      type: object
+    Venue:
+      properties:
+        address:
+          description: Street address
+          nullable: true
+          type: string
+        city:
+          description: City name
+          example: Glendale
+          type: string
+        country:
+          description: Country name
+          example: USA
+          type: string
+        id:
+          description: Unique venue identifier
+          format: uuid
+          type: string
+        name:
+          description: Venue name
+          example: State Farm Stadium
+          type: string
+        postalCode:
+          description: Postal/ZIP code
+          nullable: true
+          type: string
+        territory:
+          description: State or territory code
+          example: AZ
+          nullable: true
+          type: string
+      type: object
+    Week:
+      description: NFL week information including schedule dates and bye teams
+      properties:
+        byeTeams:
+          description: Teams on bye this week (empty array if no bye teams)
+          items:
+            $ref: '#/components/schemas/Team'
+          type: array
+        dateBegin:
+          description: First day of the week
+          example: '2025-09-24'
+          format: date
+          type: string
+        dateEnd:
+          description: Last day of the week
+          example: '2025-10-01'
+          format: date
+          type: string
+        season:
+          description: Season year
+          example: 2025
+          type: integer
+        seasonType:
+          $ref: '#/components/schemas/SeasonTypeEnum'
+        seasonTypeWeek:
+          description: Combined season type and week identifier
+          example: REG-4
+          type: string
+        text:
+          description: Human-readable week description
+          example: Week 4
+          type: string
+        week:
+          description: Week number (0 for Hall of Fame game)
+          example: 4
+          type: integer
+        weekSlug:
+          $ref: '#/components/schemas/WeekSlugEnum'
+        weekType:
+          $ref: '#/components/schemas/WeekTypeEnum'
+      type: object
+    WeekSlugEnum:
+      description: Week identifier slug
+      enum:
+      - WEEK_1
+      - WEEK_10
+      - WEEK_11
+      - WEEK_12
+      - WEEK_13
+      - WEEK_14
+      - WEEK_15
+      - WEEK_16
+      - WEEK_17
+      - WEEK_18
+      - WEEK_2
+      - WEEK_3
+      - WEEK_4
+      - WEEK_5
+      - WEEK_6
+      - WEEK_7
+      - WEEK_8
+      - WEEK_9
+      type: string
+    WeekTypeEnum:
+      description: Type of week (HOF, Preseason, Regular season)
+      enum:
+      - HOF
+      - PRE
+      - REG
+      type: string
