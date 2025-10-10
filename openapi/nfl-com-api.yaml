@@ -1,39 +1,41 @@
 openapi: 3.0.3
-
 info:
   contact:
-    name: NFL
-    url: https://www.nfl.com
-  description: "Regular API - NFL's public API for accessing game schedules, team information, standings, statistics, and venue data. This API provides comprehensive access to NFL data including real-time game information, team rosters, seasonal statistics, and historical data. The NFL Pro API is for accessing advanced statistics, film room content, player data, and fantasy information. This API provides comprehensive access to NFL Pro features including Next Gen Stats, Film Room analysis, player projections, and game insights."
+    name: John Griebel
+    email: 'john@thistlegrow.software'
+  description: Regular API - NFL's public API for accessing game schedules, team information,
+    standings, statistics, and venue data. This API provides comprehensive access
+    to NFL data including real-time game information, team rosters, seasonal statistics,
+    and historical data. The NFL Pro API is for accessing advanced statistics, film
+    room content, player data, and fantasy information. This API provides comprehensive
+    access to NFL Pro features including Next Gen Stats, Film Room analysis, player
+    projections, and game insights.
   title: NFL REST APIs
   version: 1.0.0
-  x-server-configuration:
-    default-environment: 'production'
-    default-server: 'pro'
-    environments:
-      - name: 'production'
-        servers:
-          - name: 'regular'
-            url: 'https://api.nfl.com'
-          - name: 'pro'
-            url: 'https://pro.nfl.com'
-
-  x-codegen-settings:
-    ReturnCompleteHttpResponse: true
-    ExtendedAdditionalPropertiesSupport: true
-    ProjectName: 'GriddyNFL'
-    EnableLogging: true
-    ControllerPostfix: 'Controller'
-    ControllerNamespace: 'Controllers'
-    # Note: Not sure what this value should actually be
-    ArraySerialization: Plain
-    UserAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36'
-    GenerateExamplesForOptionalFields: true
-    SortResources: true
-
+  # x-server-configuration:
+  #   default-environment: production
+  #   default-server: pro
+  #   environments:
+  #   - name: production
+  #     servers:
+  #     - name: regular
+  #       url: https://api.nfl.com
+  #     - name: pro
+  #       url: https://pro.nfl.com
+  # x-codegen-settings:
+  #   ReturnCompleteHttpResponse: true
+  #   ExtendedAdditionalPropertiesSupport: true
+  #   ProjectName: GriddyNFL
+  #   EnableLogging: true
+  #   ControllerPostfix: Controller
+  #   ControllerNamespace: Controllers
+  #   ArraySerialization: Plain
+  #   UserAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+  #     like Gecko) Chrome/140.0.0.0 Safari/537.36
+  #   GenerateExamplesForOptionalFields: true
+  #   SortResources: true
 security:
   - NFLAuth: []
-
 tags:
   - description: Token generation and refresh operations for NFL API access
     name: Authentication
@@ -95,307 +97,306 @@ tags:
     name: Teams
   - description: Game and play-level win probability analytics
     name: Win Probability
-
 components:
   schemas:
     AirYardTypeEnum:
       description: Air yards category for passes
       enum:
-        - SHORT
-        - INTERMEDIATE
-        - DEEP
+      - SHORT
+      - INTERMEDIATE
+      - DEEP
       type: string
     BinaryFlagEnum:
       description: Binary flag for boolean filters (0=false, 1=true)
       enum:
-        - 0
-        - 1
+      - 0
+      - 1
       type: integer
     SeasonTypeEnum:
       description: Type of NFL season
       enum:
-        - PRE
-        - REG
-        - POST
+      - PRE
+      - REG
+      - POST
       example: REG
       type: string
     ScoreTypeEnum:
       description: Type of scoring play
       enum:
-        - TOUCHDOWN
-        - FIELD_GOAL
-        - SAFETY
-        - EXTRA_POINT
-        - TWO_POINT_CONVERSION
+      - TOUCHDOWN
+      - FIELD_GOAL
+      - SAFETY
+      - EXTRA_POINT
+      - TWO_POINT_CONVERSION
       type: string
     SortOrderEnum:
       description: Sort direction for ordered results
       enum:
-        - ASC
-        - DESC
+      - ASC
+      - DESC
       example: DESC
       type: string
     ConferenceEnum:
       description: NFL conference
       enum:
-        - AFC
-        - NFC
+      - AFC
+      - NFC
       type: string
     DefensiveSituationTypeEnum:
       description: Defensive split situation type
       enum:
-        - PERSONNEL
-        - GAME_SITUATION
-        - FIELD_POSITION
-        - OFFENSIVE_FORMATION
+      - PERSONNEL
+      - GAME_SITUATION
+      - FIELD_POSITION
+      - OFFENSIVE_FORMATION
       type: string
     DefensivePositionGroupEnum:
       description: Defensive position group
       enum:
-        - DB
-        - DL
-        - LB
+      - DB
+      - DL
+      - LB
       type: string
     GamePhaseEnum:
       description: Current phase of the game
       enum:
-        - PREGAME
-        - INGAME
-        - HALFTIME
-        - FINAL
-        - SUSPENDED
+      - PREGAME
+      - INGAME
+      - HALFTIME
+      - FINAL
+      - SUSPENDED
       type: string
     GameStatusEnum:
       description: Game status
       enum:
-        - CANCELLED
-        - FINAL
-        - HALFTIME
-        - IN_PROGRESS
-        - POSTPONED
-        - SCHEDULED
+      - CANCELLED
+      - FINAL
+      - HALFTIME
+      - IN_PROGRESS
+      - POSTPONED
+      - SCHEDULED
       type: string
     MeridiemEnum:
       description: Time of day indicator
       enum:
-        - AM
-        - PM
+      - AM
+      - PM
       type: string
     NetworkTypeEnum:
       description: Type of network connection
       enum:
-        - other
-        - wifi
-        - cellular
-        - ethernet
+      - other
+      - wifi
+      - cellular
+      - ethernet
       type: string
     NextGenStatsPositionEnum:
       description: Next Gen Stats player position
       enum:
-        - C
-        - CB
-        - DB
-        - DE
-        - DT
-        - ED
-        - FB
-        - FS
-        - G
-        - ILB
-        - K
-        - LB
-        - LS
-        - MLB
-        - NT
-        - OL
-        - OLB
-        - P
-        - QB
-        - RB
-        - S
-        - SCB
-        - SS
-        - T
-        - TE
-        - WR
+      - C
+      - CB
+      - DB
+      - DE
+      - DT
+      - ED
+      - FB
+      - FS
+      - G
+      - ILB
+      - K
+      - LB
+      - LS
+      - MLB
+      - NT
+      - OL
+      - OLB
+      - P
+      - QB
+      - RB
+      - S
+      - SCB
+      - SS
+      - T
+      - TE
+      - WR
       type: string
     NextGenStatsPositionGroupEnum:
       description: Next Gen Stats position group
       enum:
-        - DB
-        - DL
-        - K
-        - LB
-        - OL
-        - P
-        - QB
-        - RB
-        - TE
-        - WR
+      - DB
+      - DL
+      - K
+      - LB
+      - OL
+      - P
+      - QB
+      - RB
+      - TE
+      - WR
       type: string
     DefensivePositionEnum:
       description: Defensive player position
       enum:
-        - CB
-        - DE
-        - DT
-        - FS
-        - ILB
-        - MLB
-        - NT
-        - OLB
-        - SCB
-        - SS
+      - CB
+      - DE
+      - DT
+      - FS
+      - ILB
+      - MLB
+      - NT
+      - OLB
+      - SCB
+      - SS
       type: string
     PositionGroupEnum:
       description: Player position group
       enum:
-        - DB
-        - DL
-        - K
-        - LB
-        - OL
-        - P
-        - QB
-        - RB
-        - TE
-        - WR
+      - DB
+      - DL
+      - K
+      - LB
+      - OL
+      - P
+      - QB
+      - RB
+      - TE
+      - WR
       type: string
     OffensivePlayerPositionEnum:
       description: Offensive player position
       enum:
-        - FB
-        - QB
-        - RB
-        - TE
-        - WR
+      - FB
+      - QB
+      - RB
+      - TE
+      - WR
       type: string
     OffensiveSkillPositionEnum:
       description: Offensive skill position (excluding QB)
       enum:
-        - FB
-        - RB
-        - TE
-        - WR
+      - FB
+      - RB
+      - TE
+      - WR
       type: string
     OffensiveSituationTypeEnum:
       description: Offensive split situation type
       enum:
-        - FORMATION
-        - GAME_SITUATION
-        - FIELD_POSITION
+      - FORMATION
+      - GAME_SITUATION
+      - FIELD_POSITION
       type: string
     PlayStateEnum:
       description: Play review state
       enum:
-        - APPROVED
-        - PENDING
-        - REVIEWED
+      - APPROVED
+      - PENDING
+      - REVIEWED
       type: string
     PrimetimeGameCategoryEnum:
       description: Prime time game designation
       enum:
-        - MNF
-        - SNF
-        - TNF
+      - MNF
+      - SNF
+      - TNF
       type: string
     PracticeStatusEnum:
       description: Player practice participation status
       enum:
-        - DNP
-        - LIMITED
-        - FULL
-        - NOT_LISTED
+      - DNP
+      - LIMITED
+      - FULL
+      - NOT_LISTED
       type: string
     GameResultEnum:
       description: Game result (Win/Loss/Tie)
       enum:
-        - W
-        - L
-        - T
+      - W
+      - L
+      - T
       type: string
     PassingStatsCategoryEnum:
       description: Statistics categories for passing stats sorting
       enum:
-        - cmp
-        - att
-        - yds
-        - td
-        - int
-        - rating
-        - ypa
-        - cmpPct
-        - sack
-        - xCmp
-        - cpoe
-        - db
-        - epa
-        - epaDb
-        - avgTTT
-        - avgTTP
-        - avgTTS
-        - qbp
-        - qbpR
-        - blitzR
-        - drop
-        - dropR
-        - ay
-        - yac
-        - xYac
-        - yacPct
-        - ayAtt
-        - avgSep
-        - deepAttPct
-        - paDbPct
-        - twAttPct
+      - cmp
+      - att
+      - yds
+      - td
+      - int
+      - rating
+      - ypa
+      - cmpPct
+      - sack
+      - xCmp
+      - cpoe
+      - db
+      - epa
+      - epaDb
+      - avgTTT
+      - avgTTP
+      - avgTTS
+      - qbp
+      - qbpR
+      - blitzR
+      - drop
+      - dropR
+      - ay
+      - yac
+      - xYac
+      - yacPct
+      - ayAtt
+      - avgSep
+      - deepAttPct
+      - paDbPct
+      - twAttPct
       type: string
     TeamTypeEnum:
       description: Team type classification
       enum:
-        - PRO
-        - TEAM
+      - PRO
+      - TEAM
       type: string
     WeekTypeEnum:
       description: Type of week (HOF, Preseason, Regular season)
       enum:
-        - HOF
-        - PRE
-        - REG
+      - HOF
+      - PRE
+      - REG
       type: string
     WeekSlugEnum:
       description: Week identifier slug
       enum:
-        - WEEK_1
-        - WEEK_10
-        - WEEK_11
-        - WEEK_12
-        - WEEK_13
-        - WEEK_14
-        - WEEK_15
-        - WEEK_16
-        - WEEK_17
-        - WEEK_18
-        - WEEK_2
-        - WEEK_3
-        - WEEK_4
-        - WEEK_5
-        - WEEK_6
-        - WEEK_7
-        - WEEK_8
-        - WEEK_9
+      - WEEK_1
+      - WEEK_10
+      - WEEK_11
+      - WEEK_12
+      - WEEK_13
+      - WEEK_14
+      - WEEK_15
+      - WEEK_16
+      - WEEK_17
+      - WEEK_18
+      - WEEK_2
+      - WEEK_3
+      - WEEK_4
+      - WEEK_5
+      - WEEK_6
+      - WEEK_7
+      - WEEK_8
+      - WEEK_9
       type: string
     Award:
       properties:
         awardType:
           enum:
-            - MVP
-            - OPOY
-            - DPOY
-            - OROY
-            - DROY
-            - PRO_BOWL
-            - ALL_PRO
-            - SUPER_BOWL_MVP
+          - MVP
+          - OPOY
+          - DPOY
+          - OROY
+          - DROY
+          - PRO_BOWL
+          - ALL_PRO
+          - SUPER_BOWL_MVP
           type: string
         description:
           type: string
@@ -408,7 +409,9 @@ components:
         americanOdds:
           properties:
             description:
-              example: 'American odds are displayed with + or - signs. Positive (+) odds show profit on $100 bet. Negative (-) odds show amount to bet to win $100.'
+              example: American odds are displayed with + or - signs. Positive (+)
+                odds show profit on $100 bet. Negative (-) odds show amount to bet
+                to win $100.
               type: string
             examples:
               items:
@@ -651,8 +654,8 @@ components:
         territory:
           description: Broadcast territory scope
           enum:
-            - NATIONAL
-            - REGIONAL
+          - NATIONAL
+          - REGIONAL
           type: string
       type: object
     CareerStats:
@@ -910,12 +913,11 @@ components:
         type:
           description: Content type (always "video")
           enum:
-            - video
+          - video
           type: string
         videos:
           description: Additional video information
           items:
-            # TODO: Investigate the CoachesFilmVideo.videos object
             type: object
           type: array
         webLink:
@@ -927,8 +929,8 @@ components:
     CoachesFileVideoSubTypeEnum:
       description: Coaches film sub types
       enum:
-        - Coaches Film
-        - Coaches Film Pro
+      - Coaches Film
+      - Coaches Film Pro
       type: string
     Conference:
       properties:
@@ -946,22 +948,22 @@ components:
     ContentTagEnum:
       description: Available content classification tags
       enum:
-        - nfl-pro
-        - editorial
-        - next-gen-stats
-        - pregame
-        - postgame
-        - fantasy
-        - pro-preview
-        - pro-matchup
-        - evergreen
+      - nfl-pro
+      - editorial
+      - next-gen-stats
+      - pregame
+      - postgame
+      - fantasy
+      - pro-preview
+      - pro-matchup
+      - evergreen
       type: string
     CameraSourceEnum:
       description: Location of the camera
       enum:
-        - Endzone
-        - Sideline
-        - Broadcast
+      - Endzone
+      - Sideline
+      - Broadcast
       type: string
     ContractInfo:
       properties:
@@ -1047,7 +1049,6 @@ components:
           type: string
         extensions:
           items:
-            # TODO: Investigate the CurrentGame.extensions object
             type: object
           type: array
         externalIds:
@@ -1131,15 +1132,15 @@ components:
     DefenseFieldPositionEnum:
       description: Field position contexts
       enum:
-        - TEAM_DEFENSE_RED_ZONE
-        - TEAM_DEFENSE_GOAL_TO_GO
+      - TEAM_DEFENSE_RED_ZONE
+      - TEAM_DEFENSE_GOAL_TO_GO
       type: string
     DefenseGameSituationEnum:
       description: Game situation contexts for the defense
       enum:
-        - TEAM_DEFENSE_WHEN_LEADING
-        - TEAM_DEFENSE_WHEN_TRAILING
-        - TEAM_DEFENSE_WHEN_TIED
+      - TEAM_DEFENSE_WHEN_LEADING
+      - TEAM_DEFENSE_WHEN_TRAILING
+      - TEAM_DEFENSE_WHEN_TIED
       type: string
     DefensiveMetricsExplanation:
       description: Explanation of defensive metrics and calculations
@@ -1194,21 +1195,21 @@ components:
       type: object
     DefensiveOverviewStatsResponse:
       allOf:
-        - $ref: '#/components/schemas/StatsQueryMetadata'
-        - properties:
-            defenders:
-              items:
-                $ref: '#/components/schemas/DefensivePlayerOverviewStats'
-              type: array
-            qualifiedDefender:
-              description: Whether results are filtered to qualified defenders only
-              example: false
-              type: boolean
-            teamDefense:
-              description: Team filter applied (if any)
-              example: '3900'
-              type: string
-          type: object
+      - $ref: '#/components/schemas/StatsQueryMetadata'
+      - properties:
+          defenders:
+            items:
+              $ref: '#/components/schemas/DefensivePlayerOverviewStats'
+            type: array
+          qualifiedDefender:
+            description: Whether results are filtered to qualified defenders only
+            example: false
+            type: boolean
+          teamDefense:
+            description: Team filter applied (if any)
+            example: '3900'
+            type: string
+        type: object
     DefensivePassMetricsExplanation:
       description: Explanation of defensive pass metrics and calculations
       properties:
@@ -1635,8 +1636,8 @@ components:
         boxCount:
           properties:
             description:
-              example: "Analysis of defensive personnel in the box - light box (\u2264\
-                6), neutral (7), stacked box (\u22658)"
+              example: Analysis of defensive personnel in the box - light box (≤6),
+                neutral (7), stacked box (≥8)
               type: string
           type: object
         ryoe:
@@ -1717,17 +1718,17 @@ components:
       type: object
     DefensiveStatsResponse:
       allOf:
-        - $ref: '#/components/schemas/StatsQueryMetadata'
-        - properties:
-            defenders:
-              items:
-                $ref: '#/components/schemas/DefensivePlayerStats'
-              type: array
-            qualifiedDefender:
-              description: Whether results are filtered to qualified defenders only
-              example: false
-              type: boolean
-          type: object
+      - $ref: '#/components/schemas/StatsQueryMetadata'
+      - properties:
+          defenders:
+            items:
+              $ref: '#/components/schemas/DefensivePlayerStats'
+            type: array
+          qualifiedDefender:
+            description: Whether results are filtered to qualified defenders only
+            example: false
+            type: boolean
+        type: object
     DeviceInfo:
       description: Device information object (normally base64 encoded in requests)
       properties:
@@ -1818,15 +1819,15 @@ components:
     DriveResultEnum:
       description: Outcome of a given drive
       enum:
-        - TOUCHDOWN
-        - FIELD_GOAL
-        - PUNT
-        - DOWNS
-        - FUMBLE
-        - INTERCEPTION
-        - SAFETY
-        - END_OF_HALF
-        - END_OF_GAME
+      - TOUCHDOWN
+      - FIELD_GOAL
+      - PUNT
+      - DOWNS
+      - FUMBLE
+      - INTERCEPTION
+      - SAFETY
+      - END_OF_HALF
+      - END_OF_GAME
       type: string
     Drive:
       properties:
@@ -1891,21 +1892,21 @@ components:
     FantasyPlayerPositionEnum:
       description: Player position
       enum:
-        - QB
-        - RB
-        - WR
-        - TE
-        - K
-        - DST
+      - QB
+      - RB
+      - WR
+      - TE
+      - K
+      - DST
       type: string
     FantasyPositionGroupEnum:
       description: Position group
       enum:
-        - QB
-        - RB
-        - WR
-        - TE
-        - SPEC
+      - QB
+      - RB
+      - WR
+      - TE
+      - SPEC
       type: string
     FantasyPlayerStats:
       properties:
@@ -2039,38 +2040,38 @@ components:
       type: object
     FantasyStatsResponse:
       allOf:
-        - $ref: '#/components/schemas/StatsQueryMetadata'
-        - properties:
-            players:
-              items:
-                $ref: '#/components/schemas/FantasyPlayerStats'
-              type: array
-            lastNWeeks:
-              description: Number of recent weeks analyzed (if applied)
-              example: 3
-              type: integer
-            minOffensiveSnaps:
-              description: Minimum offensive snaps filter applied
-              example: 75
-              type: integer
-            positionGroup:
-              items:
-                $ref: '#/components/schemas/FantasyPositionGroupEnum'
-              type: array
-            teamOffense:
-              description: Offensive team filter applied (if any)
-              example: '3900'
-              type: string
-            week:
-              description: Specific weeks included in analysis
-              example:
-              - WEEK_16
-              - WEEK_17
-              - WEEK_18
-              items:
-                $ref: '#/components/schemas/WeekSlugEnum'
-              type: array
-          type: object
+      - $ref: '#/components/schemas/StatsQueryMetadata'
+      - properties:
+          players:
+            items:
+              $ref: '#/components/schemas/FantasyPlayerStats'
+            type: array
+          lastNWeeks:
+            description: Number of recent weeks analyzed (if applied)
+            example: 3
+            type: integer
+          minOffensiveSnaps:
+            description: Minimum offensive snaps filter applied
+            example: 75
+            type: integer
+          positionGroup:
+            items:
+              $ref: '#/components/schemas/FantasyPositionGroupEnum'
+            type: array
+          teamOffense:
+            description: Offensive team filter applied (if any)
+            example: '3900'
+            type: string
+          week:
+            description: Specific weeks included in analysis
+            example:
+            - WEEK_16
+            - WEEK_17
+            - WEEK_18
+            items:
+              $ref: '#/components/schemas/WeekSlugEnum'
+            type: array
+        type: object
     FantayScoringExplanation:
       description: Explanation of fantasy scoring systems
       properties:
@@ -2191,7 +2192,6 @@ components:
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
         selectedParamValues:
-          # TODO: Investigate the FilmRoomPlay.selectedParamValues objects
           additionalProperties: true
           description: Selected parameter values for the play filter
           type: object
@@ -2246,14 +2246,13 @@ components:
     FormationEnum:
       description: Offensive formations
       enum:
-        - TEAM_SHOTGUN
-        - TEAM_UNDER_CENTER
-        - TEAM_PISTOL
+      - TEAM_SHOTGUN
+      - TEAM_UNDER_CENTER
+      - TEAM_PISTOL
       type: string
     FuturesMarket:
       properties:
         fixture:
-          # TODO: Investigate the FuturesMarket.fixture object
           description: Associated fixture information
           nullable: true
           type: object
@@ -2333,7 +2332,6 @@ components:
           description: Time with AM/PM
           type: string
         extensions:
-          # TODO: Investigate the Game.extensions object
           description: Additional game data extensions
           items:
             type: object
@@ -2468,7 +2466,7 @@ components:
           example: 47834
         playerName:
           type: string
-          example: 'A.J. Brown'
+          example: A.J. Brown
         esbId:
           type: string
         gsisId:
@@ -2500,7 +2498,8 @@ components:
           format: date-time
         createdBy:
           type: string
-          description: Appears to be the username of the NFL staff that created the insight
+          description: Appears to be the username of the NFL staff that created the
+            insight
         updatedAt:
           type: string
           format: date-time
@@ -2518,12 +2517,11 @@ components:
           type: array
           items:
             type: string
-            example: 'next-gen-stats'
+            example: next-gen-stats
         id:
           type: string
-          description: 'Appears to be a UUID with dashes removed'
-          example: '68e583063593b744ef32f18f'
-
+          description: Appears to be a UUID with dashes removed
+          example: 68e583063593b744ef32f18f
       type: object
     GameOdds:
       properties:
@@ -2567,7 +2565,6 @@ components:
       description: Game preview content (may be empty if no preview available)
       properties:
         preview:
-          # TODO: Investigate the GamePreviewResponse.preview object
           description: Preview content and analysis
           nullable: true
           type: object
@@ -2727,10 +2724,9 @@ components:
               minimum: 0
               maximum: 3
     GameQuarterEnum:
-      # TODO: Unsure what values are possible here.
       type: string
       enum:
-        - END_OF_GAME
+      - END_OF_GAME
     LiveGameSummaryData:
       type: object
       properties:
@@ -2745,7 +2741,7 @@ components:
           example: 73652
         clock:
           type: string
-          example: '03:36'
+          example: 03:36
         distance:
           type: integer
           example: 10
@@ -2770,7 +2766,7 @@ components:
           example: 'Cloudy Temp: 71° F, Humidity: 65%, Wind: S 5 mph'
         yardLine:
           type: string
-          example: 'SF 11'
+          example: SF 11
         startTime:
           type: string
           format: date-time
@@ -2778,7 +2774,6 @@ components:
           $ref: '#/components/schemas/GameSummaryTeam'
         homeTeam:
           $ref: '#/components/schemas/GameSummaryTeam'
-
     GameStatsResponse:
       properties:
         data:
@@ -2818,18 +2813,18 @@ components:
           example: 4847
         esbId:
           type: string
-          example: 'ATW460468'
+          example: ATW460468
         jerseyNumber:
           type: integer
           example: 5
         playerName:
           type: string
-          example: 'Tutu Atwell'
+          example: Tutu Atwell
         position:
           $ref: '#/components/schemas/NextGenStatsPositionEnum'
         shortName:
           type: string
-          example: 'T. Atwell'
+          example: T. Atwell
         teamId:
           type: string
           example: '2510'
@@ -2840,16 +2835,15 @@ components:
           type: string
     SpeedLeaderEntry:
       allOf:
-        - $ref: '#/components/schemas/LeaderEntryBaseSchema'
+      - $ref: '#/components/schemas/LeaderEntryBaseSchema'
       properties:
         maxSpeed:
           type: number
           format: float
           example: 20.0250000445
-
     TimeToSackLeaderEntry:
       allOf:
-        - $ref: '#/components/schemas/LeaderEntryBaseSchema'
+      - $ref: '#/components/schemas/LeaderEntryBaseSchema'
       properties:
         tackleInfo:
           type: object
@@ -2860,7 +2854,7 @@ components:
               example: 3.75
     PassDistanceLeaderEntry:
       allOf:
-        - $ref: '#/components/schemas/LeaderEntryBaseSchema'
+      - $ref: '#/components/schemas/LeaderEntryBaseSchema'
       properties:
         passInfo:
           type: object
@@ -2879,8 +2873,7 @@ components:
                 home:
                   items:
                     $ref: '#/components/schemas/PassDistanceLeaderEntry'
-                  type:
-                    array
+                  type: array
                 visitor:
                   items:
                     $ref: '#/components/schemas/PassDistanceLeaderEntry'
@@ -3007,10 +3000,10 @@ components:
     InjuredPlayerGameStatusEnum:
       description: Game status designation
       enum:
-        - QUESTIONABLE
-        - DOUBTFUL
-        - OUT
-        - IR
+      - QUESTIONABLE
+      - DOUBTFUL
+      - OUT
+      - IR
       type: string
     HomeFilmCardsResponse:
       properties:
@@ -3136,9 +3129,9 @@ components:
         secondTeamType:
           description: Context of the second team (typically "defense" for opponent)
           enum:
-            - offense
-            - defense
-            - null
+          - offense
+          - defense
+          - null
           example: defense
           nullable: true
           type: string
@@ -3161,11 +3154,11 @@ components:
         tags:
           description: Content classification tags
           example:
-            - next-gen-stats
-            - nfl-pro
-            - pregame
-            - pro-preview
-            - pro-matchup
+          - next-gen-stats
+          - nfl-pro
+          - pregame
+          - pro-preview
+          - pro-matchup
           items:
             type: string
           type: array
@@ -3375,23 +3368,23 @@ components:
     OffenseFieldPositionEnum:
       description: Field position contexts
       enum:
-        - TEAM_RED_ZONE
-        - TEAM_GOAL_TO_GO
+      - TEAM_RED_ZONE
+      - TEAM_GOAL_TO_GO
       type: string
     OffenseGameSituationEnum:
       description: Game situation contexts for the offense
       enum:
-        - TEAM_WHEN_LEADING
-        - TEAM_WHEN_TRAILING
-        - TEAM_WHEN_TIED
+      - TEAM_WHEN_LEADING
+      - TEAM_WHEN_TRAILING
+      - TEAM_WHEN_TIED
       type: string
     OffensiveFormationEnum:
       description: Offensive formations faced
       enum:
-        - TEAM_DEFENSE_SHOTGUN
-        - TEAM_DEFENSE_UNDER_CENTER
-        - TEAM_DEFENSE_PISTOL
-        - TEAM_DEFENSE_MOTION
+      - TEAM_DEFENSE_SHOTGUN
+      - TEAM_DEFENSE_UNDER_CENTER
+      - TEAM_DEFENSE_PISTOL
+      - TEAM_DEFENSE_MOTION
       type: string
     OffensiveMetricsExplanation:
       description: Explanation of offensive metrics and calculations
@@ -3510,57 +3503,55 @@ components:
       type: object
     PassRushStatsResponse:
       allOf:
-        - $ref: '#/components/schemas/StatsQueryMetadata'
-        - properties:
-            defenders:
-              items:
-                $ref: '#/components/schemas/DefensivePassRushStats'
-              type: array
-            qualifiedDefender:
-              description: Whether results are filtered to qualified defenders only
-              example: false
-              type: boolean
+      - $ref: '#/components/schemas/StatsQueryMetadata'
+      - properties:
+          defenders:
+            items:
+              $ref: '#/components/schemas/DefensivePassRushStats'
+            type: array
+          qualifiedDefender:
+            description: Whether results are filtered to qualified defenders only
+            example: false
+            type: boolean
       type: object
     PassRusherStats:
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
-        - properties:
-            blitzCount:
-              type: integer
-              example: 37
-            avgSeparationToQb:
-              type: number
-              format: float
-              example: 4.797052221914545
-            tackles:
-              type: integer
-              example: 4
-            assists:
-              type: integer
-              example: 2
-            sacks:
-              type: number
-              format: float
-              example: 1.5
-            forcedFumbles:
-              type: integer
-              example: 1
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - properties:
+          blitzCount:
+            type: integer
+            example: 37
+          avgSeparationToQb:
+            type: number
+            format: float
+            example: 4.797052221914545
+          tackles:
+            type: integer
+            example: 4
+          assists:
+            type: integer
+            example: 2
+          sacks:
+            type: number
+            format: float
+            example: 1.5
+          forcedFumbles:
+            type: integer
+            example: 1
       type: object
-
     LineOfScrimmageDistanceEnum:
       type: string
       enum:
-        - behindLOS
-        - losTo9
-        - 10To19
-        - 20Plus
+      - behindLOS
+      - losTo9
+      - 10To19
+      - 20Plus
     PassingSectionEnum:
       type: string
       enum:
-        - leftThird
-        - middleThird
-        - rightThird
-
+      - leftThird
+      - middleThird
+      - rightThird
     PassingZone:
       type: object
       properties:
@@ -3574,39 +3565,38 @@ components:
     SuccessLevelEnum:
       type: string
       enum:
-        - BELOW
-        - AVERAGE
-        - ABOVE
+      - BELOW
+      - AVERAGE
+      - ABOVE
     PassingZoneStats:
       type: object
       allOf:
-        - $ref: '#/components/schemas/PassingZone'
-        - properties:
-            attempts:
-              type: integer
-            completionPct:
-              type: number
-              format: float
-              example: 0.5
-            completions:
-              type: integer
-            interceptions:
-              type: integer
-            qbRating:
-              type: number
-              format: float
-              example: 102.311256
-            touchdowns:
-              type: integer
-            yards:
-              type: integer
-            qbRatingSuccessLevel:
-              $ref: '#/components/schemas/SuccessLevelEnum'
-
+      - $ref: '#/components/schemas/PassingZone'
+      - properties:
+          attempts:
+            type: integer
+          completionPct:
+            type: number
+            format: float
+            example: 0.5
+          completions:
+            type: integer
+          interceptions:
+            type: integer
+          qbRating:
+            type: number
+            format: float
+            example: 102.311256
+          touchdowns:
+            type: integer
+          yards:
+            type: integer
+          qbRatingSuccessLevel:
+            $ref: '#/components/schemas/SuccessLevelEnum'
     PasserStats:
       type: object
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
       properties:
         attempts:
           type: integer
@@ -3649,17 +3639,17 @@ components:
       type: object
     PassingStatsResponse:
       allOf:
-        - $ref: '#/components/schemas/StatsQueryMetadata'
-        - properties:
-            passers:
-              items:
-                $ref: '#/components/schemas/PlayerPassingStats'
-              type: array
-            qualifiedPasser:
-              description: Whether results are filtered to qualified passers only
-              example: true
-              type: boolean
-          type: object
+      - $ref: '#/components/schemas/StatsQueryMetadata'
+      - properties:
+          passers:
+            items:
+              $ref: '#/components/schemas/PlayerPassingStats'
+            type: array
+          qualifiedPasser:
+            description: Whether results are filtered to qualified passers only
+            example: true
+            type: boolean
+        type: object
     Penalty:
       properties:
         accepted:
@@ -3678,16 +3668,16 @@ components:
     PersonnelEnum:
       description: Defensive personnel packages
       enum:
-        - BASE
-        - NICKEL
-        - DIME
+      - BASE
+      - NICKEL
+      - DIME
       type: string
     PersonnelPackageEnum:
       description: Defensive personnel packages
       enum:
-        - TEAM_DEFENSE_BASE
-        - TEAM_DEFENSE_NICKEL
-        - TEAM_DEFENSE_DIME
+      - TEAM_DEFENSE_BASE
+      - TEAM_DEFENSE_NICKEL
+      - TEAM_DEFENSE_DIME
       type: string
     Play:
       properties:
@@ -3742,9 +3732,9 @@ components:
     PlayDirectionEnum:
       description: Direction of play
       enum:
-        - left
-        - right
-        - middle
+      - left
+      - right
+      - middle
       type: string
     PlayDetail:
       properties:
@@ -3878,13 +3868,13 @@ components:
       type: object
     PlayParticipantRoleEnum:
       enum:
-        - PASSER
-        - RUSHER
-        - RECEIVER
-        - TACKLER
-        - KICKER
-        - RETURNER
-        - BLOCKER
+      - PASSER
+      - RUSHER
+      - RECEIVER
+      - TACKLER
+      - KICKER
+      - RETURNER
+      - BLOCKER
       type: string
     PlayParticipant:
       properties:
@@ -3981,18 +3971,18 @@ components:
     PlayTypeEnum:
       description: Enumeration of all possible play types
       enum:
-        - play_type_kickoff
-        - play_type_field_goal
-        - play_type_rush
-        - play_type_sack
-        - play_type_two_point_conversion
-        - play_type_xp
-        - play_type_pass
-        - play_type_punt
-        - play_type_unknown
-        - play_type_penalty
-        - play_type_timeout
-        - play_type_two_minute_warning
+      - play_type_kickoff
+      - play_type_field_goal
+      - play_type_rush
+      - play_type_sack
+      - play_type_two_point_conversion
+      - play_type_xp
+      - play_type_pass
+      - play_type_punt
+      - play_type_unknown
+      - play_type_penalty
+      - play_type_timeout
+      - play_type_two_minute_warning
       type: string
     PlayWinProbability:
       properties:
@@ -4191,11 +4181,11 @@ components:
           type: integer
         ngsPosition:
           allOf:
-            - $ref: '#/components/schemas/NextGenStatsPositionEnum'
+          - $ref: '#/components/schemas/NextGenStatsPositionEnum'
           nullable: true
         ngsPositionGroup:
           allOf:
-            - $ref: '#/components/schemas/NextGenStatsPositionGroupEnum'
+          - $ref: '#/components/schemas/NextGenStatsPositionGroupEnum'
           nullable: true
         position:
           $ref: '#/components/schemas/NextGenStatsPositionEnum'
@@ -4275,7 +4265,6 @@ components:
           $ref: '#/components/schemas/RushingStats'
       type: object
     PlayerInjury:
-      # TODO: Investigate the PlayerInjury object
       additionalProperties: true
       description: Player injury information (structure varies based on injury details)
       type: object
@@ -4560,8 +4549,8 @@ components:
                     description: Reference to projected points
                     type: string
                   type:
-                    enum: 
-                      - player-week-projected-points
+                    enum:
+                    - player-week-projected-points
                     type: string
                 type: object
               type: array
@@ -4573,7 +4562,7 @@ components:
                     type: string
                   type:
                     enum:
-                      - player-week-projected-stats
+                    - player-week-projected-stats
                     type: string
                 type: object
               type: array
@@ -4581,7 +4570,7 @@ components:
         type:
           description: Resource type
           enum:
-            - player
+          - player
           type: string
       type: object
     PlayerReceivingStats:
@@ -5145,7 +5134,6 @@ components:
               player:
                 $ref: '#/components/schemas/Player'
               stats:
-                # TODO: Investigate the PlayerStatsResponse.players.stats object
                 description: Statistics object varies by category
                 type: object
               team:
@@ -5157,7 +5145,6 @@ components:
         seasonType:
           $ref: '#/components/schemas/SeasonTypeEnum'
         statCategory:
-          # TODO: Investigate PlayerStatsResponse.statCategory; find out if it can be an enum
           type: string
       type: object
     PlayerWeekProjectedPoints:
@@ -5177,7 +5164,6 @@ components:
               description: Season year
               type: integer
             settingsCode:
-              # TODO: Investigate PlayerWeekProjectedPoints.settingsCode, create enum
               description: Fantasy settings code
               type: string
             week:
@@ -5189,7 +5175,7 @@ components:
           type: string
         type:
           enum:
-            - player-week-projected-points
+          - player-week-projected-points
           type: string
       type: object
     PlayerWeekProjectedStats:
@@ -5329,7 +5315,7 @@ components:
           type: string
         type:
           enum:
-            - player-week-projected-stats
+          - player-week-projected-stats
           type: string
       type: object
     PointSpread:
@@ -5385,8 +5371,6 @@ components:
           type: object
       type: object
     ProTeam:
-      # ProTeam doesn't differ from Team in necessarily meaningful ways, but it does differ.
-      # Leave it alone for now.
       properties:
         abbr:
           description: Three-letter team abbreviation
@@ -5534,9 +5518,9 @@ components:
     QBAlignmentEnum:
       description: Quarterback alignment types
       enum:
-        - PISTOL
-        - UNDER_CENTER
-        - SHOTGUN
+      - PISTOL
+      - UNDER_CENTER
+      - SHOTGUN
       type: string
     QualifiedDefenderCriteria:
       description: Criteria for qualified defender designation
@@ -5572,36 +5556,35 @@ components:
     ReceiverStats:
       type: object
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
-        - properties:
-            recYards:
-              type: integer
-              example: 85
-            targets:
-              type: integer
-              example: 12
-            receptions:
-              type: integer
-              example: 10
-            touchdowns:
-              type: integer
-              example: 1
-            receptionInfo:
-              type: object
-              properties:
-                avgAirYards:
-                  type: number
-                  format: float
-                  example: 9.5725
-                avgCushion:
-                  type: number
-                  format: float
-                  example: 6.998333333333334
-                avgSeparation:
-                  type: number
-                  format: float
-                  example: 3.486743522705502
-
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - properties:
+          recYards:
+            type: integer
+            example: 85
+          targets:
+            type: integer
+            example: 12
+          receptions:
+            type: integer
+            example: 10
+          touchdowns:
+            type: integer
+            example: 1
+          receptionInfo:
+            type: object
+            properties:
+              avgAirYards:
+                type: number
+                format: float
+                example: 9.5725
+              avgCushion:
+                type: number
+                format: float
+                example: 6.998333333333334
+              avgSeparation:
+                type: number
+                format: float
+                example: 3.486743522705502
     ReceivingMetricsExplanation:
       description: Explanation of receiving metrics and calculations
       properties:
@@ -5650,63 +5633,63 @@ components:
       type: object
     ReceivingStatsResponse:
       allOf:
-        - $ref: '#/components/schemas/StatsQueryMetadata'
-        - properties:
-            receivers:
-              items:
-                $ref: '#/components/schemas/PlayerReceivingStats'
-              type: array
-            qualifiedReceiver:
-              description: Whether results are filtered to qualified receivers only
-              example: false
-              type: boolean
-            teamOffense:
-              description: Team filter applied (if any)
-              example: '3900'
-              type: string
-            week:
-              $ref: '#/components/schemas/WeekSlugEnum'
-          type: object
+      - $ref: '#/components/schemas/StatsQueryMetadata'
+      - properties:
+          receivers:
+            items:
+              $ref: '#/components/schemas/PlayerReceivingStats'
+            type: array
+          qualifiedReceiver:
+            description: Whether results are filtered to qualified receivers only
+            example: false
+            type: boolean
+          teamOffense:
+            description: Team filter applied (if any)
+            example: '3900'
+            type: string
+          week:
+            $ref: '#/components/schemas/WeekSlugEnum'
+        type: object
     RoofTypeEnum:
       description: Stadium roof type
       enum:
-        - OUTDOOR
-        - INDOOR
-        - DOME
-        - RETRACTABLE
+      - OUTDOOR
+      - INDOOR
+      - DOME
+      - RETRACTABLE
       type: string
     ReceivingStatsCategoryEnum:
       description: Statistics categories for receiving stats sorting
       enum:
-        - rt
-        - tgt
-        - rec
-        - yds
-        - td
-        - int
-        - rating
-        - catch
-        - xCatch
-        - croe
-        - ydsRec
-        - ydsRt
-        - epa
-        - epaTgt
-        - epaRt
-        - drop
-        - yac
-        - xYac
-        - yacoe
-        - yacRec
-        - avgSep
-        - ay
-        - ayTgt
-        - tgtRt
-        - avgRtDep
-        - ezTgt
-        - ezRec
-        - deepTgtPct
-        - twPct
+      - rt
+      - tgt
+      - rec
+      - yds
+      - td
+      - int
+      - rating
+      - catch
+      - xCatch
+      - croe
+      - ydsRec
+      - ydsRt
+      - epa
+      - epaTgt
+      - epaRt
+      - drop
+      - yac
+      - xYac
+      - yacoe
+      - yacRec
+      - avgSep
+      - ay
+      - ayTgt
+      - tgtRt
+      - avgRtDep
+      - ezTgt
+      - ezRec
+      - deepTgtPct
+      - twPct
       type: string
     Record:
       properties:
@@ -5832,22 +5815,21 @@ components:
           $ref: '#/components/schemas/RushingMap'
         preSnapRushLocationMap:
           $ref: '#/components/schemas/RushingMap'
-
     RusherStats:
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
-        - properties:
-            yards:
-              type: integer
-              example: 131
-            attempts:
-              type: integer
-              example: 14
-            touchdowns:
-              type: integer
-              example: 2
-            rushInfo:
-              $ref: '#/components/schemas/RushingInfo'
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - properties:
+          yards:
+            type: integer
+            example: 131
+          attempts:
+            type: integer
+            example: 14
+          touchdowns:
+            type: integer
+            example: 2
+          rushInfo:
+            $ref: '#/components/schemas/RushingInfo'
       type: object
     RushingStats:
       properties:
@@ -5867,21 +5849,21 @@ components:
       type: object
     RushingStatsResponse:
       allOf:
-        - $ref: '#/components/schemas/StatsQueryMetadata'
-        - properties:
-            rushers:
-              items:
-                $ref: '#/components/schemas/PlayerRushingStats'
-              type: array
-            qualifiedRusher:
-              description: Whether results are filtered to qualified rushers only
-              example: false
-              type: boolean
-            teamOffense:
-              description: Team filter applied (if any)
-              example: '3000'
-              type: string
-          type: object
+      - $ref: '#/components/schemas/StatsQueryMetadata'
+      - properties:
+          rushers:
+            items:
+              $ref: '#/components/schemas/PlayerRushingStats'
+            type: array
+          qualifiedRusher:
+            description: Whether results are filtered to qualified rushers only
+            example: false
+            type: boolean
+          teamOffense:
+            description: Team filter applied (if any)
+            example: '3000'
+            type: string
+        type: object
     ScheduledGame:
       properties:
         gameDate:
@@ -6157,10 +6139,10 @@ components:
       type: object
     DataTypeEnum:
       enum:
-        - integer
-        - float
-        - percentage
-        - boolean
+      - integer
+      - float
+      - percentage
+      - boolean
       type: string
     StatisticalCategory:
       description: Definition of statistical categories for sorting and filtering
@@ -6180,9 +6162,9 @@ components:
     TargetLocationEnum:
       description: Target location on the field for passes
       enum:
-        - DOWN_SEAMS
-        - BETWEEN_HASHES
-        - OUTSIDE_NUMBERS
+      - DOWN_SEAMS
+      - BETWEEN_HASHES
+      - OUTSIDE_NUMBERS
       type: string
     Team:
       properties:
@@ -6275,19 +6257,19 @@ components:
           example: 34452
         gsisId:
           type: string
-          example: '00-0039852'
+          example: 00-0039852
         esbId:
           type: string
-          example: 'NAC559347'
+          example: NAC559347
         jerseyNumber:
           type: integer
           example: 9
         playerName:
           type: string
-          example: 'Matthew Stafford'
+          example: Matthew Stafford
         shortName:
           type: string
-          example: 'M.Stafford'
+          example: M.Stafford
         teamId:
           type: string
           example: '2510'
@@ -6301,269 +6283,268 @@ components:
     BoxScorePlayerPassingStatistic:
       type: object
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
-        - properties:
-            attempts:
-              type: integer
-              example: 47
-            completions:
-              type: integer
-              example: 30
-            completionPct:
-              type: number
-              format: float
-              example: 63.8
-            yards:
-              type: integer
-              example: 389
-            yardsPerAttempt:
-              type: number
-              format: float
-              example: 8.3
-            lostSackedYards:
-              type: integer
-              example: 11
-            sacks:
-              type: integer
-              example: 1
-            touchdowns:
-              type: integer
-              example: 3
-            longestPassCompletion:
-              type: integer
-              example: 38
-            longestTdPass:
-              type: integer
-              example: 14
-            interceptions:
-              type: integer
-              example: 0
-            qbRating:
-              type: number
-              format: float
-              minimum: 0.0
-              maximum: 158.3
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - properties:
+          attempts:
+            type: integer
+            example: 47
+          completions:
+            type: integer
+            example: 30
+          completionPct:
+            type: number
+            format: float
+            example: 63.8
+          yards:
+            type: integer
+            example: 389
+          yardsPerAttempt:
+            type: number
+            format: float
+            example: 8.3
+          lostSackedYards:
+            type: integer
+            example: 11
+          sacks:
+            type: integer
+            example: 1
+          touchdowns:
+            type: integer
+            example: 3
+          longestPassCompletion:
+            type: integer
+            example: 38
+          longestTdPass:
+            type: integer
+            example: 14
+          interceptions:
+            type: integer
+            example: 0
+          qbRating:
+            type: number
+            format: float
+            minimum: 0.0
+            maximum: 158.3
     BoxScorePlayerRushingStatistic:
       type: object
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
-        - properties:
-            attempts:
-              type: integer
-            yards:
-              type: integer
-            avgYards:
-              type: number
-              format: float
-            longestRush:
-              type: integer
-            touchdowns:
-              type: integer
-            longestTdRush:
-              type: integer
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - properties:
+          attempts:
+            type: integer
+          yards:
+            type: integer
+          avgYards:
+            type: number
+            format: float
+          longestRush:
+            type: integer
+          touchdowns:
+            type: integer
+          longestTdRush:
+            type: integer
     BoxScorePlayerReceivingStatistic:
       type: object
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
-        - properties:
-            receptions:
-              type: integer
-            yards:
-              type: integer
-            avgYards:
-              type: number
-              format: float
-            longestPassReception:
-              type: integer
-            touchdowns:
-              type: integer
-            longestTdReception:
-              type: integer
-            passTarget:
-              type: integer
-            yardsAfterCatch:
-              type: integer
-            totalComputedYardsAfterCatch:
-              type: number
-              format: float
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - properties:
+          receptions:
+            type: integer
+          yards:
+            type: integer
+          avgYards:
+            type: number
+            format: float
+          longestPassReception:
+            type: integer
+          touchdowns:
+            type: integer
+          longestTdReception:
+            type: integer
+          passTarget:
+            type: integer
+          yardsAfterCatch:
+            type: integer
+          totalComputedYardsAfterCatch:
+            type: number
+            format: float
     BoxScorePlayerKickingStatistic:
       type: object
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
-        - properties:
-            count:
-              type: integer
-            yards:
-              type: integer
-            touchbackCnt:
-              type: integer
-            inside20Cnt:
-              type: integer
-            outOfBoundsCnt:
-              type: integer
-            toEndzoneCnt:
-              type: integer
-            returnYards:
-              type: integer
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - properties:
+          count:
+            type: integer
+          yards:
+            type: integer
+          touchbackCnt:
+            type: integer
+          inside20Cnt:
+            type: integer
+          outOfBoundsCnt:
+            type: integer
+          toEndzoneCnt:
+            type: integer
+          returnYards:
+            type: integer
     BoxScorePlayerKickReturnStatistic:
       type: object
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
-        - properties:
-            count:
-              type: integer
-            yards:
-              type: integer
-            avgYards:
-              type: number
-              format: float
-            touchdowns:
-              type: integer
-            longestReturn:
-              type: integer
-            fairCatches:
-              type: integer
-            longestTdReturn:
-              type: integer
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - properties:
+          count:
+            type: integer
+          yards:
+            type: integer
+          avgYards:
+            type: number
+            format: float
+          touchdowns:
+            type: integer
+          longestReturn:
+            type: integer
+          fairCatches:
+            type: integer
+          longestTdReturn:
+            type: integer
     BoxScorePlayerPuntReturnStatistic:
       type: object
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
-        - properties:
-            count:
-              type: integer
-            yards:
-              type: integer
-            avgYards:
-              type: number
-              format: float
-            touchdowns:
-              type: integer
-            longestReturn:
-              type: integer
-            fairCatches:
-              type: integer
-            longestTdReturn:
-              type: integer
-
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - properties:
+          count:
+            type: integer
+          yards:
+            type: integer
+          avgYards:
+            type: number
+            format: float
+          touchdowns:
+            type: integer
+          longestReturn:
+            type: integer
+          fairCatches:
+            type: integer
+          longestTdReturn:
+            type: integer
     BoxScorePlayerTacklesStatistic:
       type: object
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
-        - properties:
-            count:
-              type: integer
-            assists:
-              type: integer
-            sacks:
-              type: number
-              format: float
-              example: 1.5
-            sackYards:
-              type: integer
-            qbHits:
-              type: integer
-            safeties:
-              type: integer
-            tacklesForLoss:
-              type: integer
-            tacklesForLossYards:
-              type: integer
-            specialTeamsTackles:
-              type: integer
-            specialTeamsAssists:
-              type: integer
-            specialTeamsBlocks:
-              type: integer
-            miscellaneousTackles:
-              type: integer
-            miscellaneousAssists:
-              type: integer
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - properties:
+          count:
+            type: integer
+          assists:
+            type: integer
+          sacks:
+            type: number
+            format: float
+            example: 1.5
+          sackYards:
+            type: integer
+          qbHits:
+            type: integer
+          safeties:
+            type: integer
+          tacklesForLoss:
+            type: integer
+          tacklesForLossYards:
+            type: integer
+          specialTeamsTackles:
+            type: integer
+          specialTeamsAssists:
+            type: integer
+          specialTeamsBlocks:
+            type: integer
+          miscellaneousTackles:
+            type: integer
+          miscellaneousAssists:
+            type: integer
     BoxScorePlayerFumblesStatistic:
       type: object
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
-        - properties:
-            fumbles:
-              type: integer
-            ownFumbleRecoveries:
-              type: integer
-            ownFumbleRecoveryYards:
-              type: integer
-            ownFumbleRecoveryTds:
-              type: integer
-            opponentFumbleRecoveries:
-              type: integer
-            opponentFumbleRecoveryYards:
-              type: integer
-            opponentFumbleRecoveryTds:
-              type: integer
-            forcedFumbles:
-              type: integer
-            fumbleOutOfBounds:
-              type: integer
-            miscellaneousForcedFumbles:
-              type: integer
-            miscellaneousFumbleRecoveries:
-              type: integer
-            specialTeamsForcedFumbles:
-              type: integer
-            specialTeamsFumbleRecoveries:
-              type: integer
-            lostPossession:
-              type: integer
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - properties:
+          fumbles:
+            type: integer
+          ownFumbleRecoveries:
+            type: integer
+          ownFumbleRecoveryYards:
+            type: integer
+          ownFumbleRecoveryTds:
+            type: integer
+          opponentFumbleRecoveries:
+            type: integer
+          opponentFumbleRecoveryYards:
+            type: integer
+          opponentFumbleRecoveryTds:
+            type: integer
+          forcedFumbles:
+            type: integer
+          fumbleOutOfBounds:
+            type: integer
+          miscellaneousForcedFumbles:
+            type: integer
+          miscellaneousFumbleRecoveries:
+            type: integer
+          specialTeamsForcedFumbles:
+            type: integer
+          specialTeamsFumbleRecoveries:
+            type: integer
+          lostPossession:
+            type: integer
     BoxScorePlayerFieldGoalsStatistic:
       type: object
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
-        - properties:
-            attempts:
-              type: integer
-            successCnt:
-              type: integer
-            blockedCnt:
-              type: integer
-            yards:
-              type: integer
-            avgYard:
-              type: number
-              format: float
-            longestMadeFieldGoal:
-              type: integer
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - properties:
+          attempts:
+            type: integer
+          successCnt:
+            type: integer
+          blockedCnt:
+            type: integer
+          yards:
+            type: integer
+          avgYard:
+            type: number
+            format: float
+          longestMadeFieldGoal:
+            type: integer
     BoxScorePlayerPuntingStatistic:
       type: object
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
-        - properties:
-            attempts:
-              type: integer
-            yards:
-              type: integer
-            grossAvgPuntLength:
-              type: integer
-            blockedCnt:
-              type: integer
-            longestPunt:
-              type: integer
-            touchbackCnts:
-              type: integer
-            inside20Cnt:
-              type: integer
-            netPuntingAvg:
-              type: integer
-            returnYards:
-              type: integer
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - properties:
+          attempts:
+            type: integer
+          yards:
+            type: integer
+          grossAvgPuntLength:
+            type: integer
+          blockedCnt:
+            type: integer
+          longestPunt:
+            type: integer
+          touchbackCnts:
+            type: integer
+          inside20Cnt:
+            type: integer
+          netPuntingAvg:
+            type: integer
+          returnYards:
+            type: integer
     BoxScorePlayerExtraPointsStatistic:
       type: object
       allOf:
-        - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
-        - properties:
-            attemptCnt:
-              type: integer
-            successCnt:
-              type: integer
-            blockedCnt:
-              type: integer
+      - $ref: '#/components/schemas/PlayerStatisticBaseSchema'
+      - properties:
+          attemptCnt:
+            type: integer
+          successCnt:
+            type: integer
+          blockedCnt:
+            type: integer
     TeamBoxscore:
       properties:
         extraPoints:
@@ -6725,13 +6706,13 @@ components:
       type: object
     TeamDefensePassStatsResponse:
       allOf:
-        - $ref: '#/components/schemas/StatsQueryMetadata'
-        - properties:
-            defense:
-              items:
-                $ref: '#/components/schemas/TeamDefensePassStats'
-              type: array
-          type: object
+      - $ref: '#/components/schemas/StatsQueryMetadata'
+      - properties:
+          defense:
+            items:
+              $ref: '#/components/schemas/TeamDefensePassStats'
+            type: array
+        type: object
     TeamDefenseRushStats:
       properties:
         epaRush:
@@ -6836,13 +6817,13 @@ components:
       type: object
     TeamDefenseRushStatsResponse:
       allOf:
-        - $ref: '#/components/schemas/StatsQueryMetadata'
-        - properties:
-            defense:
-              items:
-                $ref: '#/components/schemas/TeamDefenseRushStats'
-              type: array
-          type: object
+      - $ref: '#/components/schemas/StatsQueryMetadata'
+      - properties:
+          defense:
+            items:
+              $ref: '#/components/schemas/TeamDefenseRushStats'
+            type: array
+        type: object
     TeamDefenseStats:
       properties:
         defensiveTouchdown:
@@ -7010,20 +6991,20 @@ components:
       type: object
     TeamDefenseStatsResponse:
       allOf:
-        - $ref: '#/components/schemas/StatsQueryMetadata'
-        - properties:
-            defense:
-              items:
-                $ref: '#/components/schemas/TeamDefenseStats'
-              type: array
-            split:
-              description: Applied defensive situation splits
-              example:
-                - TEAM_DEFENSE_MOTION
-              items:
-                type: string
-              type: array
-          type: object
+      - $ref: '#/components/schemas/StatsQueryMetadata'
+      - properties:
+          defense:
+            items:
+              $ref: '#/components/schemas/TeamDefenseStats'
+            type: array
+          split:
+            description: Applied defensive situation splits
+            example:
+            - TEAM_DEFENSE_MOTION
+            items:
+              type: string
+            type: array
+        type: object
     TeamGameStats:
       properties:
         firstDowns:
@@ -7605,24 +7586,24 @@ components:
       type: object
     TeamOffenseOverviewStatsResponse:
       allOf:
-        - $ref: '#/components/schemas/StatsQueryMetadata'
-        - properties:
-            offense:
-              items:
-                $ref: '#/components/schemas/TeamOffenseOverviewStats'
-              type: array
-            split:
-              description: Applied offensive situation splits
-              example:
-                - TEAM_WHEN_LEADING
-              items:
-                type: string
-              type: array
-            teamDefense:
-              description: Team filter applied (if any)
-              example: '2250'
+      - $ref: '#/components/schemas/StatsQueryMetadata'
+      - properties:
+          offense:
+            items:
+              $ref: '#/components/schemas/TeamOffenseOverviewStats'
+            type: array
+          split:
+            description: Applied offensive situation splits
+            example:
+            - TEAM_WHEN_LEADING
+            items:
               type: string
-          type: object
+            type: array
+          teamDefense:
+            description: Team filter applied (if any)
+            example: '2250'
+            type: string
+        type: object
     TeamOffensePassStats:
       properties:
         att:
@@ -7714,7 +7695,7 @@ components:
           type: number
         teamId:
           description: Team identifier
-          example: '0920'
+          example: 0920
           type: string
         total:
           description: Total offensive plays
@@ -7741,17 +7722,17 @@ components:
       type: object
     TeamOffensePassStatsResponse:
       allOf:
-        - $ref: '#/components/schemas/StatsQueryMetadata'
-        - properties:
-            offense:
-              items:
-                $ref: '#/components/schemas/TeamOffensePassStats'
-              type: array
-            teamDefense:
-              description: Applied team filter (if any)
-              example: '2250'
-              type: string
-          type: object
+      - $ref: '#/components/schemas/StatsQueryMetadata'
+      - properties:
+          offense:
+            items:
+              $ref: '#/components/schemas/TeamOffensePassStats'
+            type: array
+          teamDefense:
+            description: Applied team filter (if any)
+            example: '2250'
+            type: string
+        type: object
     TeamRankingEntry:
       properties:
         rank:
@@ -7855,8 +7836,7 @@ components:
           type: string
         deviceInfo:
           description: 'Base64-encoded JSON containing device information such as:
-            {"model":"desktop","version":"Chrome","osName":"Windows","osVersion":"10"}
-            '
+            {"model":"desktop","version":"Chrome","osName":"Windows","osVersion":"10"} '
           example: eyJtb2RlbCI6ImRlc2t0b3AiLCJ2ZXJzaW9uIjoiQ2hyb21lIiwib3NOYW1lIjoiV2luZG93cyIsIm9zVmVyc2lvbiI6IjEwIn0=
           type: string
         networkType:
@@ -7865,9 +7845,9 @@ components:
     TokenResponse:
       properties:
         accessToken:
-          description: 'JWT access token containing user permissions, subscription
-            plans, location data, and roles. Include this token in the Authorization header as "Bearer {accessToken}"
-            for authenticated requests.'
+          description: JWT access token containing user permissions, subscription
+            plans, location data, and roles. Include this token in the Authorization
+            header as "Bearer {accessToken}" for authenticated requests.
           example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
           type: string
         expiresIn:
@@ -7903,14 +7883,14 @@ components:
       type: object
     TransactionTypeEnum:
       enum:
-        - TRADE
-        - SIGNED
-        - RELEASED
-        - WAIVED
-        - PRACTICE_SQUAD
-        - IR
-        - SUSPENDED
-        - ACTIVATED
+      - TRADE
+      - SIGNED
+      - RELEASED
+      - WAIVED
+      - PRACTICE_SQUAD
+      - IR
+      - SUSPENDED
+      - ACTIVATED
       type: string
     Transaction:
       properties:
@@ -8008,7 +7988,7 @@ components:
         nfl_plus_plus:
           items:
             properties:
-              'NFL PLUS - COACHES FILM':
+              NFL PLUS - COACHES FILM:
                 properties:
                   requirements:
                     properties:
@@ -8174,7 +8154,6 @@ components:
           nullable: true
           type: string
         authorizations:
-          # TODO: We have this structure
           description: Authorization requirements for different NFL+ tiers
           type: object
         background:
@@ -8328,7 +8307,6 @@ components:
           nullable: true
           type: string
         subType:
-          # TODO: This can be an enum
           description: Video subtype
           example: Full Game - Spanish
           type: string
@@ -8386,7 +8364,7 @@ components:
           $ref: '#/components/schemas/WeeklyGameDetailSummaryTeam'
         clock:
           description: Current game clock
-          example: '03:36'
+          example: 03:36
           type: string
         distance:
           description: Yards to go for first down
@@ -8513,7 +8491,6 @@ components:
           summary:
             $ref: '#/components/schemas/Summary'
           taggedVideos:
-            # TODO: Investigate the WeeklyGameDetail.taggedVideos object.
             description: Tagged video content
             nullable: true
             type: object
@@ -8537,25 +8514,25 @@ components:
       type: object
     WeeklyPassingStatsResponse:
       allOf:
-        - $ref: '#/components/schemas/StatsQueryMetadata'
-        - properties:
-            passers:
-              items:
-                $ref: '#/components/schemas/WeeklyPlayerPassingStats'
-              type: array
-            qualifiedPasser:
-              description: Whether results are filtered to qualified passers only
-              example: false
-              type: boolean
-            teamOffense:
-              description: Team filter applied (if any)
-              example: '3200'
-              type: string
-            week:
-              description: Week identifier
-              example: WEEK_3
-              type: string
-          type: object
+      - $ref: '#/components/schemas/StatsQueryMetadata'
+      - properties:
+          passers:
+            items:
+              $ref: '#/components/schemas/WeeklyPlayerPassingStats'
+            type: array
+          qualifiedPasser:
+            description: Whether results are filtered to qualified passers only
+            example: false
+            type: boolean
+          teamOffense:
+            description: Team filter applied (if any)
+            example: '3200'
+            type: string
+          week:
+            description: Week identifier
+            example: WEEK_3
+            type: string
+        type: object
     WeeklyPlayer:
       allOf:
       - $ref: '#/components/schemas/Player'
@@ -8569,38 +8546,39 @@ components:
       description: Player information with weekly status
       type: object
     WeeklyPlayerPassingStats:
-      description: Player passing statistics for a single week, extending season stats with game-specific context
+      description: Player passing statistics for a single week, extending season stats
+        with game-specific context
       allOf:
-        - $ref: '#/components/schemas/PlayerPassingStats'
-        - type: object
-          properties:
-            fapiGameId:
-              description: Football API game identifier
-              example: f665fc10-311e-11f0-b670-ae1250fadad1
-              format: uuid
-              type: string
-            finalScore:
-              description: Final score of the game
-              example: 14-21
-              type: string
-            gameId:
-              description: Game identifier (10-digit format YYYYMMDDNN)
-              example: 2025092104
-              type: integer
-            gameResult:
-              $ref: '#/components/schemas/GameResultEnum'
-            isHome:
-              description: Whether player's team was at home
-              example: true
-              type: boolean
-            opponentTeamId:
-              description: Opponent team identifier
-              example: '3900'
-              type: string
-            weekSlug:
-              description: Week identifier slug
-              example: WEEK_3
-              type: string
+      - $ref: '#/components/schemas/PlayerPassingStats'
+      - type: object
+        properties:
+          fapiGameId:
+            description: Football API game identifier
+            example: f665fc10-311e-11f0-b670-ae1250fadad1
+            format: uuid
+            type: string
+          finalScore:
+            description: Final score of the game
+            example: 14-21
+            type: string
+          gameId:
+            description: Game identifier (10-digit format YYYYMMDDNN)
+            example: 2025092104
+            type: integer
+          gameResult:
+            $ref: '#/components/schemas/GameResultEnum'
+          isHome:
+            description: Whether player's team was at home
+            example: true
+            type: boolean
+          opponentTeamId:
+            description: Opponent team identifier
+            example: '3900'
+            type: string
+          weekSlug:
+            description: Week identifier slug
+            example: WEEK_3
+            type: string
     WeeklyPlayerRushingStats:
       properties:
         att:
@@ -8877,23 +8855,23 @@ components:
       type: object
     WeeklyRushingStatsResponse:
       allOf:
-        - $ref: '#/components/schemas/StatsQueryMetadata'
-        - properties:
-            rushers:
-              items:
-                $ref: '#/components/schemas/WeeklyPlayerRushingStats'
-              type: array
-            qualifiedRusher:
-              description: Whether results are filtered to qualified rushers only
-              example: false
-              type: boolean
-            teamOffense:
-              description: Team filter applied (if any)
-              example: '3200'
-              type: string
-            week:
-              $ref: '#/components/schemas/WeekSlugEnum'
-          type: object
+      - $ref: '#/components/schemas/StatsQueryMetadata'
+      - properties:
+          rushers:
+            items:
+              $ref: '#/components/schemas/WeeklyPlayerRushingStats'
+            type: array
+          qualifiedRusher:
+            description: Whether results are filtered to qualified rushers only
+            example: false
+            type: boolean
+          teamOffense:
+            description: Team filter applied (if any)
+            example: '3200'
+            type: string
+          week:
+            $ref: '#/components/schemas/WeekSlugEnum'
+        type: object
     WeeksResponse:
       properties:
         pagination:
@@ -8906,9 +8884,9 @@ components:
     CalculationMethodEnum:
       description: Method used to calculate win probabilities
       enum:
-        - REAL_TIME
-        - HISTORICAL
-        - SIMULATED
+      - REAL_TIME
+      - HISTORICAL
+      - SIMULATED
       type: string
     WinProbabilityMetadata:
       description: Metadata about win probability calculations
@@ -8935,19 +8913,19 @@ components:
       description: Explanation of win probability metrics
       properties:
         criticalPlays:
-          description: 'Plays with high absolute WPA values (typically > 0.10) are
-            considered critical or momentum-shifting plays that significantly impact the game
-            outcome.'
+          description: Plays with high absolute WPA values (typically > 0.10) are
+            considered critical or momentum-shifting plays that significantly impact
+            the game outcome.
           type: string
         winProbability:
-          description: 'Probability (0-1) that a team will win the game at any given
-            point. 1.0 = 100% chance of winning, 0.0 = 0% chance of winning.'
+          description: Probability (0-1) that a team will win the game at any given
+            point. 1.0 = 100% chance of winning, 0.0 = 0% chance of winning.
           type: string
         winProbabilityAdded:
-          description: 'Change in win probability caused by a single play.
-            Positive WPA means the play helped the team''s chances of winning.
-            Negative WPA means the play hurt the team''s chances of winning.
-            The sum of all WPA values for both teams in a game equals zero.'
+          description: Change in win probability caused by a single play. Positive
+            WPA means the play helped the team's chances of winning. Negative WPA
+            means the play hurt the team's chances of winning. The sum of all WPA
+            values for both teams in a game equals zero.
           type: string
       type: object
     WinProbabilityResponse:
@@ -9014,21 +8992,21 @@ components:
     YardsToGoTypeEnum:
       description: Category of yards needed for first down
       enum:
-        - SHORT
-        - MID
-        - LONG
+      - SHORT
+      - MID
+      - LONG
       type: string
   securitySchemes:
     NFLAuth:
       type: http
       scheme: bearer
-      x-speakeasy-token: 'sometokenvalue'
-
+      x-speakeasy-token: sometokenvalue
 paths:
   /api/content/game/preview:
     get:
-      description: 'Retrieves preview content and insights for a specific game based
-        on teams and week. Returns preview information, matchup analysis, and key storylines.'
+      description: Retrieves preview content and insights for a specific game based
+        on teams and week. Returns preview information, matchup analysis, and key
+        storylines.
       operationId: getGamePreview
       parameters:
       - description: Season year
@@ -9078,11 +9056,14 @@ paths:
           description: Internal server error
       summary: Get Game Preview Content
       tags:
-        - Content
+      - Content
+      servers: &id001
+      - url: https://pro.nfl.com
+        description: Production NFL Pro API
   /api/content/home-film-cards:
     get:
-      description: 'Retrieves featured film room content cards for the home page.
-      Returns weekly playlists and featured player film breakdowns.'
+      description: Retrieves featured film room content cards for the home page. Returns
+        weekly playlists and featured player film breakdowns.
       operationId: getHomeFilmCards
       responses:
         '200':
@@ -9097,11 +9078,12 @@ paths:
           description: Internal server error
       summary: Get Home Film Cards
       tags:
-        - Content
+      - Content
+      servers: *id001
   /api/content/insights/game:
     get:
-      description: 'Retrieves analytical insights and advanced statistics for a specific
-        game. Can filter by tags and exclude specific content types.'
+      description: Retrieves analytical insights and advanced statistics for a specific
+        game. Can filter by tags and exclude specific content types.
       operationId: getGameInsights
       parameters:
       - description: Season year
@@ -9173,6 +9155,7 @@ paths:
       summary: Get Game-Specific Insights
       tags:
       - Content
+      servers: *id001
   /api/content/insights/season:
     get:
       description: 'Retrieves curated editorial insights and analytics content for
@@ -9220,15 +9203,15 @@ paths:
           - nfl-pro
           items:
             enum:
-              - nfl-pro
-              - editorial
-              - next-gen-stats
-              - pregame
-              - postgame
-              - fantasy
-              - pro-preview
-              - pro-matchup
-              - evergreen
+            - nfl-pro
+            - editorial
+            - next-gen-stats
+            - pregame
+            - postgame
+            - fantasy
+            - pro-preview
+            - pro-matchup
+            - evergreen
             type: string
           type: array
         style: form
@@ -9264,6 +9247,7 @@ paths:
       summary: Get Season Content Insights
       tags:
       - Content Insights
+      servers: *id001
   /api/players/player:
     get:
       description: 'Retrieves detailed information about a specific NFL player including
@@ -9299,6 +9283,7 @@ paths:
       summary: Get Player Details
       tags:
       - Players
+      servers: *id001
   /api/players/projectedStats:
     get:
       description: 'Retrieves projected fantasy statistics for players based on team,
@@ -9359,6 +9344,7 @@ paths:
       summary: Get Projected Player Statistics
       tags:
       - Players
+      servers: *id001
   /api/players/search:
     get:
       description: 'Searches for NFL players by name or term. Returns a list of players
@@ -9392,6 +9378,7 @@ paths:
       summary: Search Players
       tags:
       - Players
+      servers: *id001
   /api/plays/summaryPlay:
     get:
       description: 'Retrieves detailed information about a specific play in a game
@@ -9435,6 +9422,7 @@ paths:
       summary: Get Play Summary
       tags:
       - Plays
+      servers: *id001
   /api/schedules/current:
     get:
       description: 'Retrieves all games for the current week of the NFL season.
@@ -9461,6 +9449,7 @@ paths:
       summary: Get Current Week Games
       tags:
       - Schedules Extended
+      servers: *id001
   /api/schedules/game:
     get:
       description: 'Retrieves detailed information for a specific game by its ID.
@@ -9498,6 +9487,7 @@ paths:
       summary: Get Single Game Details
       tags:
       - Schedules
+      servers: *id001
   /api/schedules/game/matchup/rankings:
     get:
       description: 'Retrieves comprehensive matchup rankings and statistical comparisons
@@ -9537,6 +9527,7 @@ paths:
       summary: Get Game Matchup Rankings
       tags:
       - Schedules
+      servers: *id001
   /api/schedules/game/team/injuries:
     get:
       description: 'Retrieves injury report information for a specific team in a given
@@ -9595,6 +9586,7 @@ paths:
       summary: Get Team Injuries for Game Week
       tags:
       - Schedules
+      servers: *id001
   /api/schedules/games:
     get:
       description: 'Retrieves all games for a specific season, season type, and week.
@@ -9644,6 +9636,7 @@ paths:
       summary: Get Games by Week
       tags:
       - Schedules
+      servers: *id001
   /api/schedules/genius/future/odds:
     get:
       description: 'Retrieves comprehensive betting futures data including Super Bowl
@@ -9671,6 +9664,7 @@ paths:
       summary: Get Future Betting Odds
       tags:
       - Schedules Extended
+      servers: *id001
   /api/schedules/standings:
     get:
       description: 'Retrieves comprehensive team standings for a specific season,
@@ -9724,6 +9718,7 @@ paths:
       summary: Get Team Standings
       tags:
       - Schedules Extended
+      servers: *id001
   /api/schedules/week/odds:
     get:
       description: 'Retrieves comprehensive betting odds for all games in a specified
@@ -9774,9 +9769,13 @@ paths:
       summary: Get Weekly Betting Odds
       tags:
       - Betting
+      servers: *id001
   /api/schedules/weeks:
     get:
-      description: "Retrieves all weeks for a specific season including preseason, regular season, and postseason weeks. Returns week dates, types, and teams on bye for each week. This endpoint provides a comprehensive season calendar with all scheduling information."
+      description: Retrieves all weeks for a specific season including preseason,
+        regular season, and postseason weeks. Returns week dates, types, and teams
+        on bye for each week. This endpoint provides a comprehensive season calendar
+        with all scheduling information.
       operationId: getScheduleSeasonWeeks
       parameters:
       - description: Season year
@@ -9802,6 +9801,7 @@ paths:
       summary: Get Season Weeks
       tags:
       - Season Schedule
+      servers: *id001
   /api/scores/live/games:
     get:
       description: 'Retrieves real-time scores and game status for all games in a
@@ -9854,6 +9854,7 @@ paths:
       summary: Get Live Game Scores
       tags:
       - Scores
+      servers: *id001
   /api/secured/plays/winProbability:
     get:
       description: 'Retrieves comprehensive win probability data for every play in
@@ -9872,7 +9873,8 @@ paths:
         '
       operationId: getPlaysWinProbability
       parameters:
-      - description: "Game identifier(s) in 10-digit format (YYYYMMDDNN). Can be a single game ID or multiple game IDs for batch retrieval. "
+      - description: 'Game identifier(s) in 10-digit format (YYYYMMDDNN). Can be a
+          single game ID or multiple game IDs for batch retrieval. '
         examples:
           multiple:
             summary: Multiple games
@@ -9917,6 +9919,7 @@ paths:
       summary: Get Game Win Probability by Plays
       tags:
       - Win Probability
+      servers: *id001
   /api/secured/plays/winProbabilityMin:
     get:
       description: 'Retrieves minimal win probability data for specified games, including
@@ -9973,9 +9976,16 @@ paths:
       summary: Get Minimal Win Probability Data
       tags:
       - Win Probability
+      servers: *id001
   /api/secured/stats/defense/nearest/season:
     get:
-      description: "Retrieves comprehensive defensive statistics for NFL players during a specified season. Returns detailed coverage metrics including targets allowed, completion rates, pass rating allowed, yards after catch prevention, and advanced Next Gen Stats data. Supports filtering by qualified defenders, teams, and various sorting options. Data includes traditional defensive stats and advanced analytics like EPA (Expected Points Added), CROE (Completion Rate Over Expected), receiver separation allowed, and coverage snap counts."
+      description: Retrieves comprehensive defensive statistics for NFL players during
+        a specified season. Returns detailed coverage metrics including targets allowed,
+        completion rates, pass rating allowed, yards after catch prevention, and advanced
+        Next Gen Stats data. Supports filtering by qualified defenders, teams, and
+        various sorting options. Data includes traditional defensive stats and advanced
+        analytics like EPA (Expected Points Added), CROE (Completion Rate Over Expected),
+        receiver separation allowed, and coverage snap counts.
       operationId: getDefensiveStatsBySeason
       parameters:
       - description: Season year
@@ -10026,22 +10036,22 @@ paths:
         schema:
           default: cov
           enum:
-            - cov
-            - covNd
-            - tgtNd
-            - recNd
-            - recYdsNd
-            - recTdNd
-            - int
-            - passRatingNd
-            - tgtEpaNd
-            - catchNd
-            - croeNd
-            - bhPct
-            - sep
-            - twfPct
-            - yacprNd
-            - tgtRNd
+          - cov
+          - covNd
+          - tgtNd
+          - recNd
+          - recYdsNd
+          - recTdNd
+          - int
+          - passRatingNd
+          - tgtEpaNd
+          - catchNd
+          - croeNd
+          - bhPct
+          - sep
+          - twfPct
+          - yacprNd
+          - tgtRNd
           example: cov
           type: string
       - description: Sort direction
@@ -10089,9 +10099,16 @@ paths:
       summary: Get Defensive Player Statistics by Season
       tags:
       - Defensive Statistics
+      servers: *id001
   /api/secured/stats/defense/overview/season:
     get:
-      description: "Retrieves comprehensive defensive overview statistics for NFL players during a specified season. Returns detailed metrics including traditional defensive stats (tackles, stops, sacks), coverage metrics (targets, completions allowed, pass rating allowed), pass rush data, and advanced analytics. Supports filtering by qualified defenders, teams, and various sorting options. Data includes snap counts, tackle efficiency, coverage effectiveness, and situational performance."
+      description: Retrieves comprehensive defensive overview statistics for NFL players
+        during a specified season. Returns detailed metrics including traditional
+        defensive stats (tackles, stops, sacks), coverage metrics (targets, completions
+        allowed, pass rating allowed), pass rush data, and advanced analytics. Supports
+        filtering by qualified defenders, teams, and various sorting options. Data
+        includes snap counts, tackle efficiency, coverage effectiveness, and situational
+        performance.
       operationId: getDefensiveOverviewStatsBySeason
       parameters:
       - description: Season year
@@ -10142,23 +10159,23 @@ paths:
         schema:
           default: snap
           enum:
-            - snap
-            - rd
-            - pr
-            - tck
-            - tStop
-            - hStop
-            - qbp
-            - qbpR
-            - sack
-            - tgtNd
-            - recNd
-            - recYdsNd
-            - recTdNd
-            - int
-            - passRatingNd
-            - gameSnap
-            - snapPct
+          - snap
+          - rd
+          - pr
+          - tck
+          - tStop
+          - hStop
+          - qbp
+          - qbpR
+          - sack
+          - tgtNd
+          - recNd
+          - recYdsNd
+          - recTdNd
+          - int
+          - passRatingNd
+          - gameSnap
+          - snapPct
           example: sack
           type: string
       - description: Sort direction
@@ -10206,6 +10223,7 @@ paths:
       summary: Get Defensive Player Overview Statistics by Season
       tags:
       - Defensive Player Overview
+      servers: *id001
   /api/secured/stats/defense/passRush/season:
     get:
       description: 'Retrieves comprehensive pass rush statistics for NFL defensive
@@ -10273,18 +10291,18 @@ paths:
         schema:
           default: pr
           enum:
-            - pr
-            - prR
-            - qbp
-            - qbpR
-            - ttp
-            - qp
-            - sack
-            - sackR
-            - tts
-            - prGo
-            - turnQbp
-            - gameSnap
+          - pr
+          - prR
+          - qbp
+          - qbpR
+          - ttp
+          - qp
+          - sack
+          - sackR
+          - tts
+          - prGo
+          - turnQbp
+          - gameSnap
           example: pr
           type: string
       - description: Sort direction
@@ -10319,6 +10337,7 @@ paths:
       summary: Get Defensive Pass Rush Statistics by Season
       tags:
       - Defensive Pass Rush Statistics
+      servers: *id001
   /api/secured/stats/fantasy/season:
     get:
       description: 'Retrieves comprehensive fantasy football statistics for NFL players
@@ -10387,21 +10406,21 @@ paths:
         schema:
           default: fpStd
           enum:
-            - fpStd
-            - fpPpr
-            - fpHalfPpr
-            - passYds
-            - passTd
-            - passInt
-            - rushYds
-            - rushTd
-            - recYds
-            - recTd
-            - rec
-            - tgt
-            - snapPct
-            - targetShare
-            - redZoneTargets
+          - fpStd
+          - fpPpr
+          - fpHalfPpr
+          - passYds
+          - passTd
+          - passInt
+          - rushYds
+          - rushTd
+          - recYds
+          - recTd
+          - rec
+          - tgt
+          - snapPct
+          - targetShare
+          - redZoneTargets
           example: fpStd
           type: string
       - description: Sort direction
@@ -10420,11 +10439,11 @@ paths:
           - QB
           items:
             enum:
-              - QB
-              - RB
-              - WR
-              - TE
-              - SPEC
+            - QB
+            - RB
+            - WR
+            - TE
+            - SPEC
             type: string
           type: array
         style: form
@@ -10478,6 +10497,7 @@ paths:
       summary: Get Fantasy Football Statistics by Season
       tags:
       - Fantasy Statistics
+      servers: *id001
   /api/secured/stats/players-offense/passing/season:
     get:
       description: 'Retrieves comprehensive passing statistics for NFL players during
@@ -10590,6 +10610,7 @@ paths:
       summary: Get Player Passing Statistics by Season
       tags:
       - Player Statistics
+      servers: *id001
   /api/secured/stats/players-offense/passing/week:
     get:
       description: 'Retrieves comprehensive passing statistics for NFL players during
@@ -10708,6 +10729,7 @@ paths:
       summary: Get Player Passing Statistics by Week
       tags:
       - Player Passing Statistics
+      servers: *id001
   /api/secured/stats/players-offense/receiving/season:
     get:
       description: 'Retrieves comprehensive receiving statistics for NFL players during
@@ -10820,6 +10842,7 @@ paths:
       summary: Get Player Receiving Statistics by Season
       tags:
       - Player Receiving Statistics
+      servers: *id001
   /api/secured/stats/players-offense/receiving/week:
     get:
       description: 'Retrieves comprehensive receiving statistics for NFL players during
@@ -10938,6 +10961,7 @@ paths:
       summary: Get Player Receiving Statistics by Week
       tags:
       - Player Receiving Statistics
+      servers: *id001
   /api/secured/stats/players-offense/rushing/season:
     get:
       description: 'Retrieves comprehensive rushing statistics for NFL players during
@@ -11005,29 +11029,29 @@ paths:
         schema:
           default: yds
           enum:
-            - att
-            - yds
-            - td
-            - ypc
-            - epa
-            - epaAtt
-            - xRy
-            - xYpc
-            - ryoe
-            - ryoeAtt
-            - yaco
-            - yacoAtt
-            - ybco
-            - success
-            - fum
-            - lost
-            - rush10PYds
-            - rush15PMph
-            - rush20PMph
-            - eff
-            - inTPct
-            - stBoxPct
-            - underPct
+          - att
+          - yds
+          - td
+          - ypc
+          - epa
+          - epaAtt
+          - xRy
+          - xYpc
+          - ryoe
+          - ryoeAtt
+          - yaco
+          - yacoAtt
+          - ybco
+          - success
+          - fum
+          - lost
+          - rush10PYds
+          - rush15PMph
+          - rush20PMph
+          - eff
+          - inTPct
+          - stBoxPct
+          - underPct
           example: yds
           type: string
       - description: Sort direction
@@ -11075,6 +11099,7 @@ paths:
       summary: Get Player Rushing Statistics by Season
       tags:
       - Player Rushing Statistics
+      servers: *id001
   /api/secured/stats/players-offense/rushing/week:
     get:
       description: 'Retrieves comprehensive rushing statistics for NFL players during
@@ -11148,29 +11173,29 @@ paths:
         schema:
           default: yds
           enum:
-            - att
-            - yds
-            - td
-            - ypc
-            - epa
-            - epaAtt
-            - xRy
-            - xYpc
-            - ryoe
-            - ryoeAtt
-            - yaco
-            - yacoAtt
-            - ybco
-            - success
-            - fum
-            - lost
-            - rush10PYds
-            - rush15PMph
-            - rush20PMph
-            - eff
-            - inTPct
-            - stBoxPct
-            - underPct
+          - att
+          - yds
+          - td
+          - ypc
+          - epa
+          - epaAtt
+          - xRy
+          - xYpc
+          - ryoe
+          - ryoeAtt
+          - yaco
+          - yacoAtt
+          - ybco
+          - success
+          - fum
+          - lost
+          - rush10PYds
+          - rush15PMph
+          - rush20PMph
+          - eff
+          - inTPct
+          - stBoxPct
+          - underPct
           example: yds
           type: string
       - description: Sort direction
@@ -11218,9 +11243,16 @@ paths:
       summary: Get Player Rushing Statistics by Week
       tags:
       - Player Rushing Statistics
+      servers: *id001
   /api/secured/stats/team-defense/overview/season:
     get:
-      description: "Retrieves comprehensive defensive statistics for NFL teams during a specified season. Returns detailed metrics including traditional defensive stats, advanced analytics like EPA and RYOE, Next Gen Stats data, and situational performance breakdowns. Supports filtering by various defensive situations including personnel packages (Base, Nickel, Dime), game situations (leading, trailing, tied), field positions (red zone, goal-to-go), and offensive formations faced (shotgun, under center, pistol, motion)."
+      description: Retrieves comprehensive defensive statistics for NFL teams during
+        a specified season. Returns detailed metrics including traditional defensive
+        stats, advanced analytics like EPA and RYOE, Next Gen Stats data, and situational
+        performance breakdowns. Supports filtering by various defensive situations
+        including personnel packages (Base, Nickel, Dime), game situations (leading,
+        trailing, tied), field positions (red zone, goal-to-go), and offensive formations
+        faced (shotgun, under center, pistol, motion).
       operationId: getTeamDefenseStatsBySeason
       parameters:
       - description: Season year
@@ -11271,40 +11303,40 @@ paths:
         schema:
           default: ypg
           enum:
-            - total
-            - pass
-            - run
-            - yds
-            - passPct
-            - ypp
-            - td
-            - passTd
-            - rushTd
-            - epa
-            - epaPP
-            - passYds
-            - passYpp
-            - epaPass
-            - epaPassPP
-            - rushYds
-            - rushYpp
-            - epaRush
-            - epaRushPP
-            - ttt
-            - qbp
-            - qbpPct
-            - sackedYds
-            - ryoe
-            - interception
-            - forcedFumble
-            - fumbleRecovered
-            - defensiveTouchdown
-            - totalTakeaways
-            - ppg
-            - ypg
-            - passYpg
-            - rushYpg
-            - sackedYpg
+          - total
+          - pass
+          - run
+          - yds
+          - passPct
+          - ypp
+          - td
+          - passTd
+          - rushTd
+          - epa
+          - epaPP
+          - passYds
+          - passYpp
+          - epaPass
+          - epaPassPP
+          - rushYds
+          - rushYpp
+          - epaRush
+          - epaRushPP
+          - ttt
+          - qbp
+          - qbpPct
+          - sackedYds
+          - ryoe
+          - interception
+          - forcedFumble
+          - fumbleRecovered
+          - defensiveTouchdown
+          - totalTakeaways
+          - ppg
+          - ypg
+          - passYpg
+          - rushYpg
+          - sackedYpg
           example: ypg
           type: string
       - description: Sort direction
@@ -11324,18 +11356,18 @@ paths:
           - TEAM_DEFENSE_RED_ZONE
           items:
             enum:
-              - TEAM_DEFENSE_BASE
-              - TEAM_DEFENSE_NICKEL
-              - TEAM_DEFENSE_DIME
-              - TEAM_DEFENSE_WHEN_LEADING
-              - TEAM_DEFENSE_WHEN_TRAILING
-              - TEAM_DEFENSE_WHEN_TIED
-              - TEAM_DEFENSE_RED_ZONE
-              - TEAM_DEFENSE_GOAL_TO_GO
-              - TEAM_DEFENSE_SHOTGUN
-              - TEAM_DEFENSE_UNDER_CENTER
-              - TEAM_DEFENSE_PISTOL
-              - TEAM_DEFENSE_MOTION
+            - TEAM_DEFENSE_BASE
+            - TEAM_DEFENSE_NICKEL
+            - TEAM_DEFENSE_DIME
+            - TEAM_DEFENSE_WHEN_LEADING
+            - TEAM_DEFENSE_WHEN_TRAILING
+            - TEAM_DEFENSE_WHEN_TIED
+            - TEAM_DEFENSE_RED_ZONE
+            - TEAM_DEFENSE_GOAL_TO_GO
+            - TEAM_DEFENSE_SHOTGUN
+            - TEAM_DEFENSE_UNDER_CENTER
+            - TEAM_DEFENSE_PISTOL
+            - TEAM_DEFENSE_MOTION
             type: string
           type: array
         style: form
@@ -11357,6 +11389,7 @@ paths:
       summary: Get Team Defense Statistics by Season
       tags:
       - Team Defense Statistics
+      servers: *id001
   /api/secured/stats/team-defense/pass/season:
     get:
       description: 'Retrieves comprehensive pass defense statistics for NFL teams
@@ -11424,28 +11457,28 @@ paths:
         schema:
           default: passYpg
           enum:
-            - total
-            - pass
-            - passPct
-            - passTd
-            - passYds
-            - passYpp
-            - epaPass
-            - epaPassPP
-            - ttt
-            - qbp
-            - qbpPct
-            - sackedYds
-            - sack
-            - sackPct
-            - ttp
-            - blitzPct
-            - yac
-            - yacoe
-            - sep
-            - go
-            - passYpg
-            - sackedYpg
+          - total
+          - pass
+          - passPct
+          - passTd
+          - passYds
+          - passYpp
+          - epaPass
+          - epaPassPP
+          - ttt
+          - qbp
+          - qbpPct
+          - sackedYds
+          - sack
+          - sackPct
+          - ttp
+          - blitzPct
+          - yac
+          - yacoe
+          - sep
+          - go
+          - passYpg
+          - sackedYpg
           example: passYpg
           type: string
       - description: Sort direction
@@ -11472,6 +11505,7 @@ paths:
       summary: Get Team Defense Pass Statistics by Season
       tags:
       - Team Defense Pass Statistics
+      servers: *id001
   /api/secured/stats/team-defense/rush/season:
     get:
       description: 'Retrieves comprehensive rush defense statistics for NFL teams
@@ -11539,25 +11573,25 @@ paths:
         schema:
           default: rushYpg
           enum:
-            - total
-            - run
-            - runPct
-            - rushTd
-            - rushYds
-            - rushYpp
-            - epaRush
-            - epaRushPP
-            - rush10PYds
-            - stuffPct
-            - ryoe
-            - ryoeAtt
-            - ybcoAtt
-            - yacoAtt
-            - inPct
-            - outPct
-            - lightPct
-            - stackedPct
-            - rushYpg
+          - total
+          - run
+          - runPct
+          - rushTd
+          - rushYds
+          - rushYpp
+          - epaRush
+          - epaRushPP
+          - rush10PYds
+          - stuffPct
+          - ryoe
+          - ryoeAtt
+          - ybcoAtt
+          - yacoAtt
+          - inPct
+          - outPct
+          - lightPct
+          - stackedPct
+          - rushYpg
           example: rushYpg
           type: string
       - description: Sort direction
@@ -11584,9 +11618,17 @@ paths:
       summary: Get Team Defense Rush Statistics by Season
       tags:
       - Team Defense Rush Statistics
+      servers: *id001
   /api/secured/stats/team-offense/overview/season:
     get:
-      description: "Retrieves comprehensive offensive overview statistics for NFL teams during a specified season. Returns detailed metrics including traditional offensive stats, advanced analytics like EPA and efficiency ratings, Next Gen Stats data, and situational performance breakdowns. Supports filtering by various offensive situations including formations (shotgun, under center, pistol), game situations (leading, trailing, tied), and field positions (red zone, goal-to-go). Includes total offense, passing offense, rushing offense, and scoring metrics."
+      description: Retrieves comprehensive offensive overview statistics for NFL teams
+        during a specified season. Returns detailed metrics including traditional
+        offensive stats, advanced analytics like EPA and efficiency ratings, Next
+        Gen Stats data, and situational performance breakdowns. Supports filtering
+        by various offensive situations including formations (shotgun, under center,
+        pistol), game situations (leading, trailing, tied), and field positions (red
+        zone, goal-to-go). Includes total offense, passing offense, rushing offense,
+        and scoring metrics.
       operationId: getTeamOffenseOverviewStatsBySeason
       parameters:
       - description: Season year
@@ -11637,32 +11679,32 @@ paths:
         schema:
           default: ypg
           enum:
-            - total
-            - pass
-            - run
-            - yds
-            - passPct
-            - ypp
-            - td
-            - passTd
-            - rushTd
-            - epa
-            - epaPP
-            - passYds
-            - passYpp
-            - epaPass
-            - epaPassPP
-            - rushYds
-            - rushYpp
-            - epaRush
-            - epaRushPP
-            - to
-            - ppg
-            - ypg
-            - passYpg
-            - rushYpg
-            - redZonePct
-            - thirdDownPct
+          - total
+          - pass
+          - run
+          - yds
+          - passPct
+          - ypp
+          - td
+          - passTd
+          - rushTd
+          - epa
+          - epaPP
+          - passYds
+          - passYpp
+          - epaPass
+          - epaPassPP
+          - rushYds
+          - rushYpp
+          - epaRush
+          - epaRushPP
+          - to
+          - ppg
+          - ypg
+          - passYpg
+          - rushYpg
+          - redZonePct
+          - thirdDownPct
           example: ypg
           type: string
       - description: Sort direction
@@ -11688,14 +11730,14 @@ paths:
           - TEAM_WHEN_LEADING
           items:
             enum:
-              - TEAM_SHOTGUN
-              - TEAM_UNDER_CENTER
-              - TEAM_PISTOL
-              - TEAM_WHEN_LEADING
-              - TEAM_WHEN_TRAILING
-              - TEAM_WHEN_TIED
-              - TEAM_RED_ZONE
-              - TEAM_GOAL_TO_GO
+            - TEAM_SHOTGUN
+            - TEAM_UNDER_CENTER
+            - TEAM_PISTOL
+            - TEAM_WHEN_LEADING
+            - TEAM_WHEN_TRAILING
+            - TEAM_WHEN_TIED
+            - TEAM_RED_ZONE
+            - TEAM_GOAL_TO_GO
             type: string
           type: array
         style: form
@@ -11717,6 +11759,7 @@ paths:
       summary: Get Team Offense Overview Statistics by Season
       tags:
       - Team Offense Overview Statistics
+      servers: *id001
   /api/secured/stats/team-offense/pass/season:
     get:
       description: 'Retrieves comprehensive pass offense statistics for NFL teams
@@ -11784,29 +11827,29 @@ paths:
         schema:
           default: passYpg
           enum:
-            - total
-            - pass
-            - passPct
-            - passTd
-            - passYds
-            - passYpp
-            - epaPass
-            - epaPassPP
-            - ttt
-            - qbp
-            - qbpPct
-            - att
-            - sackedYds
-            - sack
-            - sackPct
-            - ttp
-            - blitzPct
-            - paPct
-            - yac
-            - yacoe
-            - sep
-            - passYpg
-            - sackedYpg
+          - total
+          - pass
+          - passPct
+          - passTd
+          - passYds
+          - passYpp
+          - epaPass
+          - epaPassPP
+          - ttt
+          - qbp
+          - qbpPct
+          - att
+          - sackedYds
+          - sack
+          - sackPct
+          - ttp
+          - blitzPct
+          - paPct
+          - yac
+          - yacoe
+          - sep
+          - passYpg
+          - sackedYpg
           example: passYpg
           type: string
       - description: Sort direction
@@ -11840,6 +11883,7 @@ paths:
       summary: Get Team Offense Pass Statistics by Season
       tags:
       - Team Offense Pass Statistics
+      servers: *id001
   /api/secured/videos/coaches:
     get:
       description: 'Retrieves premium coaches film video content for specified games
@@ -11908,6 +11952,7 @@ paths:
       summary: Get Coaches Film Videos
       tags:
       - Secured Videos
+      servers: *id001
   /api/secured/videos/filmroom/plays:
     get:
       description: 'Retrieves detailed play-by-play data with extensive filtering
@@ -12006,9 +12051,9 @@ paths:
           - SHORT
           items:
             enum:
-              - SHORT
-              - MID
-              - LONG
+            - SHORT
+            - MID
+            - LONG
             type: string
           type: array
       - description: Filter for touchdown plays (1 = yes, 0 = no)
@@ -12060,9 +12105,9 @@ paths:
           - SHOTGUN
           items:
             enum:
-              - PISTOL
-              - UNDER_CENTER
-              - SHOTGUN
+            - PISTOL
+            - UNDER_CENTER
+            - SHOTGUN
             type: string
           type: array
       - description: Filter for red zone plays
@@ -12184,9 +12229,9 @@ paths:
           - BETWEEN_HASHES
           items:
             enum:
-              - DOWN_SEAMS
-              - BETWEEN_HASHES
-              - OUTSIDE_NUMBERS
+            - DOWN_SEAMS
+            - BETWEEN_HASHES
+            - OUTSIDE_NUMBERS
             type: string
           type: array
       - description: Filter by air yards category
@@ -12198,9 +12243,9 @@ paths:
           - SHORT
           items:
             enum:
-              - INTERMEDIATE
-              - SHORT
-              - DEEP
+            - INTERMEDIATE
+            - SHORT
+            - DEEP
             type: string
           type: array
       - description: Filter by dropback time
@@ -12212,8 +12257,8 @@ paths:
           - QUICK
           items:
             enum:
-              - QUICK
-              - LONG
+            - QUICK
+            - LONG
             type: string
           type: array
       - description: Filter by quarterback pressure
@@ -12255,8 +12300,8 @@ paths:
           - INSIDE
           items:
             enum:
-              - INSIDE
-              - OUTSIDE
+            - INSIDE
+            - OUTSIDE
             type: string
           type: array
       - description: Filter for stuffed runs
@@ -12278,10 +12323,10 @@ paths:
           - SLOT
           items:
             enum:
-              - SLOT
-              - BACKFIELD
-              - TIGHT
-              - WIDE
+            - SLOT
+            - BACKFIELD
+            - TIGHT
+            - WIDE
             type: string
           type: array
       - description: Filter by receiver separation
@@ -12293,8 +12338,8 @@ paths:
           - OPEN
           items:
             enum:
-              - OPEN
-              - TIGHT
+            - OPEN
+            - TIGHT
             type: string
           type: array
       - description: Filter by defensive personnel package
@@ -12306,9 +12351,9 @@ paths:
           - NICKEL
           items:
             enum:
-              - NICKEL
-              - BASE
-              - DIME
+            - NICKEL
+            - BASE
+            - DIME
             type: string
           type: array
       - description: Filter by defenders in the box
@@ -12320,9 +12365,9 @@ paths:
           - STACKED
           items:
             enum:
-              - LIGHT
-              - STACKED
-              - NEUTRAL
+            - LIGHT
+            - STACKED
+            - NEUTRAL
             type: string
           type: array
       - description: Filter by defensive coverage type
@@ -12334,9 +12379,9 @@ paths:
           - PRESS
           items:
             enum:
-              - PRESS
-              - MAN
-              - ZONE
+            - PRESS
+            - MAN
+            - ZONE
             type: string
           type: array
       responses:
@@ -12357,6 +12402,7 @@ paths:
       summary: Get Filmroom Plays with Advanced Filtering
       tags:
       - Filmroom
+      servers: *id001
   /api/stats/boxscore:
     get:
       description: 'Retrieves comprehensive boxscore data for a specific game including
@@ -12394,6 +12440,7 @@ paths:
       summary: Get Game Boxscore (Stats API)
       tags:
       - Stats
+      servers: *id001
   /api/stats/game/team-rankings:
     get:
       description: 'Retrieves comprehensive statistical rankings for both teams in
@@ -12459,6 +12506,7 @@ paths:
       summary: Get Team Rankings for Game
       tags:
       - Stats
+      servers: *id001
   /api/stats/gamecenter:
     get:
       description: 'Retrieves advanced game statistics including passer zones, receiver
@@ -12494,6 +12542,7 @@ paths:
       summary: Get Gamecenter Statistics
       tags:
       - Stats
+      servers: *id001
   /api/stats/multiple-rankings/all-teams:
     get:
       description: 'Retrieves rankings for all 32 NFL teams across multiple specified
@@ -12570,6 +12619,7 @@ paths:
       summary: Get Multiple Rankings for All Teams
       tags:
       - Stats
+      servers: *id001
   /api/teams/all:
     get:
       description: 'Retrieves information for all NFL teams including regular teams
@@ -12596,6 +12646,7 @@ paths:
       summary: Get All Teams
       tags:
       - Teams
+      servers: *id001
   /api/teams/roster:
     get:
       description: 'Retrieves the complete roster for a specific team and season.
@@ -12638,6 +12689,7 @@ paths:
       summary: Get Team Roster
       tags:
       - Teams
+      servers: *id001
   /api/teams/rosterWeek:
     get:
       description: 'Retrieves the roster for a specific team, season, season type,
@@ -12695,6 +12747,7 @@ paths:
       summary: Get Weekly Team Roster
       tags:
       - Teams
+      servers: *id001
   /api/teams/schedule:
     get:
       description: 'Retrieves the complete schedule for a specific team and season.
@@ -12739,6 +12792,7 @@ paths:
       summary: Get Team Schedule
       tags:
       - Teams
+      servers: *id001
   /experience/v1/games:
     get:
       description: 'Retrieves game information for a specific season, season type,
@@ -12789,6 +12843,9 @@ paths:
       summary: Get Games by Season and Week
       tags:
       - Experience
+      servers: &id002
+      - url: https://api.nfl.com
+        description: Production Regular NFL API
   /experience/v1/teams:
     get:
       description: 'Retrieves information for all NFL teams including Pro Bowl teams.
@@ -12830,6 +12887,7 @@ paths:
       summary: Get All Teams
       tags:
       - Experience
+      servers: *id002
   /football/v2/draft/{year}:
     get:
       description: 'Retrieves draft information for a specific year including all
@@ -12881,6 +12939,7 @@ paths:
       summary: Get Draft Information
       tags:
       - Football
+      servers: *id002
   /football/v2/experience/weekly-game-details:
     get:
       description: 'Retrieves detailed game information for a specific week including
@@ -12958,6 +13017,7 @@ paths:
       summary: Get Weekly Game Details with Standings
       tags:
       - Football
+      servers: *id002
   /football/v2/games/season/{season}/seasonType/{seasonType}/week/{week}:
     get:
       description: 'Retrieves game information for a specific season, season type,
@@ -13012,6 +13072,7 @@ paths:
       summary: Get Games by Season, Type, and Week
       tags:
       - Football
+      servers: *id002
   /football/v2/games/{gameId}/boxscore:
     get:
       description: 'Retrieves comprehensive box score data for a specific game including
@@ -13047,6 +13108,7 @@ paths:
       summary: Get Game Box Score (Football API)
       tags:
       - Football
+      servers: *id002
   /football/v2/games/{gameId}/playbyplay:
     get:
       description: 'Retrieves detailed play-by-play data for a specific game including
@@ -13096,6 +13158,7 @@ paths:
       summary: Get Play-by-Play Data
       tags:
       - Football
+      servers: *id002
   /football/v2/injuries:
     get:
       description: 'Retrieves current injury reports for all teams or specific teams
@@ -13143,9 +13206,11 @@ paths:
       summary: Get Injury Reports
       tags:
       - Football
+      servers: *id002
   /football/v2/players/teams/{teamId}/roster:
     get:
-      description: "Retrieves the complete roster for a specific team including active, practice squad, and injured reserve players with detailed player information."
+      description: Retrieves the complete roster for a specific team including active,
+        practice squad, and injured reserve players with detailed player information.
       x-server-name: regular
       operationId: getPlayersTeamRoster
       parameters:
@@ -13189,6 +13254,7 @@ paths:
       summary: Get Team Roster
       tags:
       - Football
+      servers: *id002
   /football/v2/players/{playerId}:
     get:
       description: 'Retrieves detailed information about a specific player including
@@ -13232,6 +13298,7 @@ paths:
       summary: Get Player Details
       tags:
       - Football
+      servers: *id002
   /football/v2/standings:
     get:
       description: 'Retrieves team standings for a specific season, season type, and
@@ -13288,6 +13355,7 @@ paths:
       summary: Get Standings
       tags:
       - Football
+      servers: *id002
   /football/v2/stats/live/game-summaries:
     get:
       description: 'Retrieves live game statistics and summaries for games in progress
@@ -13335,6 +13403,7 @@ paths:
       summary: Get Live Game Statistics
       tags:
       - Football
+      servers: *id002
   /football/v2/stats/players/season:
     get:
       description: 'Retrieves aggregated player statistics for a specific season with
@@ -13365,17 +13434,17 @@ paths:
         required: false
         schema:
           enum:
-            - QB
-            - RB
-            - WR
-            - TE
-            - OL
-            - DL
-            - LB
-            - DB
-            - K
-            - P
-            - LS
+          - QB
+          - RB
+          - WR
+          - TE
+          - OL
+          - DL
+          - LB
+          - DB
+          - K
+          - P
+          - LS
           type: string
       - description: Filter by team
         in: query
@@ -13390,13 +13459,13 @@ paths:
         required: false
         schema:
           enum:
-            - passing
-            - rushing
-            - receiving
-            - defense
-            - kicking
-            - punting
-            - returning
+          - passing
+          - rushing
+          - receiving
+          - defense
+          - kicking
+          - punting
+          - returning
           example: passing
           type: string
       - description: Sort field and order
@@ -13439,6 +13508,7 @@ paths:
       summary: Get Season Player Statistics
       tags:
       - Football
+      servers: *id002
   /football/v2/transactions:
     get:
       description: 'Retrieves recent transactions including trades, signings, releases,
@@ -13478,13 +13548,13 @@ paths:
         required: false
         schema:
           enum:
-            - TRADE
-            - SIGNED
-            - RELEASED
-            - WAIVED
-            - PRACTICE_SQUAD
-            - IR
-            - SUSPENDED
+          - TRADE
+          - SIGNED
+          - RELEASED
+          - WAIVED
+          - PRACTICE_SQUAD
+          - IR
+          - SUSPENDED
           type: string
       - description: Maximum number of results
         in: query
@@ -13511,6 +13581,7 @@ paths:
       summary: Get Transactions
       tags:
       - Football
+      servers: *id002
   /football/v2/venues:
     get:
       description: 'Retrieves information about all NFL stadiums and venues, including
@@ -13554,10 +13625,11 @@ paths:
       summary: Get NFL Venues
       tags:
       - Football
+      servers: *id002
   /football/v2/weeks/season/{season}:
     get:
-      description: 'Retrieves all weeks for a specific season including preseason,
-        regular season, and postseason. Includes bye team information for each week.'
+      description: Retrieves all weeks for a specific season including preseason,
+        regular season, and postseason. Includes bye team information for each week.
       x-server-name: regular
       operationId: getSeasonWeeks
       parameters:
@@ -13593,9 +13665,12 @@ paths:
       summary: Get Season Weeks
       tags:
       - Football
+      servers: *id002
   /identity/v3/token:
     post:
-      description: "Creates a new access token and refresh token for a client device. This is the initial authentication endpoint that establishes a session for accessing NFL APIs. Requires client credentials and device information."
+      description: Creates a new access token and refresh token for a client device.
+        This is the initial authentication endpoint that establishes a session for
+        accessing NFL APIs. Requires client credentials and device information.
       x-server-name: regular
       operationId: generateToken
       requestBody:
@@ -13630,9 +13705,12 @@ paths:
       summary: Generate Initial Access Token
       tags:
       - Authentication
+      servers: *id002
   /identity/v3/token/refresh:
     post:
-      description: "Refreshes an existing access token using a valid refresh token. This endpoint extends the user's session by generating new access and refresh tokens. Requires the previous refresh token and signature verification."
+      description: Refreshes an existing access token using a valid refresh token.
+        This endpoint extends the user's session by generating new access and refresh
+        tokens. Requires the previous refresh token and signature verification.
       x-server-name: regular
       operationId: refreshToken
       requestBody:
@@ -13673,3 +13751,4 @@ paths:
       summary: Refresh Access Token
       tags:
       - Authentication
+      servers: *id002
