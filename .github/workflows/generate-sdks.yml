@@ -51,7 +51,7 @@ jobs:
       - name: Generate ${{ matrix.language }} SDK
         run: |
           ls -lah
-          cat .speakeasy/gen.yaml
+          find ~ -name "gen.yaml"
           echo "Generating ${{ matrix.language }} SDK..."
           speakeasy generate sdk \
             --schema openapi/nfl-com-api.yaml \
