@@ -12,7 +12,7 @@ on:
       languages:
         description: 'Languages to generate (comma-separated: python,typescript,go)'
         required: false
-        default: 'python,typescript'
+        default: 'python'
 
 env:
   SPEAKEASY_VERSION: 'latest'
