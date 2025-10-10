@@ -44,7 +44,6 @@ jobs:
         # What is the purpose of this step?
         id: commit_info
         run: |
-          cd source
           echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
           echo "message=$(git log -1 --pretty=%B | head -n 1)" >> $GITHUB_OUTPUT
           echo "author=$(git log -1 --pretty=%an)" >> $GITHUB_OUTPUT
@@ -74,7 +73,7 @@ jobs:
           ls -lah sdk-repo
           if [ -f sdk-repo/.speakeasy-preserve ]; then
             echo "Running file preservation for ${{ matrix.language }} SDK..."
-            python source/scripts/preserve_files.py \
+            python scripts/preserve_files.py \
               sdk-repo \
               griddy-sdk-${{ matrix.language }} \
               sdk-repo/.speakeasy-preserve
