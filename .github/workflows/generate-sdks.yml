@@ -52,7 +52,7 @@ jobs:
           SPEAKEASY_API_KEY: ${{ secrets.SPEAKEASY_API_KEY }}
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
           PYTHON_SDK_REPO: ${{ vars.PYTHON_SDK_REPO }}
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
           COMMIT_SHA: ${{ github.sha }}
 
 
