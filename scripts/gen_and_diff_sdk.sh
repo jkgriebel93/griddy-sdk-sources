@@ -51,5 +51,5 @@ git add .
 git commit -s -m "Update SDK with Speakeasy generated changes"
 git checkout -b "auto-update-sdk-${COMMIT_SHA}"
 git push origin "auto-update-sdk-${COMMIT_SHA}"
-
+gh auth login --with-token "${PAT_TOKEN}"
 gh pr create --title "Update Griddy Python SDK" --body "Auto-generated update" --base master --head "auto-update-sdk-${COMMIT_SHA}"
