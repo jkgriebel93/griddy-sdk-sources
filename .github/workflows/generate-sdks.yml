@@ -12,6 +12,7 @@ on:
 jobs:
   notify-sdk-repos:
     runs-on: ubuntu-latest
+    if: false
     steps:
       - name: Trigger Python SDK Regeneration
         run: |

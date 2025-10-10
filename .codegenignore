@@ -1,0 +1,14 @@
+.claude/*
+.github/*
+.idea/*
+.speakeasy/*
+.vscode/*
+dist/*
+.gitignore
+pyproject.toml
+uv.lock
+/README.md
+/USAGE.md
+src/griddy/nfl/__init__.py
+src/griddy/nfl/_version.py
+src/griddy/nfl/sdk.py

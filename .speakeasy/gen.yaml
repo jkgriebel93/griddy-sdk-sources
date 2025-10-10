@@ -23,7 +23,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 python:
-  version: 0.0.1
+  version: 0.1.0
   additionalDependencies:
     dev: {}
     main: {}
@@ -44,7 +44,7 @@ python:
     asyncPaginationSep2025: false
     responseRequiredSep2024: false
   flattenGlobalSecurity: true
-  flattenRequests: false
+  flattenRequests: true
   flatteningOrder: parameters-first
   imports:
     option: openapi
@@ -56,9 +56,9 @@ python:
       webhooks: ""
   inputModelSuffix: input
   legacyPyright: true
-  maxMethodParams: 4
+  maxMethodParams: 999
   methodArguments: infer-optional-args
-  moduleName: griddy_nfl
+  moduleName: griddy.nfl
   outputModelSuffix: output
   packageManager: uv
   packageName: griddy-nfl
