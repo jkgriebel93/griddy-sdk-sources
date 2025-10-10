@@ -29,6 +29,7 @@ jobs:
       - name: Checkout source repository
         uses: actions/checkout@v4
         with:
+          path: '.'
           fetch-depth: 1
 
       - name: Setup Python
@@ -41,6 +42,7 @@ jobs:
           curl -fsSL https://raw.githubusercontent.com/speakeasy-api/speakeasy/main/install.sh | bash -s -- -b /usr/local/bin
 
       - name: Get commit info
+        if: false
         # What is the purpose of this step?
         id: commit_info
         run: |
@@ -50,6 +52,7 @@ jobs:
 
       - name: Generate ${{ matrix.language }} SDK
         run: |
+          pwd
           ls -lah
           find ~ -name "gen.yaml"
           echo "Generating ${{ matrix.language }} SDK..."
@@ -60,107 +63,107 @@ jobs:
         env:
           SPEAKEASY_API_KEY: ${{ secrets.SPEAKEASY_API_KEY }}
 
-      - name: Checkout ${{ matrix.language }} SDK repository
-        uses: actions/checkout@v4
-        with:
-          repository: ${{ github.repository_owner }}/griddy-sdk-${{ matrix.language }}
-          token: ${{ secrets.PAT_TOKEN }}
-          path: sdk-repo
-          fetch-depth: 0
-
-      - name: Preserve custom files
-        run: |
-          ls -lah sdk-repo
-          if [ -f sdk-repo/.speakeasy-preserve ]; then
-            echo "Running file preservation for ${{ matrix.language }} SDK..."
-            python scripts/preserve_files.py \
-              sdk-repo \
-              griddy-sdk-${{ matrix.language }} \
-              sdk-repo/.speakeasy-preserve
-          else
-            echo "No .speakeasy-preserve file found, skipping preservation"
-          fi
-
-      - name: Copy generated SDK to repository
-        run: |
-          echo "Copying generated SDK to repository..."
-          rsync -av --delete \
-            --exclude='.git' \
-            --exclude='.github/workflows/custom-*' \
-            griddy-sdk-${{ matrix.language }}/ sdk-repo/
-
-      - name: Check for changes
-        id: check_changes
-        run: |
-          cd sdk-repo
-          if git diff --quiet; then
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "No changes detected"
-          else
-            echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "Changes detected:"
-            git diff --stat
-          fi
-
-      - name: Create Pull Request
-        if: steps.check_changes.outputs.has_changes == 'true'
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.PAT_TOKEN }}
-          path: sdk-repo
-          commit-message: |
-            chore: Update SDK from spec changes
-            
-            Source commit: ${{ steps.commit_info.outputs.sha }}
-            Source message: ${{ steps.commit_info.outputs.message }}
-          branch: auto-update-sdk-${{ steps.commit_info.outputs.sha }}
-          delete-branch: true
-          title: 'Update ${{ matrix.language }} SDK from spec changes'
-          body: |
-            ## Auto-generated SDK Update
-            
-            This PR contains automated updates to the ${{ matrix.language }} SDK generated from changes to the OpenAPI specification.
-            
-            ### Source Information
-            - **Repository**: `griddy-sdk-sources`
-            - **Commit**: [`${{ steps.commit_info.outputs.sha }}`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
-            - **Author**: ${{ steps.commit_info.outputs.author }}
-            - **Message**: ${{ steps.commit_info.outputs.message }}
-            - **Spec File**: `openapi/nfl-com-api.yaml`
-            
-            ### Generation Details
-            - **Generated with**: Speakeasy ${{ env.SPEAKEASY_VERSION }}
-            - **Language**: ${{ matrix.language }}
-            - **Timestamp**: ${{ github.event.head_commit.timestamp }}
-            - **Workflow Run**: [#${{ github.run_number }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
-            
-            ### Review Checklist
-            - [ ] Review generated code changes
-            - [ ] Verify preserved files are intact
-            - [ ] Check for breaking changes
-            - [ ] Run tests if applicable
-            - [ ] Update version if needed
-            
-            ---
-            
-            🤖 This PR was automatically created by the SDK generation workflow.
-          labels: |
-            automated
-            sdk-update
-            ${{ matrix.language }}
-
-      - name: Report result
-        if: always()
-        run: |
-          echo "## ${{ matrix.language }} SDK Generation" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.check_changes.outputs.has_changes }}" == "true" ]; then
-            echo "**Status**: PR created successfully" >> $GITHUB_STEP_SUMMARY
-            echo "**Action**: Review and merge the PR in griddy-sdk-${{ matrix.language }}" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "**Status**: No changes detected" >> $GITHUB_STEP_SUMMARY
-            echo "**Action**: No action required" >> $GITHUB_STEP_SUMMARY
-          fi
+      # - name: Checkout ${{ matrix.language }} SDK repository
+      #   uses: actions/checkout@v4
+      #   with:
+      #     repository: ${{ github.repository_owner }}/griddy-sdk-${{ matrix.language }}
+      #     token: ${{ secrets.PAT_TOKEN }}
+      #     path: sdk-repo
+      #     fetch-depth: 0
+      #
+      # - name: Preserve custom files
+      #   run: |
+      #     ls -lah sdk-repo
+      #     if [ -f sdk-repo/.speakeasy-preserve ]; then
+      #       echo "Running file preservation for ${{ matrix.language }} SDK..."
+      #       python scripts/preserve_files.py \
+      #         sdk-repo \
+      #         griddy-sdk-${{ matrix.language }} \
+      #         sdk-repo/.speakeasy-preserve
+      #     else
+      #       echo "No .speakeasy-preserve file found, skipping preservation"
+      #     fi
+      #
+      # - name: Copy generated SDK to repository
+      #   run: |
+      #     echo "Copying generated SDK to repository..."
+      #     rsync -av --delete \
+      #       --exclude='.git' \
+      #       --exclude='.github/workflows/custom-*' \
+      #       griddy-sdk-${{ matrix.language }}/ sdk-repo/
+      #
+      # - name: Check for changes
+      #   id: check_changes
+      #   run: |
+      #     cd sdk-repo
+      #     if git diff --quiet; then
+      #       echo "has_changes=false" >> $GITHUB_OUTPUT
+      #       echo "No changes detected"
+      #     else
+      #       echo "has_changes=true" >> $GITHUB_OUTPUT
+      #       echo "Changes detected:"
+      #       git diff --stat
+      #     fi
+      #
+      # - name: Create Pull Request
+      #   if: steps.check_changes.outputs.has_changes == 'true'
+      #   uses: peter-evans/create-pull-request@v5
+      #   with:
+      #     token: ${{ secrets.PAT_TOKEN }}
+      #     path: sdk-repo
+      #     commit-message: |
+      #       chore: Update SDK from spec changes
+      #
+      #       Source commit: ${{ steps.commit_info.outputs.sha }}
+      #       Source message: ${{ steps.commit_info.outputs.message }}
+      #     branch: auto-update-sdk-${{ steps.commit_info.outputs.sha }}
+      #     delete-branch: true
+      #     title: 'Update ${{ matrix.language }} SDK from spec changes'
+      #     body: |
+      #       ## Auto-generated SDK Update
+      #
+      #       This PR contains automated updates to the ${{ matrix.language }} SDK generated from changes to the OpenAPI specification.
+      #
+      #       ### Source Information
+      #       - **Repository**: `griddy-sdk-sources`
+      #       - **Commit**: [`${{ steps.commit_info.outputs.sha }}`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+      #       - **Author**: ${{ steps.commit_info.outputs.author }}
+      #       - **Message**: ${{ steps.commit_info.outputs.message }}
+      #       - **Spec File**: `openapi/nfl-com-api.yaml`
+      #
+      #       ### Generation Details
+      #       - **Generated with**: Speakeasy ${{ env.SPEAKEASY_VERSION }}
+      #       - **Language**: ${{ matrix.language }}
+      #       - **Timestamp**: ${{ github.event.head_commit.timestamp }}
+      #       - **Workflow Run**: [#${{ github.run_number }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+      #
+      #       ### Review Checklist
+      #       - [ ] Review generated code changes
+      #       - [ ] Verify preserved files are intact
+      #       - [ ] Check for breaking changes
+      #       - [ ] Run tests if applicable
+      #       - [ ] Update version if needed
+      #
+      #       ---
+      #
+      #       🤖 This PR was automatically created by the SDK generation workflow.
+      #     labels: |
+      #       automated
+      #       sdk-update
+      #       ${{ matrix.language }}
+      #
+      # - name: Report result
+      #   if: always()
+      #   run: |
+      #     echo "## ${{ matrix.language }} SDK Generation" >> $GITHUB_STEP_SUMMARY
+      #     echo "" >> $GITHUB_STEP_SUMMARY
+      #     if [ "${{ steps.check_changes.outputs.has_changes }}" == "true" ]; then
+      #       echo "**Status**: PR created successfully" >> $GITHUB_STEP_SUMMARY
+      #       echo "**Action**: Review and merge the PR in griddy-sdk-${{ matrix.language }}" >> $GITHUB_STEP_SUMMARY
+      #     else
+      #       echo "**Status**: No changes detected" >> $GITHUB_STEP_SUMMARY
+      #       echo "**Action**: No action required" >> $GITHUB_STEP_SUMMARY
+      #     fi
 
   notify-completion:
     runs-on: ubuntu-latest
