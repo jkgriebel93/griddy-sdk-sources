@@ -57,6 +57,8 @@ jobs:
             --schema source/openapi/nfl-com-api.yaml \
             --lang ${{ matrix.language }} \
             --out griddy-sdk-${{ matrix.language }}
+        env:
+          SPEAKEASY_API_KEY: ${{ secrets.SPEAKEASY_API_KEY }}
 
       - name: Checkout ${{ matrix.language }} SDK repository
         uses: actions/checkout@v4
