@@ -31,15 +31,24 @@ jobs:
         with:
           path: '.'
           fetch-depth: 1
+      - name: Checkout Python SDK Repository
+        uses: actions/checkout@v4
+        with:
+          repository: "${{ vars.PYTHON_SDK_REPO }}"
+          path: '.'
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.13'
 
-      - name: Install Speakeasy CLI
-        run: |
-          curl -fsSL https://raw.githubusercontent.com/speakeasy-api/speakeasy/main/install.sh | bash -s -- -b /usr/local/bin
+      - name: Manual reconciliation
+        run: ./scripts/gen_and_diff_sdk.sh
+        env:
+          SPEAKEASY_API_KEY: ${{ secrets.SPEAKEASY_API_KEY }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          PYTHON_SDK_REPO: ${{ vars.PYTHON_SDK_REPO }}
+
 
       - name: Get commit info
         if: false
@@ -51,6 +60,7 @@ jobs:
           echo "author=$(git log -1 --pretty=%an)" >> $GITHUB_OUTPUT
 
       - name: Generate ${{ matrix.language }} SDK
+        if: false
         run: |
           pwd
           ls -lah
