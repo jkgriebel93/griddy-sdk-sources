@@ -29,8 +29,7 @@ jobs:
       - name: Checkout source repository
         uses: actions/checkout@v4
         with:
-          path: source
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -52,11 +51,11 @@ jobs:
 
       - name: Generate ${{ matrix.language }} SDK
         run: |
-          ls -lah source
-          cat source/.speakeasy/gen.yaml
+          ls -lah
+          cat .speakeasy/gen.yaml
           echo "Generating ${{ matrix.language }} SDK..."
           speakeasy generate sdk \
-            --schema source/openapi/nfl-com-api.yaml \
+            --schema openapi/nfl-com-api.yaml \
             --lang ${{ matrix.language }} \
             --out griddy-sdk-${{ matrix.language }}
         env:
@@ -72,6 +71,7 @@ jobs:
 
       - name: Preserve custom files
         run: |
+          ls -lah sdk-repo
           if [ -f sdk-repo/.speakeasy-preserve ]; then
             echo "Running file preservation for ${{ matrix.language }} SDK..."
             python source/scripts/preserve_files.py \
@@ -104,7 +104,8 @@ jobs:
           fi
 
       - name: Create Pull Request
-        if: steps.check_changes.outputs.has_changes == 'true'
+        # if: steps.check_changes.outputs.has_changes == 'true'
+        if: false
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.PAT_TOKEN }}
