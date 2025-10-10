@@ -52,6 +52,8 @@ jobs:
 
       - name: Generate ${{ matrix.language }} SDK
         run: |
+          ls -lah
+          cat griddy-sdk-python/.speakeasy/gen.yaml
           echo "Generating ${{ matrix.language }} SDK..."
           speakeasy generate sdk \
             --schema source/openapi/nfl-com-api.yaml \
