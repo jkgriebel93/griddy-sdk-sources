@@ -53,7 +53,7 @@ jobs:
       - name: Generate ${{ matrix.language }} SDK
         run: |
           echo "Generating ${{ matrix.language }} SDK..."
-          speakeasy generate \
+          speakeasy generate sdk \
             --schema source/openapi/nfl-com-api.yaml \
             --lang ${{ matrix.language }} \
             --out griddy-sdk-${{ matrix.language }}
