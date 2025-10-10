@@ -44,7 +44,8 @@ jobs:
 
       - name: Manual reconciliation
         run: |
-          ls -lah
+          ls -lah scripts
+          chmod +x scripts/gen_and_diff_sdk.sh
           ./scripts/gen_and_diff_sdk.sh
         env:
           SPEAKEASY_API_KEY: ${{ secrets.SPEAKEASY_API_KEY }}
