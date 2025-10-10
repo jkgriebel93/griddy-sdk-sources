@@ -43,7 +43,9 @@ jobs:
           python-version: '3.13'
 
       - name: Manual reconciliation
-        run: ./scripts/gen_and_diff_sdk.sh
+        run: |
+          ls -lah
+          ./scripts/gen_and_diff_sdk.sh
         env:
           SPEAKEASY_API_KEY: ${{ secrets.SPEAKEASY_API_KEY }}
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
