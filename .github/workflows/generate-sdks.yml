@@ -32,6 +32,7 @@ jobs:
           path: '.'
           fetch-depth: 1
       - name: Checkout Python SDK Repository
+        if: false
         uses: actions/checkout@v4
         with:
           repository: "${{ vars.PYTHON_SDK_REPO }}"
