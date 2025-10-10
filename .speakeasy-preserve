@@ -1,0 +1,21 @@
+# .speakeasy-preserve
+# Files listed here will be preserved when regenerating the SDK
+# One file path per line, relative to repository root
+
+# Documentation that shouldn't be overwritten
+README.md
+USAGE.md
+CONTRIBUTING.md
+
+# Custom configuration files
+.github/
+pyproject.toml
+.spectral.yaml
+uv.lock
+
+# Custom examples
+examples/custom_example.py
+examples/advanced_usage.py
+
+# CI/CD configurations you've customized
+.github/dependabot.yml
