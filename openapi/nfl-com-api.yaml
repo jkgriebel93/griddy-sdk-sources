@@ -7,12 +7,29 @@ info:
   description: "Regular API - NFL's public API for accessing game schedules, team information, standings, statistics, and venue data. This API provides comprehensive access to NFL data including real-time game information, team rosters, seasonal statistics, and historical data. The NFL Pro API is for accessing advanced statistics, film room content, player data, and fantasy information. This API provides comprehensive access to NFL Pro features including Next Gen Stats, Film Room analysis, player projections, and game insights."
   title: NFL REST APIs
   version: 1.0.0
+  x-server-configuration:
+    default-environment: 'production'
+    default-server: 'pro'
+    environments:
+      - name: 'production'
+        servers:
+          - name: 'regular'
+            url: 'https://api.nfl.com'
+          - name: 'pro'
+            url: 'https://pro.nfl.com'
 
-servers:
-  - description: Production Regular NFL API
-    url: https://api.nfl.com
-  - description: Production NFL Pro API
-    url: https://pro.nfl.com
+  x-codegen-settings:
+    ReturnCompleteHttpResponse: true
+    ExtendedAdditionalPropertiesSupport: true
+    ProjectName: 'GriddyNFL'
+    EnableLogging: true
+    ControllerPostfix: 'Controller'
+    ControllerNamespace: 'Controllers'
+    # Note: Not sure what this value should actually be
+    ArraySerialization: Plain
+    UserAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36'
+    GenerateExamplesForOptionalFields: true
+    SortResources: true
 
 security:
   - NFLAuth: []
@@ -12731,6 +12748,7 @@ paths:
         and ticket details.
 
         '
+      x-server-name: regular
       operationId: getExperienceGames
       parameters:
       - description: Season year (e.g., 2025)
@@ -12779,6 +12797,7 @@ paths:
         media links.
 
         '
+      x-server-name: regular
       operationId: getExperienceTeams
       parameters:
       - description: Include all teams including special teams
@@ -12819,6 +12838,7 @@ paths:
         picks, traded picks, and compensatory selections.
 
         '
+      x-server-name: regular
       operationId: getDraftInfo
       parameters:
       - description: Draft year
@@ -12869,6 +12889,7 @@ paths:
         drive charts, replays, and tagged videos.
 
         '
+      x-server-name: regular
       operationId: getWeeklyGameDetails
       parameters:
       - description: Season year
@@ -12945,6 +12966,7 @@ paths:
         This endpoint provides core game data with external IDs.
 
         '
+      x-server-name: regular
       operationId: getFootballGames
       parameters:
       - description: Season year
@@ -12997,6 +13019,7 @@ paths:
         team statistics, individual player statistics, and scoring summary.
 
         '
+      x-server-name: regular
       operationId: getFootballBoxScore
       parameters:
       - description: Game identifier (UUID)
@@ -13031,6 +13054,7 @@ paths:
         all plays, drives, scoring events, and key statistics.
 
         '
+      x-server-name: regular
       operationId: getPlayByPlay
       parameters:
       - description: Game identifier (UUID)
@@ -13079,6 +13103,7 @@ paths:
         with injury status, designation, and practice participation.
 
         '
+      x-server-name: regular
       operationId: getInjuryReports
       parameters:
       - description: Season year
@@ -13121,6 +13146,7 @@ paths:
   /football/v2/players/teams/{teamId}/roster:
     get:
       description: "Retrieves the complete roster for a specific team including active, practice squad, and injured reserve players with detailed player information."
+      x-server-name: regular
       operationId: getPlayersTeamRoster
       parameters:
       - description: Team identifier (UUID)
@@ -13171,6 +13197,7 @@ paths:
         career statistics, and current season performance.
 
         '
+      x-server-name: regular
       operationId: getPlayerDetails
       parameters:
       - description: Player identifier
@@ -13213,6 +13240,7 @@ paths:
         Includes division, conference, and overall standings with detailed statistics.
 
         '
+      x-server-name: regular
       operationId: getStandings
       parameters:
       - description: Season year
@@ -13268,6 +13296,7 @@ paths:
         Provides real-time statistical data for specified season, type, and week.
 
         '
+      x-server-name: regular
       operationId: getLiveGameStats
       parameters:
       - description: Season year
@@ -13314,6 +13343,7 @@ paths:
         options by position, team, and statistical categories.
 
         '
+      x-server-name: regular
       operationId: getSeasonPlayerStats
       parameters:
       - description: Season year
@@ -13416,6 +13446,7 @@ paths:
         practice squad moves, and injured reserve designations.
 
         '
+      x-server-name: regular
       operationId: getTransactions
       parameters:
       - description: Start date for transactions (ISO 8601)
@@ -13488,6 +13519,7 @@ paths:
         Provides venue details such as addresses, locations, and territories.
 
         '
+      x-server-name: regular
       operationId: getVenues
       parameters:
       - description: Season year
@@ -13526,6 +13558,7 @@ paths:
     get:
       description: 'Retrieves all weeks for a specific season including preseason,
         regular season, and postseason. Includes bye team information for each week.'
+      x-server-name: regular
       operationId: getSeasonWeeks
       parameters:
       - description: Season year
@@ -13563,6 +13596,7 @@ paths:
   /identity/v3/token:
     post:
       description: "Creates a new access token and refresh token for a client device. This is the initial authentication endpoint that establishes a session for accessing NFL APIs. Requires client credentials and device information."
+      x-server-name: regular
       operationId: generateToken
       requestBody:
         content:
@@ -13599,6 +13633,7 @@ paths:
   /identity/v3/token/refresh:
     post:
       description: "Refreshes an existing access token using a valid refresh token. This endpoint extends the user's session by generating new access and refresh tokens. Requires the previous refresh token and signature verification."
+      x-server-name: regular
       operationId: refreshToken
       requestBody:
         content:
